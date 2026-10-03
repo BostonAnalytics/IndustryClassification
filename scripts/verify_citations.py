@@ -49,6 +49,11 @@ def main():
         refs = text[text.rfind('References'):]
         for title in ['Automatically Detecting Errors','Scikit-learn','North American Industry Classification']:
             assert title.lower() in refs.lower(), f'Missing generated report reference: {title}'
+        for phrase in ['Exploratory data analysis', 'Role-label consistency', 'Field coverage']:
+            assert phrase in text, f'Missing report EDA section: {phrase}'
+        for name in ['eda-selection.png','eda-coverage.png','eda-roles.png','eda-skills.png']:
+            expected_image = (ROOT/'images'/name).read_bytes()
+            assert any(archive.read(p) == expected_image for p in archive.namelist() if p.startswith('word/media/')), f'Missing report figure: {name}'
     # Negative control: a citation whose reference target is absent must fail.
     try:
         verify_page('<span data-cites="goindani2017"></span>',keys)

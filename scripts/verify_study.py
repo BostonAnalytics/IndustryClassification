@@ -11,7 +11,7 @@ assert len({f['file'] for f in d['files']})==len(d['files'])
 assert all(len(f['sha256'])==64 for f in d['files'])
 assert l['source_rows']==l['unique_id_rows']+l.get('duplicate_id',0)+l.get('missing_id',0)
 for total,kept,excluded in [('unique_id_rows','period_rows','outside_period_or_unknown_date'),('period_rows','us_rows','non_us_or_unknown_country'),('us_rows','sector_known_rows','missing_or_invalid_sector'),('sector_known_rows','nonstaffing_or_unknown_rows','staffing_excluded'),('nonstaffing_or_unknown_rows','employer_model_postings','missing_employer_or_title')]:
-    assert l[total]==l[kept]+l[excluded],total
+    assert l[total]==l[kept]+l.get(excluded,0),total
 assert l['employers_before_filters']==l['employers_below_20']+l['employers_without_dominant_sector']+l['eligible_employers_before_cap']
 assert sum(s['employers'] for s in d['splits'].values())==l['model_employers']
 assert d['employer_overlap']==0

@@ -92,13 +92,13 @@ def main():
     sql = next(r for r in skill_rows if r['skill'] == 'SQL (Programming Language)')
     text = f'''## Exploratory data analysis
 
-This descriptive analysis uses the saved Jobs_2026 aggregates [@jobs2026]. It examines selection, available career evidence, normalized role labels and skills before interpreting the predictive results. All career percentages use the {n} selected postings unless another denominator is stated. Figures describe recorded advertisements, not live vacancies or population employment.
+This descriptive analysis uses the saved Jobs_2026_US aggregates [@jobs2026]. It examines selection, available career evidence, normalized role labels and skills before interpreting the predictive results. All career percentages use the {n} selected postings unless another denominator is stated. Figures describe recorded advertisements, not live vacancies or population employment.
 
 ### Selection and units of analysis
 
 ![Sequential posting filters before industry-and-title career selection or employer aggregation. Bar lengths use all {ledger['source_rows']:,} source records as the denominator; labels give retained counts.](images/eda-selection.png){{#fig-eda-selection fig-alt="Five horizontal bars show the number of records retained through date, country, industry and staffing filters." width=95%}}
 
-The common filters retain {ledger['nonstaffing_or_unknown_rows']:,} of {ledger['source_rows']:,} records ({ledger['nonstaffing_or_unknown_rows']/ledger['source_rows']:.1%}). The explicit-US filter removes {ledger['non_us_or_unknown_country']:,} dated records; unknown country and non-US country are combined in the saved exclusion count. These exclusions describe selection, not proof that every excluded record is erroneous. The pipeline then branches: industry-and-title matching yields {n} career postings, while employer aggregation and eligibility rules yield {ledger['model_employers']} employers for classification. Those are different units and should not appear as consecutive steps in a single funnel.
+The common filters retain {ledger['nonstaffing_or_unknown_rows']:,} of {ledger['source_rows']:,} records ({ledger['nonstaffing_or_unknown_rows']/ledger['source_rows']:.1%}). The explicit-US filter removes {ledger.get('non_us_or_unknown_country', 0):,} dated records; unknown country and non-US country are combined in the saved exclusion count. These exclusions describe selection, not proof that every excluded record is erroneous. The pipeline then branches: industry-and-title matching yields {n} career postings, while employer aggregation and eligibility rules yield {ledger['model_employers']} employers for classification. Those are different units and should not appear as consecutive steps in a single funnel.
 
 ### Field coverage and missing evidence
 

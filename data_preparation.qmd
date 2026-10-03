@@ -5,11 +5,15 @@ number-sections: true
 
 ## Source and observation window
 
-The source is the local Jobs_2026 snapshot: 97 posting partitions containing 2,350,355 records [@jobs2026]. The observation window is January 1 through September 30, 2026. File hashes, row counts, versions and parameters are retained in [run.json](data/study/run.json). The folder name does not guarantee that every record falls within 2026.
+The source is the local Jobs_2026_US snapshot: 82 posting partitions containing 815,193 records [@jobs2026]. The observation window is January 1 through September 30, 2026. File hashes, row counts, versions and parameters are retained in [run.json](data/study/run.json). The source EDA verifies posting years independently of the folder name.
+
+According to the US snapshot's README, inclusion requires a 2026 posting date, parsed US country and exclusively US extracted locations, with no location conflict, ambiguity, review flag or truncated evidence. This is a parser-based selection, not independent verification of the worksite. All original columns and IDs are retained. Duplicate flags and representative pointers retain their global scope and may refer outside this subset.
+
+All 815,193 source rows have parsed country US and posting year 2026. The January–September window retains 800,461 rows; the remaining 14,732 fall outside that window. The final samples contain 112 career postings and 362 employers for classification.
 
 ## Posting filters and career cohort
 
-The [source EDA below](#local-jobs_2026-exploratory-analysis) profiles all local posting partitions before these exclusions; the market page examines the selected healthcare analyst cohort.
+The [source EDA below](#local-jobs_2026_us-exploratory-analysis) profiles all local posting partitions before these exclusions; the market page examines the selected healthcare analyst cohort.
 
 1. Keep the first occurrence of each nonmissing posting ID in filename order. Different IDs for the same vacancy may remain.
 2. Parse dates in UTC and retain the stated observation window.
@@ -35,11 +39,12 @@ Title shares and employer-name words adapt the feature design of @goindani2017. 
 
 ## Reproduce the evidence
 
-For dataset-wide EDA, run `python scripts/run_eda.py --data-dir E:/Data/Jobs_2026` followed by `python scripts/verify_source_eda.py --data-dir E:/Data/Jobs_2026`. Outputs under `data/eda` include field coverage, date and category distributions, input schemas and hashes. The source manifest is compared with the saved healthcare study.
+For dataset-wide EDA, run `python scripts/run_eda.py --data-dir E:/Data/Jobs_2026_US` followed by `python scripts/verify_source_eda.py --data-dir E:/Data/Jobs_2026_US`. Outputs under `data/eda` include field coverage, date and category distributions, input schemas and hashes. The source manifest is compared with the saved healthcare study.
 
 ```bash
 python -m pip install -r requirements-study.txt
-python scripts/run_study.py --data-dir E:/Data/Jobs_2026
+python scripts/run_study.py --data-dir E:/Data/Jobs_2026_US
+python scripts/run_eda.py --data-dir E:/Data/Jobs_2026_US
 python scripts/publish_study.py
 python scripts/publish_eda.py
 python scripts/verify_study.py

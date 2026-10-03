@@ -3,7 +3,7 @@ title: "Career evaluation and model evidence"
 number-sections: true
 ---
 
-The user selected healthcare data analysts in NAICS 62 and explicitly authorized local computation instead of the course's assigned EC2 environment. Results below were generated from the local Jobs_2026 snapshot on October 3, 2026 [@jobs2026]. The feature design adapts @goindani2017, using scikit-learn estimators [@pedregosa2011].
+The user selected healthcare data analysts in NAICS 62 and explicitly authorized local computation instead of the course's assigned EC2 environment. Results below were generated from the local Jobs_2026_US snapshot on October 3, 2026 [@jobs2026]. The feature design adapts @goindani2017, using scikit-learn estimators [@pedregosa2011].
 
 {{< include _content/study-results.md >}}
 
@@ -33,4 +33,4 @@ Do not rank a segment when a required component is missing. Report coverage and 
 
 Use an employer-disjoint holdout and independently reviewed labels. Report precision, recall, F1, class support and a confusion matrix separately for each industry. Review a sample of both agreement and disagreement records. A fair comparison should include the legacy label system and simple baselines. Document how many review flags are useful and the analyst time required.
 
-**Current status:** the [Jobs_2026 study](career_evaluation.qmd) fits and evaluates a linear SVM and GBDT, including confusion matrices and simple baselines. It uses dataset-derived labels without independent adjudication. Market benchmarks have been calculated, but the weighted career scorecard remains uncomputed because personal ratings and sufficient salary evidence are unavailable. Classification is the completed Module 5 analytical track.
+**Current status:** the [Jobs_2026_US study](career_evaluation.qmd) fits and evaluates a linear SVM and GBDT, including confusion matrices and simple baselines. It uses dataset-derived labels without independent adjudication. Market benchmarks have been calculated, but the weighted career scorecard remains uncomputed because personal ratings and sufficient salary evidence are unavailable. Classification is the completed Module 5 analytical track.

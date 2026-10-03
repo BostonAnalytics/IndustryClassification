@@ -19,7 +19,7 @@ The pipeline read **{ledger['source_rows']:,} rows in {len(d['files'])} posting 
 
 {table(['Filter stage','Remaining postings'],[(label,f"{ledger[key]:,}") for key,label in [('source_rows','All source rows'),('period_rows','Dated January–September 2026'),('us_rows','Parsed country explicitly US'),('sector_known_rows','Valid sector code available'),('nonstaffing_or_unknown_rows','Not explicitly marked as staffing'),('employer_model_postings','Employer name and normalized title available')]])}
 
-Unknown country and unknown sector are exclusions, not negative industry labels. Staffing status that is missing is retained. The geographic and sector filters remove much of the source data, so the retained sample is not representative of all Jobs_2026 records or all US hiring.
+Unknown country and unknown sector are exclusions, not negative industry labels. Staffing status that is missing is retained. The date, sector and staffing filters reduce the US-only source, so the retained sample is not representative of all Jobs_2026_US records or all US hiring.
 
 ## Employer sample and split
 
@@ -49,7 +49,7 @@ The linear SVM tests C = 0.1, 1 and 10 with balanced class penalties. GBDT tests
 
 The reference design is @goindani2017; the implementation uses scikit-learn [@pedregosa2011].
 
-This is an exploratory adaptation: a 2026 dataset, one industry, US-only observations, scikit-learn LinearSVC and GBDT, validation-based tuning instead of the paper's reported cross-validation, and normalized employer-name unigrams without all raw name variants. Name-word frequency counts employers containing the word. The 80% dominant-sector rule is an explicit adaptation for inconsistent posting-level labels. A preliminary unrestricted-year, exact-consistency run exposed data-quality problems; its results are superseded. The final study is not a preregistered confirmatory replication.
+This is an exploratory adaptation: a 2026 dataset, one industry, US-only observations, scikit-learn LinearSVC and GBDT, validation-based tuning instead of the paper's reported cross-validation, and normalized employer-name unigrams without all raw name variants. Name-word frequency counts employers containing the word. The 80% dominant-sector rule is an explicit adaptation for inconsistent posting-level labels. The final study is not a preregistered confirmatory replication.
 
 Industry fields may themselves derive from title or employer heuristics. Their provenance has not been independently audited. Label circularity, unresolved aliases, cohort selection and noisy titles limit the meaning of predictive agreement. A temporal holdout and independent label review remain future validation work.
 ''')

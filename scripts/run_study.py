@@ -252,7 +252,7 @@ def main():
                 ax.text(j,i,str(matrix[i,j]),ha='center',va='center',color='white' if matrix[i,j]>matrix.max()/2 else '#102b3f')
         ax.set(xticks=[0,1],yticks=[0,1],xticklabels=['Other','NAICS 62'],yticklabels=['Other','NAICS 62'],xlabel='Predicted',ylabel='Dataset label',title=result['model'])
     fig.tight_layout(); fig.savefig(FIG/'confusion.png'); plt.close(fig)
-    run = {'seed':2017,'period':['2026-01-01','2026-09-30'],'minimum_label_share':args.minimum_label_share,'versions':{'python':platform.python_version(),'pandas':pd.__version__,'pyarrow':pyarrow.__version__,'sklearn':sklearn.__version__},
+    run = {'source_directory': args.data_dir.resolve().as_posix(), 'seed':2017,'period':['2026-01-01','2026-09-30'],'minimum_label_share':args.minimum_label_share,'versions':{'python':platform.python_version(),'pandas':pd.__version__,'pyarrow':pyarrow.__version__,'sklearn':sklearn.__version__},
            'files':manifests,'ledger':dict(ledger),'role_regex':ROLE.pattern,'splits':splits,
            'features':{'titles':len(titles),'name_words':len(words),'matrix_columns':X.shape[1], 'title_thresholds':title_thresholds,'name_thresholds':name_thresholds},
            'models':model_results,'career':summary,'employer_overlap':0}

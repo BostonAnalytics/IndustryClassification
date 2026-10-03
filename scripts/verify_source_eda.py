@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--data-dir', type=Path, default=Path('E:/Data/Jobs_2026'))
+    parser.add_argument('--data-dir', type=Path, default=Path('E:/Data/Jobs_2026_US'))
     args = parser.parse_args()
     out = ROOT / 'data/eda'
     data = json.loads((out / 'run.json').read_text(encoding='utf-8'))
@@ -32,6 +32,11 @@ def main():
             assert hashlib.file_digest(stream, 'sha256').hexdigest() == record['sha256']
         total += record['rows']
     counts = data['counts']
+    assert Path(data['source_directory']).resolve() == args.data_dir.resolve()
+    assert Path(study['source_directory']).resolve() == args.data_dir.resolve()
+    if args.data_dir.name == 'Jobs_2026_US':
+        assert data['distributions']['country'] == {'US': total}
+        assert data['distributions']['posted_year'] == {'2026': total}
     assert total == counts['source_rows']
     assert total == counts['unique_nonmissing_ids'] + counts['duplicate_id'] + counts['missing_id']
     for key, distribution in data['distributions'].items():

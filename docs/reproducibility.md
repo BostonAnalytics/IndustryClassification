@@ -9,11 +9,11 @@ python scripts/verify_site.py
 
 The output is `_site/index.html`. These commands finish without starting a local server. Quarto 1.11.1 was used. Rendering consumes saved aggregates and does not rerun analysis.
 
-## Reproduce the Jobs_2026 adaptation
+## Reproduce the Jobs_2026_US adaptation
 
 ```bash
 python -m pip install -r requirements-study.txt
-python scripts/run_study.py --data-dir E:/Data/Jobs_2026
+python scripts/run_study.py --data-dir E:/Data/Jobs_2026_US
 python scripts/publish_study.py
 python scripts/verify_study.py
 quarto render

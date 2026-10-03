@@ -1,4 +1,4 @@
-"""Profile local Jobs_2026 posting partitions; export only aggregate evidence."""
+"""Profile local Jobs_2026_US posting partitions; export only aggregate evidence."""
 import argparse
 from collections import Counter
 from datetime import datetime, timezone
@@ -31,7 +31,7 @@ def table(headers, rows):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--data-dir', type=Path, default=Path('E:/Data/Jobs_2026'))
+    parser.add_argument('--data-dir', type=Path, default=Path('E:/Data/Jobs_2026_US'))
     args = parser.parse_args()
     files = sorted(args.data_dir.glob('jobs_2026_part_*.parquet'))
     if not files:
@@ -117,10 +117,10 @@ def main():
               'Missingness in fields used by the study', '% of all source rows', 'eda_missingness.png')
     years = sorted(distributions['posted_year'].items())
     bar_chart([v for v, _ in years], [c for _, c in years],
-              'Posting dates in Jobs_2026', 'Source rows (before exclusions)', 'eda_years.png')
-    sections = [f'''## Local Jobs_2026 exploratory analysis
+              'Posting dates in Jobs_2026_US', 'Source rows (before exclusions)', 'eda_years.png')
+    sections = [f'''## Local Jobs_2026_US exploratory analysis
 
-The analysis and EDA use `E:\\Data\\Jobs_2026` [@jobs2026]. This scan contains **{n:,} rows across {len(files)} posting partitions**. Only `jobs_2026_part_*.parquet` files are inputs; supporting exports and backups are excluded. The source is read locally; the repository contains aggregates and file hashes.
+The analysis and EDA use the Jobs_2026_US snapshot [@jobs2026]. This scan contains **{n:,} rows across {len(files)} posting partitions**. Only `jobs_2026_part_*.parquet` files are inputs; supporting exports and backups are excluded. The repository contains aggregates and file hashes.
 
 EDA describes raw rows before the healthcare study's filters. Duplicate IDs are counted but retained in these distributions. Posting-ID uniqueness does not rule out repeated advertisements with different IDs. Populated industry and skills fields are not independently verified labels.
 
@@ -152,7 +152,7 @@ There are **{len(salaries):,} rows ({len(salaries)/n:.1%})** with a finite posit
 
 {'All input filenames, row counts and SHA-256 hashes match the saved healthcare study.' if matches else '**The EDA inputs differ from the saved healthcare study. Re-run the study before interpreting them as the same snapshot.**'} The healthcare analysis further restricts dates, country, sector, staffing status and usable employer/title fields. Its employer model and analyst career sample have different units and denominators; the filtering ledger is in [the 2026 study](career_evaluation.qmd).
 
-Reproduce with `python scripts/run_eda.py --data-dir E:/Data/Jobs_2026`. [EDA manifest](data/eda/run.json), [field missingness](data/eda/missingness.csv), [posting months](data/eda/posted_month.csv), [sector distribution](data/eda/sector.csv), [country distribution](data/eda/country.csv), [state distribution](data/eda/state.csv) and [work arrangements](data/eda/remote.csv) provide the aggregate evidence.
+The [EDA manifest](data/eda/run.json), [field missingness](data/eda/missingness.csv), [posting months](data/eda/posted_month.csv), [sector distribution](data/eda/sector.csv), [country distribution](data/eda/country.csv), [state distribution](data/eda/state.csv) and [work arrangements](data/eda/remote.csv) provide the aggregate evidence.
 ''')
     (ROOT / '_content/source-eda-results.md').write_text('\n\n'.join(sections) + '\n', encoding='utf-8')
     print(f'EDA COMPLETE: {n:,} rows; {len(files)} partitions; study manifest matches={matches}')

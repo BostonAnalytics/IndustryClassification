@@ -1,12 +1,12 @@
 ## Exploratory data analysis
 
-This descriptive analysis uses the saved Jobs_2026 aggregates [@jobs2026]. It examines selection, available career evidence, normalized role labels and skills before interpreting the predictive results. All career percentages use the 112 selected postings unless another denominator is stated. Figures describe recorded advertisements, not live vacancies or population employment.
+This descriptive analysis uses the saved Jobs_2026_US aggregates [@jobs2026]. It examines selection, available career evidence, normalized role labels and skills before interpreting the predictive results. All career percentages use the 112 selected postings unless another denominator is stated. Figures describe recorded advertisements, not live vacancies or population employment.
 
 ### Selection and units of analysis
 
-![Sequential posting filters before industry-and-title career selection or employer aggregation. Bar lengths use all 2,350,355 source records as the denominator; labels give retained counts.](images/eda-selection.png){#fig-eda-selection fig-alt="Five horizontal bars show the number of records retained through date, country, industry and staffing filters." width=95%}
+![Sequential posting filters before industry-and-title career selection or employer aggregation. Bar lengths use all 815,193 source records as the denominator; labels give retained counts.](images/eda-selection.png){#fig-eda-selection fig-alt="Five horizontal bars show the number of records retained through date, country, industry and staffing filters." width=95%}
 
-The common filters retain 352,567 of 2,350,355 records (15.0%). The explicit-US filter removes 1,416,688 dated records; unknown country and non-US country are combined in the saved exclusion count. These exclusions describe selection, not proof that every excluded record is erroneous. The pipeline then branches: industry-and-title matching yields 112 career postings, while employer aggregation and eligibility rules yield 362 employers for classification. Those are different units and should not appear as consecutive steps in a single funnel.
+The common filters retain 352,567 of 815,193 records (43.2%). The explicit-US filter removes 0 dated records; unknown country and non-US country are combined in the saved exclusion count. These exclusions describe selection, not proof that every excluded record is erroneous. The pipeline then branches: industry-and-title matching yields 112 career postings, while employer aggregation and eligibility rules yield 362 employers for classification. Those are different units and should not appear as consecutive steps in a single funnel.
 
 ### Field coverage and missing evidence
 

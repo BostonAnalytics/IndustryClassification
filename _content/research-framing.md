@@ -26,7 +26,7 @@ Five sources establish the method, scope and interpretation of this study. This 
 
 **Broader error-detection features.** @chern2018 examine employer-industry errors using additional employer and job-description signals and compare SVM with random forest. That study supports exploring richer features, but it is a different experiment from the supplied 2017 SVM/GBDT paper. Its results are not substituted for the original paper's tables.
 
-**Representativeness of job advertisements.** @tsvetkova2024 benchmark Lightcast vacancy distributions against official sources in four countries and find that representativeness differs across geographic, occupational and sectoral dimensions. Their evidence concerns Lightcast, not this Jobs_2026 snapshot. It motivates caution about population claims and a future external benchmark; it does not supply a correction factor for our sample.
+**Representativeness of job advertisements.** @tsvetkova2024 benchmark Lightcast vacancy distributions against official sources in four countries and find that representativeness differs across geographic, occupational and sectoral dimensions. Their evidence concerns Lightcast, not this Jobs_2026_US snapshot. It motivates caution about population claims and a future external benchmark; it does not supply a correction factor for our sample.
 
 **Industry definition.** The 2022 NAICS manual defines the sector that bounds the career sample [@naics2022]. It classifies establishments by economic activity rather than by an employee's occupation. This distinction explains why a data analyst title alone cannot establish healthcare-industry membership.
 
@@ -40,7 +40,7 @@ The analysis explores whether hiring profiles carry an industry signal and wheth
 
 ## Data fields and intended use
 
-The following fields connect the project question to the local Jobs_2026 snapshot [@jobs2026]. Their availability was established by inspecting the local schema; an API-schema equivalence is not assumed.
+The following fields connect the project question to the local Jobs_2026_US snapshot [@jobs2026]. Their availability was established by inspecting the local schema; an API-schema equivalence is not assumed.
 
 | Purpose | Fields used | Interpretation control |
 |---|---|---|

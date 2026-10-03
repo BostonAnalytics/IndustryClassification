@@ -12,13 +12,13 @@ format:
 
 # Abstract {.unnumbered}
 
-This exploratory study examines employer-industry classification as a data-quality component of a career evaluation product for healthcare data analysts. It reconstructs a 2017 study and adapts its approach to a local Jobs_2026 snapshot. A scan of 2,350,355 records yielded 362 eligible employers for classification and 112 postings for a January–September 2026 US career benchmark. Employer-name-disjoint evaluation produced positive-class F1 scores of 0.553 for a linear SVM and 0.717 for GBDT. These scores measure agreement with dataset-derived labels rather than independently established employer truth. SQL appeared in 63 career postings; sparse salary evidence and missing work-arrangement fields restricted recommendations. The contribution is a reproducible, scoped analysis with explicit label and coverage limitations. It does not establish national hiring patterns or personal skill deficits.
+This exploratory study examines employer-industry classification as a data-quality component of a career evaluation product for healthcare data analysts. It reconstructs a 2017 study and adapts its approach to a local Jobs_2026_US snapshot. A scan of 815,193 records yielded 362 eligible employers for classification and 112 postings for a January–September 2026 US career benchmark. Employer-name-disjoint evaluation produced positive-class F1 scores of 0.553 for a linear SVM and 0.717 for GBDT. These scores measure agreement with dataset-derived labels rather than independently established employer truth. SQL appeared in 63 career postings; sparse salary evidence and missing work-arrangement fields restricted recommendations. The contribution is a reproducible, scoped analysis with explicit label and coverage limitations. It does not establish national hiring patterns or personal skill deficits.
 
 **Keywords:** employer industry classification; job postings; healthcare data analysts; NAICS; career evaluation; data quality.
 
 # Introduction
 
-This report reconstructs @goindani2017 and applies their employer-industry classification approach to Jobs_2026 [@jobs2026]. The career audience is students targeting healthcare data analyst roles in NAICS sector 62. The new analysis provides a selected-sample market benchmark and classifier evaluation, with explicit limitations on label quality and personal skill assessment.
+This report reconstructs @goindani2017 and applies their employer-industry classification approach to Jobs_2026_US [@jobs2026]. The career audience is students targeting healthcare data analyst roles in NAICS sector 62. The new analysis provides a selected-sample market benchmark and classifier evaluation, with explicit limitations on label quality and personal skill assessment.
 
 The analysis ran locally at the user's request. This departs from the supplied course guides' assigned EC2 requirement. No public deployment or independently reviewed employer truth is claimed.
 
@@ -40,7 +40,9 @@ Source: @goindani2017, Table V. Utility is measured within the reviewed disagree
 
 # Materials and methods
 
-The source is a local snapshot of 97 Jobs_2026 partitions [@jobs2026]. Records must fall in January–September 2026, have an explicit US country value and recognized industry sector, and not be explicitly flagged as staffing. Posting IDs define duplicates. Employer-name groups require at least 20 eligible postings and an 80% dominant-sector share. The career benchmark additionally requires sector 62 and the declared analyst-title pattern.
+The source is a local snapshot of 82 Jobs_2026_US partitions [@jobs2026]. Records must fall in January–September 2026, have an explicit US country value and recognized industry sector, and not be explicitly flagged as staffing. Posting IDs define duplicates. Employer-name groups require at least 20 eligible postings and an 80% dominant-sector share. The career benchmark additionally requires sector 62 and the declared analyst-title pattern.
+
+Upstream selection requires 2026 dates and consistent, exclusively US parsed location evidence, excluding ambiguous, conflicting or truncated location evidence. This is not independently verified worksite geography. Original IDs, fields and globally scoped duplicate pointers are retained. The 815,193-row input yields 800,461 rows within January–September.
 
 Following the feature concept in @goindani2017, title shares and employer-name words represent each employer. Vocabulary thresholds are fitted only on training employers. The adaptation uses scikit-learn [@pedregosa2011], stratified train/validation/test partitions and validation F1 to select settings. The endpoint is agreement with supplied sector labels. Independent adjudication and the original undefined-employer utility endpoint are unavailable. The results below provide the filtering ledger, split counts and model details.
 

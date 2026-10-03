@@ -7,11 +7,11 @@ subtitle: "Industry-label quality, market evidence and learning priorities"
 
 Which skills and work arrangements recur in US healthcare analyst postings, and how reliably can posting-derived features identify healthcare employers for reviewing that sample?
 
-This project supports students targeting **healthcare data analyst roles in NAICS 62, Health Care and Social Assistance**. It adapts employer-industry classification research [@goindani2017] to a local Jobs_2026 snapshot [@jobs2026]. The observed sample supports an emphasis on SQL and visualization skills; sparse compensation evidence limits salary advice.
+This project supports students targeting **healthcare data analyst roles in NAICS 62, Health Care and Social Assistance**. It adapts employer-industry classification research [@goindani2017] to a local Jobs_2026_US snapshot [@jobs2026]. The observed sample supports an emphasis on SQL and visualization skills; sparse compensation evidence limits salary advice.
 
 ## Evidence at a glance
 
-The January–September 2026 analysis selects **112 career postings** and a separate classification sample of **362 employers** from 2,350,355 source records. SQL appears in 63 career postings. Only three postings have a positive normalized salary with explicit USD. Employer-name-disjoint test F1 is 0.553 for linear SVM and 0.717 for GBDT, measuring agreement with dataset-derived labels.
+The January–September 2026 analysis selects **112 career postings** and a separate classification sample of **362 employers** from 815,193 source records. SQL appears in 63 career postings. Only three postings have a positive normalized salary with explicit USD. Employer-name-disjoint test F1 is 0.553 for linear SVM and 0.717 for GBDT, measuring agreement with dataset-derived labels.
 
 ## Read the study
 
