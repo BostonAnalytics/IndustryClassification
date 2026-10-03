@@ -1,0 +1,14 @@
+{
+  "inputs": {
+    "run.json": "e3d95c1408bd63d2fd440c7cd6d1a9d147c2eece585e2b7d1723b43604b1fa7c",
+    "market_skills.csv": "f7d8294ab2db05c519219238f3d23353d9e31187f6852456c6de232588de92a4"
+  },
+  "matplotlib": "3.11.2",
+  "career_denominator": 112,
+  "figures": [
+    "eda-selection.png",
+    "eda-coverage.png",
+    "eda-roles.png",
+    "eda-skills.png"
+  ]
+}

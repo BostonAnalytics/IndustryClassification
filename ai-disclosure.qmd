@@ -33,3 +33,13 @@ The full editable output is preserved in the repository. A shared conversation l
 The paper's Tables IV–VII were compared against extracted PDF text. NAICS sector numbers were checked against the Census Bureau pages linked in References. The missing M3/M02 path was identified and the M03 guide used with the substitution disclosed. Split-count inconsistencies were preserved and explicitly flagged. Quarto rendering and local-link checks are recorded in GATES.md when complete.
 
 The initially proposed transportation career scope was superseded by the user's healthcare-data-analyst selection. No fabricated personal profile, confusion matrix or contemporary salary estimate was accepted. The first unrestricted-year run revealed mixed dates and labels; its metrics were discarded. The final run restricts January–September 2026, normalizes state and work-arrangement labels, and applies an explicit 80% dominant-sector rule. It scans all 97 posting partitions. Retained metrics and confusion matrices are in run.json; verify_study.py independently reconciles them against counts. A headline salary estimate is withheld because only three observations pass the currency filter.
+
+## Module 1 research-writing revision
+
+Additional user prompt, October 3, 2026:
+
+> we shoudl create a reference.bib so we can properly connect the sources. we also want to adhere to these repo instriuctions to make it more like a research paper - D:\Repositories\AD688-Web-Analytics\M1\M01_Proj.qmd
+
+Retained output: `reference.bib`, the shared five-source literature review, research questions, rationale, field map, and a report organized into abstract, introduction, methods, results, discussion, limitations and conclusion. Example retained statement: "These are retrospective organizing questions for an already executed exploratory study. They are not preregistered hypotheses."
+
+Validation: checked the supplied manuscript, publisher records and official NAICS definition; rendered citations are checked against their bibliography targets. Source-access limits are in `docs/citation-audit.md`. Existing numerical results were preserved. Sector 62 and local execution remain explicit user-selected deviations from the guide's finer-code preference and EC2 requirement.

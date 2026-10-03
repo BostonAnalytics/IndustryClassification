@@ -15,7 +15,7 @@ def table(headers, rows):
                      ['| '+' | '.join(map(str,row))+' |' for row in rows])
 
 write('study-results.md',f'''
-The pipeline read **{ledger['source_rows']:,} rows in {len(d['files'])} posting partitions** and selected January–September 2026 observations. All input files have recorded SHA-256 hashes. No posting ID appeared twice in this input snapshot.
+The pipeline read **{ledger['source_rows']:,} rows in {len(d['files'])} posting partitions** from the local snapshot [@jobs2026] and selected January–September 2026 observations. All input files have recorded SHA-256 hashes. No posting ID appeared twice in this input snapshot.
 
 {table(['Filter stage','Remaining postings'],[(label,f"{ledger[key]:,}") for key,label in [('source_rows','All source rows'),('period_rows','Dated January–September 2026'),('us_rows','Parsed country explicitly US'),('sector_known_rows','Valid sector code available'),('nonstaffing_or_unknown_rows','Not explicitly marked as staffing'),('employer_model_postings','Employer name and normalized title available')]])}
 
@@ -35,7 +35,7 @@ The split uses seed {d['seed']} and stratification, with zero shared employer-na
 
 ![Confusion matrices on held-out employers. Rows are dataset-derived labels and columns are model predictions.](images/confusion.png)
 
-These metrics measure agreement with dataset-derived sector labels, not independently verified employer truth. The GBDT misses 17 of the 35 healthcare employers while predicting no false positives among 38 other employers in this holdout. That small sample cannot establish perfect precision in deployment. The all-positive baseline has F1 0.648, close to GBDT's 0.679; ranking models on F1 alone would conceal their very different precision and recall.
+These metrics measure agreement with dataset-derived sector labels, not independently verified employer truth. GBDT misses {d['models'][1]['confusion_matrix'][1][0]} of the {d['splits']['test']['positive']} healthcare employers, with {d['models'][1]['confusion_matrix'][0][1]} false positives among {d['splits']['test']['negative']} other employers. This small sample cannot establish perfect precision in deployment. The all-positive baseline has F1 {d['models'][3]['test_report']['1']['f1-score']:.3f}, compared with GBDT's {d['models'][1]['test_report']['1']['f1-score']:.3f}; ranking models on F1 alone would conceal their very different precision and recall.
 
 For a career product, predicted healthcare labels could narrow an employer-review queue, but the missed healthcare employers would make automatic exclusion costly. Retain existing labels and review disagreements before changing the career sample. No manually adjudicated undefined-employer labels are available, so the paper's utility scores cannot be reproduced here.
 
@@ -46,6 +46,8 @@ Vocabulary thresholds are learned from the training employers only. The selected
 The linear SVM tests C = 0.1, 1 and 10 with balanced class penalties. GBDT tests depths 2 and 3 with 100 estimators and learning rate 0.1. Each model is chosen by validation F1, then evaluated on the test partition without refitting. Exact configurations, validation scores, versions and full classification reports are in [run.json](data/study/run.json).
 
 ## Differences from the paper
+
+The reference design is @goindani2017; the implementation uses scikit-learn [@pedregosa2011].
 
 This is an exploratory adaptation: a 2026 dataset, one industry, US-only observations, scikit-learn LinearSVC and GBDT, validation-based tuning instead of the paper's reported cross-validation, and normalized employer-name unigrams without all raw name variants. Name-word frequency counts employers containing the word. The 80% dominant-sector rule is an explicit adaptation for inconsistent posting-level labels. A preliminary unrestricted-year, exact-consistency run exposed data-quality problems; its results are superseded. The final study is not a preregistered confirmatory replication.
 
@@ -63,6 +65,8 @@ The benchmark uses the posting's supplied industry label. It does not filter on 
 ('Minimum experience field available',f"{c['experience_observed']} / {c['postings']}",'Supplied values; zero may encode unspecified experience'),
 ('Recorded minimum of 0–2 years',str(c['entry_0_to_2_years']),'Not a verified count of entry-level jobs'),
 ('At least one listed skill',f"{c['skills_observed']} / {c['postings']}",'Empty skill lists remain in the denominator')])}
+
+Source: local snapshot [@jobs2026], analyzed by this project's scripts; these observed counts are not findings of the 2017 paper.
 
 ## Work arrangement
 
@@ -95,6 +99,6 @@ Across {c['postings']} selected healthcare analyst postings, {c['skills_observed
 
 ![Most frequently listed skills in the selected healthcare analyst sample.](images/skills.png)
 
-Download the full [market skill table](data/study/market_skills.csv). Skills retain the dataset's names rather than applying a newly invented synonym taxonomy. Frequency supports a market-skills benchmark; it does not measure required proficiency or any individual's gap.
+Download the full [market skill table](data/study/market_skills.csv). Source: local snapshot [@jobs2026], analyzed by this project. Skills retain the dataset's names rather than applying a newly invented synonym taxonomy. Frequency supports a market-skills benchmark; it does not measure required proficiency or any individual's gap.
 ''')
 print('STUDY PAGES GENERATED')

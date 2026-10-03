@@ -7,33 +7,38 @@ project:
   resources:
     - data/*.csv
     - data/study/*.csv
-    - data/study/run.json
+    - data/study/*.json
+    - data/eda/*.csv
+    - data/eda/run.json
+    - reference.bib
+    - final_report.docx
 website:
-  title: Industry Classification
-  description: A source-grounded reconstruction of employer industry classification using job postings.
+  title: Healthcare Analyst Careers
+  description: A scoped career evaluation study of healthcare data analyst postings and employer industry labels.
   navbar:
     background: '#102b3f'
     left:
       - href: index.qmd
         text: Overview
-      - href: methods.qmd
-        text: Method
-      - href: results.qmd
-        text: Findings
-      - href: study.qmd
-        text: 2026 study
-      - href: course.qmd
-        text: Course alignment
+      - href: introduction.qmd
+        text: Introduction
+      - href: market_baseline.qmd
+        text: Market and EDA
+      - href: career_evaluation.qmd
+        text: Evaluation
   sidebar:
     style: docked
     contents:
-      - section: The study
-        contents: [index.qmd, data.qmd, methods.qmd, results.qmd, discussion.qmd]
-      - section: Career application
-        contents: [study.qmd, market.qmd, skills.qmd, evaluation.qmd, recommendations.qmd]
-      - section: Reproduce and review
-        contents: [reproducibility.qmd, course.qmd, references.qmd, ai-disclosure.qmd]
-  page-footer: '2017 paper reconstruction + Jobs_2026 adaptation. Original and new results are labeled separately.'
+      - index.qmd
+      - introduction.qmd
+      - data_preparation.qmd
+      - market_baseline.qmd
+      - skill_gap_analysis.qmd
+      - career_evaluation.qmd
+      - final_recommendations.qmd
+      - references.qmd
+      - ai-disclosure.qmd
+  page-footer: 'Healthcare data analysts · NAICS 62 · January–September 2026 sample'
 format:
   html:
     theme: cosmo
@@ -46,3 +51,5 @@ format:
 execute:
   enabled: false
 lang: en
+bibliography: reference.bib
+link-citations: true

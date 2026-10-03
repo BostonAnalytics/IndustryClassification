@@ -10,6 +10,8 @@ The benchmark uses the posting's supplied industry label. It does not filter on 
 | Recorded minimum of 0–2 years | 44 | Not a verified count of entry-level jobs |
 | At least one listed skill | 105 / 112 | Empty skill lists remain in the denominator |
 
+Source: local snapshot [@jobs2026], analyzed by this project's scripts; these observed counts are not findings of the 2017 paper.
+
 ## Work arrangement
 
 | Arrangement | Postings | Share of selected sample |

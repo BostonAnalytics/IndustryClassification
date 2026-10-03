@@ -2,19 +2,29 @@
 title: "Employer industry classification and healthcare analyst opportunities"
 subtitle: "Paper reconstruction and Jobs 2026 empirical adaptation"
 date: 2026-10-03
+bibliography: reference.bib
+link-citations: true
 format:
   docx:
     toc: true
     number-sections: true
 ---
 
-# Product framing
+# Abstract {.unnumbered}
 
-This report reconstructs the 2017 paper by Mahak Goindani, Qiaoling Liu, Josh Chao and Valentin Jijkoun and applies its employer-industry classification approach to Jobs_2026. The career audience is students targeting healthcare data analyst roles in NAICS sector 62. The new analysis provides a selected-sample market benchmark and classifier evaluation, with explicit limitations on label quality and personal skill assessment.
+This exploratory study examines employer-industry classification as a data-quality component of a career evaluation product for healthcare data analysts. It reconstructs a 2017 study and adapts its approach to a local Jobs_2026 snapshot. A scan of 2,350,355 records yielded 362 eligible employers for classification and 112 postings for a January–September 2026 US career benchmark. Employer-name-disjoint evaluation produced positive-class F1 scores of 0.553 for a linear SVM and 0.717 for GBDT. These scores measure agreement with dataset-derived labels rather than independently established employer truth. SQL appeared in 63 career postings; sparse salary evidence and missing work-arrangement fields restricted recommendations. The contribution is a reproducible, scoped analysis with explicit label and coverage limitations. It does not establish national hiring patterns or personal skill deficits.
+
+**Keywords:** employer industry classification; job postings; healthcare data analysts; NAICS; career evaluation; data quality.
+
+# Introduction
+
+This report reconstructs @goindani2017 and applies their employer-industry classification approach to Jobs_2026 [@jobs2026]. The career audience is students targeting healthcare data analyst roles in NAICS sector 62. The new analysis provides a selected-sample market benchmark and classifier evaluation, with explicit limitations on label quality and personal skill assessment.
 
 The analysis ran locally at the user's request. This departs from the supplied course guides' assigned EC2 requirement. No public deployment or independently reviewed employer truth is claimed.
 
-# Original research
+{{< include _content/research-framing.md >}}
+
+# Original study and reconstruction
 
 The paper aggregates normalized job titles and employer-name keywords to predict Transportation or Health Care industry membership. It uses within-employer title shares, a 1% title cutoff, positive-class significance and frequency thresholds, and SVM or GBDT models. Reported collection covers April–June 2017 and an initial sample of 10,000 employers.
 
@@ -22,27 +32,39 @@ The legacy system has higher classification F-scores on defined employers, while
 
 {{< include _content/classification.md >}}
 
-Source: supplied paper, Table IV. These are published results, not new estimates.
+Source: @goindani2017, Table IV. These are published results, not new estimates.
 
 {{< include _content/utility.md >}}
 
-Source: supplied paper, Table V. Utility is measured within the reviewed disagreement pool. The paper's split counts do not fully reconcile to its initial sample; the website documents the discrepancies.
+Source: @goindani2017, Table V. Utility is measured within the reviewed disagreement pool. The paper's split counts do not fully reconcile to its initial sample; the website documents the discrepancies.
 
-# New study data and analytics
+# Materials and methods
+
+The source is a local snapshot of 97 Jobs_2026 partitions [@jobs2026]. Records must fall in January–September 2026, have an explicit US country value and recognized industry sector, and not be explicitly flagged as staffing. Posting IDs define duplicates. Employer-name groups require at least 20 eligible postings and an 80% dominant-sector share. The career benchmark additionally requires sector 62 and the declared analyst-title pattern.
+
+Following the feature concept in @goindani2017, title shares and employer-name words represent each employer. Vocabulary thresholds are fitted only on training employers. The adaptation uses scikit-learn [@pedregosa2011], stratified train/validation/test partitions and validation F1 to select settings. The endpoint is agreement with supplied sector labels. Independent adjudication and the original undefined-employer utility endpoint are unavailable. The results below provide the filtering ledger, split counts and model details.
+
+# Results
+
+{{< include _content/source-eda-results.md >}}
 
 {{< include _content/study-results.md >}}
 
-# Market baseline
+## Exploratory analysis
+
+{{< include _content/eda-results.md >}}
+
+## Career market baseline
 
 {{< include _content/market-results.md >}}
 
-# Market skills and personal skill gaps
+## Market skills and personal skill gaps
 
 {{< include _content/skills-results.md >}}
 
 Participant ratings have not been supplied. No personal skill gap is calculated. The course's proposed 1–5 scale can support a later comparison, but skill frequency does not establish required proficiency. Preserve this distinction when building the final skill-gap matrix.
 
-# Career evaluation and recommendations
+# Discussion and career implications
 
 SQL appears in 63 of 112 selected postings. Tableau appears in 36; Power BI, Python and Excel each appear in 26. These frequencies support prioritizing SQL and a visualization tool for a sample-relevant learning portfolio. They do not establish individual deficiencies or the causal effect of training on job placement.
 
@@ -56,12 +78,19 @@ This is an exploratory adaptation, not an exact replication of the proprietary 2
 
 Review original requirements and a sample of model agreement and disagreement cases. Resolve aliases and test a later time period before filtering opportunities by predictions. Reproduce on EC2 if submitting under the original course rules.
 
-# References and disclosure
+# Conclusion
 
-Goindani, Mahak, Qiaoling Liu, Josh Chao, and Valentin Jijkoun. 2017. *Employer Industry Classification using Job Postings*. User-supplied manuscript, icdm_2017_industryclassification.pdf, Sections I–VII and Tables I–VII.
+Posting-derived features recover part of the dataset's employer-industry signal, but missed healthcare employers and unverified target labels limit automatic filtering. The career subset supports a sample-specific emphasis on SQL and visualization skills. Stronger recommendations require better compensation coverage, independent review and, for personal advice, assessed participant profiles.
 
-U.S. Census Bureau. 2017 NAICS Sector 62, Health Care and Social Assistance. https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-62.html
+## Data and code availability {.unnumbered}
 
-Course guides: M3/M03_Proj.qmd, M4/M04_Proj.qmd and M5/M05_Proj.qmd in AD688-Web-Analytics. M03 was substituted for the missing requested M3/M02 path.
+Code, aggregates and input-file hashes are retained in this repository. Source job records are not redistributed. No public repository or independent data-access guarantee is implied. The project framing follows Module 1 [@ad688m1]; subsequent requirements are documented in Modules 3–5 [@ad688m3; @ad688m4; @ad688m5].
 
-OpenAI Codex assisted with extraction, implementation, analysis and writing on October 3, 2026. Task prompts, corrections and validation notes are in the separate ai-disclosure.qmd document. Machine-readable provenance and aggregate results are in data/study/run.json.
+## AI disclosure {.unnumbered}
+
+OpenAI Codex assisted with extraction, implementation, analysis and writing on October 3, 2026. The separate ai-disclosure.qmd records task prompts, corrections and checks. Data provenance and results are in data/study/run.json.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::

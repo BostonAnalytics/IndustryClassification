@@ -8,7 +8,7 @@ title: "Skill-gap analysis"
 
 ## Personal assessment evidence
 
-Module 3 asks each team member to rate relevant skills from 1 (beginner) to 5 (advanced), then compare those profiles with market requirements. Market frequencies have now been computed, but no participant profiles have been supplied. Individual gaps and career-readiness scores cannot be inferred from market frequencies.
+Module 3 [@ad688m3] asks each team member to rate relevant skills from 1 (beginner) to 5 (advanced), then compare those profiles with market requirements. Market frequencies have now been computed, but no participant profiles have been supplied. Individual gaps and career-readiness scores cannot be inferred from market frequencies.
 
 ## Proposed calculation
 

@@ -1,17 +1,17 @@
----
-title: "Course requirements and completion status"
----
+# Course alignment
 
 ## Guides used
 
-The supplied Module 4 and Module 5 files were read directly. The requested `M3/M02_Proj.qmd` does not exist at that path; `M3/M03_Proj.qmd` was found and used as the likely intended Module 3 guide. This substitution needs confirmation if a different assignment was intended.
+Module 1 now supplies the research-framing and citation requirements [@ad688m1]. The supplied Module 3–5 guides provide skills, checkpoint and final-report requirements [@ad688m3; @ad688m4; @ad688m5]. The requested `M3/M02_Proj.qmd` does not exist at that path; `M3/M03_Proj.qmd` was found and used as the likely intended Module 3 guide. This substitution needs confirmation if a different assignment was intended.
 
 ## Requirement mapping
 
 | Requirement | Website location | Status |
 |---|---|---|
 | Introduction, scope and rationale | Overview | Healthcare data analysts in NAICS 62 selected |
-| Literature and citations | Discussion, References | Paper-grounded context; no independent literature review |
+| Literature and citations | Research introduction, References | Five-source narrative review and linked BibTeX citations |
+| Module 1 research question and rationale | Research introduction | Target user, rationale, RQ1–RQ3, field map and exploratory status explicit |
+| Preferred NAICS 2022 4- or 6-digit scope | Research introduction | Deviation: user-selected sector 62 retained; finer-code analysis requires a rerun |
 | Data preparation and filtering | Data and preparation | Original method documented; full 97-part study with saved filtering ledger |
 | Market baseline and visuals | Market baseline | Observed demand, location, remote and experience; sparse salary coverage disclosed |
 | Team skill-gap matrix and visual | Skill-gap analysis | Market skills measured; personal profiles unavailable |

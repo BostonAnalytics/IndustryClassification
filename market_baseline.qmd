@@ -1,0 +1,10 @@
+---
+title: "Market baseline and exploratory analysis"
+number-sections: true
+---
+
+{{< include _content/eda-results.md >}}
+
+## Work arrangements and geographic context
+
+{{< include _content/market-results.md >}}

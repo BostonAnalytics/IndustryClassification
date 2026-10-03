@@ -33,6 +33,7 @@ COLS = ['ID','POSTED','COMPANY_NAME','COMPANY_IS_STAFFING','TITLE_NAME','TITLE_R
 STATE_NAMES = 'Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connecticut|Delaware|District of Columbia|Florida|Georgia|Hawaii|Idaho|Illinois|Indiana|Iowa|Kansas|Kentucky|Louisiana|Maine|Maryland|Massachusetts|Michigan|Minnesota|Mississippi|Missouri|Montana|Nebraska|Nevada|New Hampshire|New Jersey|New Mexico|New York|North Carolina|North Dakota|Ohio|Oklahoma|Oregon|Pennsylvania|Rhode Island|South Carolina|South Dakota|Tennessee|Texas|Utah|Vermont|Virginia|Washington|West Virginia|Wisconsin|Wyoming'.split('|')
 STATE_CODES = 'AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY'.split()
 STATE_MAP = dict(zip(STATE_CODES, STATE_NAMES)) | {n.upper(): n for n in STATE_NAMES}
+KNOWN_SECTORS = set('11 21 22 23 31 32 33 31-33 42 44 45 44-45 48 49 48-49 51 52 53 54 55 56 61 62 71 72 81 92'.split())
 
 def clean(value):
     return '' if value is None or pd.isna(value) else str(value).strip()
@@ -110,7 +111,7 @@ def main():
                     continue
                 ledger['us_rows'] += 1
                 sector = clean(row['NAICS_2022_2']) or clean(row['NAICS2'])
-                if not re.fullmatch(r'\d{2}|\d{2}-\d{2}', sector):
+                if sector not in KNOWN_SECTORS:
                     ledger['missing_or_invalid_sector'] += 1
                     continue
                 ledger['sector_known_rows'] += 1

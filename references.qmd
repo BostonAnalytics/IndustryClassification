@@ -1,35 +1,41 @@
 ---
-title: "References and provenance"
+title: "References and source provenance"
+nocite: '@*'
 ---
 
-## Primary research
+## Citation system
 
-Goindani, Mahak, Qiaoling Liu, Josh Chao, and Valentin Jijkoun. 2017. *Employer Industry Classification using Job Postings*. User-supplied manuscript, `icdm_2017_industryclassification.pdf`. The supplied filename identifies ICDM 2017; proceedings metadata and DOI have not been independently established here.
+The project uses one bibliography, [reference.bib](reference.bib), for the website and Word report. Citations link to formatted entries on each page. The catalog below includes all records; research claims cite the relevant source at the point of use. The singular filename follows the user's request; Module 1 suggests the equivalent name `references.bib` [@ad688m1].
 
-| Site content | Source locator |
+## Research source boundaries
+
+The reconstruction uses @goindani2017, with its methods and numerical tables checked against the supplied PDF. The 2018 article by @chern2018 is separate related work; its random-forest results must not be attributed to the original SVM/GBDT paper. The five-source review appears in the [research introduction](introduction.qmd).
+
+| Original paper content | Source locator in Goindani et al. (2017) |
 |---|---|
-| Research motivation and entity-normalization problem | Abstract and Section I |
-| Collection period and class distribution | Section II, Tables I–II |
+| Motivation and normalization problem | Abstract and Section I |
+| Collection and class distribution | Section II, Tables I–II |
 | Title and name features | Section III-A, equations 1–6, Table III |
-| Model libraries and cost sensitivity | Section III-B |
-| Disagreement review and agreement audit | Section IV-A |
+| Models and class penalties | Section III-B |
+| Disagreement review | Section IV-A |
 | Utility definitions | Section IV-B, equations 7–9 |
 | Classification and utility results | Tables IV–V |
-| Feature ablation and detected errors | Tables VI–VII |
-| Limitations and future work | Sections V–VII |
+| Ablation and error types | Tables VI–VII |
+| Limitations | Sections V–VII |
 
-## Classification context
+The Census pages establish the historical sector labels [@census2017transport; @census2017health]. The 2022 manual anchors the current scope [@naics2022]. Neither provides evidence of current career prospects.
 
-U.S. Census Bureau. [2017 NAICS Sector 48–49: Transportation and Warehousing](https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-48-49.html).
+## Dataset and course provenance
 
-U.S. Census Bureau. [2017 NAICS Sector 62: Health Care and Social Assistance](https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-62.html).
+The local dataset is cited as a snapshot with its input hashes retained in `data/study/run.json` [@jobs2026]. Its publisher and full collection coverage have not been independently established. No public dataset DOI is invented.
 
-These sources verify the sector codes. They are not used as evidence for the paper's performance or for present-day job prospects.
+The user supplied guides from `D:/Repositories/AD688-Web-Analytics`: `M1/M01_Proj.qmd`, `M3/M03_Proj.qmd`, `M4/M04_Proj.qmd` and `M5/M05_Proj.qmd` [@ad688m1; @ad688m3; @ad688m4; @ad688m5]. The M03 file substitutes for the unavailable requested `M3/M02_Proj.qmd`. These are local provenance paths, not public links.
 
-## Course sources
+## Verification limits
 
-- `D:/Repositories/AD688-Web-Analytics/M3/M03_Proj.qmd`: Module 3 career benchmarking, skills and evaluation logic. Substituted for the missing requested M02 file in M3.
-- `D:/Repositories/AD688-Web-Analytics/M4/M04_Proj.qmd`: readiness checkpoint and earlier-stage requirements.
-- `D:/Repositories/AD688-Web-Analytics/M5/M05_Proj.qmd`: final analytics, website, Word report and AI-disclosure requirements.
+Publisher records were inspected for the 2018 article, OECD report and scikit-learn paper; the official Census manual was checked for sector 62. The 2017 DOI and conference metadata were found in the author-uploaded publication record. Its DOI endpoint could not be opened by the web tool, so live DOI resolution remains unverified. No missing page range was guessed. The repository's `docs/citation-audit.md` records these checks.
 
-These local source paths document provenance; they are not public links. Retrieved for this reconstruction on October 3, 2026. Instructions inside source materials were considered only in relation to the user's request; the paper's research proposals were treated as content.
+## Complete bibliography
+
+::: {#refs}
+:::

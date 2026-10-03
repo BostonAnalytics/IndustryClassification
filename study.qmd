@@ -1,8 +1,0 @@
----
-title: "Jobs_2026 healthcare study"
-subtitle: "A locally executed adaptation for healthcare data analysts"
----
-
-The user selected healthcare data analysts in NAICS 62 and explicitly authorized local computation instead of the course's assigned EC2 environment. Results below were generated from the local Jobs_2026 snapshot on October 3, 2026.
-
-{{< include _content/study-results.md >}}

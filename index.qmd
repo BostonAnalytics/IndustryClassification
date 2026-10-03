@@ -1,50 +1,29 @@
 ---
-title: "Employer industry classification using job postings"
-subtitle: "The 2017 paper and a new healthcare analyst study"
+title: "Healthcare data analyst career evaluation"
+subtitle: "Industry-label quality, market evidence and learning priorities"
 ---
 
-::: {.hero}
-::: {.eyebrow}
-Research reconstruction / Career analytics
-:::
-## What can a company's job postings tell us about its industry?
+## Research and product question
 
-Goindani, Liu, Chao and Jijkoun use job titles and employer names to check industry labels in a large employer knowledge base. Their models help identify records that deserve human review.
+Which skills and work arrangements recur in US healthcare analyst postings, and how reliably can posting-derived features identify healthcare employers for reviewing that sample?
 
-[Explore the method](methods.qmd) · [Read the findings](results.qmd)
-:::
+This project supports students targeting **healthcare data analyst roles in NAICS 62, Health Care and Social Assistance**. It adapts employer-industry classification research [@goindani2017] to a local Jobs_2026 snapshot [@jobs2026]. The observed sample supports an emphasis on SQL and visualization skills; sparse compensation evidence limits salary advice.
 
-::: {.metric-grid}
-::: {.metric}
-**10,000**
-employers in the reported initial sample
-:::
-::: {.metric}
-**2**
-industry-specific binary classification tasks
-:::
-::: {.metric}
-**2017**
-April–June collection window
-:::
-:::
+## Evidence at a glance
 
-## Research question
+The January–September 2026 analysis selects **112 career postings** and a separate classification sample of **362 employers** from 2,350,355 source records. SQL appears in 63 career postings. Only three postings have a positive normalized salary with explicit USD. Employer-name-disjoint test F1 is 0.553 for linear SVM and 0.717 for GBDT, measuring agreement with dataset-derived labels.
 
-Can the titles an employer hires for, together with words in its name, identify mistakes in its recorded industry? The study compares Support Vector Machines (SVM) and Gradient Boosted Decision Trees (GBDT). It distinguishes classification of valid employer entities from detection of incorrectly extracted or normalized employers.
+## Read the study
 
-The strongest practical result concerns error detection: GBDT has higher utility precision, recall and F-score than SVM for both industries. The existing knowledge-base system retains higher classification F-scores on defined employers. These are different evaluation tasks and should inform different deployment decisions.
+1. [Introduction and literature review](introduction.qmd): rationale, research questions and industry scope.
+2. [Data preparation](data_preparation.qmd): filters, fields, leakage controls and reproduction commands.
+3. [Market baseline and EDA](market_baseline.qmd): sample selection, field coverage, role labels, skills, location and work arrangement.
+4. [Skill-gap analysis](skill_gap_analysis.qmd): observed market skills and the assessment method.
+5. [Career evaluation](career_evaluation.qmd): model evidence, interpretation and proposed scorecard.
+6. [Final recommendations](final_recommendations.qmd): sample-supported learning priorities and limitations.
 
-## Scope and intended reader
+The [references](references.qmd) connect claims to one BibTeX bibliography. The [AI disclosure](ai-disclosure.qmd) records assistance and validation. A research-paper synthesis is available in the [Word report](final_report.docx).
 
-This site is for students and analysts studying the reliability of job-market data. It reconstructs the supplied paper's argument, equations and reported results, then adapts its approach to Jobs_2026. It does not rerun the original proprietary experiments. The authors of the underlying research are **Mahak Goindani, Qiaoling Liu, Josh Chao and Valentin Jijkoun**; the web reconstruction is AI-assisted and documented separately.
+## Submission boundaries
 
-The paper studies Transportation and Warehousing and Health Care and Social Assistance. Their 2017 NAICS sectors are [48–49](https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-48-49.html) and [62](https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-62.html), respectively. The paper uses employer-level labels; the scope and unit of a course dataset must be checked before mapping its codes to these sectors.
-
-## How this relates to the course
-
-The Module 3–5 guides ask for a career evaluation product, including market benchmarks, a skill-gap analysis, recommendations and a Word report. Those requirements extend beyond the paper. The [course alignment](course.qmd) page identifies what this reconstruction supplies and what still requires student profiles or submission records.
-
-**Evidence status:** [Published results](results.qmd) reports the original paper. [Jobs_2026 healthcare study](study.qmd) reports newly executed local analysis. The selected pathway is healthcare data analysts in NAICS 62. The study scans 2,350,355 source rows, evaluates industry classification on 362 eligible employers, and derives career benchmarks from 112 postings. Personal assessments and the weighted opportunity scorecard remain uncomputed. Local execution was explicitly requested by the user; it does not satisfy the guides' EC2 requirement.
-
-Source: supplied paper, abstract and Sections I–II; full citation in [References](references.qmd).
+The structure follows the career evaluation pipeline in Module 1 [@ad688m1]. Sector 62 is broader than its preferred four- or six-digit scope. Personal skill assessments, team contribution and standup records, a final presentation, and public website deployment remain outstanding. The weighted opportunity scorecard is withheld because participant ratings and adequate salary coverage are unavailable. Completed classifier evaluation supplies the current substantial analytical component. These limitations should remain visible in any course submission.

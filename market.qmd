@@ -1,5 +1,0 @@
----
-title: "Healthcare analyst market baseline"
----
-
-{{< include _content/market-results.md >}}

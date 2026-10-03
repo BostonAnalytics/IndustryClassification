@@ -1,0 +1,7 @@
+---
+title: "Research introduction"
+subtitle: "Industry-label quality and career evidence for healthcare data analysts"
+number-sections: true
+---
+
+{{< include _content/research-framing.md >}}

@@ -1,0 +1,55 @@
+---
+title: "Data preparation and analytical design"
+number-sections: true
+---
+
+## Source and observation window
+
+The source is the local Jobs_2026 snapshot: 97 posting partitions containing 2,350,355 records [@jobs2026]. The observation window is January 1 through September 30, 2026. File hashes, row counts, versions and parameters are retained in [run.json](data/study/run.json). The folder name does not guarantee that every record falls within 2026.
+
+## Posting filters and career cohort
+
+The [source EDA below](#local-jobs_2026-exploratory-analysis) profiles all local posting partitions before these exclusions; the market page examines the selected healthcare analyst cohort.
+
+1. Keep the first occurrence of each nonmissing posting ID in filename order. Different IDs for the same vacancy may remain.
+2. Parse dates in UTC and retain the stated observation window.
+3. Require explicit US country and a recognized industry sector. Prefer `NAICS_2022_2`, falling back to `NAICS2` only when empty.
+4. Exclude records explicitly flagged as staffing; missing staffing status is retained.
+5. For the career cohort, require NAICS 62 and an analyst phrase in the raw title, with clean title as fallback. The saved regular expression covers data analyst, data analytics analyst, business intelligence analyst, BI analyst, clinical analyst and healthcare analyst variants.
+
+This yields 112 career postings. No model prediction determines inclusion. The industry anchor is a two-digit sector, broader than the four- or six-digit code preferred by Module 1 [@ad688m1]. A finer-code analysis would require revised filters and a new run.
+
+## Preparation of career fields
+
+Decode skill lists and count each skill at most once per posting. Retain postings without skills in the denominator. Merge recognized state abbreviations and names; retain unrecognized or country-only strings as unknown. Standardize remote, hybrid and onsite values, keeping unknown separate. Salary availability requires a finite positive normalized amount with explicit USD currency. Nonnegative experience values are retained, but zero is not verified as entry-level eligibility.
+
+The [market baseline](market_baseline.qmd) shows field coverage and role-label anomalies. The role-label chart uses `TITLE_NAME`; career inclusion uses raw or clean titles, so these fields can disagree.
+
+## Employer sample and leakage controls
+
+The classifier uses a separate employer-level sample. Require a usable normalized employer name and title, at least 20 eligible postings per employer, and one sector covering at least 80% of its postings. Keep up to the 10,000 highest-volume employers; 362 qualify in this snapshot. Other sectors form the comparison class for NAICS 62. This does not expand the career recommendations to other industries.
+
+Split normalized employer-name groups into train, validation and test partitions before fitting vocabulary thresholds. Seed 2017 and stratification produce 253, 36 and 73 employers respectively, with no overlapping name keys. Case and whitespace normalization cannot eliminate all aliases or subsidiaries. Dataset-derived industry labels remain an imperfect evaluation target.
+
+Title shares and employer-name words adapt the feature design of @goindani2017. Linear SVM and gradient-boosted trees are implemented with scikit-learn [@pedregosa2011]. Hyperparameters are selected using validation F1. The [career evaluation](career_evaluation.qmd) records the full filtering ledger, feature thresholds, baselines, metrics and confusion matrices.
+
+## Reproduce the evidence
+
+For dataset-wide EDA, run `python scripts/run_eda.py --data-dir E:/Data/Jobs_2026` followed by `python scripts/verify_source_eda.py --data-dir E:/Data/Jobs_2026`. Outputs under `data/eda` include field coverage, date and category distributions, input schemas and hashes. The source manifest is compared with the saved healthcare study.
+
+```bash
+python -m pip install -r requirements-study.txt
+python scripts/run_study.py --data-dir E:/Data/Jobs_2026
+python scripts/publish_study.py
+python scripts/publish_eda.py
+python scripts/verify_study.py
+python scripts/verify_eda.py
+quarto render
+quarto render final_report.qmd --to docx
+python scripts/verify_site.py
+python scripts/verify_citations.py
+```
+
+Replace the data path with an authorized local copy. Rendering uses saved aggregates; the raw-data scan is needed only to reproduce or change the analytical cohort. No local server is needed. Source descriptions and identifiable posting records are not redistributed. Local execution was explicitly selected for this project; the existing course submission records note the EC2 deviation.
+
+{{< include _content/source-eda-results.md >}}

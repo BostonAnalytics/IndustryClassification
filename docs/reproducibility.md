@@ -1,6 +1,4 @@
----
-title: "Reproducibility and build"
----
+# Reproducibility
 
 ## Rebuild the website
 
@@ -14,7 +12,7 @@ The output is `_site/index.html`. These commands finish without starting a local
 ## Reproduce the Jobs_2026 adaptation
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-study.txt
 python scripts/run_study.py --data-dir E:/Data/Jobs_2026
 python scripts/publish_study.py
 python scripts/verify_study.py
@@ -23,7 +21,7 @@ quarto render
 
 Replace the data-directory argument with your authorized copy. The script reads only `jobs_2026_part_*.parquet`; the salary-options lookup is not a posting partition. It scans all 97 parts, streams selected columns, and records hashes, filters, versions, settings and metrics in [run.json](data/study/run.json). Source postings and descriptions are not redistributed. Aggregates live in `data/study/`; charts live in `images/`.
 
-The period is January 1 through September 30, 2026. The script keeps the first occurrence of each posting ID in filename order. Different IDs for the same real vacancy are not resolved. Country must be explicitly US, industry must be present, and explicitly flagged staffing records are excluded. The dominant employer sector must cover at least 80% of its eligible postings. See [the study](study.qmd) for adaptations and limitations.
+The period is January 1 through September 30, 2026. Unknown industry codes 00 and 99 are excluded explicitly. The dedicated requirements-study.txt pins the packages used for this run independently of deployment dependencies. The script keeps the first occurrence of each posting ID in filename order. Different IDs for the same real vacancy are not resolved. Country must be explicitly US, industry must be present, and explicitly flagged staffing records are excluded. The dominant employer sector must cover at least 80% of its eligible postings. See [the study](study.qmd) for adaptations and limitations.
 
 ## Word report
 
