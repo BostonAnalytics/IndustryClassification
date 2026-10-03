@@ -12,10 +12,12 @@ Audit agreement cases as well as flagged records. The paper's 97-of-100 agreemen
 
 ## For a student career product
 
-Before recommending a role, salary expectation or location, measure the selected pathway in a dated dataset. Use employer-industry checks to improve the sample, then compute market benchmarks and compare actual student profiles with explicit requirements.
+The healthcare-analyst sample most often lists SQL: 63 of 112 postings (56.25%). Tableau appears in 36 (32.1%), while Power BI, Python and Excel each appear in 26 (23.2%). A learning portfolio centered on SQL and one visualization tool is a defensible starting point for this sample. These are market-frequency priorities, not findings that an individual lacks those skills or that acquiring them causes employment.
 
-The available evidence does not establish which roles are most promising, which skills a particular student lacks, or which remote locations are most realistic. Those recommendations remain dependent on the course extension. The [market](market.qmd), [skills](skills.qmd) and [evaluation](evaluation.qmd) pages define the necessary inputs and calculations.
+The sample includes 24 explicitly remote and 20 hybrid postings, but 58 have unknown work arrangement. Read each listing before treating it as a remote option. Virginia, New York and California have the largest known state counts, but 42 postings lack a usable state. These small, selected counts do not establish that relocating would improve career prospects.
+
+Only three postings have explicit USD currency and a positive normalized salary. Withhold a salary recommendation. A supplied minimum-experience value of zero may mean unspecified requirements; do not treat the 44 records with values from zero to two as verified entry-level opportunities.
 
 ## Next empirical milestone
 
-Confirm one pathway and industry, obtain authorized posting data, and run the analysis in the assigned EC2 environment. Produce a filtering ledger and baseline before model tuning. Then add observed skill gaps, evaluated analytics and evidence-based recommendations to the site and report.
+Review a sample of employer labels and raw requirement text, resolve suspected aliases, and collect participant ratings if personal skill-gap analysis is needed. GBDT misses 17 of 35 healthcare employers in the holdout, so automatic exclusion based on its predictions would omit relevant opportunities. Use model disagreement for review. Repeat in the assigned EC2 environment if submitting under the unmodified course rules.

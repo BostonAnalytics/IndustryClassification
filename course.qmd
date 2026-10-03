@@ -10,24 +10,24 @@ The supplied Module 4 and Module 5 files were read directly. The requested `M3/M
 
 | Requirement | Website location | Status |
 |---|---|---|
-| Introduction, scope and rationale | Overview | Paper scope complete; career pathway proposed only |
+| Introduction, scope and rationale | Overview | Healthcare data analysts in NAICS 62 selected |
 | Literature and citations | Discussion, References | Paper-grounded context; no independent literature review |
-| Data preparation and filtering | Data and preparation | Original method documented; new dataset not analyzed |
-| Market baseline and visuals | Market baseline | Calculation design supplied; empirical measures unavailable |
-| Team skill-gap matrix and visual | Skill-gap analysis | Method supplied; profiles and market skills unavailable |
-| Career benchmark and scorecard | Career evaluation logic | Proposed transparent logic; no computed ranking |
-| Final analytics and interpretation | Published results | Paper results reconstructed; no new model evaluation |
-| Final recommendations | Recommendations | Evidence-bounded methodological advice; career advice awaits data |
-| Final Word report | final_report.qmd | Reconstruction report source; not a completed course study |
+| Data preparation and filtering | Data and preparation | Original method documented; full 97-part study with saved filtering ledger |
+| Market baseline and visuals | Market baseline | Observed demand, location, remote and experience; sparse salary coverage disclosed |
+| Team skill-gap matrix and visual | Skill-gap analysis | Market skills measured; personal profiles unavailable |
+| Career benchmark and scorecard | Career evaluation logic | Benchmark computed; proposed weighted ranking uncomputed |
+| Final analytics and interpretation | Published results | Original results plus SVM/GBDT evaluation and confusion matrices |
+| Final recommendations | Recommendations | Observed skill priorities and qualified career guidance |
+| Final Word report | final_report.qmd | Paper and new-study report; verification status in GATES.md |
 | GitHub Pages website | Reproducibility | Local static build; public deployment outstanding |
 | Team contributions | This page | Human team roster and contribution record not supplied |
 | AI disclosure | AI disclosure | Session prompt, used output and validation record |
 | Weekly standups | Course process | No meetings or participation records supplied |
-| Assigned EC2 environment | Reproducibility | No EC2 analysis performed in this session |
+| Assigned EC2 environment | Reproducibility | User explicitly chose local execution; course deviation disclosed |
 
 ## Module 4 readiness
 
-Module 4 asks teams to check the earlier framing, baseline and skill-gap work before widening scope. A faithful paper reconstruction satisfies neither an observed market baseline nor an assessed student profile. Those empirical requirements remain open even when every web page renders correctly.
+Module 4 asks teams to check the earlier framing, baseline and skill-gap work before widening scope. An observed market baseline is now available. Personal profiles and submission records remain open; a successful build does not satisfy those requirements.
 
 ## Contributions and standups
 

@@ -6,6 +6,8 @@ project:
     - '!final_report.qmd'
   resources:
     - data/*.csv
+    - data/study/*.csv
+    - data/study/run.json
 website:
   title: Industry Classification
   description: A source-grounded reconstruction of employer industry classification using job postings.
@@ -18,6 +20,8 @@ website:
         text: Method
       - href: results.qmd
         text: Findings
+      - href: study.qmd
+        text: 2026 study
       - href: course.qmd
         text: Course alignment
   sidebar:
@@ -26,10 +30,10 @@ website:
       - section: The study
         contents: [index.qmd, data.qmd, methods.qmd, results.qmd, discussion.qmd]
       - section: Career application
-        contents: [market.qmd, skills.qmd, evaluation.qmd, recommendations.qmd]
+        contents: [study.qmd, market.qmd, skills.qmd, evaluation.qmd, recommendations.qmd]
       - section: Reproduce and review
         contents: [reproducibility.qmd, course.qmd, references.qmd, ai-disclosure.qmd]
-  page-footer: 'Based on Goindani, Liu, Chao and Jijkoun (2017). Published results, not a new empirical replication.'
+  page-footer: '2017 paper reconstruction + Jobs_2026 adaptation. Original and new results are labeled separately.'
 format:
   html:
     theme: cosmo

@@ -2,33 +2,41 @@
 title: "Reproducibility and build"
 ---
 
-## What can be reproduced now
-
-This repository builds an explanatory website from plain Quarto sources without downloading posting data or executing analytical notebooks. The two downloadable metric tables are transcriptions of Tables IV and V. The source PDF remains at the user-supplied local location and is not redistributed by the site.
+## Rebuild the website
 
 ```bash
 quarto render
 python scripts/verify_site.py
 ```
 
-The output is `_site/index.html`. These commands finish without starting a local server. Quarto 1.11.1 was available during construction. The site uses no Python analysis dependencies; the verification script uses Python's standard library.
+The output is `_site/index.html`. These commands finish without starting a local server. Quarto 1.11.1 was used. Rendering consumes saved aggregates and does not rerun analysis.
+
+## Reproduce the Jobs_2026 adaptation
+
+```bash
+python -m pip install -r requirements.txt
+python scripts/run_study.py --data-dir E:/Data/Jobs_2026
+python scripts/publish_study.py
+python scripts/verify_study.py
+quarto render
+```
+
+Replace the data-directory argument with your authorized copy. The script reads only `jobs_2026_part_*.parquet`; the salary-options lookup is not a posting partition. It scans all 97 parts, streams selected columns, and records hashes, filters, versions, settings and metrics in [run.json](data/study/run.json). Source postings and descriptions are not redistributed. Aggregates live in `data/study/`; charts live in `images/`.
+
+The period is January 1 through September 30, 2026. The script keeps the first occurrence of each posting ID in filename order. Different IDs for the same real vacancy are not resolved. Country must be explicitly US, industry must be present, and explicitly flagged staffing records are excluded. The dominant employer sector must cover at least 80% of its eligible postings. See [the study](study.qmd) for adaptations and limitations.
 
 ## Word report
-
-`final_report.qmd` synthesizes the reconstruction and course-extension limitations. Render it independently:
 
 ```bash
 quarto render final_report.qmd --to docx
 ```
 
-The report is a reconstruction report, not a completed empirical career evaluation. Rebuild it when the underlying evidence changes.
+`final_report.qmd` combines the paper, new results, market baseline, skills evidence and limitations. Export verification status is recorded in GATES.md. The separate AI disclosure is in `ai-disclosure.qmd` and its rendered website page.
 
-## New empirical study
+## Execution environment
 
-An exact replication needs the original Jobfeed records, legacy labels, employer and title normalization resources, manual review decisions and model configurations. Jobs_2026 would support a new adaptation, not automatically an exact recreation of the 2017 sample.
-
-The course guides require analytical work on the assigned AWS EC2 environment. Local website construction here does not constitute an EC2 analysis. Use the course's setup instructions there, retain the actual environment versions and keep credentials in an ignored `.env` file. Do not copy API keys into notebooks or rendered pages.
+The user explicitly requested this computer. The guides require assigned AWS EC2 execution, so this is a disclosed deviation. To submit under those rules, reproduce on EC2 and record its environment. Keep credentials out of source control and rendered pages.
 
 ## Publishing
 
-The repository is configured to produce a static `_site` directory suitable for hosting. Public deployment has not been performed. Publishing requires an identified GitHub repository and Pages configuration; verify the live URL and navigation after deployment before marking the course publication requirement complete.
+The `_site` directory is a static website. Public deployment has not been performed. Verify the GitHub Pages configuration and live URL before marking the publication requirement complete.

@@ -1,6 +1,6 @@
 ---
 title: "Employer industry classification using job postings"
-subtitle: "A Quarto reconstruction of the 2017 study"
+subtitle: "The 2017 paper and a new healthcare analyst study"
 ---
 
 ::: {.hero}
@@ -37,14 +37,14 @@ The strongest practical result concerns error detection: GBDT has higher utility
 
 ## Scope and intended reader
 
-This site is for students and analysts studying the reliability of job-market data. It reconstructs the supplied paper's argument, equations and reported results. It does not rerun the original proprietary experiments. The authors of the underlying research are **Mahak Goindani, Qiaoling Liu, Josh Chao and Valentin Jijkoun**; the web reconstruction is AI-assisted and documented separately.
+This site is for students and analysts studying the reliability of job-market data. It reconstructs the supplied paper's argument, equations and reported results, then adapts its approach to Jobs_2026. It does not rerun the original proprietary experiments. The authors of the underlying research are **Mahak Goindani, Qiaoling Liu, Josh Chao and Valentin Jijkoun**; the web reconstruction is AI-assisted and documented separately.
 
 The paper studies Transportation and Warehousing and Health Care and Social Assistance. Their 2017 NAICS sectors are [48–49](https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-48-49.html) and [62](https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-62.html), respectively. The paper uses employer-level labels; the scope and unit of a course dataset must be checked before mapping its codes to these sectors.
 
 ## How this relates to the course
 
-The Module 3–5 guides ask for a career evaluation product, including market benchmarks, a skill-gap analysis, recommendations and a Word report. Those requirements extend beyond the paper. The [course alignment](course.qmd) page identifies what this reconstruction supplies and what still requires a selected pathway, posting data and student profiles.
+The Module 3–5 guides ask for a career evaluation product, including market benchmarks, a skill-gap analysis, recommendations and a Word report. Those requirements extend beyond the paper. The [course alignment](course.qmd) page identifies what this reconstruction supplies and what still requires student profiles or submission records.
 
-**Evidence status:** all numerical research results on this site are transcribed from the supplied paper. Course scorecards are proposed designs. No Jobs_2026 analysis, personal assessment or EC2 experiment has been performed.
+**Evidence status:** [Published results](results.qmd) reports the original paper. [Jobs_2026 healthcare study](study.qmd) reports newly executed local analysis. The selected pathway is healthcare data analysts in NAICS 62. The study scans 2,350,355 source rows, evaluates industry classification on 362 eligible employers, and derives career benchmarks from 112 postings. Personal assessments and the weighted opportunity scorecard remain uncomputed. Local execution was explicitly requested by the user; it does not satisfy the guides' EC2 requirement.
 
 Source: supplied paper, abstract and Sections I–II; full citation in [References](references.qmd).

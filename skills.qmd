@@ -2,9 +2,13 @@
 title: "Skill-gap analysis"
 ---
 
-## Required evidence
+## Observed market skills
 
-Module 3 asks each team member to rate relevant skills from 1 (beginner) to 5 (advanced), then compare those profiles with market requirements. Neither the paper nor the supplied project guides contain personal skill profiles or a measured market skill distribution. No individual gap or career-readiness score can be inferred from them.
+{{< include _content/skills-results.md >}}
+
+## Personal assessment evidence
+
+Module 3 asks each team member to rate relevant skills from 1 (beginner) to 5 (advanced), then compare those profiles with market requirements. Market frequencies have now been computed, but no participant profiles have been supplied. Individual gaps and career-readiness scores cannot be inferred from market frequencies.
 
 ## Proposed calculation
 
