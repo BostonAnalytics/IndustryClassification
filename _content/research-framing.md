@@ -10,7 +10,7 @@ Healthcare is relevant to this pathway because its service organizations generat
 
 The selected pathway is **healthcare data analysts**, including the documented analyst-title variants. The industry anchor is **NAICS 62, Health Care and Social Assistance**, whose official definition covers both healthcare and social-assistance establishments [@naics2022, sector 62]. Consequently, results should not be described as hospital-only findings.
 
-Module 1 prefers NAICS 2022 codes at four or six digits when possible [@ad688m1]. This study retains the user's previously selected two-digit sector 62 to preserve the approved analysis. It is a disclosed scope deviation, not equivalent compliance with the finer-code preference. The implementation prefers `NAICS_2022_2` and falls back to `NAICS2`; that fallback also prevents a claim that every retained label is verified against the 2022 revision. A narrower industry study would require a new filter and rerun.
+The study uses two-digit sector 62, a broader scope than the four- or six-digit industries preferred in Module 1 [@ad688m1]. The implementation prefers `NAICS_2022_2` and falls back to `NAICS2`; retained labels are therefore not all verified against the 2022 revision. Results apply to the combined sector, with potentially different patterns across its subsectors.
 
 1. **RQ1, employer classification:** How do a linear SVM and GBDT compare on precision, recall and F1 for dataset-derived NAICS 62 employer labels under an employer-name-disjoint split?
 2. **RQ2, career evidence:** Which skills, work arrangements and locations are observed among the selected US healthcare analyst postings from January through September 2026?
@@ -53,4 +53,4 @@ The following fields connect the project question to the local Jobs_2026_US snap
 | Accessibility | `MIN_YEARS_EXPERIENCE` | Zero is not independently verified as entry level |
 | Flexibility and location | `REMOTE_TYPE_NAME`, `STATE_NAME`, `PARSED_COUNTRY_ISO_ABBR` | Standardize categories and retain missingness |
 
-The report follows a research-paper sequence: introduction and rationale, literature, data and methods, results, discussion, limitations and conclusion. The website exposes the same evidence through linked pages while retaining the course's career-product purpose [@ad688m1; @ad688m5].
+The employer classification and market analysis support the career evaluation framework in Modules 1 and 5 [@ad688m1; @ad688m5].

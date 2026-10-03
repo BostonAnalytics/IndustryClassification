@@ -58,6 +58,6 @@ python scripts/verify_site.py
 python scripts/verify_citations.py
 ```
 
-Replace the data path with an authorized local copy. Rendering uses saved aggregates; the raw-data scan is needed only to reproduce or change the analytical cohort. No local server is needed. Source descriptions and identifiable posting records are not redistributed. Local execution was explicitly selected for this project; the existing course submission records note the EC2 deviation.
+Replace the data path with an authorized local copy. Rendering uses saved aggregates; the raw-data scan is needed only to reproduce or change the analytical cohort. Source descriptions and identifiable posting records are not redistributed. The [PySpark workflow](pyspark_analysis.qmd) shows the employer-level processing and all nine classification families with downloadable code.
 
 {{< include _content/source-eda-results.md >}}

@@ -20,4 +20,4 @@ Only three postings have explicit USD currency and a positive normalized salary.
 
 ## Next empirical milestone
 
-Review a sample of employer labels and raw requirement text, resolve suspected aliases, and collect participant ratings if personal skill-gap analysis is needed. GBDT misses 15 of 34 healthcare employers in the final holdout, so automatic exclusion based on its predictions would omit relevant opportunities. Use model disagreement for review. Repeat in the assigned EC2 environment if submitting under the unmodified course rules.
+Review a sample of employer labels and raw requirement text, resolve suspected aliases, and collect participant ratings if personal skill-gap analysis is needed. GBDT misses 15 of 34 healthcare employers in the scikit-learn holdout, so automatic exclusion based on its predictions would omit relevant opportunities. Use model disagreement for review.

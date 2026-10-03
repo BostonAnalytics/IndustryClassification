@@ -13,6 +13,9 @@ project:
     - data/sample/run.json
     - reference.bib
     - final_report.docx
+    - scripts/run_spark_study.py
+    - notebooks/pyspark_classification.ipynb
+    - data/spark-study/run.json
 website:
   title: Healthcare Analyst Careers
   description: A scoped career evaluation study of healthcare data analyst postings and employer industry labels.
@@ -36,6 +39,7 @@ website:
       - market_baseline.qmd
       - skill_gap_analysis.qmd
       - career_evaluation.qmd
+      - pyspark_analysis.qmd
       - final_recommendations.qmd
       - references.qmd
       - ai-disclosure.qmd

@@ -1,6 +1,6 @@
 ---
 title: "Employer industry classification and healthcare analyst opportunities"
-subtitle: "Paper reconstruction and Jobs 2026 empirical adaptation"
+subtitle: "Jobs 2026 analysis and a PySpark classification workflow"
 date: 2026-10-03
 bibliography: reference.bib
 link-citations: true
@@ -12,7 +12,7 @@ format:
 
 # Abstract {.unnumbered}
 
-This exploratory study examines employer-industry classification as a data-quality component of a career evaluation product for healthcare data analysts. It reconstructs a 2017 study and adapts its approach to a local Jobs_2026_US snapshot. A scan of 815,193 records yielded 362 eligible employers for classification and 112 postings for a January–September 2026 US career benchmark. Employer-name-disjoint evaluation produced positive-class F1 scores of 0.553 for a linear SVM and 0.717 for GBDT. These scores measure agreement with dataset-derived labels rather than independently established employer truth. SQL appeared in 63 career postings; sparse salary evidence and missing work-arrangement fields restricted recommendations. The contribution is a reproducible, scoped analysis with explicit label and coverage limitations. It does not establish national hiring patterns or personal skill deficits.
+This exploratory study examines employer-industry classification as a data-quality component of a career evaluation product for healthcare data analysts. It reconstructs a 2017 study and adapts its approach to a local Jobs_2026_US snapshot. A scan of 815,193 records yielded 362 eligible employers for classification and 112 postings for a January–September 2026 US career benchmark. Employer-name-disjoint scikit-learn evaluation produced positive-class F1 scores of 0.553 for a linear SVM and 0.717 for GBDT. A separate PySpark experiment compares nine classifier families and two baselines, with data preparation, feature construction and evaluation code included. The multilayer perceptron led that experiment on validation F1 and achieved test F1 of 0.848. Different employer splits prevent direct attribution of score differences to the software engine. These scores measure agreement with dataset-derived labels rather than independently established employer truth. SQL appeared in 63 career postings; sparse salary evidence and missing work-arrangement fields restricted recommendations. The findings do not establish national hiring patterns or personal skill deficits.
 
 **Keywords:** employer industry classification; job postings; healthcare data analysts; NAICS; career evaluation; data quality.
 
@@ -20,7 +20,7 @@ This exploratory study examines employer-industry classification as a data-quali
 
 This report reconstructs @goindani2017 and applies their employer-industry classification approach to Jobs_2026_US [@jobs2026]. The career audience is students targeting healthcare data analyst roles in NAICS sector 62. The new analysis provides a selected-sample market benchmark and classifier evaluation, with explicit limitations on label quality and personal skill assessment.
 
-The analysis ran locally at the user's request. This departs from the supplied course guides' assigned EC2 requirement. No public deployment or independently reviewed employer truth is claimed.
+The analysis uses a local data snapshot. Employer labels have not been independently adjudicated.
 
 {{< include _content/research-framing.md >}}
 
@@ -46,6 +46,10 @@ Upstream selection requires 2026 dates and consistent, exclusively US parsed loc
 
 Following the feature concept in @goindani2017, title shares and employer-name words represent each employer. Vocabulary thresholds are fitted only on training employers. The adaptation uses scikit-learn [@pedregosa2011], stratified train/validation/test partitions and validation F1 to select settings. The endpoint is agreement with supplied sector labels. Independent adjudication and the original undefined-employer utility endpoint are unavailable. The results below provide the filtering ledger, split counts and model details.
 
+# Data processing and classification in PySpark
+
+{{< include _content/spark-walkthrough.md >}}
+
 # Results
 
 {{< include _content/source-eda-results.md >}}
@@ -64,7 +68,7 @@ Following the feature concept in @goindani2017, title shares and employer-name w
 
 {{< include _content/skills-results.md >}}
 
-Participant ratings have not been supplied. No personal skill gap is calculated. The course's proposed 1–5 scale can support a later comparison, but skill frequency does not establish required proficiency. Preserve this distinction when building the final skill-gap matrix.
+Participant ratings are unavailable, so no personal skill gap is calculated. The course's proposed 1–5 scale can support a later comparison, but skill frequency does not establish required proficiency.
 
 # Discussion and career implications
 
@@ -76,9 +80,9 @@ A proposed opportunity scorecard weights demand 25%, salary 20%, accessibility 2
 
 # Limitations and next validation
 
-This is an exploratory adaptation, not an exact replication of the proprietary 2017 system. Input coverage, missing country and industry fields, noisy labels, title matching, unresolved aliases and missing salary evidence affect the sample. Dataset-derived labels cannot independently validate the employer knowledge base. Personal profiles, human team contributions, standup records and public hosting are outside the completed evidence.
+This is an exploratory adaptation, not an exact replication of the proprietary 2017 system. Input coverage, missing industry fields, noisy labels, title matching, unresolved aliases and missing salary evidence affect the sample. Dataset-derived labels cannot independently validate the employer knowledge base. Personal profiles are unavailable.
 
-Review original requirements and a sample of model agreement and disagreement cases. Resolve aliases and test a later time period before filtering opportunities by predictions. Reproduce on EC2 if submitting under the original course rules.
+Independent review of model agreement and disagreement cases, alias resolution and evaluation on a later time period are needed before predictions can reliably filter career opportunities.
 
 # Conclusion
 
@@ -90,7 +94,7 @@ Code, aggregates and input-file hashes are retained in this repository. Source j
 
 ## AI disclosure {.unnumbered}
 
-OpenAI Codex assisted with extraction, implementation, analysis and writing on October 3, 2026. The separate ai-disclosure.qmd records task prompts, corrections and checks. Data provenance and results are in data/study/run.json.
+OpenAI Codex assisted with extraction, implementation, analysis and writing on October 3, 2026. Reported computational results are traceable to the accompanying code and saved run manifests.
 
 # References {.unnumbered}
 

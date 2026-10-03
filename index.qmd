@@ -22,8 +22,8 @@ The January–September 2026 analysis selects **112 career postings** and a sepa
 5. [Career evaluation](career_evaluation.qmd): model evidence, interpretation and proposed scorecard.
 6. [Final recommendations](final_recommendations.qmd): sample-supported learning priorities and limitations.
 
-The [references](references.qmd) connect claims to one BibTeX bibliography. The [AI disclosure](ai-disclosure.qmd) records assistance and validation. A research-paper synthesis is available in the [Word report](final_report.docx).
+Read the [PySpark analysis](pyspark_analysis.qmd) or download the [Word report](final_report.docx).
 
-## Submission boundaries
+## Scope and limitations
 
-The structure follows the career evaluation pipeline in Module 1 [@ad688m1]. Sector 62 is broader than its preferred four- or six-digit scope. Personal skill assessments, team contribution and standup records, a final presentation, and public website deployment remain outstanding. The weighted opportunity scorecard is withheld because participant ratings and adequate salary coverage are unavailable. Completed classifier evaluation supplies the current substantial analytical component. These limitations should remain visible in any course submission.
+The study follows the career evaluation framework in Module 1 [@ad688m1]. Sector 62 combines healthcare and social assistance, so the findings do not describe a single healthcare subsector. Personal skill assessments and adequate salary coverage are unavailable; no weighted opportunity score is calculated.

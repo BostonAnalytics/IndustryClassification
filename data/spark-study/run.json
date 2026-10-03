@@ -1,0 +1,959 @@
+{
+  "engine": "pyspark",
+  "version": "4.2.0",
+  "seed": 2017,
+  "split_method": "within-class SHA256 rank 70/10/20",
+  "ledger": {
+    "source_rows": 815193,
+    "unique_id_rows": 815193,
+    "period_rows": 800461,
+    "us_rows": 800461,
+    "sector_known_rows": 357682,
+    "nonstaffing_or_unknown_rows": 352567,
+    "employer_model_postings": 352566
+  },
+  "splits": [
+    {
+      "split": "train",
+      "label": 0.0,
+      "count": 133
+    },
+    {
+      "split": "validation",
+      "label": 0.0,
+      "count": 19
+    },
+    {
+      "split": "test",
+      "label": 0.0,
+      "count": 39
+    },
+    {
+      "split": "train",
+      "label": 1.0,
+      "count": 119
+    },
+    {
+      "split": "validation",
+      "label": 1.0,
+      "count": 17
+    },
+    {
+      "split": "test",
+      "label": 1.0,
+      "count": 35
+    }
+  ],
+  "feature_count": 424,
+  "thresholds": {
+    "t:": {
+      "significance": 1.0,
+      "frequency": 2.0
+    },
+    "w:": {
+      "significance": 1.0,
+      "frequency": 2.0
+    }
+  },
+  "models": [
+    {
+      "model": "Logistic regression",
+      "validation_f1": 0.6896551724137931,
+      "trials": [
+        {
+          "parameters": {
+            "maxBlockSizeInMB": "0.0",
+            "threshold": "0.5",
+            "aggregationDepth": "2",
+            "standardization": "True",
+            "fitIntercept": "True",
+            "elasticNetParam": "0.0",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability",
+            "maxIter": "100",
+            "regParam": "0.01",
+            "tol": "1e-06",
+            "family": "auto"
+          },
+          "validation_f1": 0.6896551724137931
+        },
+        {
+          "parameters": {
+            "maxBlockSizeInMB": "0.0",
+            "threshold": "0.5",
+            "aggregationDepth": "2",
+            "standardization": "True",
+            "fitIntercept": "True",
+            "elasticNetParam": "0.0",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability",
+            "maxIter": "100",
+            "regParam": "0.1",
+            "tol": "1e-06",
+            "family": "auto"
+          },
+          "validation_f1": 0.6428571428571429
+        }
+      ],
+      "precision": 0.9411764705882353,
+      "recall": 0.45714285714285713,
+      "f1": 0.6153846153846154,
+      "accuracy": 0.7297297297297297,
+      "confusion_matrix": [
+        [
+          38,
+          1
+        ],
+        [
+          19,
+          16
+        ]
+      ],
+      "support": 74
+    },
+    {
+      "model": "Decision tree",
+      "validation_f1": 0.3,
+      "trials": [
+        {
+          "parameters": {
+            "seed": "2017",
+            "maxDepth": "2",
+            "maxBins": "32",
+            "minInstancesPerNode": "1",
+            "minInfoGain": "0.0",
+            "maxMemoryInMB": "256",
+            "cacheNodeIds": "False",
+            "checkpointInterval": "10",
+            "impurity": "gini",
+            "leafCol": "",
+            "minWeightFractionPerNode": "0.0",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability"
+          },
+          "validation_f1": 0.21052631578947367
+        },
+        {
+          "parameters": {
+            "seed": "2017",
+            "maxDepth": "3",
+            "maxBins": "32",
+            "minInstancesPerNode": "1",
+            "minInfoGain": "0.0",
+            "maxMemoryInMB": "256",
+            "cacheNodeIds": "False",
+            "checkpointInterval": "10",
+            "impurity": "gini",
+            "leafCol": "",
+            "minWeightFractionPerNode": "0.0",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability"
+          },
+          "validation_f1": 0.3
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.17142857142857143,
+      "f1": 0.2926829268292683,
+      "accuracy": 0.6081081081081081,
+      "confusion_matrix": [
+        [
+          39,
+          0
+        ],
+        [
+          29,
+          6
+        ]
+      ],
+      "support": 74
+    },
+    {
+      "model": "Random forest",
+      "validation_f1": 0.5217391304347826,
+      "trials": [
+        {
+          "parameters": {
+            "seed": "2017",
+            "maxDepth": "2",
+            "maxBins": "32",
+            "minInstancesPerNode": "1",
+            "minInfoGain": "0.0",
+            "maxMemoryInMB": "256",
+            "cacheNodeIds": "False",
+            "checkpointInterval": "10",
+            "impurity": "gini",
+            "numTrees": "100",
+            "featureSubsetStrategy": "auto",
+            "subsamplingRate": "1.0",
+            "leafCol": "",
+            "minWeightFractionPerNode": "0.0",
+            "bootstrap": "True",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability"
+          },
+          "validation_f1": 0.38095238095238093
+        },
+        {
+          "parameters": {
+            "seed": "2017",
+            "maxDepth": "3",
+            "maxBins": "32",
+            "minInstancesPerNode": "1",
+            "minInfoGain": "0.0",
+            "maxMemoryInMB": "256",
+            "cacheNodeIds": "False",
+            "checkpointInterval": "10",
+            "impurity": "gini",
+            "numTrees": "100",
+            "featureSubsetStrategy": "auto",
+            "subsamplingRate": "1.0",
+            "leafCol": "",
+            "minWeightFractionPerNode": "0.0",
+            "bootstrap": "True",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability"
+          },
+          "validation_f1": 0.5217391304347826
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.34285714285714286,
+      "f1": 0.5106382978723404,
+      "accuracy": 0.6891891891891891,
+      "confusion_matrix": [
+        [
+          39,
+          0
+        ],
+        [
+          23,
+          12
+        ]
+      ],
+      "support": 74
+    },
+    {
+      "model": "GBT",
+      "validation_f1": 0.7407407407407407,
+      "trials": [
+        {
+          "parameters": {
+            "seed": "2017",
+            "maxDepth": "2",
+            "maxBins": "32",
+            "minInstancesPerNode": "1",
+            "minInfoGain": "0.0",
+            "maxMemoryInMB": "256",
+            "cacheNodeIds": "False",
+            "checkpointInterval": "10",
+            "lossType": "logistic",
+            "maxIter": "100",
+            "stepSize": "0.1",
+            "subsamplingRate": "1.0",
+            "impurity": "variance",
+            "featureSubsetStrategy": "all",
+            "validationTol": "0.01",
+            "leafCol": "",
+            "minWeightFractionPerNode": "0.0",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability"
+          },
+          "validation_f1": 0.7407407407407407
+        },
+        {
+          "parameters": {
+            "seed": "2017",
+            "maxDepth": "3",
+            "maxBins": "32",
+            "minInstancesPerNode": "1",
+            "minInfoGain": "0.0",
+            "maxMemoryInMB": "256",
+            "cacheNodeIds": "False",
+            "checkpointInterval": "10",
+            "lossType": "logistic",
+            "maxIter": "100",
+            "stepSize": "0.1",
+            "subsamplingRate": "1.0",
+            "impurity": "variance",
+            "featureSubsetStrategy": "all",
+            "validationTol": "0.01",
+            "leafCol": "",
+            "minWeightFractionPerNode": "0.0",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability"
+          },
+          "validation_f1": 0.7407407407407407
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.4857142857142857,
+      "f1": 0.6538461538461539,
+      "accuracy": 0.7567567567567568,
+      "confusion_matrix": [
+        [
+          39,
+          0
+        ],
+        [
+          18,
+          17
+        ]
+      ],
+      "support": 74
+    },
+    {
+      "model": "Linear SVM",
+      "validation_f1": 0.6896551724137931,
+      "trials": [
+        {
+          "parameters": {
+            "maxBlockSizeInMB": "0.0",
+            "threshold": "0.0",
+            "aggregationDepth": "2",
+            "standardization": "True",
+            "fitIntercept": "True",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "maxIter": "100",
+            "regParam": "0.01",
+            "tol": "1e-06",
+            "weightCol": "weight"
+          },
+          "validation_f1": 0.6896551724137931
+        },
+        {
+          "parameters": {
+            "maxBlockSizeInMB": "0.0",
+            "threshold": "0.0",
+            "aggregationDepth": "2",
+            "standardization": "True",
+            "fitIntercept": "True",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "maxIter": "100",
+            "regParam": "0.1",
+            "tol": "1e-06",
+            "weightCol": "weight"
+          },
+          "validation_f1": 0.6428571428571429
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.37142857142857144,
+      "f1": 0.5416666666666666,
+      "accuracy": 0.7027027027027027,
+      "confusion_matrix": [
+        [
+          39,
+          0
+        ],
+        [
+          22,
+          13
+        ]
+      ],
+      "support": 74
+    },
+    {
+      "model": "Naive Bayes",
+      "validation_f1": 0.2857142857142857,
+      "trials": [
+        {
+          "parameters": {
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "smoothing": "0.5",
+            "modelType": "multinomial",
+            "probabilityCol": "probability"
+          },
+          "validation_f1": 0.2857142857142857
+        },
+        {
+          "parameters": {
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "smoothing": "1.0",
+            "modelType": "multinomial",
+            "probabilityCol": "probability"
+          },
+          "validation_f1": 0.2857142857142857
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.2,
+      "f1": 0.3333333333333333,
+      "accuracy": 0.6216216216216216,
+      "confusion_matrix": [
+        [
+          39,
+          0
+        ],
+        [
+          28,
+          7
+        ]
+      ],
+      "support": 74
+    },
+    {
+      "model": "Multilayer perceptron",
+      "validation_f1": 0.7647058823529411,
+      "trials": [
+        {
+          "parameters": {
+            "solver": "l-bfgs",
+            "seed": "2017",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability",
+            "maxIter": "100",
+            "tol": "1e-06",
+            "blockSize": "128",
+            "stepSize": "0.03",
+            "layers": "[424, 8, 2]"
+          },
+          "validation_f1": 0.7647058823529411
+        },
+        {
+          "parameters": {
+            "solver": "l-bfgs",
+            "seed": "2017",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability",
+            "maxIter": "100",
+            "tol": "1e-06",
+            "blockSize": "128",
+            "stepSize": "0.03",
+            "layers": "[424, 16, 2]"
+          },
+          "validation_f1": 0.75
+        }
+      ],
+      "precision": 0.9032258064516129,
+      "recall": 0.8,
+      "f1": 0.8484848484848485,
+      "accuracy": 0.8648648648648649,
+      "confusion_matrix": [
+        [
+          36,
+          3
+        ],
+        [
+          7,
+          28
+        ]
+      ],
+      "support": 74
+    },
+    {
+      "model": "One-vs-rest logistic",
+      "validation_f1": 0.6896551724137931,
+      "trials": [
+        {
+          "parameters": {
+            "parallelism": "1",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "classifier": "LogisticRegression_4963fa2d0b09"
+          },
+          "validation_f1": 0.6896551724137931
+        },
+        {
+          "parameters": {
+            "parallelism": "1",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "rawPredictionCol": "rawPrediction",
+            "classifier": "LogisticRegression_1f28efc218fe"
+          },
+          "validation_f1": 0.6428571428571429
+        }
+      ],
+      "precision": 0.9411764705882353,
+      "recall": 0.45714285714285713,
+      "f1": 0.6153846153846154,
+      "accuracy": 0.7297297297297297,
+      "confusion_matrix": [
+        [
+          38,
+          1
+        ],
+        [
+          19,
+          16
+        ]
+      ],
+      "support": 74
+    },
+    {
+      "model": "Factorization machine",
+      "validation_f1": 0.34782608695652173,
+      "trials": [
+        {
+          "parameters": {
+            "fitIntercept": "True",
+            "seed": "2017",
+            "solver": "adamW",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "factorSize": "4",
+            "fitLinear": "True",
+            "regParam": "0.0",
+            "miniBatchFraction": "1.0",
+            "initStd": "0.01",
+            "maxIter": "100",
+            "stepSize": "0.01",
+            "tol": "1e-06",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability"
+          },
+          "validation_f1": 0.3333333333333333
+        },
+        {
+          "parameters": {
+            "fitIntercept": "True",
+            "seed": "2017",
+            "solver": "adamW",
+            "predictionCol": "prediction",
+            "featuresCol": "features",
+            "labelCol": "label",
+            "factorSize": "8",
+            "fitLinear": "True",
+            "regParam": "0.0",
+            "miniBatchFraction": "1.0",
+            "initStd": "0.01",
+            "maxIter": "100",
+            "stepSize": "0.01",
+            "tol": "1e-06",
+            "rawPredictionCol": "rawPrediction",
+            "probabilityCol": "probability"
+          },
+          "validation_f1": 0.34782608695652173
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.2,
+      "f1": 0.3333333333333333,
+      "accuracy": 0.6216216216216216,
+      "confusion_matrix": [
+        [
+          39,
+          0
+        ],
+        [
+          28,
+          7
+        ]
+      ],
+      "support": 74
+    },
+    {
+      "model": "Training majority",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 0.527027027027027,
+      "confusion_matrix": [
+        [
+          39,
+          0
+        ],
+        [
+          35,
+          0
+        ]
+      ],
+      "support": 74
+    },
+    {
+      "model": "All positive",
+      "precision": 0.47297297297297297,
+      "recall": 1.0,
+      "f1": 0.6422018348623854,
+      "accuracy": 0.47297297297297297,
+      "confusion_matrix": [
+        [
+          0,
+          39
+        ],
+        [
+          0,
+          35
+        ]
+      ],
+      "support": 74
+    }
+  ],
+  "files": [
+    {
+      "file": "jobs_2026_part_00001.parquet",
+      "sha256": "6e09630fefea02caa1c9b699506456b54be664a65555102f08216eb5edcc9dde"
+    },
+    {
+      "file": "jobs_2026_part_00002.parquet",
+      "sha256": "a42b0d2577c85dcc198c581d0d041233faf0d4cd6eb6ae186b5ef7b968989981"
+    },
+    {
+      "file": "jobs_2026_part_00003.parquet",
+      "sha256": "da46935402895f8736daf74bd536ec1391e0cf9720fd550ea9de4fe3beccd8cc"
+    },
+    {
+      "file": "jobs_2026_part_00004.parquet",
+      "sha256": "cee8544b4a04df9f7752e20f55b51b2e1e9ba54a6babfdbbf362c714daad9128"
+    },
+    {
+      "file": "jobs_2026_part_00005.parquet",
+      "sha256": "666fedfbefcb9cbcbf19339d4e25d3dd917b71187da6fe936af0a9ff7e982df1"
+    },
+    {
+      "file": "jobs_2026_part_00006.parquet",
+      "sha256": "cf0434d89527b060b43064b760052a4262e2bc94d898e83c3e9fd66e6415b49c"
+    },
+    {
+      "file": "jobs_2026_part_00007.parquet",
+      "sha256": "cea7c98fba18992046a90a5b255d0372689424c2295bc9587d11e20599277901"
+    },
+    {
+      "file": "jobs_2026_part_00008.parquet",
+      "sha256": "05adf592ea58d581d071d8c3ae6d5134b016fd48dba63be16d87b94fdd87e468"
+    },
+    {
+      "file": "jobs_2026_part_00009.parquet",
+      "sha256": "8f9c57e21cdbf2bacc9352c261cadf32ee79834a237f38ef469d7f18325592c6"
+    },
+    {
+      "file": "jobs_2026_part_00010.parquet",
+      "sha256": "c97a50d5ba056d20561961e4640d9a7c45c5b26a7e0aefa55fa8b80807a21019"
+    },
+    {
+      "file": "jobs_2026_part_00011.parquet",
+      "sha256": "045950c2f7c79a81ce3adbb5d81b39975293d8fd8210806420e4c3ef6c122b8a"
+    },
+    {
+      "file": "jobs_2026_part_00012.parquet",
+      "sha256": "cc7147020057524038127f98545130edd8eff80de252447503ba0615046deb9f"
+    },
+    {
+      "file": "jobs_2026_part_00013.parquet",
+      "sha256": "a2b8e90ea4a5bac8d4f3d7bf64851926a1055113ff09c99584844bb83b6d70bb"
+    },
+    {
+      "file": "jobs_2026_part_00014.parquet",
+      "sha256": "3bd2f90c18c8dcd5f78730be0461aa0589fff86a4b5d78492392e1d1e9d2f115"
+    },
+    {
+      "file": "jobs_2026_part_00015.parquet",
+      "sha256": "cdb14dce3ba35b7b624c7e27470f834c4a305c53df6f55c0455d31f233c8a7cf"
+    },
+    {
+      "file": "jobs_2026_part_00016.parquet",
+      "sha256": "a8ce177a5435ec91419a597d160cf6eb36653fc8b08b31a338bd58a2b9dca949"
+    },
+    {
+      "file": "jobs_2026_part_00017.parquet",
+      "sha256": "2c548c2567c3384822e8bf327a94b2a0df6d391a0f91ee8e72edd9489dc5a38b"
+    },
+    {
+      "file": "jobs_2026_part_00018.parquet",
+      "sha256": "c7f169e55509e28775d88aeab5041dea879c4aa9b8d64fb81ee83efc8df6572e"
+    },
+    {
+      "file": "jobs_2026_part_00019.parquet",
+      "sha256": "9aa303c026cf16055762b52cea95008e2ccd3bd309991d43618a583a792ba843"
+    },
+    {
+      "file": "jobs_2026_part_00020.parquet",
+      "sha256": "81bd8fa17b88d756906d34145893e0b3f053cd1d31aa65610ce9f535cca26efa"
+    },
+    {
+      "file": "jobs_2026_part_00021.parquet",
+      "sha256": "0301a3c49c267a6dad800ba3e4bcb9b0a03cb4bd472a778af781b0b90c00f1bf"
+    },
+    {
+      "file": "jobs_2026_part_00022.parquet",
+      "sha256": "68f956795e0214f781bb7e6d26615d248c6b2625b8c1422607cee885d15e7a20"
+    },
+    {
+      "file": "jobs_2026_part_00023.parquet",
+      "sha256": "fd8758fa14d2bd49f880d34d550ca8fd24f422ec5bc8256bfdb6a2c0efec6c48"
+    },
+    {
+      "file": "jobs_2026_part_00024.parquet",
+      "sha256": "646761a5e8ecf48734ab588634b96930272ce5f2e86bf64e516c6f72dc2d6878"
+    },
+    {
+      "file": "jobs_2026_part_00025.parquet",
+      "sha256": "b35f9d39929fba17b0a29a1b36fdce09bbf5a045ed639d773491ef3b7d90a601"
+    },
+    {
+      "file": "jobs_2026_part_00026.parquet",
+      "sha256": "a335fad1b0dc350ccfa147ee4bf36bb24afb65d9e023f0aba26768bf41abf96e"
+    },
+    {
+      "file": "jobs_2026_part_00027.parquet",
+      "sha256": "93428a8eca9f01b91f87c0047e42c2781cd226441ae80023abe5bb719eebc574"
+    },
+    {
+      "file": "jobs_2026_part_00028.parquet",
+      "sha256": "3a91858f0d3a08d299e82921406458b95db8b7ad0b5cee6784d2a1b0721ebc22"
+    },
+    {
+      "file": "jobs_2026_part_00029.parquet",
+      "sha256": "a885ce7b3c943549d050501ccf654cf21f0949013205a0d5915591b026f076db"
+    },
+    {
+      "file": "jobs_2026_part_00030.parquet",
+      "sha256": "047c3c13fea24f3444b331ea913a0b874ae5da34c39606109ced91aad3a8e2e7"
+    },
+    {
+      "file": "jobs_2026_part_00031.parquet",
+      "sha256": "7e65df5332d79df19fe69fc44fc045dda5d1ccfe8ffc8de7c728c3d216a0ca4c"
+    },
+    {
+      "file": "jobs_2026_part_00032.parquet",
+      "sha256": "b208b33ce344c81b1e2d23fc89c21c040bd6fa3f08e46ffea6391677deac686b"
+    },
+    {
+      "file": "jobs_2026_part_00033.parquet",
+      "sha256": "b2d5b2ef19ac76d80cd85ff190ce46c69215dec9dc77328e23d29ebf8a2af869"
+    },
+    {
+      "file": "jobs_2026_part_00034.parquet",
+      "sha256": "09cb2d70f1f839441b49c946902a3be66bd969340ba564d673247488bb790adb"
+    },
+    {
+      "file": "jobs_2026_part_00037.parquet",
+      "sha256": "d69fe389246fe84c100f98e752d767cc0f2a0b2940cda29b0f54ebf76aabb2c9"
+    },
+    {
+      "file": "jobs_2026_part_00038.parquet",
+      "sha256": "67876387f5147e05edc7d377c8b5ecddaf08a988c673b4b5066a83fe3ce6d93e"
+    },
+    {
+      "file": "jobs_2026_part_00046.parquet",
+      "sha256": "069680843530d8664474b89196f634c55a0b51195848a3724ee52083c5dd10eb"
+    },
+    {
+      "file": "jobs_2026_part_00047.parquet",
+      "sha256": "a927037c2268bd008dc6300808e59d4e98bc3bb4c9be3d685c4555e159cb421c"
+    },
+    {
+      "file": "jobs_2026_part_00048.parquet",
+      "sha256": "cd925f61e916338807218e27723b29e3fb90bbfa1569fe2ac436df6d9a163f96"
+    },
+    {
+      "file": "jobs_2026_part_00049.parquet",
+      "sha256": "6f677e7e0b09960ea949d50f63e10efda2cc7c8598f9c7cc4276883cd0ddb85f"
+    },
+    {
+      "file": "jobs_2026_part_00050.parquet",
+      "sha256": "c60435039db9b3aeca5d6018acbe8a4caced8b368334d04d3b23b0829b8bf050"
+    },
+    {
+      "file": "jobs_2026_part_00051.parquet",
+      "sha256": "45d419f11eced8aa8bbb4fa656333bfea0ce42c384031e489b901b1c149e71ec"
+    },
+    {
+      "file": "jobs_2026_part_00053.parquet",
+      "sha256": "4d6ee316fa30802da3354671f638cd2432b0eaba465698290ba57e398138dff6"
+    },
+    {
+      "file": "jobs_2026_part_00057.parquet",
+      "sha256": "451e02511540fa6210ad7ac3d22752ccbdf9a02a2bf2b294165b9a87942a4e75"
+    },
+    {
+      "file": "jobs_2026_part_00058.parquet",
+      "sha256": "39377020fca2a83d3eb8aa0413f43152c46fe5e0e6ecfaa440327c94cab004a8"
+    },
+    {
+      "file": "jobs_2026_part_00059.parquet",
+      "sha256": "db5f5be51d4c1721bb80c8f09ac9cc0fff93c30d37be0aa31ab27f1e00777cc6"
+    },
+    {
+      "file": "jobs_2026_part_00060.parquet",
+      "sha256": "69f17807b202c57e17bd1aaa900fb02208dcdc15c36aabca347794814ea5794a"
+    },
+    {
+      "file": "jobs_2026_part_00061.parquet",
+      "sha256": "4d35cfad3586d33824ea26c1397be237b6897fad981a066b84d7b4c0d3298a56"
+    },
+    {
+      "file": "jobs_2026_part_00062.parquet",
+      "sha256": "3f764140c711d8edcc51d585e7806710fc13921f75e2d8d390c7b8d2318eb0ef"
+    },
+    {
+      "file": "jobs_2026_part_00063.parquet",
+      "sha256": "10da018752e06659c2de566b31173cd9e9ec652412ffca5788ba9e38e50aa28e"
+    },
+    {
+      "file": "jobs_2026_part_00064.parquet",
+      "sha256": "9d9559cfbf3e5c0410d6c21c5a45eede9071430766364ea37ee13b53e98dba58"
+    },
+    {
+      "file": "jobs_2026_part_00065.parquet",
+      "sha256": "627aa7990312e6c8255c2fe3ca911dfe5991a13f259d070f52adaa29655481b5"
+    },
+    {
+      "file": "jobs_2026_part_00066.parquet",
+      "sha256": "7e156ca12442bc50efa648a527dc85786a06dfe858a58ce9f22b34d5e9bb44f9"
+    },
+    {
+      "file": "jobs_2026_part_00067.parquet",
+      "sha256": "b2c25d600638e306dd8be0be425acc4810988ef1a31142dec99ce5121ec29b3d"
+    },
+    {
+      "file": "jobs_2026_part_00068.parquet",
+      "sha256": "5f0c0c74a6107917c5acc040e7162e65fb428057fb32cd8309f71c9a25cde62e"
+    },
+    {
+      "file": "jobs_2026_part_00069.parquet",
+      "sha256": "dc6fed79e30e346c8b4b01edb726214876fab0431bd85dab4be9333a44b3ed7d"
+    },
+    {
+      "file": "jobs_2026_part_00070.parquet",
+      "sha256": "541722dd12a62695ced31eace41676d7480f4d24ebec272abf2cda816824f94d"
+    },
+    {
+      "file": "jobs_2026_part_00071.parquet",
+      "sha256": "e747819f1269b6f201beff4f14698fed7a43d03e33f6f970d363d5df118e0863"
+    },
+    {
+      "file": "jobs_2026_part_00072.parquet",
+      "sha256": "72b83487e2f986bb42e3afb981c1a1b914c09707d56d4bbddcfa26a52966cb6d"
+    },
+    {
+      "file": "jobs_2026_part_00073.parquet",
+      "sha256": "eeaa90468315ff87747439b36d0d09c82520ea206ebfbd82699447c9a80c9116"
+    },
+    {
+      "file": "jobs_2026_part_00074.parquet",
+      "sha256": "3f15388e33e21b95131a3ef656766096193552acfeed4773e45f2dcdc8e956fc"
+    },
+    {
+      "file": "jobs_2026_part_00075.parquet",
+      "sha256": "3ba6a45728c48a39ea091f0ae8830507ca92bf222b4959d6925bae686b818273"
+    },
+    {
+      "file": "jobs_2026_part_00076.parquet",
+      "sha256": "b5e052489547f7e2a635d3190a8ee94b73d95a5a863649705678cc0418061c48"
+    },
+    {
+      "file": "jobs_2026_part_00077.parquet",
+      "sha256": "8702a9c229fabe6625e7907e7ea6c1b2d6a8ffb8303ca81608c0b8a3d7a1cdb3"
+    },
+    {
+      "file": "jobs_2026_part_00078.parquet",
+      "sha256": "0a41743ef2187ba971742c156e3e1df0b5e06da05d27bbdae56d9311821ae59c"
+    },
+    {
+      "file": "jobs_2026_part_00079.parquet",
+      "sha256": "2dc62f8bf9df60e721fcabb08ee1d5ed194ee084fe5090e0ea71029da62130fd"
+    },
+    {
+      "file": "jobs_2026_part_00080.parquet",
+      "sha256": "b617ecaea9886b1d78a6d3d4e86b1a0fe0b9f274fb0f30a40d6cac641b7d3b96"
+    },
+    {
+      "file": "jobs_2026_part_00081.parquet",
+      "sha256": "bf63542f2f2d92462ac4f512200760947823325c94a8c44fd0fc3fb303ce52b0"
+    },
+    {
+      "file": "jobs_2026_part_00082.parquet",
+      "sha256": "1fde83fd5c690b141066180887811e6810f9daa812976c0a536442cb25a3feca"
+    },
+    {
+      "file": "jobs_2026_part_00083.parquet",
+      "sha256": "be489cdc9b24cabc4f4e643b52555f0ad0dfb55b0d9259e644b3ab9b7177047b"
+    },
+    {
+      "file": "jobs_2026_part_00084.parquet",
+      "sha256": "c7c5a9ced6bf73348b24e273b3ef463f204e4055a4255230afae5f967eeaaf2d"
+    },
+    {
+      "file": "jobs_2026_part_00085.parquet",
+      "sha256": "68c444349010cca768c8784b66058e6b46c64b828357916a7e722cedb8f8f101"
+    },
+    {
+      "file": "jobs_2026_part_00086.parquet",
+      "sha256": "2aa93cae6a99b209acff49eacf58e6cad52da55413a2a68c9c3773a94220ff9a"
+    },
+    {
+      "file": "jobs_2026_part_00087.parquet",
+      "sha256": "21f4e6c48a3d19b3206cb26f2424e7a144d822b99189754bb16959d6ae57d0a0"
+    },
+    {
+      "file": "jobs_2026_part_00088.parquet",
+      "sha256": "c0d6819afc7c201746f8a2154456a3b4b5f42a42ecb9ed685ab0301793c101ee"
+    },
+    {
+      "file": "jobs_2026_part_00089.parquet",
+      "sha256": "b43b76f8e0902ec78c7a004402135d21824f637f4a3168849e67f7186e08d7ce"
+    },
+    {
+      "file": "jobs_2026_part_00090.parquet",
+      "sha256": "6516ffcdf9e1e946217e4a380574bd737b19b9f421d605147a8a0194483785fd"
+    },
+    {
+      "file": "jobs_2026_part_00091.parquet",
+      "sha256": "e8ca266fff688ffec00c91e09be70b70d0f7370c2b7a1d53ef73310f08ce4f1d"
+    },
+    {
+      "file": "jobs_2026_part_00092.parquet",
+      "sha256": "5dcdcb107716209d3ad09956c510a24337d734f26dbe96380304b230b9aa3b7a"
+    },
+    {
+      "file": "jobs_2026_part_00093.parquet",
+      "sha256": "2f30794693ef84f5f1c1d2c3af41e8739d88b2db4dbfe588fa7e43e2008ca26c"
+    },
+    {
+      "file": "jobs_2026_part_00094.parquet",
+      "sha256": "09c2dd3a0258f82572eda1bb42b9371f49ff9f7491a5ef90b6d717e18c5bf11f"
+    },
+    {
+      "file": "jobs_2026_part_00096.parquet",
+      "sha256": "5de9874ad3120416acffe1abcf69ba4f3303f9cd9228ab9054db56fdae97470b"
+    }
+  ]
+}

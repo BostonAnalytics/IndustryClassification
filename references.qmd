@@ -37,5 +37,7 @@ Publisher records were inspected for the 2018 article, OECD report and scikit-le
 
 ## Complete bibliography
 
+The catalog also preserves the existing `tzimas2024data` record. It is not used to support the five-source review or this revision's findings; its metadata has not been verified in this revision.
+
 ::: {#refs}
 :::
