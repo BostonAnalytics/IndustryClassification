@@ -68,6 +68,8 @@ def main():
     parser.add_argument('--data-dir', type=Path, required=True)
     parser.add_argument('--minimum-label-share', type=float, default=.8)
     args = parser.parse_args()
+    if not .5 < args.minimum_label_share <= 1:
+        parser.error('--minimum-label-share must be greater than .5 and at most 1')
     files = sorted(args.data_dir.glob('jobs_2026_part_*.parquet'))
     if not files:
         raise SystemExit('No jobs_2026_part_*.parquet files found')

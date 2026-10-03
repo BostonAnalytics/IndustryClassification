@@ -31,4 +31,6 @@ Module 4 asks teams to check the earlier framing, baseline and skill-gap work be
 
 ## Contributions and standups
 
+The Word export is generated but visually unverified because the layout renderer requires an unavailable LibreOffice installation. The website passes static build and link checks; browser screenshot review was blocked by the browser's local-file URL policy. No local server was started.
+
 Codex assisted with paper extraction, source-grounded prose, table transcription, Quarto construction and build checks. No human team contributions, names, weekly meetings or participation claims have been invented. Record actual contributors and dates when the team undertakes the empirical extension.

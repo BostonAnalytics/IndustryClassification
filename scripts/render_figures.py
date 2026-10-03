@@ -14,7 +14,7 @@ c=d['career']['counts']
 bar_chart(list(c['states'])[:10],list(c['states'].values())[:10],'Healthcare analyst postings by state','Postings in the selected sample','states.png')
 bar_chart(list(c['remote']),list(c['remote'].values()),'Reported work arrangement','Postings in the selected sample','remote.png')
 with (ROOT/'data/study/market_skills.csv').open(newline='',encoding='utf-8') as f: skills=list(csv.DictReader(f))[:12]
-bar_chart([r['skill'] for r in skills],[int(r['postings']) for r in skills],'Most frequently listed skills','Postings mentioning skill; denominator = 112 selected postings','skills.png')
+bar_chart([r['skill'] for r in skills],[int(r['postings']) for r in skills],'Most frequently listed skills',f"Postings mentioning skill; denominator = {d['career']['postings']} selected postings",'skills.png')
 fig,axes=plt.subplots(1,2,figsize=(9,4))
 for ax,result in zip(axes,d['models'][:2]):
     matrix=np.array(result['confusion_matrix'])

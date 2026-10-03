@@ -33,6 +33,10 @@ quarto render final_report.qmd --to docx
 
 `final_report.qmd` combines the paper, new results, market baseline, skills evidence and limitations. Export verification status is recorded in GATES.md. The separate AI disclosure is in `ai-disclosure.qmd` and its rendered website page.
 
+The DOCX export completed without warnings, with four embedded PNG charts. Page-layout review could not be completed because LibreOffice is absent. Treat the Word file as a generated draft until its pagination and tables have been checked in Word or LibreOffice.
+
+On this Windows installation, `quarto.cmd` failed to resolve its path containing spaces. The successful build used `C:/Program Files/Quarto/bin/quarto.exe` directly. Quarto subprocesses also required execution outside the sandbox. These are local build constraints, not study-method changes.
+
 ## Execution environment
 
 The user explicitly requested this computer. The guides require assigned AWS EC2 execution, so this is a disclosed deviation. To submit under those rules, reproduce on EC2 and record its environment. Keep credentials out of source control and rendered pages.
