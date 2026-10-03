@@ -1,0 +1,24 @@
+---
+title: "Market baseline"
+---
+
+## What the paper supports
+
+The study establishes the class distribution of its employer sample and identifies illustrative industry-associated titles. It does not measure salaries, remote availability, experience requirements, geographic concentrations or contemporary hiring prospects. Its sample cannot serve as a national labor-market baseline.
+
+## Course extension design
+
+For a focused course product, a possible scope is **logistics and transportation analyst roles within NAICS 48–49**. This is a proposed scope, not a user-selected pathway or a claim that the paper studied those roles. Confirm a role taxonomy and matching rules before filtering Jobs_2026. Retain employers outside the target industry if training a binary industry classifier; a positive-only dataset cannot support that task.
+
+| Required benchmark | Calculation for a new study | Evidence needed |
+|---|---|---|
+| Hiring volume | Deduplicated posting counts by role and period | Posting ID, dates and duplicate rules |
+| Salary | Median and quartiles of comparable salary observations | Currency, period, range and missingness |
+| Experience | Distribution of explicit required experience | Parsed ranges and unknown category |
+| Remote work | Remote, hybrid, onsite and unknown shares | Explicit work-arrangement evidence |
+| Skills | Share of deduplicated postings mentioning each skill | Documented extraction and normalization |
+| Geography | Counts and shares by consistent geographic unit | Standardized locations and multi-location rules |
+
+Use posting counts for vacancy demand and distinct-employer counts for employer concentration. Explain each denominator. Keep missing salaries and unknown remote status visible; neither means zero. Salary estimates require currency and time-unit harmonization before comparison.
+
+**Current status:** none of these market measures has been computed. The original employer-class counts appear on [Data and preparation](data.qmd), where their denominator is explicit.

@@ -1,0 +1,44 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - '*.qmd'
+    - '!final_report.qmd'
+  resources:
+    - data/*.csv
+website:
+  title: Industry Classification
+  description: A source-grounded reconstruction of employer industry classification using job postings.
+  navbar:
+    background: '#102b3f'
+    left:
+      - href: index.qmd
+        text: Overview
+      - href: methods.qmd
+        text: Method
+      - href: results.qmd
+        text: Findings
+      - href: course.qmd
+        text: Course alignment
+  sidebar:
+    style: docked
+    contents:
+      - section: The study
+        contents: [index.qmd, data.qmd, methods.qmd, results.qmd, discussion.qmd]
+      - section: Career application
+        contents: [market.qmd, skills.qmd, evaluation.qmd, recommendations.qmd]
+      - section: Reproduce and review
+        contents: [reproducibility.qmd, course.qmd, references.qmd, ai-disclosure.qmd]
+  page-footer: 'Based on Goindani, Liu, Chao and Jijkoun (2017). Published results, not a new empirical replication.'
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    link-external-newwindow: true
+    code-copy: true
+    smooth-scroll: true
+    date-format: long
+execute:
+  enabled: false
+lang: en

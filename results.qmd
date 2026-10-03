@@ -1,0 +1,46 @@
+---
+title: "Published results"
+---
+
+Every number below is a published result from the supplied paper, not a metric obtained by running this website. Precision, recall and F-score are reported on a 0–1 scale. Download the [classification table](data/classification.csv) and [utility table](data/utility.csv).
+
+## Classification of defined employers
+
+{{< include _content/classification.md >}}
+
+Source: Table IV. The legacy system has the highest F-score in both industries. SVM and GBDT favor precision at the cost of recall. A GBDT precision of 1.00 in the Transportation test evaluation is not evidence of perfect performance on future data.
+
+## Detection of undefined employers
+
+Let $D$ be the pooled disagreement set, $U$ the undefined employers manually found in that set, and $M$ a model's disagreement subset. Utility precision is $|M\cap U|/|M|$; utility recall is $|M\cap U|/|U|$. Utility F-score is their harmonic mean. These measures concern error discovery within the reviewed disagreement pool, not industry classification across the full population.
+
+{{< include _content/utility.md >}}
+
+Source: Table V. GBDT improves utility F-score from 0.23 to 0.28 for Transportation and from 0.34 to 0.44 for Health Care. Low utility precision means many flags still require review without revealing an undefined employer. Utility recall cannot be interpreted as recall of all errors in the knowledge base.
+
+## Feature ablation
+
+| Transportation features | Model | Precision | Recall | F-score |
+|---|---|---:|---:|---:|
+| Name keywords | SVM | 0.95 | 0.66 | 0.78 |
+| Name keywords | GBDT | 1.00 | 0.58 | 0.73 |
+| Titles | SVM | 0.97 | 0.70 | 0.81 |
+| Titles | GBDT | 0.97 | 0.67 | 0.79 |
+| Titles and keywords | SVM | 0.97 | 0.70 | 0.81 |
+| Titles and keywords | GBDT | 1.00 | 0.65 | 0.79 |
+
+Source: Table VI. Titles outperform name keywords alone on F-score. Adding names to titles leaves F-score unchanged at the reported precision. This table covers Transportation only.
+
+## Errors discovered
+
+| Error type | Transportation | Health Care |
+|---|---:|---:|
+| Incorrect name extraction | 7 (31.82%) | 18 (15.38%) |
+| Incorrect name normalization | 2 (9.09%) | 40 (34.19%) |
+| Incorrect knowledge-base attribute | 13 (59.09%) | 59 (50.43%) |
+
+Source: Table VII. Totals are 22 and 117 detected errors. Attribute errors concern a valid entity with the wrong industry; they are different from the undefined-entity errors targeted by utility metrics. These totals must not be used as the undefined-employer denominators.
+
+## What these results do not provide
+
+The paper does not publish per-employer predictions or a complete confusion matrix. Rounded aggregate scores cannot determine a unique confusion matrix. This site therefore does not synthesize one. Confidence intervals, statistical significance tests and performance on Jobs_2026 are also unavailable.

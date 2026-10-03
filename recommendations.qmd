@@ -1,0 +1,21 @@
+---
+title: "Recommendations"
+---
+
+## For analysts reconstructing the study
+
+Use model–legacy disagreement to prioritize employer-record review. Preserve the original label, proposed label, evidence and reviewer decision rather than silently overwriting the knowledge base. Distinguish name-extraction, entity-normalization and industry-attribute errors because their remedies differ.
+
+Compare models against the actual operational objective. The paper favors GBDT for finding undefined employers, while the legacy system retains higher classification F-scores. An error-discovery model and a production labeler need not be the same system.
+
+Audit agreement cases as well as flagged records. The paper's 97-of-100 agreement audit leaves evidence of residual error. A new study should budget for independent review across both groups.
+
+## For a student career product
+
+Before recommending a role, salary expectation or location, measure the selected pathway in a dated dataset. Use employer-industry checks to improve the sample, then compute market benchmarks and compare actual student profiles with explicit requirements.
+
+The available evidence does not establish which roles are most promising, which skills a particular student lacks, or which remote locations are most realistic. Those recommendations remain dependent on the course extension. The [market](market.qmd), [skills](skills.qmd) and [evaluation](evaluation.qmd) pages define the necessary inputs and calculations.
+
+## Next empirical milestone
+
+Confirm one pathway and industry, obtain authorized posting data, and run the analysis in the assigned EC2 environment. Produce a filtering ledger and baseline before model tuning. Then add observed skill gaps, evaluated analytics and evidence-based recommendations to the site and report.

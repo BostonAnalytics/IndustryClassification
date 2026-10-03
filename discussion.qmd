@@ -1,0 +1,29 @@
+---
+title: "Interpretation and limitations"
+---
+
+## A review aid for employer data
+
+The study offers a way to prioritize records for inspection. A hiring profile can reveal that a name was parsed incorrectly, linked to the wrong company, or assigned the wrong knowledge-base attribute. The evidence supports a review workflow; it does not establish that automatically replacing legacy labels would improve overall classification.
+
+The paper's explanation for GBDT's higher utility is that trees can capture relationships among related titles. This is a proposed explanation, not a controlled causal finding about why one model outperformed the other.
+
+## When the main assumption fails
+
+The approach assumes that frequent job titles reveal the employer's principal industry. An employer hiring mostly support roles can violate that assumption. In the paper's CGB Enterprises example, frequent non-core roles and an uninformative employer name lead the model away from the correct Transportation label.
+
+Staffing agencies are another challenge: their vacancies may describe client industries. The authors report low precision and recall in an additional staffing experiment but do not provide numerical scores. Multi-industry companies also strain the single-main-industry assumption.
+
+## Limits of evaluation
+
+The training labels are noisy. Most agreement cases inherit a presumed-correct label rather than an independent adjudication. The 97-of-100 audit does not eliminate possible correlated errors shared by the model and legacy system. Results based on high-volume employers in one three-month period may differ for smaller employers, later periods or other sectors.
+
+The unavailable original data, model settings and normalization resources limit exact replication. The inconsistent published sample counts add a further reconciliation requirement.
+
+## Related work in the paper
+
+CompanyDepot provides the employer-normalization context (Liu, Javed and McNair, 2016; Liu and colleagues, 2017). Carotene supplies the job-title-classification context (Javed and colleagues, 2015). Bernstein, Clearwater and Provost (2003) study industry classification through relational signals such as company co-occurrence. The present paper instead uses recruiting activity. These descriptions follow Section VI and the bibliography of the supplied paper; the underlying related-work publications have not been independently reviewed for this reconstruction.
+
+## Extensions proposed by the authors
+
+The paper suggests employer descriptions, job-description features, title entropy for staffing, and multiclass or multilabel prediction. These are future directions, not results established by the published experiments.

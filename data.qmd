@@ -1,0 +1,48 @@
+---
+title: "Data and preparation"
+---
+
+## Collection and labels
+
+The authors used the Jobfeed API to collect postings for the 10,000 normalized employers with the most postings between April and June 2017. Each industry's binary label came from the existing CareerBuilder employer knowledge base. These **legacy labels** can contain the very errors the models aim to detect.
+
+| Industry | Positive employers | Negative employers | Positive share |
+|---|---:|---:|---:|
+| Transportation | 516 | 9,484 | 5.16% |
+| Health Care | 1,318 | 8,682 | 13.18% |
+
+Source: paper, Table I. These shares describe employers in the study, not shares of national vacancies or employment.
+
+## Preparation sequence
+
+1. Link employer-name mentions to normalized employer entities.
+2. Associate postings and normalized job titles with each entity.
+3. Exclude employers with fewer than 20 postings when generating features.
+4. Retain titles representing at least 1% of an employer's postings.
+5. Select industry-specific title and employer-name vocabularies.
+6. Build employer-level feature vectors for separate binary tasks.
+
+The paper describes random 70% training, 10% validation and 20% test partitions. Its starting title inventory contains 5,426 normalized titles. This is a specialized normalization resource, not simply lowercased raw titles.
+
+## Published split counts
+
+| Industry | Split | Positive | Negative | Total |
+|---|---|---:|---:|---:|
+| Transportation | Training | 369 | 6,593 | 6,962 |
+| Transportation | Validation | 44 | 957 | 1,001 |
+| Transportation | Test | 100 | 1,889 | 1,989 |
+| Health Care | Training | 906 | 6,059 | 6,965 |
+| Health Care | Validation | 131 | 870 | 1,001 |
+| Health Care | Test | 284 | 1,707 | 1,991 |
+
+Source: Table II; totals calculated by addition for this reconstruction.
+
+**Reconciliation issue:** the split totals are 9,952 and 9,957, rather than 10,000. Transportation positives sum to 513 rather than 516, while Health Care positives sum to 1,321 rather than 1,318. Although Section III describes a posting-count filter, the paper does not reconcile these discrepancies. The numbers above preserve the published counts; a replication must keep an explicit filtering and split ledger.
+
+## Data availability and leakage controls
+
+The supplied materials contain the paper, not the employer-level records, normalization system, knowledge base, fitted models or reviewed labels. An exact numerical replication is therefore unavailable from these materials alone.
+
+For a new study, split by normalized employer **before** learning label-dependent vocabularies, and fit thresholds on training data only. Freeze vocabulary, label mapping and model selection before examining the test set. These are proposed replication controls; the paper does not fully document the fitting boundary for vocabulary selection.
+
+For Jobs_2026, preserve a source manifest, schema, observation dates, duplicate rules, row counts after each filter, missingness and employer resolution decisions. Never infer that a title such as software engineer determines the employer's industry.

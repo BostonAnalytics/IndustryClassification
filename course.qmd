@@ -1,0 +1,34 @@
+---
+title: "Course requirements and completion status"
+---
+
+## Guides used
+
+The supplied Module 4 and Module 5 files were read directly. The requested `M3/M02_Proj.qmd` does not exist at that path; `M3/M03_Proj.qmd` was found and used as the likely intended Module 3 guide. This substitution needs confirmation if a different assignment was intended.
+
+## Requirement mapping
+
+| Requirement | Website location | Status |
+|---|---|---|
+| Introduction, scope and rationale | Overview | Paper scope complete; career pathway proposed only |
+| Literature and citations | Discussion, References | Paper-grounded context; no independent literature review |
+| Data preparation and filtering | Data and preparation | Original method documented; new dataset not analyzed |
+| Market baseline and visuals | Market baseline | Calculation design supplied; empirical measures unavailable |
+| Team skill-gap matrix and visual | Skill-gap analysis | Method supplied; profiles and market skills unavailable |
+| Career benchmark and scorecard | Career evaluation logic | Proposed transparent logic; no computed ranking |
+| Final analytics and interpretation | Published results | Paper results reconstructed; no new model evaluation |
+| Final recommendations | Recommendations | Evidence-bounded methodological advice; career advice awaits data |
+| Final Word report | final_report.qmd | Reconstruction report source; not a completed course study |
+| GitHub Pages website | Reproducibility | Local static build; public deployment outstanding |
+| Team contributions | This page | Human team roster and contribution record not supplied |
+| AI disclosure | AI disclosure | Session prompt, used output and validation record |
+| Weekly standups | Course process | No meetings or participation records supplied |
+| Assigned EC2 environment | Reproducibility | No EC2 analysis performed in this session |
+
+## Module 4 readiness
+
+Module 4 asks teams to check the earlier framing, baseline and skill-gap work before widening scope. A faithful paper reconstruction satisfies neither an observed market baseline nor an assessed student profile. Those empirical requirements remain open even when every web page renders correctly.
+
+## Contributions and standups
+
+Codex assisted with paper extraction, source-grounded prose, table transcription, Quarto construction and build checks. No human team contributions, names, weekly meetings or participation claims have been invented. Record actual contributors and dates when the team undertakes the empirical extension.

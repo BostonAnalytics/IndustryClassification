@@ -1,0 +1,50 @@
+---
+title: "Employer industry classification using job postings"
+subtitle: "A Quarto reconstruction of the 2017 study"
+---
+
+::: {.hero}
+::: {.eyebrow}
+Research reconstruction / Career analytics
+:::
+## What can a company's job postings tell us about its industry?
+
+Goindani, Liu, Chao and Jijkoun use job titles and employer names to check industry labels in a large employer knowledge base. Their models help identify records that deserve human review.
+
+[Explore the method](methods.qmd) · [Read the findings](results.qmd)
+:::
+
+::: {.metric-grid}
+::: {.metric}
+**10,000**
+employers in the reported initial sample
+:::
+::: {.metric}
+**2**
+industry-specific binary classification tasks
+:::
+::: {.metric}
+**2017**
+April–June collection window
+:::
+:::
+
+## Research question
+
+Can the titles an employer hires for, together with words in its name, identify mistakes in its recorded industry? The study compares Support Vector Machines (SVM) and Gradient Boosted Decision Trees (GBDT). It distinguishes classification of valid employer entities from detection of incorrectly extracted or normalized employers.
+
+The strongest practical result concerns error detection: GBDT has higher utility precision, recall and F-score than SVM for both industries. The existing knowledge-base system retains higher classification F-scores on defined employers. These are different evaluation tasks and should inform different deployment decisions.
+
+## Scope and intended reader
+
+This site is for students and analysts studying the reliability of job-market data. It reconstructs the supplied paper's argument, equations and reported results. It does not rerun the original proprietary experiments. The authors of the underlying research are **Mahak Goindani, Qiaoling Liu, Josh Chao and Valentin Jijkoun**; the web reconstruction is AI-assisted and documented separately.
+
+The paper studies Transportation and Warehousing and Health Care and Social Assistance. Their 2017 NAICS sectors are [48–49](https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-48-49.html) and [62](https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-62.html), respectively. The paper uses employer-level labels; the scope and unit of a course dataset must be checked before mapping its codes to these sectors.
+
+## How this relates to the course
+
+The Module 3–5 guides ask for a career evaluation product, including market benchmarks, a skill-gap analysis, recommendations and a Word report. Those requirements extend beyond the paper. The [course alignment](course.qmd) page identifies what this reconstruction supplies and what still requires a selected pathway, posting data and student profiles.
+
+**Evidence status:** all numerical research results on this site are transcribed from the supplied paper. Course scorecards are proposed designs. No Jobs_2026 analysis, personal assessment or EC2 experiment has been performed.
+
+Source: supplied paper, abstract and Sections I–II; full citation in [References](references.qmd).
