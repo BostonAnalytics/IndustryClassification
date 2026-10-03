@@ -218,3 +218,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Quarto outputs and local research inputs
+/_site/
+/.quarto/
+/tmp/
+/final_report.docx
+/Jobs_2026/
+
+/.quarto/
+**/*.quarto_ipynb
