@@ -1,0 +1,1039 @@
+{
+  "seed": 2017,
+  "period": [
+    "2026-01-01",
+    "2026-09-30"
+  ],
+  "minimum_label_share": 0.8,
+  "versions": {
+    "python": "3.12.10",
+    "pandas": "2.3.3",
+    "pyarrow": "23.0.1",
+    "sklearn": "1.9.0"
+  },
+  "files": [
+    {
+      "file": "jobs_2026_part_00001.parquet",
+      "bytes": 15697381,
+      "rows": 10000,
+      "sha256": "070a2bbdc17a36e24667f04cd105a36b0e9fb5de1d91b74a33940cf60da99d29"
+    },
+    {
+      "file": "jobs_2026_part_00002.parquet",
+      "bytes": 15609989,
+      "rows": 10000,
+      "sha256": "ad252c13f37f742c4668de800c0e8655336d2ad720ba1de270f99ac793b21739"
+    },
+    {
+      "file": "jobs_2026_part_00003.parquet",
+      "bytes": 20350894,
+      "rows": 10000,
+      "sha256": "2a1347256b1bdaf7be571896ae29432befea528f5135b3051515fa5438a408d0"
+    },
+    {
+      "file": "jobs_2026_part_00004.parquet",
+      "bytes": 18999641,
+      "rows": 10000,
+      "sha256": "1ac2ade50a854a47b6f03236f1bb2815b7c77157fef08e61c869caf16b7cc898"
+    },
+    {
+      "file": "jobs_2026_part_00005.parquet",
+      "bytes": 16918900,
+      "rows": 10000,
+      "sha256": "e338e6e82470afe8666a7d85f89aff3b91ec8ac12b64ec395ee40534399706bf"
+    },
+    {
+      "file": "jobs_2026_part_00006.parquet",
+      "bytes": 17237109,
+      "rows": 10000,
+      "sha256": "9d970bc8d5b7db1c3b6ce571ae31d15e4abb582174c2a8d2b2c9c55d3127ae39"
+    },
+    {
+      "file": "jobs_2026_part_00007.parquet",
+      "bytes": 15149807,
+      "rows": 10000,
+      "sha256": "da64f4b308909d33af0fc5f6aa6f3656baae20e374dec86cbd32aa8b0ad4dd95"
+    },
+    {
+      "file": "jobs_2026_part_00008.parquet",
+      "bytes": 13192668,
+      "rows": 10000,
+      "sha256": "c886d33dc6b4fc650d26acbfdfdf0fc970b8c2affb74e4946ac9f3bf04d747ec"
+    },
+    {
+      "file": "jobs_2026_part_00009.parquet",
+      "bytes": 11559317,
+      "rows": 10000,
+      "sha256": "bf011b744e29e88b785210b2b73786f7d2652e1bbb2cef2ba82864aa27bd5004"
+    },
+    {
+      "file": "jobs_2026_part_00010.parquet",
+      "bytes": 12575230,
+      "rows": 10000,
+      "sha256": "16b0cf7b202d795034ea4667ef7f2169d85dd5568bbb81edaaa510e6d774b393"
+    },
+    {
+      "file": "jobs_2026_part_00011.parquet",
+      "bytes": 12086648,
+      "rows": 10000,
+      "sha256": "d19998c2249e65aee7fdc5847e9abd5cf26c92e3d0e704f77c17fc5b632bb532"
+    },
+    {
+      "file": "jobs_2026_part_00012.parquet",
+      "bytes": 10558439,
+      "rows": 10000,
+      "sha256": "49b99f26b6a1ec49c262c2a678a8048f9e8681d1a500287ae1b3a9e05ae2b95f"
+    },
+    {
+      "file": "jobs_2026_part_00013.parquet",
+      "bytes": 10244334,
+      "rows": 10000,
+      "sha256": "4a26b2d7dc711cd722c507eb0955dff84436bad9a0c502b4862f3fb43f2f535b"
+    },
+    {
+      "file": "jobs_2026_part_00014.parquet",
+      "bytes": 10078224,
+      "rows": 10000,
+      "sha256": "c53d5219c6ef4741afba88df06e118e333326fd7527f4b2cbd726e34206e00ee"
+    },
+    {
+      "file": "jobs_2026_part_00015.parquet",
+      "bytes": 10184100,
+      "rows": 10000,
+      "sha256": "2b0635636fc5e8ed8ca7365ee73d0cf93265f3bc909f189c01ed496e5cd04a70"
+    },
+    {
+      "file": "jobs_2026_part_00016.parquet",
+      "bytes": 9264912,
+      "rows": 10000,
+      "sha256": "0379d3d3d3a290ea862314fcdcdd3b8139933024cb369617a210727d437abe09"
+    },
+    {
+      "file": "jobs_2026_part_00017.parquet",
+      "bytes": 1836160,
+      "rows": 5386,
+      "sha256": "6361b2b481788158ca6c734a78ccbb7a027a04e1df558d7b0f064a34d69f90bb"
+    },
+    {
+      "file": "jobs_2026_part_00018.parquet",
+      "bytes": 69341254,
+      "rows": 42753,
+      "sha256": "88930d97e3585fd89759616d20bb22ed682b3488622f590b2ea34bceb0b6f135"
+    },
+    {
+      "file": "jobs_2026_part_00019.parquet",
+      "bytes": 385948554,
+      "rows": 199341,
+      "sha256": "bf9d106e20cba33314d0ea645379b5a456e3f2383a35125a1852784a74cbe85a"
+    },
+    {
+      "file": "jobs_2026_part_00020.parquet",
+      "bytes": 48076982,
+      "rows": 46728,
+      "sha256": "cc9da6f46b4188b4d96609ee30c419487bb0be124b5d1da8f21871ef784eba45"
+    },
+    {
+      "file": "jobs_2026_part_00021.parquet",
+      "bytes": 40351405,
+      "rows": 50000,
+      "sha256": "2e2d99d2d768487667296f5db422d42a9181f04a846bea31e854716335707d6d"
+    },
+    {
+      "file": "jobs_2026_part_00022.parquet",
+      "bytes": 11038990,
+      "rows": 7399,
+      "sha256": "2fe8b2fb40ee9ea75db65c426f29d874ea0efe2293ef0ae1737951a3f05693c9"
+    },
+    {
+      "file": "jobs_2026_part_00023.parquet",
+      "bytes": 23793095,
+      "rows": 25000,
+      "sha256": "e42f0829912bfaecc4e3283c5241a387a8ee155d746049f9038eb3f7cfe7175a"
+    },
+    {
+      "file": "jobs_2026_part_00024.parquet",
+      "bytes": 17211358,
+      "rows": 25000,
+      "sha256": "a0497ee9cb1993e4624eedd73a2e6395567b54b35641cb0303d972820093b89b"
+    },
+    {
+      "file": "jobs_2026_part_00025.parquet",
+      "bytes": 24056560,
+      "rows": 25000,
+      "sha256": "e53032eac38a7b61f4295b1e05748043a5264a7df7ceadd8f127c7ab418d3b96"
+    },
+    {
+      "file": "jobs_2026_part_00026.parquet",
+      "bytes": 31496922,
+      "rows": 25000,
+      "sha256": "2e030559d123aa9400f06a051fac6e9db4d07764215499784c87989e8457c0c4"
+    },
+    {
+      "file": "jobs_2026_part_00027.parquet",
+      "bytes": 34711413,
+      "rows": 25000,
+      "sha256": "2431012cd2b9a70d48535cf3fbc808028aa61aa5030c26d8c54eb2a249ac7f19"
+    },
+    {
+      "file": "jobs_2026_part_00028.parquet",
+      "bytes": 22863992,
+      "rows": 25000,
+      "sha256": "9868111b5efe2dd44aa9f47fbc0e8385f73e030e7ef11437b43e52eb330cc8df"
+    },
+    {
+      "file": "jobs_2026_part_00029.parquet",
+      "bytes": 22221318,
+      "rows": 25000,
+      "sha256": "73fa71153bf17112a237ae548785cb3b9a819d3f60a56abc34318921bc67ec87"
+    },
+    {
+      "file": "jobs_2026_part_00030.parquet",
+      "bytes": 15373280,
+      "rows": 25000,
+      "sha256": "f268c79557f2bfad16be6931f2bf9f36900401cbd64954dd4d375e345a710bbf"
+    },
+    {
+      "file": "jobs_2026_part_00031.parquet",
+      "bytes": 14410695,
+      "rows": 25000,
+      "sha256": "5757c053a1a2b4e9e11f3c91a41a09b866d714a27df6b9cb1ae6524780cfed15"
+    },
+    {
+      "file": "jobs_2026_part_00032.parquet",
+      "bytes": 8360506,
+      "rows": 25000,
+      "sha256": "027737df273dcd4d9cebf956b5f17bb4ff0636cf9735f7e773444ebdab19925a"
+    },
+    {
+      "file": "jobs_2026_part_00033.parquet",
+      "bytes": 28722943,
+      "rows": 25000,
+      "sha256": "975be05e6ce215a6d13aae286eece9dfdc89af0ea57d5e386c526007748fd9c3"
+    },
+    {
+      "file": "jobs_2026_part_00034.parquet",
+      "bytes": 21300116,
+      "rows": 25000,
+      "sha256": "563480bd5b30a103c3c52b72b071fd8eadeed6fc122bff461e31261090bb9a93"
+    },
+    {
+      "file": "jobs_2026_part_00035.parquet",
+      "bytes": 5530987,
+      "rows": 25000,
+      "sha256": "10b7bc9f59c564e29a232dcc37d2f3984f9b4d575e144c3931e7bc9a2d960b61"
+    },
+    {
+      "file": "jobs_2026_part_00036.parquet",
+      "bytes": 5623532,
+      "rows": 25000,
+      "sha256": "63f6a5e2582b9737f88d9096adfa5259eb78242b14b26f1e656dfcb0bbaeb1c8"
+    },
+    {
+      "file": "jobs_2026_part_00037.parquet",
+      "bytes": 6344056,
+      "rows": 25000,
+      "sha256": "07c48eac7e906aecf96e8b3b4af3f6889c7ceb784c32c766ad692cd336b5647c"
+    },
+    {
+      "file": "jobs_2026_part_00038.parquet",
+      "bytes": 17420127,
+      "rows": 25000,
+      "sha256": "c8535be8d38dd77e79a351b3752e5cbc8b3609dd7e9682511efb8c255d728593"
+    },
+    {
+      "file": "jobs_2026_part_00039.parquet",
+      "bytes": 18298220,
+      "rows": 25000,
+      "sha256": "340cc7ca146c4c46f31146e6279d8bb37736e0152fcc99c2110eb8a8cf725407"
+    },
+    {
+      "file": "jobs_2026_part_00040.parquet",
+      "bytes": 19701136,
+      "rows": 25000,
+      "sha256": "cd32b9eae76e911944a09a459f2a308ba76c60219635dd836e860566012f5692"
+    },
+    {
+      "file": "jobs_2026_part_00041.parquet",
+      "bytes": 21952318,
+      "rows": 25000,
+      "sha256": "0eb6bda208429f8bcc8440aef8552d2056e70022bbd64a78f7f7d6fabd908e35"
+    },
+    {
+      "file": "jobs_2026_part_00042.parquet",
+      "bytes": 22726090,
+      "rows": 25000,
+      "sha256": "be829f0a1806dde9be0bc1d940adaa158478aa702c9dc8c73aa488f51db08f8f"
+    },
+    {
+      "file": "jobs_2026_part_00043.parquet",
+      "bytes": 16912016,
+      "rows": 25000,
+      "sha256": "23e85914b68446ad12b42225245ae77c0d7883a240c3ff7f946a087905815145"
+    },
+    {
+      "file": "jobs_2026_part_00044.parquet",
+      "bytes": 19443413,
+      "rows": 25000,
+      "sha256": "31d7abbb2e0a0c00598202c85fd75c02fea890d250201f10736b8da4dbb4fa82"
+    },
+    {
+      "file": "jobs_2026_part_00045.parquet",
+      "bytes": 18735719,
+      "rows": 25000,
+      "sha256": "9bc6452a6b76c2a425163ba6bccaa8ff701d0635e0b74235db26258fba47d421"
+    },
+    {
+      "file": "jobs_2026_part_00046.parquet",
+      "bytes": 20828500,
+      "rows": 25000,
+      "sha256": "99bcf7f525cf8d6eea6e3dc37ec0e9e3941919e831c2f5514a63c16d1653173c"
+    },
+    {
+      "file": "jobs_2026_part_00047.parquet",
+      "bytes": 11974579,
+      "rows": 25000,
+      "sha256": "ecd077d5adac38b0e020423d2815fa94b0fbd84067287a77b81fe91e4d9ab900"
+    },
+    {
+      "file": "jobs_2026_part_00048.parquet",
+      "bytes": 21989791,
+      "rows": 25000,
+      "sha256": "e1cc000c4e8778381f56e30cb7f24dc5823c34f664cb11bcfe1ad8ddd6511d49"
+    },
+    {
+      "file": "jobs_2026_part_00049.parquet",
+      "bytes": 32266632,
+      "rows": 25000,
+      "sha256": "ee2d0f8fe96ba965db06b7282b69615a132e39b27a7f3fe8d4bc3293ba801732"
+    },
+    {
+      "file": "jobs_2026_part_00050.parquet",
+      "bytes": 14075005,
+      "rows": 25000,
+      "sha256": "defaa6ad829b28f2a0aa1fd4a8c640b0ef1f79e098e3ff287e3ef9c84a0bde1a"
+    },
+    {
+      "file": "jobs_2026_part_00051.parquet",
+      "bytes": 19277867,
+      "rows": 25000,
+      "sha256": "0020fccc904df376b9335504429115b91936ae499bcccab7f23e774bf6f58449"
+    },
+    {
+      "file": "jobs_2026_part_00052.parquet",
+      "bytes": 5012731,
+      "rows": 25000,
+      "sha256": "a051ce5b6a4fcfd4b8e847ec5dda5295f0da6eeb1ad74eedb48439576ca16da7"
+    },
+    {
+      "file": "jobs_2026_part_00053.parquet",
+      "bytes": 19754193,
+      "rows": 25000,
+      "sha256": "e17d55c7ec766c97df6ce8bf19d5bbb5e01e5dd4bc38e9a32773b0bf413c1ccc"
+    },
+    {
+      "file": "jobs_2026_part_00054.parquet",
+      "bytes": 22846402,
+      "rows": 25000,
+      "sha256": "4e20d4caa89ba591d9990a6d7a177ff02d19f3e303d97d8e8033ffbc9783106c"
+    },
+    {
+      "file": "jobs_2026_part_00055.parquet",
+      "bytes": 18382847,
+      "rows": 25000,
+      "sha256": "5ab838fb2efe92d024e9f9ba5eaafa9b294f7e5e4f640c5524c42be496f7c33c"
+    },
+    {
+      "file": "jobs_2026_part_00056.parquet",
+      "bytes": 18795675,
+      "rows": 25000,
+      "sha256": "ee89abdd8165b7dbaa3c371720bc52bef3d3a9ae84fa8fbe0c83875d1c6eaf76"
+    },
+    {
+      "file": "jobs_2026_part_00057.parquet",
+      "bytes": 23474793,
+      "rows": 25000,
+      "sha256": "497024be09a6034389c465117e136fd2b740574bacab12a9d7ae960289156509"
+    },
+    {
+      "file": "jobs_2026_part_00058.parquet",
+      "bytes": 22720523,
+      "rows": 25000,
+      "sha256": "b204ee1443cfb44682f6b10d99b5e1e3fdc2418890e1d3359acb1b47ab12c51f"
+    },
+    {
+      "file": "jobs_2026_part_00059.parquet",
+      "bytes": 22672523,
+      "rows": 25000,
+      "sha256": "4617c80103a370263e3c57939d29d43ef16386c365034193ebb95c07c5d2669e"
+    },
+    {
+      "file": "jobs_2026_part_00060.parquet",
+      "bytes": 15724223,
+      "rows": 25000,
+      "sha256": "98bd3546ad85caba4b4010849a3602e95ba28cc19f7c21480d5792d0a06a4224"
+    },
+    {
+      "file": "jobs_2026_part_00061.parquet",
+      "bytes": 19584618,
+      "rows": 25000,
+      "sha256": "344dfadf9b40f847239a2fe9eb933df21bfdcf3234a585294864853d5b10a1a4"
+    },
+    {
+      "file": "jobs_2026_part_00062.parquet",
+      "bytes": 19500791,
+      "rows": 25000,
+      "sha256": "c823d81573aa8ac35ec0929d828deebc663663e98395f5e7963834a4b2d80202"
+    },
+    {
+      "file": "jobs_2026_part_00063.parquet",
+      "bytes": 17107811,
+      "rows": 25000,
+      "sha256": "8c658bbc4f7c50302ba8c9f9bccabcdfd86062ab8a47de13109ea68e0fe680bd"
+    },
+    {
+      "file": "jobs_2026_part_00064.parquet",
+      "bytes": 15200301,
+      "rows": 25000,
+      "sha256": "2d94c21667476b75c2a31c4b9df815678e1faf18efd1ed4212d0b713991aee4f"
+    },
+    {
+      "file": "jobs_2026_part_00065.parquet",
+      "bytes": 16399490,
+      "rows": 25000,
+      "sha256": "3c883e163bf30c9ee461f9181602373f80cd13fe670ff083e5a4692bf4bfe907"
+    },
+    {
+      "file": "jobs_2026_part_00066.parquet",
+      "bytes": 13208822,
+      "rows": 25000,
+      "sha256": "9ab833271516df38269da7c24699b138d71e636666093d4fc8912ad4d3bcdf2a"
+    },
+    {
+      "file": "jobs_2026_part_00067.parquet",
+      "bytes": 8542618,
+      "rows": 25000,
+      "sha256": "a449410a3ae21253e20ce0fee86d1eddd7e242e300c445621ab6bf180048b1cf"
+    },
+    {
+      "file": "jobs_2026_part_00068.parquet",
+      "bytes": 13483668,
+      "rows": 25000,
+      "sha256": "2bae1328b18b515c1ec00dec4a1ac7f236c36b94b2de74b619ae812140adf23e"
+    },
+    {
+      "file": "jobs_2026_part_00069.parquet",
+      "bytes": 16288589,
+      "rows": 25000,
+      "sha256": "5362082c4dc27a081554a5120047ef32c5e379ea020a39613f913d22d32865d1"
+    },
+    {
+      "file": "jobs_2026_part_00070.parquet",
+      "bytes": 19634495,
+      "rows": 25000,
+      "sha256": "9bf5a8ee1546cc46fab6a590b09efbd3d063708dc8837a02dc9091502ec9abb6"
+    },
+    {
+      "file": "jobs_2026_part_00071.parquet",
+      "bytes": 22099276,
+      "rows": 25000,
+      "sha256": "beb4d6a9751e76ebf8d834b48b6ed355cdc113d98a7003ae60c03d81e596f486"
+    },
+    {
+      "file": "jobs_2026_part_00072.parquet",
+      "bytes": 22737539,
+      "rows": 25000,
+      "sha256": "f2d38c8df2d75b0b90801dabbf2263886bfd7be1393de7513fd3c2cc624fe454"
+    },
+    {
+      "file": "jobs_2026_part_00073.parquet",
+      "bytes": 21901480,
+      "rows": 25000,
+      "sha256": "3cd695530f37b28aa09a437af7749af88a6bc4b7faa9cd5ef18080858db29d00"
+    },
+    {
+      "file": "jobs_2026_part_00074.parquet",
+      "bytes": 18831797,
+      "rows": 25000,
+      "sha256": "ce7c6c77c1e973a2244fad926c375d06a552f2ee6d8108cba2b583663cb4a189"
+    },
+    {
+      "file": "jobs_2026_part_00075.parquet",
+      "bytes": 19989481,
+      "rows": 25000,
+      "sha256": "b974fe228c435c8e8342c612ba1f46b4bf1ff40fb8a4b2a1ff597b56356c2638"
+    },
+    {
+      "file": "jobs_2026_part_00076.parquet",
+      "bytes": 20459319,
+      "rows": 25000,
+      "sha256": "baaa63f17846598f1e2c1120de1a6669078a6dea2c123f264f91a7ddca3bbf71"
+    },
+    {
+      "file": "jobs_2026_part_00077.parquet",
+      "bytes": 20680491,
+      "rows": 25000,
+      "sha256": "8c4d2b9c9d52a9b7d04f805071d29876ffa59ec4a52c4a551a8f84b28f631cbe"
+    },
+    {
+      "file": "jobs_2026_part_00078.parquet",
+      "bytes": 19251682,
+      "rows": 25000,
+      "sha256": "badf79a46ff89f83c40cd9aca2e5fd1452ab449b149acc1e4aaa375b546d743b"
+    },
+    {
+      "file": "jobs_2026_part_00079.parquet",
+      "bytes": 19952670,
+      "rows": 25000,
+      "sha256": "b203509fb1367dbdd5ef6eaa0ccde61865c781c694e53fc09935dc8457f6552e"
+    },
+    {
+      "file": "jobs_2026_part_00080.parquet",
+      "bytes": 21374740,
+      "rows": 25000,
+      "sha256": "850aca8305e3e190192c1caf11f2f2c48da1f9c2e9101156b63d4c265faadf36"
+    },
+    {
+      "file": "jobs_2026_part_00081.parquet",
+      "bytes": 18400201,
+      "rows": 25000,
+      "sha256": "667500a17a8b66e75aaea0a8e528b49c0659e68194d2ae9294a29a4eed7835c4"
+    },
+    {
+      "file": "jobs_2026_part_00082.parquet",
+      "bytes": 18764105,
+      "rows": 25000,
+      "sha256": "562253c2a9a8ab14c4aa525c451a553ba1e39a93ea88b471068612f35ea2ea64"
+    },
+    {
+      "file": "jobs_2026_part_00083.parquet",
+      "bytes": 22633488,
+      "rows": 25000,
+      "sha256": "be52b4c5a8cc28f2c0b231129dcb839b3e4d37039f37809a84cc8cf7597d51b2"
+    },
+    {
+      "file": "jobs_2026_part_00084.parquet",
+      "bytes": 19570263,
+      "rows": 25000,
+      "sha256": "b0b106d37c5f02c9bf296b359b052f5f661b51a922186d071530fb5dde35000f"
+    },
+    {
+      "file": "jobs_2026_part_00085.parquet",
+      "bytes": 20909172,
+      "rows": 25000,
+      "sha256": "8e7f2c1a3ca75ba12be71dc411601bf6b2d4f3ad50fe5a062af255d329f7ee23"
+    },
+    {
+      "file": "jobs_2026_part_00086.parquet",
+      "bytes": 19619688,
+      "rows": 25000,
+      "sha256": "d005114ca8b395c737e14c211e894830a0bf42028b93bfbd157fb93bf136863f"
+    },
+    {
+      "file": "jobs_2026_part_00087.parquet",
+      "bytes": 13070287,
+      "rows": 25000,
+      "sha256": "fd42b39d3332fae8e8a95e92d58f4228f4d4558b2e8d5d07df72648d1cef91c0"
+    },
+    {
+      "file": "jobs_2026_part_00088.parquet",
+      "bytes": 12193709,
+      "rows": 25000,
+      "sha256": "4fc1b07b3d709b70280cd6e0a8d20d3697ee266277cbe891e8381d101ebb1ae2"
+    },
+    {
+      "file": "jobs_2026_part_00089.parquet",
+      "bytes": 21718512,
+      "rows": 25000,
+      "sha256": "9fcd3ffdcc3100d704934be1843d84f093aa4974e5554c9545be9df767c77b9d"
+    },
+    {
+      "file": "jobs_2026_part_00090.parquet",
+      "bytes": 23315563,
+      "rows": 25000,
+      "sha256": "4dd601b71e915cc9feb386be9319289618262a49531e2d7d4edf6d84363c7480"
+    },
+    {
+      "file": "jobs_2026_part_00091.parquet",
+      "bytes": 20094736,
+      "rows": 25000,
+      "sha256": "fec55848242f456e85c63e7e6552abd5ff5351eedae03fd88b3bc992360ebedd"
+    },
+    {
+      "file": "jobs_2026_part_00092.parquet",
+      "bytes": 18750092,
+      "rows": 25000,
+      "sha256": "44db4e0259a1a3c785124713b4ead3669cd34b83d8184241979d6fe583544633"
+    },
+    {
+      "file": "jobs_2026_part_00093.parquet",
+      "bytes": 21320484,
+      "rows": 25000,
+      "sha256": "90da6334bdc31dc66fc33cad63d43f164b81464a68fbc5a57403a00f50b19356"
+    },
+    {
+      "file": "jobs_2026_part_00094.parquet",
+      "bytes": 18863022,
+      "rows": 25000,
+      "sha256": "dcf6873fccfadd7fa908564c7259c8f5be6f351fd0e5e006c50301deb8f3ac84"
+    },
+    {
+      "file": "jobs_2026_part_00095.parquet",
+      "bytes": 19743184,
+      "rows": 25000,
+      "sha256": "c0e8f4092de01f18d37e1946239c273e2d06f7aabd03af04a172d3af7540bc25"
+    },
+    {
+      "file": "jobs_2026_part_00096.parquet",
+      "bytes": 10371642,
+      "rows": 13747,
+      "sha256": "8cdf3423faebe1e54e5df81b617dc94139b90cd381903a43707d23080779741e"
+    },
+    {
+      "file": "jobs_2026_part_00097.parquet",
+      "bytes": 59731,
+      "rows": 1,
+      "sha256": "4b7226688f8fea340086656a53f0ededd2495e22bdc49773579c9997c31d676a"
+    }
+  ],
+  "ledger": {
+    "source_rows": 2350355,
+    "unique_id_rows": 2350355,
+    "period_rows": 2217149,
+    "us_rows": 800461,
+    "sector_known_rows": 358455,
+    "nonstaffing_or_unknown_rows": 353328,
+    "employer_model_postings": 353327,
+    "missing_or_invalid_sector": 442006,
+    "staffing_excluded": 5127,
+    "non_us_or_unknown_country": 1416688,
+    "outside_period_or_unknown_date": 133206,
+    "missing_employer_or_title": 1,
+    "employers_before_filters": 24252,
+    "employers_without_dominant_sector": 1420,
+    "employers_below_20": 22470,
+    "eligible_exactly_consistent": 85,
+    "eligible_employers_before_cap": 362,
+    "model_employers": 362
+  },
+  "role_regex": "\\b(data analyst|data analytics analyst|business intelligence analyst|bi analyst|clinical analyst|healthcare analyst|health care analyst)\\b",
+  "splits": {
+    "train": {
+      "employers": 253,
+      "positive": 120,
+      "negative": 133
+    },
+    "validation": {
+      "employers": 36,
+      "positive": 17,
+      "negative": 19
+    },
+    "test": {
+      "employers": 73,
+      "positive": 35,
+      "negative": 38
+    }
+  },
+  "features": {
+    "titles": 421,
+    "name_words": 12,
+    "matrix_columns": 244,
+    "title_thresholds": {
+      "significance_threshold": 1.0,
+      "frequency_threshold": 3.0
+    },
+    "name_thresholds": {
+      "significance_threshold": 0.8511904761904762,
+      "frequency_threshold": 2.0
+    }
+  },
+  "models": [
+    {
+      "model": "Linear SVM",
+      "validation_f1": 0.5833333333333334,
+      "trials": [
+        {
+          "params": {
+            "C": 0.1,
+            "class_weight": "balanced",
+            "dual": "auto",
+            "fit_intercept": true,
+            "intercept_scaling": 1,
+            "loss": "squared_hinge",
+            "max_iter": 20000,
+            "multi_class": "ovr",
+            "penalty": "l2",
+            "random_state": 2017,
+            "tol": 0.0001,
+            "verbose": 0
+          },
+          "validation_f1": 0.38095238095238093
+        },
+        {
+          "params": {
+            "C": 1,
+            "class_weight": "balanced",
+            "dual": "auto",
+            "fit_intercept": true,
+            "intercept_scaling": 1,
+            "loss": "squared_hinge",
+            "max_iter": 20000,
+            "multi_class": "ovr",
+            "penalty": "l2",
+            "random_state": 2017,
+            "tol": 0.0001,
+            "verbose": 0
+          },
+          "validation_f1": 0.45454545454545453
+        },
+        {
+          "params": {
+            "C": 10,
+            "class_weight": "balanced",
+            "dual": "auto",
+            "fit_intercept": true,
+            "intercept_scaling": 1,
+            "loss": "squared_hinge",
+            "max_iter": 20000,
+            "multi_class": "ovr",
+            "penalty": "l2",
+            "random_state": 2017,
+            "tol": 0.0001,
+            "verbose": 0
+          },
+          "validation_f1": 0.5833333333333334
+        }
+      ],
+      "test_report": {
+        "0": {
+          "precision": 0.6271186440677966,
+          "recall": 0.9736842105263158,
+          "f1-score": 0.7628865979381443,
+          "support": 38.0
+        },
+        "1": {
+          "precision": 0.9285714285714286,
+          "recall": 0.37142857142857144,
+          "f1-score": 0.5306122448979592,
+          "support": 35.0
+        },
+        "accuracy": 0.684931506849315,
+        "macro avg": {
+          "precision": 0.7778450363196125,
+          "recall": 0.6725563909774437,
+          "f1-score": 0.6467494214180518,
+          "support": 73.0
+        },
+        "weighted avg": {
+          "precision": 0.7716508010215928,
+          "recall": 0.684931506849315,
+          "f1-score": 0.6515221820969596,
+          "support": 73.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          37,
+          1
+        ],
+        [
+          22,
+          13
+        ]
+      ]
+    },
+    {
+      "model": "GBDT",
+      "validation_f1": 0.64,
+      "trials": [
+        {
+          "params": {
+            "ccp_alpha": 0.0,
+            "criterion": "deprecated",
+            "init": null,
+            "learning_rate": 0.1,
+            "loss": "log_loss",
+            "max_depth": 2,
+            "max_features": null,
+            "max_leaf_nodes": null,
+            "min_impurity_decrease": 0.0,
+            "min_samples_leaf": 1,
+            "min_samples_split": 2,
+            "min_weight_fraction_leaf": 0.0,
+            "n_estimators": 100,
+            "n_iter_no_change": null,
+            "random_state": 2017,
+            "subsample": 1.0,
+            "tol": 0.0001,
+            "validation_fraction": 0.1,
+            "verbose": 0,
+            "warm_start": false
+          },
+          "validation_f1": 0.64
+        },
+        {
+          "params": {
+            "ccp_alpha": 0.0,
+            "criterion": "deprecated",
+            "init": null,
+            "learning_rate": 0.1,
+            "loss": "log_loss",
+            "max_depth": 3,
+            "max_features": null,
+            "max_leaf_nodes": null,
+            "min_impurity_decrease": 0.0,
+            "min_samples_leaf": 1,
+            "min_samples_split": 2,
+            "min_weight_fraction_leaf": 0.0,
+            "n_estimators": 100,
+            "n_iter_no_change": null,
+            "random_state": 2017,
+            "subsample": 1.0,
+            "tol": 0.0001,
+            "validation_fraction": 0.1,
+            "verbose": 0,
+            "warm_start": false
+          },
+          "validation_f1": 0.64
+        }
+      ],
+      "test_report": {
+        "0": {
+          "precision": 0.6909090909090909,
+          "recall": 1.0,
+          "f1-score": 0.8172043010752689,
+          "support": 38.0
+        },
+        "1": {
+          "precision": 1.0,
+          "recall": 0.5142857142857142,
+          "f1-score": 0.6792452830188679,
+          "support": 35.0
+        },
+        "accuracy": 0.7671232876712328,
+        "macro avg": {
+          "precision": 0.8454545454545455,
+          "recall": 0.7571428571428571,
+          "f1-score": 0.7482247920470684,
+          "support": 73.0
+        },
+        "weighted avg": {
+          "precision": 0.8391033623910336,
+          "recall": 0.7671232876712328,
+          "f1-score": 0.751059566390693,
+          "support": 73.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          38,
+          0
+        ],
+        [
+          17,
+          18
+        ]
+      ]
+    },
+    {
+      "model": "Majority negative",
+      "test_report": {
+        "0": {
+          "precision": 0.5205479452054794,
+          "recall": 1.0,
+          "f1-score": 0.6846846846846847,
+          "support": 38.0
+        },
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 35.0
+        },
+        "accuracy": 0.5205479452054794,
+        "macro avg": {
+          "precision": 0.2602739726027397,
+          "recall": 0.5,
+          "f1-score": 0.34234234234234234,
+          "support": 73.0
+        },
+        "weighted avg": {
+          "precision": 0.27097016325764683,
+          "recall": 0.5205479452054794,
+          "f1-score": 0.3564112057262742,
+          "support": 73.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          38,
+          0
+        ],
+        [
+          35,
+          0
+        ]
+      ]
+    },
+    {
+      "model": "All positive",
+      "test_report": {
+        "0": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 38.0
+        },
+        "1": {
+          "precision": 0.4794520547945205,
+          "recall": 1.0,
+          "f1-score": 0.6481481481481481,
+          "support": 35.0
+        },
+        "accuracy": 0.4794520547945205,
+        "macro avg": {
+          "precision": 0.23972602739726026,
+          "recall": 0.5,
+          "f1-score": 0.32407407407407407,
+          "support": 73.0
+        },
+        "weighted avg": {
+          "precision": 0.22987427284668793,
+          "recall": 0.4794520547945205,
+          "f1-score": 0.3107559614408929,
+          "support": 73.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          38
+        ],
+        [
+          0,
+          35
+        ]
+      ]
+    }
+  ],
+  "career": {
+    "postings": 112,
+    "date_min": "2026-01-15 00:00:00+00:00",
+    "date_max": "2026-09-28 00:00:00+00:00",
+    "unknown_dates": 0,
+    "salary_usd_observed": 3,
+    "salary_usd_median": 143600.0,
+    "salary_usd_q25": 143050.0,
+    "salary_usd_q75": 143600.0,
+    "salary_statuses": {
+      "no_extracted_salary": 85,
+      "unknown_period": 14,
+      "annual_unchanged": 10,
+      "hourly_x2080": 2,
+      "unsupported_period": 1
+    },
+    "experience_observed": 63,
+    "experience_median": 0.0,
+    "entry_0_to_2_years": 44,
+    "skills_observed": 105,
+    "malformed_skill_rows": 0,
+    "counts": {
+      "roles": {
+        "Data Scientists": 9,
+        "Senior Data Analyst": 8,
+        "Management Analysts": 7,
+        "Data Analyst": 5,
+        "Actors": 3,
+        "Human Resources Data Analyst": 3,
+        "Women's Health Data Analyst - Healthy Start": 3,
+        "Research Data Analyst / Data & Analytics": 3,
+        "Lead Data Analyst": 3,
+        "Database Architects": 3,
+        "Senior Data Analyst, Customer Growth": 2,
+        "Business Intelligence Analysts": 2,
+        "Data Analyst, Mid": 2,
+        "Sr Clinical Data Analyst": 2,
+        "Enterprise Marketing Data Analyst \u2013 Cross-Functional Insights & Visualization": 2,
+        "Business Intelligence Analyst": 2,
+        "Contractor ,": 2,
+        "Senior Quantitative Data Analyst": 2,
+        "CTMS Data Analyst 1": 1,
+        "Business Data Analyst": 1,
+        "Senior Data Analyst - Fraud Strategy & Operations": 1,
+        "Clinical Data Analyst - Dosimetrist": 1,
+        "6386 - Technical Specialist / Data Analyst": 1,
+        "Epic Clinical Analyst I": 1,
+        "Statisticians": 1,
+        "ICQA Data Analyst": 1,
+        "Operations Data Analyst II": 1,
+        "Sr Quality Engineer - Post Market Data Analyst": 1,
+        "Risk Adjustment Healthcare Analyst": 1,
+        "Data Analyst 4": 1,
+        "Data Analyst, Clinical Operations": 1,
+        "Epic Clinical Analyst, Beacon": 1,
+        "Data Analyst, Data & Analytics": 1,
+        "RN Clinical Data Analyst": 1,
+        "Physician Assistants": 1,
+        "Data Analyst 3- Enterprise Info Management": 1,
+        "Senior Data Analyst - Customer Analytics": 1,
+        "Epic Clinical Analyst Senior - Ambulatory": 1,
+        "Principal Data Analyst": 1,
+        "Data Analyst I": 1,
+        "Healthcare Analyst II": 1,
+        "Sr. MassHealth Encounter Data Analyst": 1,
+        "Epic Clinical Analyst III": 1,
+        "Clinical Data Analyst": 1,
+        "Operations Data Analyst": 1,
+        "Senior Data Analyst, Customer Success": 1,
+        "Sr. Business Intelligence Analyst": 1,
+        "BizBuySell - Lead Data Analyst": 1,
+        "Sr Healthcare Data Analyst": 1,
+        "Pharmacy/Supplies Senior Data Analyst": 1,
+        "Data Analyst - Bone Marrow National Registry": 1,
+        "Senior Data Analyst, Data Transfer Agreement, Gap Analysis, Data SQL Skills": 1,
+        "Clinical Analyst": 1,
+        "Senior Health Data Analyst": 1,
+        "Data Analyst - Manhattan, Central Billing Office": 1,
+        "Business Data Analyst I": 1,
+        "Clinical Trauma Data Analyst": 1,
+        "Data Analyst - SQL, Excel, Tableau/Power BI, with Salesforce": 1,
+        "Population Health Data Analyst": 1,
+        "Data Analyst BI Architecture, Client Facing Experience Must": 1,
+        "Senior Data Analyst, Data Transfer Agreement": 1,
+        "Healthcare Data Analyst - Value Based Care": 1,
+        "Data Analyst-Institute for Advanced Medicine-Aids Center Peter Krueger Clinic-Mount Sinai Health System--Days": 1,
+        "Senior Data Analyst, Strategic Operations": 1,
+        "Senior Utilization Management Data Analyst": 1,
+        "Physical Therapists": 1,
+        "CMA - Outpatient Cardiology": 1
+      },
+      "states": {
+        "Unknown or non-state": 42,
+        "Virginia": 9,
+        "New York": 8,
+        "California": 8,
+        "Massachusetts": 7,
+        "Florida": 6,
+        "Georgia": 6,
+        "New Jersey": 4,
+        "Oklahoma": 3,
+        "Illinois": 3,
+        "Pennsylvania": 3,
+        "Texas": 2,
+        "Indiana": 2,
+        "District of Columbia": 2,
+        "North Carolina": 2,
+        "Minnesota": 2,
+        "Washington": 1,
+        "Arizona": 1,
+        "Ohio": 1
+      },
+      "remote": {
+        "Unknown": 58,
+        "Remote": 24,
+        "Hybrid": 20,
+        "Onsite": 10
+      }
+    }
+  },
+  "employer_overlap": 0
+}

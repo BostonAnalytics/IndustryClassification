@@ -1,0 +1,5 @@
+industry,system,utility_precision,utility_recall,utility_f_score,source
+Transportation,SVM,0.14,0.78,0.23,Paper Table V
+Transportation,GBDT,0.17,0.89,0.28,Paper Table V
+Health Care,SVM,0.24,0.57,0.34,Paper Table V
+Health Care,GBDT,0.29,0.86,0.44,Paper Table V

@@ -1,0 +1,842 @@
+[
+  {
+    "objectID": "study.html",
+    "href": "study.html",
+    "title": "Jobs_2026 healthcare study",
+    "section": "",
+    "text": "The user selected healthcare data analysts in NAICS 62 and explicitly authorized local computation instead of the course’s assigned EC2 environment. Results below were generated from the local Jobs_2026 snapshot on October 3, 2026.\nThe pipeline read 2,350,355 rows in 97 posting partitions and selected January–September 2026 observations. All input files have recorded SHA-256 hashes. No posting ID appeared twice in this input snapshot.\nUnknown country and unknown sector are exclusions, not negative industry labels. Staffing status that is missing is retained. The geographic and sector filters remove much of the source data, so the retained sample is not representative of all Jobs_2026 records or all US hiring.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Jobs_2026 healthcare study"
+    ]
+  },
+  {
+    "objectID": "study.html#employer-sample-and-split",
+    "href": "study.html#employer-sample-and-split",
+    "title": "Jobs_2026 healthcare study",
+    "section": "Employer sample and split",
+    "text": "Employer sample and split\nThere are 24,252 employer-name groups before employer-level filters. Of these, 22,470 have fewer than 20 eligible postings. A further 1,420 lack a sector covering at least 80% of their postings. The model therefore uses 362 employers, below the paper’s 10,000-employer target; 85 have exactly consistent sector labels.\n\n\n\nPartition\nEmployers\nNAICS 62\nOther\n\n\n\n\ntrain\n253\n120\n133\n\n\nvalidation\n36\n17\n19\n\n\ntest\n73\n35\n38\n\n\n\nThe split uses seed 2017 and stratification, with zero shared employer-name keys across partitions. It is 70/10/20 up to integer rounding. Exact company-name case and whitespace normalization is used; aliases and subsidiaries may still appear as separate entities. This is weaker than the paper’s proprietary entity normalization.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Jobs_2026 healthcare study"
+    ]
+  },
+  {
+    "objectID": "study.html#model-results-on-the-held-out-employers",
+    "href": "study.html#model-results-on-the-held-out-employers",
+    "title": "Jobs_2026 healthcare study",
+    "section": "Model results on the held-out employers",
+    "text": "Model results on the held-out employers\n\n\n\nModel\nPrecision for NAICS 62\nRecall\nF1\nAccuracy\n\n\n\n\nLinear SVM\n0.929\n0.371\n0.531\n0.685\n\n\nGBDT\n1.000\n0.514\n0.679\n0.767\n\n\nMajority negative\n0.000\n0.000\n0.000\n0.521\n\n\nAll positive\n0.479\n1.000\n0.648\n0.479\n\n\n\n\n\n\nConfusion matrices on held-out employers. Rows are dataset-derived labels and columns are model predictions.\n\n\nThese metrics measure agreement with dataset-derived sector labels, not independently verified employer truth. The GBDT misses 17 of the 35 healthcare employers while predicting no false positives among 38 other employers in this holdout. That small sample cannot establish perfect precision in deployment. The all-positive baseline has F1 0.648, close to GBDT’s 0.679; ranking models on F1 alone would conceal their very different precision and recall.\nFor a career product, predicted healthcare labels could narrow an employer-review queue, but the missed healthcare employers would make automatic exclusion costly. Retain existing labels and review disagreements before changing the career sample. No manually adjudicated undefined-employer labels are available, so the paper’s utility scores cannot be reproduced here.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Jobs_2026 healthcare study"
+    ]
+  },
+  {
+    "objectID": "study.html#training-and-feature-details",
+    "href": "study.html#training-and-feature-details",
+    "title": "Jobs_2026 healthcare study",
+    "section": "Training and feature details",
+    "text": "Training and feature details\nVocabulary thresholds are learned from the training employers only. The selected vocabulary contains 421 title candidates and 12 name words. After the 1% within-employer filter, the fitted matrix has 244 observed columns; candidates absent from all training feature vectors are dropped.\nThe linear SVM tests C = 0.1, 1 and 10 with balanced class penalties. GBDT tests depths 2 and 3 with 100 estimators and learning rate 0.1. Each model is chosen by validation F1, then evaluated on the test partition without refitting. Exact configurations, validation scores, versions and full classification reports are in run.json.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Jobs_2026 healthcare study"
+    ]
+  },
+  {
+    "objectID": "study.html#differences-from-the-paper",
+    "href": "study.html#differences-from-the-paper",
+    "title": "Jobs_2026 healthcare study",
+    "section": "Differences from the paper",
+    "text": "Differences from the paper\nThis is an exploratory adaptation: a 2026 dataset, one industry, US-only observations, scikit-learn LinearSVC and GBDT, validation-based tuning instead of the paper’s reported cross-validation, and normalized employer-name unigrams without all raw name variants. Name-word frequency counts employers containing the word. The 80% dominant-sector rule is an explicit adaptation for inconsistent posting-level labels. A preliminary unrestricted-year, exact-consistency run exposed data-quality problems; its results are superseded. The final study is not a preregistered confirmatory replication.\nIndustry fields may themselves derive from title or employer heuristics. Their provenance has not been independently audited. Label circularity, unresolved aliases, cohort selection and noisy titles limit the meaning of predictive agreement. A temporal holdout and independent label review remain future validation work.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Jobs_2026 healthcare study"
+    ]
+  },
+  {
+    "objectID": "results.html",
+    "href": "results.html",
+    "title": "Published results",
+    "section": "",
+    "text": "Every number below is a published result from the supplied paper, not a metric obtained by running this website. Precision, recall and F-score are reported on a 0–1 scale. Download the classification table and utility table.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Published results"
+    ]
+  },
+  {
+    "objectID": "results.html#classification-of-defined-employers",
+    "href": "results.html#classification-of-defined-employers",
+    "title": "Published results",
+    "section": "Classification of defined employers",
+    "text": "Classification of defined employers\n\n\n\nIndustry\nSystem\nPrecision\nRecall\nF-score\n\n\n\n\nTransportation\nRandom guessing\n0.05\n0.50\n0.09\n\n\nTransportation\nAll positives\n0.05\n1.00\n0.10\n\n\nTransportation\nLegacy system\n0.94\n0.92\n0.93\n\n\nTransportation\nSVM\n0.97\n0.70\n0.81\n\n\nTransportation\nGBDT\n1.00\n0.65\n0.79\n\n\nHealth Care\nRandom guessing\n0.14\n0.50\n0.22\n\n\nHealth Care\nAll positives\n0.14\n1.00\n0.25\n\n\nHealth Care\nLegacy system\n0.96\n0.82\n0.89\n\n\nHealth Care\nSVM\n0.97\n0.71\n0.82\n\n\nHealth Care\nGBDT\n0.98\n0.76\n0.86\n\n\n\nSource: Table IV. The legacy system has the highest F-score in both industries. SVM and GBDT favor precision at the cost of recall. A GBDT precision of 1.00 in the Transportation test evaluation is not evidence of perfect performance on future data.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Published results"
+    ]
+  },
+  {
+    "objectID": "results.html#detection-of-undefined-employers",
+    "href": "results.html#detection-of-undefined-employers",
+    "title": "Published results",
+    "section": "Detection of undefined employers",
+    "text": "Detection of undefined employers\nLet \\(D\\) be the pooled disagreement set, \\(U\\) the undefined employers manually found in that set, and \\(M\\) a model’s disagreement subset. Utility precision is \\(|M\\cap U|/|M|\\); utility recall is \\(|M\\cap U|/|U|\\). Utility F-score is their harmonic mean. These measures concern error discovery within the reviewed disagreement pool, not industry classification across the full population.\n\n\n\n\n\n\n\n\n\n\nIndustry\nSystem\nUtility precision\nUtility recall\nUtility F-score\n\n\n\n\nTransportation\nSVM\n0.14\n0.78\n0.23\n\n\nTransportation\nGBDT\n0.17\n0.89\n0.28\n\n\nHealth Care\nSVM\n0.24\n0.57\n0.34\n\n\nHealth Care\nGBDT\n0.29\n0.86\n0.44\n\n\n\nSource: Table V. GBDT improves utility F-score from 0.23 to 0.28 for Transportation and from 0.34 to 0.44 for Health Care. Low utility precision means many flags still require review without revealing an undefined employer. Utility recall cannot be interpreted as recall of all errors in the knowledge base.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Published results"
+    ]
+  },
+  {
+    "objectID": "results.html#feature-ablation",
+    "href": "results.html#feature-ablation",
+    "title": "Published results",
+    "section": "Feature ablation",
+    "text": "Feature ablation\n\n\n\nTransportation features\nModel\nPrecision\nRecall\nF-score\n\n\n\n\nName keywords\nSVM\n0.95\n0.66\n0.78\n\n\nName keywords\nGBDT\n1.00\n0.58\n0.73\n\n\nTitles\nSVM\n0.97\n0.70\n0.81\n\n\nTitles\nGBDT\n0.97\n0.67\n0.79\n\n\nTitles and keywords\nSVM\n0.97\n0.70\n0.81\n\n\nTitles and keywords\nGBDT\n1.00\n0.65\n0.79\n\n\n\nSource: Table VI. Titles outperform name keywords alone on F-score. Adding names to titles leaves F-score unchanged at the reported precision. This table covers Transportation only.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Published results"
+    ]
+  },
+  {
+    "objectID": "results.html#errors-discovered",
+    "href": "results.html#errors-discovered",
+    "title": "Published results",
+    "section": "Errors discovered",
+    "text": "Errors discovered\n\n\n\nError type\nTransportation\nHealth Care\n\n\n\n\nIncorrect name extraction\n7 (31.82%)\n18 (15.38%)\n\n\nIncorrect name normalization\n2 (9.09%)\n40 (34.19%)\n\n\nIncorrect knowledge-base attribute\n13 (59.09%)\n59 (50.43%)\n\n\n\nSource: Table VII. Totals are 22 and 117 detected errors. Attribute errors concern a valid entity with the wrong industry; they are different from the undefined-entity errors targeted by utility metrics. These totals must not be used as the undefined-employer denominators.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Published results"
+    ]
+  },
+  {
+    "objectID": "results.html#what-these-results-do-not-provide",
+    "href": "results.html#what-these-results-do-not-provide",
+    "title": "Published results",
+    "section": "What these results do not provide",
+    "text": "What these results do not provide\nThe paper does not publish per-employer predictions or a complete confusion matrix. Rounded aggregate scores cannot determine a unique confusion matrix. This site therefore does not synthesize one. Confidence intervals, statistical significance tests and performance on Jobs_2026 are also unavailable.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Published results"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References and provenance",
+    "section": "",
+    "text": "Goindani, Mahak, Qiaoling Liu, Josh Chao, and Valentin Jijkoun. 2017. Employer Industry Classification using Job Postings. User-supplied manuscript, icdm_2017_industryclassification.pdf. The supplied filename identifies ICDM 2017; proceedings metadata and DOI have not been independently established here.\n\n\n\n\n\n\n\nSite content\nSource locator\n\n\n\n\nResearch motivation and entity-normalization problem\nAbstract and Section I\n\n\nCollection period and class distribution\nSection II, Tables I–II\n\n\nTitle and name features\nSection III-A, equations 1–6, Table III\n\n\nModel libraries and cost sensitivity\nSection III-B\n\n\nDisagreement review and agreement audit\nSection IV-A\n\n\nUtility definitions\nSection IV-B, equations 7–9\n\n\nClassification and utility results\nTables IV–V\n\n\nFeature ablation and detected errors\nTables VI–VII\n\n\nLimitations and future work\nSections V–VII",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "References and provenance"
+    ]
+  },
+  {
+    "objectID": "references.html#primary-research",
+    "href": "references.html#primary-research",
+    "title": "References and provenance",
+    "section": "",
+    "text": "Goindani, Mahak, Qiaoling Liu, Josh Chao, and Valentin Jijkoun. 2017. Employer Industry Classification using Job Postings. User-supplied manuscript, icdm_2017_industryclassification.pdf. The supplied filename identifies ICDM 2017; proceedings metadata and DOI have not been independently established here.\n\n\n\n\n\n\n\nSite content\nSource locator\n\n\n\n\nResearch motivation and entity-normalization problem\nAbstract and Section I\n\n\nCollection period and class distribution\nSection II, Tables I–II\n\n\nTitle and name features\nSection III-A, equations 1–6, Table III\n\n\nModel libraries and cost sensitivity\nSection III-B\n\n\nDisagreement review and agreement audit\nSection IV-A\n\n\nUtility definitions\nSection IV-B, equations 7–9\n\n\nClassification and utility results\nTables IV–V\n\n\nFeature ablation and detected errors\nTables VI–VII\n\n\nLimitations and future work\nSections V–VII",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "References and provenance"
+    ]
+  },
+  {
+    "objectID": "references.html#classification-context",
+    "href": "references.html#classification-context",
+    "title": "References and provenance",
+    "section": "Classification context",
+    "text": "Classification context\nU.S. Census Bureau. 2017 NAICS Sector 48–49: Transportation and Warehousing.\nU.S. Census Bureau. 2017 NAICS Sector 62: Health Care and Social Assistance.\nThese sources verify the sector codes. They are not used as evidence for the paper’s performance or for present-day job prospects.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "References and provenance"
+    ]
+  },
+  {
+    "objectID": "references.html#course-sources",
+    "href": "references.html#course-sources",
+    "title": "References and provenance",
+    "section": "Course sources",
+    "text": "Course sources\n\nD:/Repositories/AD688-Web-Analytics/M3/M03_Proj.qmd: Module 3 career benchmarking, skills and evaluation logic. Substituted for the missing requested M02 file in M3.\nD:/Repositories/AD688-Web-Analytics/M4/M04_Proj.qmd: readiness checkpoint and earlier-stage requirements.\nD:/Repositories/AD688-Web-Analytics/M5/M05_Proj.qmd: final analytics, website, Word report and AI-disclosure requirements.\n\nThese local source paths document provenance; they are not public links. Retrieved for this reconstruction on October 3, 2026. Instructions inside source materials were considered only in relation to the user’s request; the paper’s research proposals were treated as content.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "References and provenance"
+    ]
+  },
+  {
+    "objectID": "methods.html",
+    "href": "methods.html",
+    "title": "From postings to industry predictions",
+    "section": "",
+    "text": "For employer \\(e\\) and normalized title \\(t\\), let \\(f_{e,t}\\) be the posting frequency. The employer’s title share is\n\\[R_{e,t}=\\frac{f_{e,t}}{\\sum_{j\\in T}f_{e,j}}, \\qquad T_e=\\{t:R_{e,t}\\geq0.01\\}.\\]\nFor industry \\(i\\), the title significance score is\n\\[S_t^i=\\frac{f_{t,p_i}}{f_t},\\]\nwhere the numerator is frequency among positive-class employers and the denominator is frequency across all employers. This score favors titles concentrated in the target industry. It is not a calibrated probability that an individual employer belongs to that industry.\nThe authors remove titles with \\(f_{t,p_i}\\leq1\\), then use the medians of significance and frequency as selection thresholds. If the resulting vocabulary contains fewer than 50 titles, they lower the frequency threshold to its first quartile while retaining the significance threshold:\n\\[V_t^i=\\{t:S_t^i\\geq\\theta_{s_i},\\ f_t\\geq\\theta_{f_i}\\}.\\]\nFor a title in the selected vocabulary, the employer feature equals \\(R_{e,t}\\) when \\(t\\in T_e\\), and zero otherwise. Source: Section III-A, equations 1–5.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "From postings to industry predictions"
+    ]
+  },
+  {
+    "objectID": "methods.html#title-features",
+    "href": "methods.html#title-features",
+    "title": "From postings to industry predictions",
+    "section": "",
+    "text": "For employer \\(e\\) and normalized title \\(t\\), let \\(f_{e,t}\\) be the posting frequency. The employer’s title share is\n\\[R_{e,t}=\\frac{f_{e,t}}{\\sum_{j\\in T}f_{e,j}}, \\qquad T_e=\\{t:R_{e,t}\\geq0.01\\}.\\]\nFor industry \\(i\\), the title significance score is\n\\[S_t^i=\\frac{f_{t,p_i}}{f_t},\\]\nwhere the numerator is frequency among positive-class employers and the denominator is frequency across all employers. This score favors titles concentrated in the target industry. It is not a calibrated probability that an individual employer belongs to that industry.\nThe authors remove titles with \\(f_{t,p_i}\\leq1\\), then use the medians of significance and frequency as selection thresholds. If the resulting vocabulary contains fewer than 50 titles, they lower the frequency threshold to its first quartile while retaining the significance threshold:\n\\[V_t^i=\\{t:S_t^i\\geq\\theta_{s_i},\\ f_t\\geq\\theta_{f_i}\\}.\\]\nFor a title in the selected vocabulary, the employer feature equals \\(R_{e,t}\\) when \\(t\\in T_e\\), and zero otherwise. Source: Section III-A, equations 1–5.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "From postings to industry predictions"
+    ]
+  },
+  {
+    "objectID": "methods.html#employer-name-features",
+    "href": "methods.html#employer-name-features",
+    "title": "From postings to industry predictions",
+    "section": "Employer-name features",
+    "text": "Employer-name features\nThe name representation includes unigrams from both raw employer mentions and the normalized name. Industry-specific significance and frequency thresholds select these keywords in a similar way. Each selected keyword produces a binary presence feature, and this vector is concatenated with the title-share vector.\n\n\n\n\n\n\n\n\n\nIndustry\nTitle vocabulary\nName vocabulary\nExamples\n\n\n\n\nTransportation\n140\n45\nTruck Driver; Deck Officer; trucking; freight\n\n\nHealth Care\n383\n50\nDialysis Technician; Triage Nurse; hospice; clinic\n\n\n\nSource: Table III and equation 6. The combined dimensions are 185 and 433, calculated from the published vocabulary sizes.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "From postings to industry predictions"
+    ]
+  },
+  {
+    "objectID": "methods.html#models-and-imbalance",
+    "href": "methods.html#models-and-imbalance",
+    "title": "From postings to industry predictions",
+    "section": "Models and imbalance",
+    "text": "Models and imbalance\nThe paper uses LibSVM for SVM and Spark MLlib for GBDT. It reports cross-validation for hyperparameter selection but does not provide a complete search grid, random seed or final configuration. It describes cost-sensitive SVM training, with the positive-to-negative penalty ratio set according to the inverse class-size ratio:\n\\[\\frac{C_{pos}}{C_{neg}}=\\frac{N_{neg}}{N_{pos}}.\\]\nAn exact kernel, tree depth or number of boosting iterations cannot be recovered from the supplied text. A modern implementation should document these choices as adaptations.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "From postings to industry predictions"
+    ]
+  },
+  {
+    "objectID": "methods.html#why-disagreement-matters",
+    "href": "methods.html#why-disagreement-matters",
+    "title": "From postings to industry predictions",
+    "section": "Why disagreement matters",
+    "text": "Why disagreement matters\nThe authors collect employers for which model predictions disagree with legacy labels and review those records manually. Correctly identified entities are marked defined and assigned an industry label. Incorrectly computed entities are marked undefined. This distinction separates an industry-label error from a failure to identify the employer itself.\nDisagreement review reduces the workload from 1,989 to 58 records for Transportation and from 1,991 to 217 for Health Care. A random audit of 100 agreement cases found 97 consistent with the assumed label. This audit supports selective review but also demonstrates that agreement is not a guarantee of correctness.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "From postings to industry predictions"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Employer industry classification using job postings",
+    "section": "",
+    "text": "Research reconstruction / Career analytics\n\n\n\nGoindani, Liu, Chao and Jijkoun use job titles and employer names to check industry labels in a large employer knowledge base. Their models help identify records that deserve human review.\nExplore the method · Read the findings",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Employer industry classification using job postings"
+    ]
+  },
+  {
+    "objectID": "index.html#what-can-a-companys-job-postings-tell-us-about-its-industry",
+    "href": "index.html#what-can-a-companys-job-postings-tell-us-about-its-industry",
+    "title": "Employer industry classification using job postings",
+    "section": "",
+    "text": "Goindani, Liu, Chao and Jijkoun use job titles and employer names to check industry labels in a large employer knowledge base. Their models help identify records that deserve human review.\nExplore the method · Read the findings",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Employer industry classification using job postings"
+    ]
+  },
+  {
+    "objectID": "index.html#research-question",
+    "href": "index.html#research-question",
+    "title": "Employer industry classification using job postings",
+    "section": "Research question",
+    "text": "Research question\nCan the titles an employer hires for, together with words in its name, identify mistakes in its recorded industry? The study compares Support Vector Machines (SVM) and Gradient Boosted Decision Trees (GBDT). It distinguishes classification of valid employer entities from detection of incorrectly extracted or normalized employers.\nThe strongest practical result concerns error detection: GBDT has higher utility precision, recall and F-score than SVM for both industries. The existing knowledge-base system retains higher classification F-scores on defined employers. These are different evaluation tasks and should inform different deployment decisions.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Employer industry classification using job postings"
+    ]
+  },
+  {
+    "objectID": "index.html#scope-and-intended-reader",
+    "href": "index.html#scope-and-intended-reader",
+    "title": "Employer industry classification using job postings",
+    "section": "Scope and intended reader",
+    "text": "Scope and intended reader\nThis site is for students and analysts studying the reliability of job-market data. It reconstructs the supplied paper’s argument, equations and reported results, then adapts its approach to Jobs_2026. It does not rerun the original proprietary experiments. The authors of the underlying research are Mahak Goindani, Qiaoling Liu, Josh Chao and Valentin Jijkoun; the web reconstruction is AI-assisted and documented separately.\nThe paper studies Transportation and Warehousing and Health Care and Social Assistance. Their 2017 NAICS sectors are 48–49 and 62, respectively. The paper uses employer-level labels; the scope and unit of a course dataset must be checked before mapping its codes to these sectors.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Employer industry classification using job postings"
+    ]
+  },
+  {
+    "objectID": "index.html#how-this-relates-to-the-course",
+    "href": "index.html#how-this-relates-to-the-course",
+    "title": "Employer industry classification using job postings",
+    "section": "How this relates to the course",
+    "text": "How this relates to the course\nThe Module 3–5 guides ask for a career evaluation product, including market benchmarks, a skill-gap analysis, recommendations and a Word report. Those requirements extend beyond the paper. The course alignment page identifies what this reconstruction supplies and what still requires student profiles or submission records.\nEvidence status: Published results reports the original paper. Jobs_2026 healthcare study reports newly executed local analysis. The selected pathway is healthcare data analysts in NAICS 62. The study scans 2,350,355 source rows, evaluates industry classification on 362 eligible employers, and derives career benchmarks from 112 postings. Personal assessments and the weighted opportunity scorecard remain uncomputed. Local execution was explicitly requested by the user; it does not satisfy the guides’ EC2 requirement.\nSource: supplied paper, abstract and Sections I–II; full citation in References.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Employer industry classification using job postings"
+    ]
+  },
+  {
+    "objectID": "discussion.html",
+    "href": "discussion.html",
+    "title": "Interpretation and limitations",
+    "section": "",
+    "text": "The study offers a way to prioritize records for inspection. A hiring profile can reveal that a name was parsed incorrectly, linked to the wrong company, or assigned the wrong knowledge-base attribute. The evidence supports a review workflow; it does not establish that automatically replacing legacy labels would improve overall classification.\nThe paper’s explanation for GBDT’s higher utility is that trees can capture relationships among related titles. This is a proposed explanation, not a controlled causal finding about why one model outperformed the other.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Interpretation and limitations"
+    ]
+  },
+  {
+    "objectID": "discussion.html#a-review-aid-for-employer-data",
+    "href": "discussion.html#a-review-aid-for-employer-data",
+    "title": "Interpretation and limitations",
+    "section": "",
+    "text": "The study offers a way to prioritize records for inspection. A hiring profile can reveal that a name was parsed incorrectly, linked to the wrong company, or assigned the wrong knowledge-base attribute. The evidence supports a review workflow; it does not establish that automatically replacing legacy labels would improve overall classification.\nThe paper’s explanation for GBDT’s higher utility is that trees can capture relationships among related titles. This is a proposed explanation, not a controlled causal finding about why one model outperformed the other.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Interpretation and limitations"
+    ]
+  },
+  {
+    "objectID": "discussion.html#when-the-main-assumption-fails",
+    "href": "discussion.html#when-the-main-assumption-fails",
+    "title": "Interpretation and limitations",
+    "section": "When the main assumption fails",
+    "text": "When the main assumption fails\nThe approach assumes that frequent job titles reveal the employer’s principal industry. An employer hiring mostly support roles can violate that assumption. In the paper’s CGB Enterprises example, frequent non-core roles and an uninformative employer name lead the model away from the correct Transportation label.\nStaffing agencies are another challenge: their vacancies may describe client industries. The authors report low precision and recall in an additional staffing experiment but do not provide numerical scores. Multi-industry companies also strain the single-main-industry assumption.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Interpretation and limitations"
+    ]
+  },
+  {
+    "objectID": "discussion.html#limits-of-evaluation",
+    "href": "discussion.html#limits-of-evaluation",
+    "title": "Interpretation and limitations",
+    "section": "Limits of evaluation",
+    "text": "Limits of evaluation\nThe training labels are noisy. Most agreement cases inherit a presumed-correct label rather than an independent adjudication. The 97-of-100 audit does not eliminate possible correlated errors shared by the model and legacy system. Results based on high-volume employers in one three-month period may differ for smaller employers, later periods or other sectors.\nThe unavailable original data, model settings and normalization resources limit exact replication. The inconsistent published sample counts add a further reconciliation requirement.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Interpretation and limitations"
+    ]
+  },
+  {
+    "objectID": "discussion.html#related-work-in-the-paper",
+    "href": "discussion.html#related-work-in-the-paper",
+    "title": "Interpretation and limitations",
+    "section": "Related work in the paper",
+    "text": "Related work in the paper\nCompanyDepot provides the employer-normalization context (Liu, Javed and McNair, 2016; Liu and colleagues, 2017). Carotene supplies the job-title-classification context (Javed and colleagues, 2015). Bernstein, Clearwater and Provost (2003) study industry classification through relational signals such as company co-occurrence. The present paper instead uses recruiting activity. These descriptions follow Section VI and the bibliography of the supplied paper; the underlying related-work publications have not been independently reviewed for this reconstruction.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Interpretation and limitations"
+    ]
+  },
+  {
+    "objectID": "discussion.html#extensions-proposed-by-the-authors",
+    "href": "discussion.html#extensions-proposed-by-the-authors",
+    "title": "Interpretation and limitations",
+    "section": "Extensions proposed by the authors",
+    "text": "Extensions proposed by the authors\nThe paper suggests employer descriptions, job-description features, title entropy for staffing, and multiclass or multilabel prediction. These are future directions, not results established by the published experiments.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Interpretation and limitations"
+    ]
+  },
+  {
+    "objectID": "course.html",
+    "href": "course.html",
+    "title": "Course requirements and completion status",
+    "section": "",
+    "text": "The supplied Module 4 and Module 5 files were read directly. The requested M3/M02_Proj.qmd does not exist at that path; M3/M03_Proj.qmd was found and used as the likely intended Module 3 guide. This substitution needs confirmation if a different assignment was intended.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "Course requirements and completion status"
+    ]
+  },
+  {
+    "objectID": "course.html#guides-used",
+    "href": "course.html#guides-used",
+    "title": "Course requirements and completion status",
+    "section": "",
+    "text": "The supplied Module 4 and Module 5 files were read directly. The requested M3/M02_Proj.qmd does not exist at that path; M3/M03_Proj.qmd was found and used as the likely intended Module 3 guide. This substitution needs confirmation if a different assignment was intended.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "Course requirements and completion status"
+    ]
+  },
+  {
+    "objectID": "course.html#requirement-mapping",
+    "href": "course.html#requirement-mapping",
+    "title": "Course requirements and completion status",
+    "section": "Requirement mapping",
+    "text": "Requirement mapping\n\n\n\n\n\n\n\n\nRequirement\nWebsite location\nStatus\n\n\n\n\nIntroduction, scope and rationale\nOverview\nHealthcare data analysts in NAICS 62 selected\n\n\nLiterature and citations\nDiscussion, References\nPaper-grounded context; no independent literature review\n\n\nData preparation and filtering\nData and preparation\nOriginal method documented; full 97-part study with saved filtering ledger\n\n\nMarket baseline and visuals\nMarket baseline\nObserved demand, location, remote and experience; sparse salary coverage disclosed\n\n\nTeam skill-gap matrix and visual\nSkill-gap analysis\nMarket skills measured; personal profiles unavailable\n\n\nCareer benchmark and scorecard\nCareer evaluation logic\nBenchmark computed; proposed weighted ranking uncomputed\n\n\nFinal analytics and interpretation\nPublished results\nOriginal results plus SVM/GBDT evaluation and confusion matrices\n\n\nFinal recommendations\nRecommendations\nObserved skill priorities and qualified career guidance\n\n\nFinal Word report\nfinal_report.qmd\nPaper and new-study report; verification status in GATES.md\n\n\nGitHub Pages website\nReproducibility\nLocal static build; public deployment outstanding\n\n\nTeam contributions\nThis page\nHuman team roster and contribution record not supplied\n\n\nAI disclosure\nAI disclosure\nSession prompt, used output and validation record\n\n\nWeekly standups\nCourse process\nNo meetings or participation records supplied\n\n\nAssigned EC2 environment\nReproducibility\nUser explicitly chose local execution; course deviation disclosed",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "Course requirements and completion status"
+    ]
+  },
+  {
+    "objectID": "course.html#module-4-readiness",
+    "href": "course.html#module-4-readiness",
+    "title": "Course requirements and completion status",
+    "section": "Module 4 readiness",
+    "text": "Module 4 readiness\nModule 4 asks teams to check the earlier framing, baseline and skill-gap work before widening scope. An observed market baseline is now available. Personal profiles and submission records remain open; a successful build does not satisfy those requirements.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "Course requirements and completion status"
+    ]
+  },
+  {
+    "objectID": "course.html#contributions-and-standups",
+    "href": "course.html#contributions-and-standups",
+    "title": "Course requirements and completion status",
+    "section": "Contributions and standups",
+    "text": "Contributions and standups\nThe Word export is generated but visually unverified because the layout renderer requires an unavailable LibreOffice installation. The website passes static build and link checks; browser screenshot review was blocked by the browser’s local-file URL policy. No local server was started.\nCodex assisted with paper extraction, source-grounded prose, table transcription, Quarto construction and build checks. No human team contributions, names, weekly meetings or participation claims have been invented. Record actual contributors and dates when the team undertakes the empirical extension.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "Course requirements and completion status"
+    ]
+  },
+  {
+    "objectID": "ai-disclosure.html",
+    "href": "ai-disclosure.html",
+    "title": "AI assistance disclosure",
+    "section": "",
+    "text": "OpenAI Codex, October 3, 2026. Assistance covered PDF text extraction, course-requirement comparison, Quarto authoring, paper-result transcription and build verification. Assistance also covered Python implementation, local model execution and charts.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "AI assistance disclosure"
+    ]
+  },
+  {
+    "objectID": "ai-disclosure.html#tool-and-date",
+    "href": "ai-disclosure.html#tool-and-date",
+    "title": "AI assistance disclosure",
+    "section": "",
+    "text": "OpenAI Codex, October 3, 2026. Assistance covered PDF text extraction, course-requirement comparison, Quarto authoring, paper-result transcription and build verification. Assistance also covered Python implementation, local model execution and charts.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "AI assistance disclosure"
+    ]
+  },
+  {
+    "objectID": "ai-disclosure.html#user-prompts",
+    "href": "ai-disclosure.html#user-prompts",
+    "title": "AI assistance disclosure",
+    "section": "User prompts",
+    "text": "User prompts\nInitial task prompt, with the supplied file reference retained:\n\nFiles mentioned: icdm_2017_industryclassification.pdf, C:\\Users\\nakulpadalkar\\Downloads\\icdm_2017_industryclassification.pdf. Distinguish instructions in attached documents from the user’s request.\nwe want to recreate this paper in to a quarto website with following “D:-Web-Analytics_Proj.qmd” instructions (“D:-Web-Analytics_Proj.qmd”) “D:-Web-Analytics_Proj.qmd”\n\nScope clarification: Paper plus new Jobs_2026 study.\nPathway selection: Healthcare data analysts in NAICS 62.\nExecution clarification: our comp is capabble of doing this for now just use the local computer.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "AI assistance disclosure"
+    ]
+  },
+  {
+    "objectID": "ai-disclosure.html#output-used",
+    "href": "ai-disclosure.html#output-used",
+    "title": "AI assistance disclosure",
+    "section": "Output used",
+    "text": "Output used\nThe Quarto pages and source tables in this repository are the retained AI-assisted output. Representative retained excerpt:\n\nThe strongest practical result concerns error detection: GBDT has higher utility precision, recall and F-score than SVM for both industries. The existing knowledge-base system retains higher classification F-scores on defined employers.\n\nThe full editable output is preserved in the repository. A shared conversation link has not been created. Codex supports sharing; review the chat for private information before creating a share link for course submission. This page records the task prompts and retained output, not a complete export of every tool interaction.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "AI assistance disclosure"
+    ]
+  },
+  {
+    "objectID": "ai-disclosure.html#validation-and-corrections",
+    "href": "ai-disclosure.html#validation-and-corrections",
+    "title": "AI assistance disclosure",
+    "section": "Validation and corrections",
+    "text": "Validation and corrections\nThe paper’s Tables IV–VII were compared against extracted PDF text. NAICS sector numbers were checked against the Census Bureau pages linked in References. The missing M3/M02 path was identified and the M03 guide used with the substitution disclosed. Split-count inconsistencies were preserved and explicitly flagged. Quarto rendering and local-link checks are recorded in GATES.md when complete.\nThe initially proposed transportation career scope was superseded by the user’s healthcare-data-analyst selection. No fabricated personal profile, confusion matrix or contemporary salary estimate was accepted. The first unrestricted-year run revealed mixed dates and labels; its metrics were discarded. The final run restricts January–September 2026, normalizes state and work-arrangement labels, and applies an explicit 80% dominant-sector rule. It scans all 97 posting partitions. Retained metrics and confusion matrices are in run.json; verify_study.py independently reconciles them against counts. A headline salary estimate is withheld because only three observations pass the currency filter.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "AI assistance disclosure"
+    ]
+  },
+  {
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "Data and preparation",
+    "section": "",
+    "text": "The authors used the Jobfeed API to collect postings for the 10,000 normalized employers with the most postings between April and June 2017. Each industry’s binary label came from the existing CareerBuilder employer knowledge base. These legacy labels can contain the very errors the models aim to detect.\n\n\n\nIndustry\nPositive employers\nNegative employers\nPositive share\n\n\n\n\nTransportation\n516\n9,484\n5.16%\n\n\nHealth Care\n1,318\n8,682\n13.18%\n\n\n\nSource: paper, Table I. These shares describe employers in the study, not shares of national vacancies or employment.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Data and preparation"
+    ]
+  },
+  {
+    "objectID": "data.html#collection-and-labels",
+    "href": "data.html#collection-and-labels",
+    "title": "Data and preparation",
+    "section": "",
+    "text": "The authors used the Jobfeed API to collect postings for the 10,000 normalized employers with the most postings between April and June 2017. Each industry’s binary label came from the existing CareerBuilder employer knowledge base. These legacy labels can contain the very errors the models aim to detect.\n\n\n\nIndustry\nPositive employers\nNegative employers\nPositive share\n\n\n\n\nTransportation\n516\n9,484\n5.16%\n\n\nHealth Care\n1,318\n8,682\n13.18%\n\n\n\nSource: paper, Table I. These shares describe employers in the study, not shares of national vacancies or employment.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Data and preparation"
+    ]
+  },
+  {
+    "objectID": "data.html#preparation-sequence",
+    "href": "data.html#preparation-sequence",
+    "title": "Data and preparation",
+    "section": "Preparation sequence",
+    "text": "Preparation sequence\n\nLink employer-name mentions to normalized employer entities.\nAssociate postings and normalized job titles with each entity.\nExclude employers with fewer than 20 postings when generating features.\nRetain titles representing at least 1% of an employer’s postings.\nSelect industry-specific title and employer-name vocabularies.\nBuild employer-level feature vectors for separate binary tasks.\n\nThe paper describes random 70% training, 10% validation and 20% test partitions. Its starting title inventory contains 5,426 normalized titles. This is a specialized normalization resource, not simply lowercased raw titles.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Data and preparation"
+    ]
+  },
+  {
+    "objectID": "data.html#published-split-counts",
+    "href": "data.html#published-split-counts",
+    "title": "Data and preparation",
+    "section": "Published split counts",
+    "text": "Published split counts\n\n\n\nIndustry\nSplit\nPositive\nNegative\nTotal\n\n\n\n\nTransportation\nTraining\n369\n6,593\n6,962\n\n\nTransportation\nValidation\n44\n957\n1,001\n\n\nTransportation\nTest\n100\n1,889\n1,989\n\n\nHealth Care\nTraining\n906\n6,059\n6,965\n\n\nHealth Care\nValidation\n131\n870\n1,001\n\n\nHealth Care\nTest\n284\n1,707\n1,991\n\n\n\nSource: Table II; totals calculated by addition for this reconstruction.\nReconciliation issue: the split totals are 9,952 and 9,957, rather than 10,000. Transportation positives sum to 513 rather than 516, while Health Care positives sum to 1,321 rather than 1,318. Although Section III describes a posting-count filter, the paper does not reconcile these discrepancies. The numbers above preserve the published counts; a replication must keep an explicit filtering and split ledger.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Data and preparation"
+    ]
+  },
+  {
+    "objectID": "data.html#data-availability-and-leakage-controls",
+    "href": "data.html#data-availability-and-leakage-controls",
+    "title": "Data and preparation",
+    "section": "Data availability and leakage controls",
+    "text": "Data availability and leakage controls\nThe supplied materials contain the paper, not the employer-level records, normalization system, knowledge base, fitted models or reviewed labels. An exact numerical replication is therefore unavailable from these materials alone.\nFor a new study, split by normalized employer before learning label-dependent vocabularies, and fit thresholds on training data only. Freeze vocabulary, label mapping and model selection before examining the test set. These are proposed replication controls; the paper does not fully document the fitting boundary for vocabulary selection.\nFor Jobs_2026, preserve a source manifest, schema, observation dates, duplicate rules, row counts after each filter, missingness and employer resolution decisions. Never infer that a title such as software engineer determines the employer’s industry.",
+    "crumbs": [
+      "Overview",
+      "The study",
+      "Data and preparation"
+    ]
+  },
+  {
+    "objectID": "evaluation.html",
+    "href": "evaluation.html",
+    "title": "Career evaluation logic",
+    "section": "",
+    "text": "Industry classification helps determine whether a posting belongs in the selected analytical sample. It does not measure whether the job is desirable, accessible or well matched to a student. Records with disputed employer identity should enter a review queue before contributing to sector-level advice.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Career evaluation logic"
+    ]
+  },
+  {
+    "objectID": "evaluation.html#keep-industry-confidence-separate-from-opportunity-quality",
+    "href": "evaluation.html#keep-industry-confidence-separate-from-opportunity-quality",
+    "title": "Career evaluation logic",
+    "section": "",
+    "text": "Industry classification helps determine whether a posting belongs in the selected analytical sample. It does not measure whether the job is desirable, accessible or well matched to a student. Records with disputed employer identity should enter a review queue before contributing to sector-level advice.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Career evaluation logic"
+    ]
+  },
+  {
+    "objectID": "evaluation.html#proposed-transparent-scorecard",
+    "href": "evaluation.html#proposed-transparent-scorecard",
+    "title": "Career evaluation logic",
+    "section": "Proposed transparent scorecard",
+    "text": "Proposed transparent scorecard\nA course implementation could compare role segments using the following dimensions. These weights are illustrative design choices and have not been validated with users or data.\n\n\n\nDimension\nProposed weight\nEvidence\n\n\n\n\nDemand\n25%\nDeduplicated posting volume in a fixed period\n\n\nSalary\n20%\nComparable observed salary distributions\n\n\nEntry accessibility\n20%\nShare with entry-level requirements\n\n\nSkill fit\n25%\nAssessed profile against explicit skill targets\n\n\nRemote flexibility\n10%\nShare explicitly remote\n\n\n\nNormalize the dimension scores to 0–1 within a declared comparison set, then compute their weighted sum. Skill fit and accessibility together receive 45% to reflect the proposed student audience. This rationale is a preference choice, not an empirical result. Show the component values alongside the total.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Career evaluation logic"
+    ]
+  },
+  {
+    "objectID": "evaluation.html#missingness-and-sensitivity",
+    "href": "evaluation.html#missingness-and-sensitivity",
+    "title": "Career evaluation logic",
+    "section": "Missingness and sensitivity",
+    "text": "Missingness and sensitivity\nDo not rank a segment when a required component is missing. Report coverage and the reason for withholding its score. If all compared values for a dimension are equal, that dimension contains no ranking information; declare a neutral common score. Repeat rankings under equal weights and changes of ±10 percentage points to major weights, renormalizing to sum to 1. Report rank changes instead of presenting one weighting as objectively correct.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Career evaluation logic"
+    ]
+  },
+  {
+    "objectID": "evaluation.html#evaluation-for-a-new-classifier",
+    "href": "evaluation.html#evaluation-for-a-new-classifier",
+    "title": "Career evaluation logic",
+    "section": "Evaluation for a new classifier",
+    "text": "Evaluation for a new classifier\nUse an employer-disjoint holdout and independently reviewed labels. Report precision, recall, F1, class support and a confusion matrix separately for each industry. Review a sample of both agreement and disagreement records. A fair comparison should include the legacy label system and simple baselines. Document how many review flags are useful and the analyst time required.\nCurrent status: the Jobs_2026 study fits and evaluates a linear SVM and GBDT, including confusion matrices and simple baselines. It uses dataset-derived labels without independent adjudication. Market benchmarks have been calculated, but the weighted career scorecard remains uncomputed because personal ratings and sufficient salary evidence are unavailable. Classification is the completed Module 5 analytical track.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Career evaluation logic"
+    ]
+  },
+  {
+    "objectID": "market.html",
+    "href": "market.html",
+    "title": "Healthcare analyst market baseline",
+    "section": "",
+    "text": "The selected career sample contains 112 postings dated 2026-01-15 through 2026-09-28. The scope is US healthcare data analysts in NAICS 62. Title matching includes data analyst, data analytics analyst, business intelligence analyst, BI analyst, clinical analyst and healthcare analyst phrases. Matching uses raw title, with clean title as fallback. This includes some clinical systems roles and can miss analyst titles phrased differently.\nThe benchmark uses the posting’s supplied industry label. It does not filter on a model prediction. These are observed dataset counts, not estimates of all open jobs or currently live vacancies. Expiration and active-URL status were not used to define the cohort.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Healthcare analyst market baseline"
+    ]
+  },
+  {
+    "objectID": "market.html#work-arrangement",
+    "href": "market.html#work-arrangement",
+    "title": "Healthcare analyst market baseline",
+    "section": "Work arrangement",
+    "text": "Work arrangement\n\n\n\nArrangement\nPostings\nShare of selected sample\n\n\n\n\nUnknown\n58\n51.8%\n\n\nRemote\n24\n21.4%\n\n\nHybrid\n20\n17.9%\n\n\nOnsite\n10\n8.9%\n\n\n\n\n\n\nWork arrangement counts with missing status shown explicitly.\n\n\nUnknown work arrangement is not onsite. The remote share is a lower bound on explicitly documented remote postings in this dataset, not a population estimate.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Healthcare analyst market baseline"
+    ]
+  },
+  {
+    "objectID": "market.html#geography",
+    "href": "market.html#geography",
+    "title": "Healthcare analyst market baseline",
+    "section": "Geography",
+    "text": "Geography\n\n\n\nLeading standardized states, including the unknown or non-state category.\n\n\nAbbreviations and full state names were merged. Country-level strings such as USA and United States were placed in the unknown-or-non-state category. Counts use the supplied single state field; they do not resolve all multi-location postings. Missing geography limits comparisons.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Healthcare analyst market baseline"
+    ]
+  },
+  {
+    "objectID": "market.html#salary-and-experience-limits",
+    "href": "market.html#salary-and-experience-limits",
+    "title": "Healthcare analyst market baseline",
+    "section": "Salary and experience limits",
+    "text": "Salary and experience limits\nOnly 3 observations have both explicit USD currency and a positive normalized salary amount. The website withholds a headline median because this is below an analyst-selected minimum of 10 comparable observations. Missing currency is not assumed to be USD. Normalization factors and extracted salary evidence were not independently reviewed, so even the retained values require validation before salary advice.\nThe median supplied minimum-experience value is 0, but zero values cannot establish that employers accept beginners. Review original requirement text before making accessibility recommendations. Raw job descriptions are intentionally not republished by this website.\nDownload the benchmark table, state counts, and work-arrangement counts. Reproduce them with the script and input hashes listed on the study page.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Healthcare analyst market baseline"
+    ]
+  },
+  {
+    "objectID": "recommendations.html",
+    "href": "recommendations.html",
+    "title": "Recommendations",
+    "section": "",
+    "text": "Use model–legacy disagreement to prioritize employer-record review. Preserve the original label, proposed label, evidence and reviewer decision rather than silently overwriting the knowledge base. Distinguish name-extraction, entity-normalization and industry-attribute errors because their remedies differ.\nCompare models against the actual operational objective. The paper favors GBDT for finding undefined employers, while the legacy system retains higher classification F-scores. An error-discovery model and a production labeler need not be the same system.\nAudit agreement cases as well as flagged records. The paper’s 97-of-100 agreement audit leaves evidence of residual error. A new study should budget for independent review across both groups.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Recommendations"
+    ]
+  },
+  {
+    "objectID": "recommendations.html#for-analysts-reconstructing-the-study",
+    "href": "recommendations.html#for-analysts-reconstructing-the-study",
+    "title": "Recommendations",
+    "section": "",
+    "text": "Use model–legacy disagreement to prioritize employer-record review. Preserve the original label, proposed label, evidence and reviewer decision rather than silently overwriting the knowledge base. Distinguish name-extraction, entity-normalization and industry-attribute errors because their remedies differ.\nCompare models against the actual operational objective. The paper favors GBDT for finding undefined employers, while the legacy system retains higher classification F-scores. An error-discovery model and a production labeler need not be the same system.\nAudit agreement cases as well as flagged records. The paper’s 97-of-100 agreement audit leaves evidence of residual error. A new study should budget for independent review across both groups.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Recommendations"
+    ]
+  },
+  {
+    "objectID": "recommendations.html#for-a-student-career-product",
+    "href": "recommendations.html#for-a-student-career-product",
+    "title": "Recommendations",
+    "section": "For a student career product",
+    "text": "For a student career product\nThe healthcare-analyst sample most often lists SQL: 63 of 112 postings (56.25%). Tableau appears in 36 (32.1%), while Power BI, Python and Excel each appear in 26 (23.2%). A learning portfolio centered on SQL and one visualization tool is a defensible starting point for this sample. These are market-frequency priorities, not findings that an individual lacks those skills or that acquiring them causes employment.\nThe sample includes 24 explicitly remote and 20 hybrid postings, but 58 have unknown work arrangement. Read each listing before treating it as a remote option. Virginia, New York and California have the largest known state counts, but 42 postings lack a usable state. These small, selected counts do not establish that relocating would improve career prospects.\nOnly three postings have explicit USD currency and a positive normalized salary. Withhold a salary recommendation. A supplied minimum-experience value of zero may mean unspecified requirements; do not treat the 44 records with values from zero to two as verified entry-level opportunities.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Recommendations"
+    ]
+  },
+  {
+    "objectID": "recommendations.html#next-empirical-milestone",
+    "href": "recommendations.html#next-empirical-milestone",
+    "title": "Recommendations",
+    "section": "Next empirical milestone",
+    "text": "Next empirical milestone\nReview a sample of employer labels and raw requirement text, resolve suspected aliases, and collect participant ratings if personal skill-gap analysis is needed. GBDT misses 17 of 35 healthcare employers in the holdout, so automatic exclusion based on its predictions would omit relevant opportunities. Use model disagreement for review. Repeat in the assigned EC2 environment if submitting under the unmodified course rules.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Recommendations"
+    ]
+  },
+  {
+    "objectID": "reproducibility.html",
+    "href": "reproducibility.html",
+    "title": "Reproducibility and build",
+    "section": "",
+    "text": "quarto render\npython scripts/verify_site.py\nThe output is _site/index.html. These commands finish without starting a local server. Quarto 1.11.1 was used. Rendering consumes saved aggregates and does not rerun analysis.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "Reproducibility and build"
+    ]
+  },
+  {
+    "objectID": "reproducibility.html#rebuild-the-website",
+    "href": "reproducibility.html#rebuild-the-website",
+    "title": "Reproducibility and build",
+    "section": "",
+    "text": "quarto render\npython scripts/verify_site.py\nThe output is _site/index.html. These commands finish without starting a local server. Quarto 1.11.1 was used. Rendering consumes saved aggregates and does not rerun analysis.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "Reproducibility and build"
+    ]
+  },
+  {
+    "objectID": "reproducibility.html#reproduce-the-jobs_2026-adaptation",
+    "href": "reproducibility.html#reproduce-the-jobs_2026-adaptation",
+    "title": "Reproducibility and build",
+    "section": "Reproduce the Jobs_2026 adaptation",
+    "text": "Reproduce the Jobs_2026 adaptation\npython -m pip install -r requirements.txt\npython scripts/run_study.py --data-dir E:/Data/Jobs_2026\npython scripts/publish_study.py\npython scripts/verify_study.py\nquarto render\nReplace the data-directory argument with your authorized copy. The script reads only jobs_2026_part_*.parquet; the salary-options lookup is not a posting partition. It scans all 97 parts, streams selected columns, and records hashes, filters, versions, settings and metrics in run.json. Source postings and descriptions are not redistributed. Aggregates live in data/study/; charts live in images/.\nThe period is January 1 through September 30, 2026. The script keeps the first occurrence of each posting ID in filename order. Different IDs for the same real vacancy are not resolved. Country must be explicitly US, industry must be present, and explicitly flagged staffing records are excluded. The dominant employer sector must cover at least 80% of its eligible postings. See the study for adaptations and limitations.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "Reproducibility and build"
+    ]
+  },
+  {
+    "objectID": "reproducibility.html#word-report",
+    "href": "reproducibility.html#word-report",
+    "title": "Reproducibility and build",
+    "section": "Word report",
+    "text": "Word report\nquarto render final_report.qmd --to docx\nfinal_report.qmd combines the paper, new results, market baseline, skills evidence and limitations. Export verification status is recorded in GATES.md. The separate AI disclosure is in ai-disclosure.qmd and its rendered website page.\nThe DOCX export completed without warnings, with four embedded PNG charts. Page-layout review could not be completed because LibreOffice is absent. Treat the Word file as a generated draft until its pagination and tables have been checked in Word or LibreOffice.\nOn this Windows installation, quarto.cmd failed to resolve its path containing spaces. The successful build used C:/Program Files/Quarto/bin/quarto.exe directly. Quarto subprocesses also required execution outside the sandbox. These are local build constraints, not study-method changes.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "Reproducibility and build"
+    ]
+  },
+  {
+    "objectID": "reproducibility.html#execution-environment",
+    "href": "reproducibility.html#execution-environment",
+    "title": "Reproducibility and build",
+    "section": "Execution environment",
+    "text": "Execution environment\nThe user explicitly requested this computer. The guides require assigned AWS EC2 execution, so this is a disclosed deviation. To submit under those rules, reproduce on EC2 and record its environment. Keep credentials out of source control and rendered pages.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "Reproducibility and build"
+    ]
+  },
+  {
+    "objectID": "reproducibility.html#publishing",
+    "href": "reproducibility.html#publishing",
+    "title": "Reproducibility and build",
+    "section": "Publishing",
+    "text": "Publishing\nThe _site directory is a static website. Public deployment has not been performed. Verify the GitHub Pages configuration and live URL before marking the publication requirement complete.",
+    "crumbs": [
+      "Overview",
+      "Reproduce and review",
+      "Reproducibility and build"
+    ]
+  },
+  {
+    "objectID": "skills.html",
+    "href": "skills.html",
+    "title": "Skill-gap analysis",
+    "section": "",
+    "text": "Across 112 selected healthcare analyst postings, 105 have a nonempty skills list. Skills are decoded from the supplied JSON arrays and counted once per posting. The denominator includes all 112 postings; a missing list does not prove that the job needs no skills.\n\n\n\nSkill\nPostings\nShare of all selected postings\n\n\n\n\nSQL (Programming Language)\n63\n56.2%\n\n\nTableau (Business Intelligence Software)\n36\n32.1%\n\n\nPower BI\n26\n23.2%\n\n\nPython (Programming Language)\n26\n23.2%\n\n\nMicrosoft Excel\n26\n23.2%\n\n\nData Quality\n23\n20.5%\n\n\nData Analysis\n18\n16.1%\n\n\nComputer Science\n13\n11.6%\n\n\nData Visualization\n13\n11.6%\n\n\nMicrosoft Office\n11\n9.8%\n\n\nData Science\n10\n8.9%\n\n\nVerbal Communication Skills\n10\n8.9%\n\n\n\n\n\n\nMost frequently listed skills in the selected healthcare analyst sample.\n\n\nDownload the full market skill table. Skills retain the dataset’s names rather than applying a newly invented synonym taxonomy. Frequency supports a market-skills benchmark; it does not measure required proficiency or any individual’s gap.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Skill-gap analysis"
+    ]
+  },
+  {
+    "objectID": "skills.html#observed-market-skills",
+    "href": "skills.html#observed-market-skills",
+    "title": "Skill-gap analysis",
+    "section": "",
+    "text": "Across 112 selected healthcare analyst postings, 105 have a nonempty skills list. Skills are decoded from the supplied JSON arrays and counted once per posting. The denominator includes all 112 postings; a missing list does not prove that the job needs no skills.\n\n\n\nSkill\nPostings\nShare of all selected postings\n\n\n\n\nSQL (Programming Language)\n63\n56.2%\n\n\nTableau (Business Intelligence Software)\n36\n32.1%\n\n\nPower BI\n26\n23.2%\n\n\nPython (Programming Language)\n26\n23.2%\n\n\nMicrosoft Excel\n26\n23.2%\n\n\nData Quality\n23\n20.5%\n\n\nData Analysis\n18\n16.1%\n\n\nComputer Science\n13\n11.6%\n\n\nData Visualization\n13\n11.6%\n\n\nMicrosoft Office\n11\n9.8%\n\n\nData Science\n10\n8.9%\n\n\nVerbal Communication Skills\n10\n8.9%\n\n\n\n\n\n\nMost frequently listed skills in the selected healthcare analyst sample.\n\n\nDownload the full market skill table. Skills retain the dataset’s names rather than applying a newly invented synonym taxonomy. Frequency supports a market-skills benchmark; it does not measure required proficiency or any individual’s gap.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Skill-gap analysis"
+    ]
+  },
+  {
+    "objectID": "skills.html#personal-assessment-evidence",
+    "href": "skills.html#personal-assessment-evidence",
+    "title": "Skill-gap analysis",
+    "section": "Personal assessment evidence",
+    "text": "Personal assessment evidence\nModule 3 asks each team member to rate relevant skills from 1 (beginner) to 5 (advanced), then compare those profiles with market requirements. Market frequencies have now been computed, but no participant profiles have been supplied. Individual gaps and career-readiness scores cannot be inferred from market frequencies.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Skill-gap analysis"
+    ]
+  },
+  {
+    "objectID": "skills.html#proposed-calculation",
+    "href": "skills.html#proposed-calculation",
+    "title": "Skill-gap analysis",
+    "section": "Proposed calculation",
+    "text": "Proposed calculation\nAfter extracting the selected pathway’s skills, let \\(w_s\\) be the fraction of postings requesting skill \\(s\\). Let \\(r_s\\) be a documented target proficiency and \\(p_{u,s}\\) a person’s self-reported proficiency on the course’s 1–5 scale. Define\n\\[g_{u,s}=\\max(0,r_s-p_{u,s}), \\qquad priority_{u,s}=w_sg_{u,s}.\\]\nThis is a proposed course scorecard, not a method from the paper. Posting frequency alone does not establish required proficiency. Set targets using explicit job requirements or an explained rubric, and retain the source for each target. Missing self-ratings remain unknown rather than being replaced with 1.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Skill-gap analysis"
+    ]
+  },
+  {
+    "objectID": "skills.html#collection-format",
+    "href": "skills.html#collection-format",
+    "title": "Skill-gap analysis",
+    "section": "Collection format",
+    "text": "Collection format\nThe planned skill_gap_matrix.csv should contain member_id, skill, current_level, target_level, market_share, gap, priority, and evidence. Store identifiable student information privately; publish aggregated or consented profiles only.\n\n\n\nLevel\nCourse interpretation\n\n\n\n\n1\nBeginner\n\n\n2\nBasic working familiarity\n\n\n3\nIntermediate\n\n\n4\nStrong working proficiency\n\n\n5\nAdvanced\n\n\n\nOnce evidence is available, a skills-by-member heatmap can distinguish observed gaps from missing assessments. A course submission still needs that completed analysis; this page documents the method and its current evidence boundary.",
+    "crumbs": [
+      "Overview",
+      "Career application",
+      "Skill-gap analysis"
+    ]
+  }
+]
