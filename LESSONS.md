@@ -19,3 +19,9 @@ Written by /aar-loop after each session's After Action Review. Read this file be
 - Actual: Reviewed study methods and limitations plus relevant textbook sections; only the SSRN paper directly studies job-posting skills. No website or empirical results changed.
 - Why: The supplied files differ in source type, research question, observation unit and salary provenance. This is project context; no rule or skill change proposed.
 - tags: literature-review,source-scope
+
+## 2026-10-03 -- Dataset-wide EDA uses scripts/run_eda.py and data/eda; cohort EDA uses scripts/publish_eda.py and data/study. Compare filenames, row counts and SHA-256 hashes with data/study/run.json before presenting both as one snapshot.
+- Expected: Include E:/Data/Jobs_2026 in the analysis and EDA.
+- Actual: Existing models already used all 97 partitions; added source-level profiles for 2350355 rows while retaining the separate 112-posting career EDA.
+- Why: Raw-row and filtered-cohort analyses have different denominators. Separate outputs prevent overwriting the cohort EDA; full manifest comparison verifies common inputs. No rule or skill change proposed.
+- tags: eda,provenance,denominators
