@@ -14,3 +14,9 @@ a { color: #076779; }
 .source-note { font-size: .9rem; color: #546571; }
 table { font-size: .92rem; }
 @media (max-width: 650px) { .metric-grid { grid-template-columns: 1fr; } .hero { padding: 1.2rem; } }
+/* Saved table explorers remain usable on narrow screens and with the keyboard. */
+.aggregate-table { overflow: auto; max-height: 32rem; margin-bottom: 2rem; }
+.aggregate-table table { border-collapse: collapse; width: 100%; }
+.aggregate-table th, .aggregate-table td { padding: .5rem .75rem; border-bottom: 1px solid #dde4e8; }
+.aggregate-table th { position: sticky; top: 0; background: #eef5f7; }
+.aggregate-filter { display: block; width: min(100%, 32rem); margin: .5rem 0 1rem; padding: .5rem; }

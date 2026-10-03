@@ -37,6 +37,6 @@ for name in manifest['figures']:
     assert name in (ROOT/'_content/eda-results.md').read_text(encoding='utf-8')
 for name in ['market_baseline.qmd','final_report.qmd']:
     assert 'include _content/eda-results.md' in (ROOT/name).read_text()
-expected_pages = {'index','introduction','data_preparation','market_baseline','skill_gap_analysis','career_evaluation','pyspark_analysis','final_recommendations','references','ai-disclosure','final_report'}
+expected_pages = {'index','introduction','data_preparation','market_baseline','skill_gap_analysis','career_evaluation','pyspark_analysis','interactive','analysis_code','final_recommendations','references','ai-disclosure','final_report'}
 assert {p.stem for p in ROOT.glob('*.qmd')} == expected_pages
-print('EDA VERIFIED: source hashes, counts, denominators, four PNGs and eleven QMD sources including PySpark analysis')
+print('EDA VERIFIED: source hashes, counts, denominators, four PNGs and thirteen QMD sources including PySpark analysis and interactive exports')

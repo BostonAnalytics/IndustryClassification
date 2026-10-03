@@ -1,0 +1,10 @@
+---
+title: "Explore the saved results"
+---
+
+These views use saved aggregate results from `Jobs_2026_US`. Hover for values,
+drag to zoom, and use the chart toolbar to reset or download a PNG. The analysis
+code is displayed on the [code page](analysis_code.qmd); Python and Spark do not
+run during publication or when you browse. JavaScript provides the interactions.
+
+{{< include _content/interactive-results.md >}}

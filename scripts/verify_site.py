@@ -24,7 +24,9 @@ def verify():
         if not (SITE / source.with_suffix('.html').name).is_file():
             errors.append(f'Missing rendered page: {source.name}')
     pages = list(SITE.glob('*.html'))
-    for page in pages:
+    expected_pages = {p.with_suffix('.html').name for p in sources}
+    assert {p.name for p in pages} == expected_pages, 'Stale or unexpected rendered pages remain'
+    for page in SITE.rglob('*.html'):
         parser = Links()
         html = page.read_text(encoding='utf-8')
         parser.feed(html)
@@ -46,6 +48,16 @@ def verify():
             for key, value in row.items():
                 if key not in ('industry', 'system', 'source'):
                     assert 0 <= float(value) <= 1, (name, row)
+    # Published assets must match the exports, including scripts and map geometry.
+    import hashlib
+    import json
+    manifest = json.loads((ROOT / 'data/interactive/manifest.json').read_text(encoding='utf-8'))
+    for name, digest in {**manifest['inputs'], **manifest['outputs']}.items():
+        if name.startswith('_content/'):
+            continue
+        target = SITE / name
+        if not target.is_file() or hashlib.sha256(target.read_bytes()).hexdigest() != digest:
+            errors.append(f'Missing or altered published asset: {name}')
     if errors:
         raise SystemExit('\n'.join(errors))
     print(f'SITE VERIFIED: {len(pages)} HTML pages; local resources resolve; published metric CSVs valid')

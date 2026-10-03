@@ -1,0 +1,10 @@
+---
+title: "Complete analysis and export code"
+---
+
+The source below is displayed as text, with copying and downloads enabled.
+It does not execute during rendering. Run it locally only when intentionally
+refreshing results from `E:/Data/Jobs_2026_US`. Saved outputs appear throughout
+the study and in the [interactive explorer](interactive.qmd).
+
+{{< include _content/analysis-code.md >}}

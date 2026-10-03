@@ -5,6 +5,9 @@ project:
     - '*.qmd'
     - '!final_report.qmd'
   resources:
+    - images/**
+    - data/**
+    - scripts/*.py
     - data/*.csv
     - data/study/*.csv
     - data/study/*.json
@@ -37,6 +40,8 @@ website:
       - introduction.qmd
       - data_preparation.qmd
       - market_baseline.qmd
+      - interactive.qmd
+      - analysis_code.qmd
       - skill_gap_analysis.qmd
       - career_evaluation.qmd
       - pyspark_analysis.qmd
@@ -51,10 +56,13 @@ format:
     toc: true
     link-external-newwindow: true
     code-copy: true
+    code-fold: false
     smooth-scroll: true
     date-format: long
 execute:
   enabled: false
+  eval: false
+  echo: true
 lang: en
 bibliography: reference.bib
 link-citations: true

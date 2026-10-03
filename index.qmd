@@ -15,6 +15,9 @@ The January–September 2026 analysis selects **112 career postings** and a sepa
 
 ## Read the study
 
+Explore the [interactive charts, US map and downloadable tables](interactive.qmd),
+or read the [complete analysis and export code](analysis_code.qmd).
+
 1. [Introduction and literature review](introduction.qmd): rationale, research questions and industry scope.
 2. [Data preparation](data_preparation.qmd): filters, fields, leakage controls and reproduction commands.
 3. [Market baseline and EDA](market_baseline.qmd): sample selection, field coverage, role labels, skills, location and work arrangement.

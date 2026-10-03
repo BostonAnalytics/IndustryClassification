@@ -8,6 +8,8 @@ execute:
   error: false
 ---
 
+Explore the [interactive charts, US map and searchable data tables](interactive.qmd).
+
 {{< include _content/sample-market.md >}}
 
 {{< include _content/eda-results.md >}}
