@@ -3,6 +3,8 @@ title: "Career evaluation and model evidence"
 number-sections: true
 ---
 
+{{< include _content/sample-evaluation.md >}}
+
 The user selected healthcare data analysts in NAICS 62 and explicitly authorized local computation instead of the course's assigned EC2 environment. Results below were generated from the local Jobs_2026_US snapshot on October 3, 2026 [@jobs2026]. The feature design adapts @goindani2017, using scikit-learn estimators [@pedregosa2011].
 
 {{< include _content/study-results.md >}}

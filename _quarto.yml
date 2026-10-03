@@ -10,6 +10,7 @@ project:
     - data/study/*.json
     - data/eda/*.csv
     - data/eda/run.json
+    - data/sample/run.json
     - reference.bib
     - final_report.docx
 website:

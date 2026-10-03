@@ -1,0 +1,379 @@
+{
+  "source_directory": "E:/Data/Jobs_2026_US",
+  "sample": true,
+  "fraction": 0.1,
+  "seed": 2017,
+  "source_rows": 815193,
+  "sampled_rows": 81163,
+  "inputs": [
+    {
+      "file": "jobs_2026_part_00001.parquet",
+      "rows": 9170
+    },
+    {
+      "file": "jobs_2026_part_00002.parquet",
+      "rows": 9072
+    },
+    {
+      "file": "jobs_2026_part_00003.parquet",
+      "rows": 9292
+    },
+    {
+      "file": "jobs_2026_part_00004.parquet",
+      "rows": 9249
+    },
+    {
+      "file": "jobs_2026_part_00005.parquet",
+      "rows": 9581
+    },
+    {
+      "file": "jobs_2026_part_00006.parquet",
+      "rows": 9544
+    },
+    {
+      "file": "jobs_2026_part_00007.parquet",
+      "rows": 9193
+    },
+    {
+      "file": "jobs_2026_part_00008.parquet",
+      "rows": 9163
+    },
+    {
+      "file": "jobs_2026_part_00009.parquet",
+      "rows": 9502
+    },
+    {
+      "file": "jobs_2026_part_00010.parquet",
+      "rows": 9382
+    },
+    {
+      "file": "jobs_2026_part_00011.parquet",
+      "rows": 9421
+    },
+    {
+      "file": "jobs_2026_part_00012.parquet",
+      "rows": 9431
+    },
+    {
+      "file": "jobs_2026_part_00013.parquet",
+      "rows": 9581
+    },
+    {
+      "file": "jobs_2026_part_00014.parquet",
+      "rows": 9660
+    },
+    {
+      "file": "jobs_2026_part_00015.parquet",
+      "rows": 9581
+    },
+    {
+      "file": "jobs_2026_part_00016.parquet",
+      "rows": 9181
+    },
+    {
+      "file": "jobs_2026_part_00017.parquet",
+      "rows": 5184
+    },
+    {
+      "file": "jobs_2026_part_00018.parquet",
+      "rows": 27138
+    },
+    {
+      "file": "jobs_2026_part_00019.parquet",
+      "rows": 133716
+    },
+    {
+      "file": "jobs_2026_part_00020.parquet",
+      "rows": 32109
+    },
+    {
+      "file": "jobs_2026_part_00021.parquet",
+      "rows": 38654
+    },
+    {
+      "file": "jobs_2026_part_00022.parquet",
+      "rows": 4300
+    },
+    {
+      "file": "jobs_2026_part_00023.parquet",
+      "rows": 17761
+    },
+    {
+      "file": "jobs_2026_part_00024.parquet",
+      "rows": 18965
+    },
+    {
+      "file": "jobs_2026_part_00025.parquet",
+      "rows": 2758
+    },
+    {
+      "file": "jobs_2026_part_00026.parquet",
+      "rows": 11730
+    },
+    {
+      "file": "jobs_2026_part_00027.parquet",
+      "rows": 13037
+    },
+    {
+      "file": "jobs_2026_part_00028.parquet",
+      "rows": 17454
+    },
+    {
+      "file": "jobs_2026_part_00029.parquet",
+      "rows": 15709
+    },
+    {
+      "file": "jobs_2026_part_00030.parquet",
+      "rows": 15854
+    },
+    {
+      "file": "jobs_2026_part_00031.parquet",
+      "rows": 17592
+    },
+    {
+      "file": "jobs_2026_part_00032.parquet",
+      "rows": 16222
+    },
+    {
+      "file": "jobs_2026_part_00033.parquet",
+      "rows": 10184
+    },
+    {
+      "file": "jobs_2026_part_00034.parquet",
+      "rows": 7480
+    },
+    {
+      "file": "jobs_2026_part_00037.parquet",
+      "rows": 2
+    },
+    {
+      "file": "jobs_2026_part_00038.parquet",
+      "rows": 5
+    },
+    {
+      "file": "jobs_2026_part_00046.parquet",
+      "rows": 1239
+    },
+    {
+      "file": "jobs_2026_part_00047.parquet",
+      "rows": 472
+    },
+    {
+      "file": "jobs_2026_part_00048.parquet",
+      "rows": 17515
+    },
+    {
+      "file": "jobs_2026_part_00049.parquet",
+      "rows": 11236
+    },
+    {
+      "file": "jobs_2026_part_00050.parquet",
+      "rows": 15753
+    },
+    {
+      "file": "jobs_2026_part_00051.parquet",
+      "rows": 8245
+    },
+    {
+      "file": "jobs_2026_part_00053.parquet",
+      "rows": 5
+    },
+    {
+      "file": "jobs_2026_part_00057.parquet",
+      "rows": 6854
+    },
+    {
+      "file": "jobs_2026_part_00058.parquet",
+      "rows": 15873
+    },
+    {
+      "file": "jobs_2026_part_00059.parquet",
+      "rows": 15709
+    },
+    {
+      "file": "jobs_2026_part_00060.parquet",
+      "rows": 17267
+    },
+    {
+      "file": "jobs_2026_part_00061.parquet",
+      "rows": 10586
+    },
+    {
+      "file": "jobs_2026_part_00062.parquet",
+      "rows": 13586
+    },
+    {
+      "file": "jobs_2026_part_00063.parquet",
+      "rows": 13973
+    },
+    {
+      "file": "jobs_2026_part_00064.parquet",
+      "rows": 13412
+    },
+    {
+      "file": "jobs_2026_part_00065.parquet",
+      "rows": 17149
+    },
+    {
+      "file": "jobs_2026_part_00066.parquet",
+      "rows": 13661
+    },
+    {
+      "file": "jobs_2026_part_00067.parquet",
+      "rows": 2853
+    },
+    {
+      "file": "jobs_2026_part_00068.parquet",
+      "rows": 1353
+    },
+    {
+      "file": "jobs_2026_part_00069.parquet",
+      "rows": 4403
+    },
+    {
+      "file": "jobs_2026_part_00070.parquet",
+      "rows": 1562
+    },
+    {
+      "file": "jobs_2026_part_00071.parquet",
+      "rows": 1198
+    },
+    {
+      "file": "jobs_2026_part_00072.parquet",
+      "rows": 2404
+    },
+    {
+      "file": "jobs_2026_part_00073.parquet",
+      "rows": 2314
+    },
+    {
+      "file": "jobs_2026_part_00074.parquet",
+      "rows": 1191
+    },
+    {
+      "file": "jobs_2026_part_00075.parquet",
+      "rows": 2124
+    },
+    {
+      "file": "jobs_2026_part_00076.parquet",
+      "rows": 962
+    },
+    {
+      "file": "jobs_2026_part_00077.parquet",
+      "rows": 1358
+    },
+    {
+      "file": "jobs_2026_part_00078.parquet",
+      "rows": 2067
+    },
+    {
+      "file": "jobs_2026_part_00079.parquet",
+      "rows": 2885
+    },
+    {
+      "file": "jobs_2026_part_00080.parquet",
+      "rows": 1729
+    },
+    {
+      "file": "jobs_2026_part_00081.parquet",
+      "rows": 1276
+    },
+    {
+      "file": "jobs_2026_part_00082.parquet",
+      "rows": 969
+    },
+    {
+      "file": "jobs_2026_part_00083.parquet",
+      "rows": 3132
+    },
+    {
+      "file": "jobs_2026_part_00084.parquet",
+      "rows": 6668
+    },
+    {
+      "file": "jobs_2026_part_00085.parquet",
+      "rows": 5963
+    },
+    {
+      "file": "jobs_2026_part_00086.parquet",
+      "rows": 6415
+    },
+    {
+      "file": "jobs_2026_part_00087.parquet",
+      "rows": 2569
+    },
+    {
+      "file": "jobs_2026_part_00088.parquet",
+      "rows": 94
+    },
+    {
+      "file": "jobs_2026_part_00089.parquet",
+      "rows": 454
+    },
+    {
+      "file": "jobs_2026_part_00090.parquet",
+      "rows": 38
+    },
+    {
+      "file": "jobs_2026_part_00091.parquet",
+      "rows": 46
+    },
+    {
+      "file": "jobs_2026_part_00092.parquet",
+      "rows": 12
+    },
+    {
+      "file": "jobs_2026_part_00093.parquet",
+      "rows": 7327
+    },
+    {
+      "file": "jobs_2026_part_00094.parquet",
+      "rows": 2517
+    },
+    {
+      "file": "jobs_2026_part_00096.parquet",
+      "rows": 918
+    }
+  ],
+  "ledger": {
+    "sample_unique_ids": 81163,
+    "January\u2013September 2026": 79719,
+    "US": 79719,
+    "recognized sector": 35625,
+    "nonstaffing or unknown": 35099,
+    "healthcare analyst cohort": 7
+  },
+  "chunks": [
+    {
+      "page": "preparation",
+      "title": "Load a reproducible posting sample",
+      "code": "from pathlib import Path\nfrom collections import Counter\nimport hashlib\nimport json\nimport pandas as pd\nimport pyarrow.parquet as pq\nfrom run_study import COLS, KNOWN_SECTORS, ROLE, clean\n\nsample_fraction = 0.10\nseed = 2017\nfiles = sorted(data_dir.glob('jobs_2026_part_*.parquet'))\nif not files:\n    raise ValueError('No Jobs_2026_US posting partitions found')\nparts, inputs = [], []\nsource_rows = 0\ndef selected(identifier):\n    if pd.isna(identifier):\n        return False\n    key = f'{seed}:{identifier}'.encode('utf-8')\n    bucket = int.from_bytes(hashlib.sha256(key).digest()[:8], 'big')\n    return not sample or bucket < int(sample_fraction * 2**64)\n\nfor path in files:\n    parquet = pq.ParquetFile(path)\n    inputs.append({'file': path.name, 'rows': parquet.metadata.num_rows})\n    for batch in parquet.iter_batches(columns=COLS, batch_size=20000):\n        frame = batch.to_pandas()\n        source_rows += len(frame)\n        parts.append(frame.loc[frame.ID.map(selected)])\njobs = pd.concat(parts, ignore_index=True)\nsampled_rows = len(jobs)\njobs = jobs.drop_duplicates('ID', keep='first').copy()\nprint(f'sample={str(sample).lower()}, fraction={sample_fraction if sample else 1}, seed={seed}')\nprint(f'Partitions scanned: {len(files):,}; source rows: {source_rows:,}')\nprint(f'Selected rows: {sampled_rows:,}; unique posting IDs: {len(jobs):,}')\nprint('Schema preview (first 6 columns):')\nprint(jobs.dtypes.head(6).to_string())",
+      "output": "sample=true, fraction=0.1, seed=2017\nPartitions scanned: 82; source rows: 815,193\nSelected rows: 81,163; unique posting IDs: 81,163\nSchema preview (first 6 columns):\nID                       int64\nPOSTED                  object\nCOMPANY_NAME            object\nCOMPANY_IS_STAFFING    float64\nTITLE_NAME              object\nTITLE_RAW               object"
+    },
+    {
+      "page": "preparation",
+      "title": "Apply the study filters",
+      "code": "ledger = {'sample_unique_ids': len(jobs)}\ndates = pd.to_datetime(jobs.POSTED, errors='coerce', utc=True, format='mixed')\njobs = jobs.loc[(dates >= '2026-01-01') & (dates < '2026-10-01')].copy()\nledger['January\u2013September 2026'] = len(jobs)\njobs = jobs.loc[jobs.PARSED_COUNTRY_ISO_ABBR.map(clean).str.upper().eq('US')].copy()\nledger['US'] = len(jobs)\njobs['sector'] = jobs.NAICS_2022_2.map(clean)\njobs['sector'] = jobs.sector.where(jobs.sector.ne(''), jobs.NAICS2.map(clean))\njobs = jobs.loc[jobs.sector.isin(KNOWN_SECTORS)].copy()\nledger['recognized sector'] = len(jobs)\njobs = jobs.loc[~jobs.COMPANY_IS_STAFFING.eq(1)].copy()\nledger['nonstaffing or unknown'] = len(jobs)\ntitles = jobs.TITLE_RAW.map(clean)\ntitles = titles.where(titles.ne(''), jobs.TITLE_CLEAN.map(clean))\ncareer = jobs.loc[jobs.sector.eq('62') & titles.map(lambda title: bool(ROLE.search(title)))].copy()\nledger['healthcare analyst cohort'] = len(career)\nprint(pd.Series(ledger, name='Postings').to_string())",
+      "output": "sample_unique_ids            81163\nJanuary\u2013September 2026       79719\nUS                           79719\nrecognized sector            35625\nnonstaffing or unknown       35099\nhealthcare analyst cohort        7"
+    },
+    {
+      "page": "market",
+      "title": "Inspect coverage and work arrangements",
+      "code": "from run_study import STATE_MAP\nimport numpy as np\n\nstates = career.STATE_NAME.map(lambda value: STATE_MAP.get(clean(value).upper(), 'Unknown'))\nremote = career.REMOTE_TYPE_NAME.map(lambda value: {\n    'remote': 'Remote', 'hybrid': 'Hybrid', 'onsite': 'Onsite', 'on-site': 'Onsite'\n}.get(clean(value).lower(), 'Unknown'))\nsalary = pd.to_numeric(career.NORMALIZED_SALARY, errors='coerce')\nsalary = salary.where(career.TEXT_PAY_CURRENCY.eq('USD') & salary.gt(0) & np.isfinite(salary))\nexperience = pd.to_numeric(career.MIN_YEARS_EXPERIENCE, errors='coerce')\ncoverage = pd.Series({'cohort postings': len(career), 'recognized state': states.ne('Unknown').sum(),\n    'known work arrangement': remote.ne('Unknown').sum(), 'positive USD salary': salary.notna().sum(),\n    'nonnegative experience': experience.ge(0).sum()}, name='Postings')\nprint(coverage.to_string())\nprint('Work arrangement counts:')\nprint(remote.value_counts().to_string())\nprint('State counts (first 5):')\nprint(states.value_counts().head(5).to_string())",
+      "output": "cohort postings           7\nrecognized state          5\nknown work arrangement    2\npositive USD salary       0\nnonnegative experience    6\nWork arrangement counts:\nREMOTE_TYPE_NAME\nUnknown    5\nRemote     1\nHybrid     1\nState counts (first 5):\nSTATE_NAME\nUnknown           2\nNorth Carolina    1\nFlorida           1\nOhio              1\nTexas             1"
+    },
+    {
+      "page": "skills",
+      "title": "Decode skills and calculate posting shares",
+      "code": "skills = Counter()\nmalformed = 0\nfor value in career.SKILLS_NAME:\n    try:\n        items = json.loads(clean(value) or '[]')\n        if not isinstance(items, list):\n            raise ValueError('Expected a skill list')\n        skills.update({str(item).strip() for item in items if str(item).strip()})\n    except (ValueError, TypeError):\n        malformed += 1\nskills_table = pd.DataFrame([\n    {'skill': skill, 'postings': count, 'share': round(count / len(career), 4)}\n    for skill, count in sorted(skills.items(), key=lambda item: (-item[1], item[0]))\n], columns=['skill', 'postings', 'share'])\nprint(f'Denominator: {len(career)} cohort postings; malformed skill lists: {malformed}')\nprint(skills_table.head(10).to_string(index=False))",
+      "output": "Denominator: 7 cohort postings; malformed skill lists: 0\n                              skill  postings  share\n                   Microsoft Office         3 0.4286\n                      Data Analysis         2 0.2857\n                    Data Collection         2 0.2857\n                Quality Improvement         2 0.2857\n         SQL (Programming Language)         2 0.2857\n        Verbal Communication Skills         2 0.2857\nArtificial Intelligence Development         1 0.1429\n                 Business Analytics         1 0.1429\n         C++ (Programming Language)         1 0.1429\n                  Care Coordination         1 0.1429"
+    },
+    {
+      "page": "evaluation",
+      "title": "Check sample support before model fitting",
+      "code": "# Apply the existing employer eligibility rules to the sampled postings.\nimport re\nemployers = {}\nfor row in jobs.to_dict('records'):\n    name = re.sub(r'\\s+', ' ', clean(row['COMPANY_NAME']).casefold())\n    title = clean(row['TITLE_NAME']).casefold()\n    if not name or name in ('unknown', 'unclassified') or not title or title == 'unclassified':\n        continue\n    employers.setdefault(name, Counter()).update([row['sector']])\neligible = [counts for counts in employers.values()\n            if counts.total() >= 20 and counts.most_common(1)[0][1] / counts.total() >= .8]\nsupport = Counter(int(counts.most_common(1)[0][0] == '62') for counts in eligible)\nprint(f'Eligible employers in this sample: {len(eligible)}')\nprint(f'Healthcare: {support[1]}; other sectors: {support[0]}')\nprint(f'Minimum split support met: {len(eligible) >= 50 and min(support[0], support[1]) >= 10}')\nprint('No classifier is fitted in this sample walkthrough.')\nprint('The model metrics below belong to the separate full-study run.')",
+      "output": "Eligible employers in this sample: 54\nHealthcare: 29; other sectors: 25\nMinimum split support met: True\nNo classifier is fitted in this sample walkthrough.\nThe model metrics below belong to the separate full-study run."
+    }
+  ],
+  "script_sha256": "7efd792e7402eed746f093f03baa2e8f5d6978e118474dcc73aa18bb9850a2dc"
+}

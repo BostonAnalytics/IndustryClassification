@@ -3,6 +3,8 @@ title: "Data preparation and analytical design"
 number-sections: true
 ---
 
+{{< include _content/sample-preparation.md >}}
+
 ## Source and observation window
 
 The source is the local Jobs_2026_US snapshot: 82 posting partitions containing 815,193 records [@jobs2026]. The observation window is January 1 through September 30, 2026. File hashes, row counts, versions and parameters are retained in [run.json](data/study/run.json). The source EDA verifies posting years independently of the folder name.
@@ -45,6 +47,7 @@ For dataset-wide EDA, run `python scripts/run_eda.py --data-dir E:/Data/Jobs_202
 python -m pip install -r requirements-study.txt
 python scripts/run_study.py --data-dir E:/Data/Jobs_2026_US
 python scripts/run_eda.py --data-dir E:/Data/Jobs_2026_US
+python scripts/publish_sample.py --data-dir E:/Data/Jobs_2026_US --sample=true
 python scripts/publish_study.py
 python scripts/publish_eda.py
 python scripts/verify_study.py
