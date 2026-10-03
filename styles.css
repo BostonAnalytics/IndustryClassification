@@ -1,4 +1,4 @@
-:root { --ink: #102b3f; --teal: #087e8b; --paper: #fbfaf7; }
+:root { --ink: #102b3f; --teal: #087e8b; --paper: #ffffff; }
 body { color: #233544; background: var(--paper); font-family: system-ui, sans-serif; line-height: 1.7; }
 h1,h2,h3 { color: var(--ink); letter-spacing: -.025em; }
 h1 { font-weight: 750; }
