@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Employer industry classification using job postings – Industry Classification</title>
+<title>Healthcare data analyst career evaluation – Healthcare Analyst Careers</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -87,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Industry Classification</span>
+    <span class="navbar-title">Healthcare Analyst Careers</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -101,20 +120,16 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./methods.html"> 
-<span class="menu-text">Method</span></a>
+    <a class="nav-link" href="./introduction.html"> 
+<span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./results.html"> 
-<span class="menu-text">Findings</span></a>
+    <a class="nav-link" href="./market_baseline.html"> 
+<span class="menu-text">Market and EDA</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./study.html"> 
-<span class="menu-text">2026 study</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./course.html"> 
-<span class="menu-text">Course alignment</span></a>
+    <a class="nav-link" href="./career_evaluation.html"> 
+<span class="menu-text">Evaluation</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -127,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">The study</a></li><li class="breadcrumb-item"><a href="./index.html">Employer industry classification using job postings</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Healthcare data analyst career evaluation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -139,123 +154,84 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">The study</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Employer industry classification using job postings</span></a>
+ <span class="menu-text">Healthcare data analyst career evaluation</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data and preparation</span></a>
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research introduction</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">From postings to industry predictions</span></a>
+  <a href="./data_preparation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data preparation and analytical design</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Published results</span></a>
+  <a href="./market_baseline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Market baseline and exploratory analysis</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./discussion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Interpretation and limitations</span></a>
+  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explore the saved results</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Career application</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./study.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Jobs_2026 healthcare study</span></a>
+  <a href="./analysis_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Complete analysis and export code</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./market.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Healthcare analyst market baseline</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./skills.html" class="sidebar-item-text sidebar-link">
+  <a href="./skill_gap_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Skill-gap analysis</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Career evaluation logic</span></a>
+  <a href="./career_evaluation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Career evaluation and model evidence</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./recommendations.html" class="sidebar-item-text sidebar-link">
+  <a href="./pyspark_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data processing and classification in PySpark</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multiclass_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiclass industry classification</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./final_recommendations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Recommendations</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Reproduce and review</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./reproducibility.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reproducibility and build</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./course.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course requirements and completion status</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References and provenance</span></a>
+ <span class="menu-text">References and source provenance</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ai-disclosure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">AI assistance disclosure</span></a>
+ <span class="menu-text">AI disclosure</span></a>
   </div>
 </li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -266,19 +242,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#research-question" id="toc-research-question" class="nav-link active" data-scroll-target="#research-question">Research question</a></li>
-  <li><a href="#scope-and-intended-reader" id="toc-scope-and-intended-reader" class="nav-link" data-scroll-target="#scope-and-intended-reader">Scope and intended reader</a></li>
-  <li><a href="#how-this-relates-to-the-course" id="toc-how-this-relates-to-the-course" class="nav-link" data-scroll-target="#how-this-relates-to-the-course">How this relates to the course</a></li>
+  <li><a href="#research-and-product-question" id="toc-research-and-product-question" class="nav-link active" data-scroll-target="#research-and-product-question">Research and product question</a></li>
+  <li><a href="#evidence-at-a-glance" id="toc-evidence-at-a-glance" class="nav-link" data-scroll-target="#evidence-at-a-glance">Evidence at a glance</a></li>
+  <li><a href="#read-the-study" id="toc-read-the-study" class="nav-link" data-scroll-target="#read-the-study">Read the study</a></li>
+  <li><a href="#scope-and-limitations" id="toc-scope-and-limitations" class="nav-link" data-scroll-target="#scope-and-limitations">Scope and limitations</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">The study</a></li><li class="breadcrumb-item"><a href="./index.html">Employer industry classification using job postings</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Employer industry classification using job postings</h1>
-<p class="subtitle lead">The 2017 paper and a new healthcare analyst study</p>
+<h1 class="title">Healthcare data analyst career evaluation</h1>
+<p class="subtitle lead">Industry-label quality, market evidence and learning priorities</p>
 </div>
 
 
@@ -295,47 +272,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="hero">
-<div class="eyebrow">
-<p>Research reconstruction / Career analytics</p>
-</div>
-<section id="what-can-a-companys-job-postings-tell-us-about-its-industry" class="level2">
-<h2 class="anchored" data-anchor-id="what-can-a-companys-job-postings-tell-us-about-its-industry">What can a company’s job postings tell us about its industry?</h2>
-<p>Goindani, Liu, Chao and Jijkoun use job titles and employer names to check industry labels in a large employer knowledge base. Their models help identify records that deserve human review.</p>
-<p><a href="./methods.html">Explore the method</a> · <a href="./results.html">Read the findings</a></p>
+<section id="research-and-product-question" class="level2">
+<h2 class="anchored" data-anchor-id="research-and-product-question">Research and product question</h2>
+<p>Which skills and work arrangements recur in US healthcare analyst postings, and how reliably can posting-derived features identify healthcare employers for reviewing that sample?</p>
+<p>This project supports students targeting <strong>healthcare data analyst roles in NAICS 62, Health Care and Social Assistance</strong>. It adapts employer-industry classification research <span class="citation" data-cites="goindani2017">(<a href="#ref-goindani2017" role="doc-biblioref">Goindani et al. 2017</a>)</span> to a local Jobs_2026_US snapshot <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span>. The observed sample supports an emphasis on SQL and visualization skills; sparse compensation evidence limits salary advice.</p>
 </section>
-</div>
-<div class="metric-grid">
-<div class="metric">
-<p><strong>10,000</strong> employers in the reported initial sample</p>
-</div>
-<div class="metric">
-<p><strong>2</strong> industry-specific binary classification tasks</p>
-</div>
-<div class="metric">
-<p><strong>2017</strong> April–June collection window</p>
-</div>
-</div>
-<section id="research-question" class="level2">
-<h2 class="anchored" data-anchor-id="research-question">Research question</h2>
-<p>Can the titles an employer hires for, together with words in its name, identify mistakes in its recorded industry? The study compares Support Vector Machines (SVM) and Gradient Boosted Decision Trees (GBDT). It distinguishes classification of valid employer entities from detection of incorrectly extracted or normalized employers.</p>
-<p>The strongest practical result concerns error detection: GBDT has higher utility precision, recall and F-score than SVM for both industries. The existing knowledge-base system retains higher classification F-scores on defined employers. These are different evaluation tasks and should inform different deployment decisions.</p>
+<section id="evidence-at-a-glance" class="level2">
+<h2 class="anchored" data-anchor-id="evidence-at-a-glance">Evidence at a glance</h2>
+<p>The January–September 2026 analysis selects <strong>112 career postings</strong> and a separate classification sample of <strong>362 employers</strong> from 815,193 source records. SQL appears in 63 career postings. Only three postings have a positive normalized salary with explicit USD. Employer-name-disjoint test F1 is 0.553 for linear SVM and 0.717 for GBDT, measuring agreement with dataset-derived labels.</p>
 </section>
-<section id="scope-and-intended-reader" class="level2">
-<h2 class="anchored" data-anchor-id="scope-and-intended-reader">Scope and intended reader</h2>
-<p>This site is for students and analysts studying the reliability of job-market data. It reconstructs the supplied paper’s argument, equations and reported results, then adapts its approach to Jobs_2026. It does not rerun the original proprietary experiments. The authors of the underlying research are <strong>Mahak Goindani, Qiaoling Liu, Josh Chao and Valentin Jijkoun</strong>; the web reconstruction is AI-assisted and documented separately.</p>
-<p>The paper studies Transportation and Warehousing and Health Care and Social Assistance. Their 2017 NAICS sectors are <a href="https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-48-49.html">48–49</a> and <a href="https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-62.html">62</a>, respectively. The paper uses employer-level labels; the scope and unit of a course dataset must be checked before mapping its codes to these sectors.</p>
+<section id="read-the-study" class="level2">
+<h2 class="anchored" data-anchor-id="read-the-study">Read the study</h2>
+<p>Explore the <a href="./interactive.html">interactive charts, US map and downloadable tables</a>, or read the <a href="./analysis_code.html">complete analysis and export code</a>.</p>
+<ol type="1">
+<li><a href="./introduction.html">Introduction and literature review</a>: rationale, research questions and industry scope.</li>
+<li><a href="./data_preparation.html">Data preparation</a>: filters, fields, leakage controls and reproduction commands.</li>
+<li><a href="./market_baseline.html">Market baseline and EDA</a>: sample selection, field coverage, role labels, skills, location and work arrangement.</li>
+<li><a href="./skill_gap_analysis.html">Skill-gap analysis</a>: observed market skills and the assessment method.</li>
+<li><a href="./career_evaluation.html">Career evaluation</a>: model evidence, interpretation and proposed scorecard.</li>
+<li><a href="./final_recommendations.html">Final recommendations</a>: sample-supported learning priorities and limitations.</li>
+</ol>
+<p>Read the <a href="./pyspark_analysis.html">PySpark analysis</a> or download the <a href="final_report.docx">Word report</a>.</p>
+<p>The additional <a href="./multiclass_analysis.html">multiclass industry experiment</a> predicts broad NAICS sectors with sufficient employer support. It reports class coverage, macro-F1, per-sector metrics and confusion counts while retaining the healthcare career benchmark.</p>
 </section>
-<section id="how-this-relates-to-the-course" class="level2">
-<h2 class="anchored" data-anchor-id="how-this-relates-to-the-course">How this relates to the course</h2>
-<p>The Module 3–5 guides ask for a career evaluation product, including market benchmarks, a skill-gap analysis, recommendations and a Word report. Those requirements extend beyond the paper. The <a href="./course.html">course alignment</a> page identifies what this reconstruction supplies and what still requires student profiles or submission records.</p>
-<p><strong>Evidence status:</strong> <a href="./results.html">Published results</a> reports the original paper. <a href="./study.html">Jobs_2026 healthcare study</a> reports newly executed local analysis. The selected pathway is healthcare data analysts in NAICS 62. The study scans 2,350,355 source rows, evaluates industry classification on 362 eligible employers, and derives career benchmarks from 112 postings. Personal assessments and the weighted opportunity scorecard remain uncomputed. Local execution was explicitly requested by the user; it does not satisfy the guides’ EC2 requirement.</p>
-<p>Source: supplied paper, abstract and Sections I–II; full citation in <a href="./references.html">References</a>.</p>
+<section id="scope-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="scope-and-limitations">Scope and limitations</h2>
+<p>The study follows the career evaluation framework in Module 1 <span class="citation" data-cites="ad688m1">(<a href="#ref-ad688m1" role="doc-biblioref">AD688 course materials, n.d.</a>)</span>. Sector 62 combines healthcare and social assistance, so the findings do not describe a single healthcare subsector. Personal skill assessments and adequate salary coverage are unavailable; no weighted opportunity score is calculated.</p>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-ad688m1" class="csl-entry" role="listitem">
+AD688 course materials. n.d. <em>Module 1 Project Instructions: Complete Career Evaluation Pipeline and Step 1</em>. Local course guide, M1/M01_Proj.qmd.
+</div>
+<div id="ref-goindani2017" class="csl-entry" role="listitem">
+Goindani, Mahak, Qiaoling Liu, Josh Chao, and Valentin Jijkoun. 2017. <span>“Employer Industry Classification Using Job Postings.”</span> <em>2017 IEEE International Conference on Data Mining Workshops (ICDMW)</em>. <a href="https://doi.org/10.1109/ICDMW.2017.30">https://doi.org/10.1109/ICDMW.2017.30</a>.
+</div>
+<div id="ref-jobs2026" class="csl-entry" role="listitem">
+<em><span>Jobs_2026_US</span>: Local Course Dataset Snapshot</em>. 2026. 82 local Parquet posting partitions.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -409,7 +387,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/BostonAnalytics\.github\.io\/IndustryClassification\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -748,7 +726,7 @@ ul.task-list li input[type="checkbox"] {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>2017 paper reconstruction + Jobs_2026 adaptation. Original and new results are labeled separately.</p>
+<p>Healthcare data analysts · NAICS 62 · January–September 2026 sample</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

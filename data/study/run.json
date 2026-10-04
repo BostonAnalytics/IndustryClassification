@@ -1,4 +1,5 @@
 {
+  "source_directory": "E:/Data/Jobs_2026_US",
   "seed": 2017,
   "period": [
     "2026-01-01",
@@ -14,603 +15,512 @@
   "files": [
     {
       "file": "jobs_2026_part_00001.parquet",
-      "bytes": 15697381,
-      "rows": 10000,
-      "sha256": "070a2bbdc17a36e24667f04cd105a36b0e9fb5de1d91b74a33940cf60da99d29"
+      "bytes": 40201036,
+      "rows": 9170,
+      "sha256": "6e09630fefea02caa1c9b699506456b54be664a65555102f08216eb5edcc9dde"
     },
     {
       "file": "jobs_2026_part_00002.parquet",
-      "bytes": 15609989,
-      "rows": 10000,
-      "sha256": "ad252c13f37f742c4668de800c0e8655336d2ad720ba1de270f99ac793b21739"
+      "bytes": 30319774,
+      "rows": 9072,
+      "sha256": "a42b0d2577c85dcc198c581d0d041233faf0d4cd6eb6ae186b5ef7b968989981"
     },
     {
       "file": "jobs_2026_part_00003.parquet",
-      "bytes": 20350894,
-      "rows": 10000,
-      "sha256": "2a1347256b1bdaf7be571896ae29432befea528f5135b3051515fa5438a408d0"
+      "bytes": 43789632,
+      "rows": 9292,
+      "sha256": "da46935402895f8736daf74bd536ec1391e0cf9720fd550ea9de4fe3beccd8cc"
     },
     {
       "file": "jobs_2026_part_00004.parquet",
-      "bytes": 18999641,
-      "rows": 10000,
-      "sha256": "1ac2ade50a854a47b6f03236f1bb2815b7c77157fef08e61c869caf16b7cc898"
+      "bytes": 30365753,
+      "rows": 9249,
+      "sha256": "cee8544b4a04df9f7752e20f55b51b2e1e9ba54a6babfdbbf362c714daad9128"
     },
     {
       "file": "jobs_2026_part_00005.parquet",
-      "bytes": 16918900,
-      "rows": 10000,
-      "sha256": "e338e6e82470afe8666a7d85f89aff3b91ec8ac12b64ec395ee40534399706bf"
+      "bytes": 28961288,
+      "rows": 9581,
+      "sha256": "666fedfbefcb9cbcbf19339d4e25d3dd917b71187da6fe936af0a9ff7e982df1"
     },
     {
       "file": "jobs_2026_part_00006.parquet",
-      "bytes": 17237109,
-      "rows": 10000,
-      "sha256": "9d970bc8d5b7db1c3b6ce571ae31d15e4abb582174c2a8d2b2c9c55d3127ae39"
+      "bytes": 29025250,
+      "rows": 9544,
+      "sha256": "cf0434d89527b060b43064b760052a4262e2bc94d898e83c3e9fd66e6415b49c"
     },
     {
       "file": "jobs_2026_part_00007.parquet",
-      "bytes": 15149807,
-      "rows": 10000,
-      "sha256": "da64f4b308909d33af0fc5f6aa6f3656baae20e374dec86cbd32aa8b0ad4dd95"
+      "bytes": 23529951,
+      "rows": 9193,
+      "sha256": "cea7c98fba18992046a90a5b255d0372689424c2295bc9587d11e20599277901"
     },
     {
       "file": "jobs_2026_part_00008.parquet",
-      "bytes": 13192668,
-      "rows": 10000,
-      "sha256": "c886d33dc6b4fc650d26acbfdfdf0fc970b8c2affb74e4946ac9f3bf04d747ec"
+      "bytes": 19504966,
+      "rows": 9163,
+      "sha256": "05adf592ea58d581d071d8c3ae6d5134b016fd48dba63be16d87b94fdd87e468"
     },
     {
       "file": "jobs_2026_part_00009.parquet",
-      "bytes": 11559317,
-      "rows": 10000,
-      "sha256": "bf011b744e29e88b785210b2b73786f7d2652e1bbb2cef2ba82864aa27bd5004"
+      "bytes": 17680477,
+      "rows": 9502,
+      "sha256": "8f9c57e21cdbf2bacc9352c261cadf32ee79834a237f38ef469d7f18325592c6"
     },
     {
       "file": "jobs_2026_part_00010.parquet",
-      "bytes": 12575230,
-      "rows": 10000,
-      "sha256": "16b0cf7b202d795034ea4667ef7f2169d85dd5568bbb81edaaa510e6d774b393"
+      "bytes": 18927380,
+      "rows": 9382,
+      "sha256": "c97a50d5ba056d20561961e4640d9a7c45c5b26a7e0aefa55fa8b80807a21019"
     },
     {
       "file": "jobs_2026_part_00011.parquet",
-      "bytes": 12086648,
-      "rows": 10000,
-      "sha256": "d19998c2249e65aee7fdc5847e9abd5cf26c92e3d0e704f77c17fc5b632bb532"
+      "bytes": 18092924,
+      "rows": 9421,
+      "sha256": "045950c2f7c79a81ce3adbb5d81b39975293d8fd8210806420e4c3ef6c122b8a"
     },
     {
       "file": "jobs_2026_part_00012.parquet",
-      "bytes": 10558439,
-      "rows": 10000,
-      "sha256": "49b99f26b6a1ec49c262c2a678a8048f9e8681d1a500287ae1b3a9e05ae2b95f"
+      "bytes": 15031411,
+      "rows": 9431,
+      "sha256": "cc7147020057524038127f98545130edd8eff80de252447503ba0615046deb9f"
     },
     {
       "file": "jobs_2026_part_00013.parquet",
-      "bytes": 10244334,
-      "rows": 10000,
-      "sha256": "4a26b2d7dc711cd722c507eb0955dff84436bad9a0c502b4862f3fb43f2f535b"
+      "bytes": 14772854,
+      "rows": 9581,
+      "sha256": "a2b8e90ea4a5bac8d4f3d7bf64851926a1055113ff09c99584844bb83b6d70bb"
     },
     {
       "file": "jobs_2026_part_00014.parquet",
-      "bytes": 10078224,
-      "rows": 10000,
-      "sha256": "c53d5219c6ef4741afba88df06e118e333326fd7527f4b2cbd726e34206e00ee"
+      "bytes": 14144774,
+      "rows": 9660,
+      "sha256": "3bd2f90c18c8dcd5f78730be0461aa0589fff86a4b5d78492392e1d1e9d2f115"
     },
     {
       "file": "jobs_2026_part_00015.parquet",
-      "bytes": 10184100,
-      "rows": 10000,
-      "sha256": "2b0635636fc5e8ed8ca7365ee73d0cf93265f3bc909f189c01ed496e5cd04a70"
+      "bytes": 14197459,
+      "rows": 9581,
+      "sha256": "cdb14dce3ba35b7b624c7e27470f834c4a305c53df6f55c0455d31f233c8a7cf"
     },
     {
       "file": "jobs_2026_part_00016.parquet",
-      "bytes": 9264912,
-      "rows": 10000,
-      "sha256": "0379d3d3d3a290ea862314fcdcdd3b8139933024cb369617a210727d437abe09"
+      "bytes": 12297084,
+      "rows": 9181,
+      "sha256": "a8ce177a5435ec91419a597d160cf6eb36653fc8b08b31a338bd58a2b9dca949"
     },
     {
       "file": "jobs_2026_part_00017.parquet",
-      "bytes": 1836160,
-      "rows": 5386,
-      "sha256": "6361b2b481788158ca6c734a78ccbb7a027a04e1df558d7b0f064a34d69f90bb"
+      "bytes": 1813180,
+      "rows": 5184,
+      "sha256": "2c548c2567c3384822e8bf327a94b2a0df6d391a0f91ee8e72edd9489dc5a38b"
     },
     {
       "file": "jobs_2026_part_00018.parquet",
-      "bytes": 69341254,
-      "rows": 42753,
-      "sha256": "88930d97e3585fd89759616d20bb22ed682b3488622f590b2ea34bceb0b6f135"
+      "bytes": 80624817,
+      "rows": 27138,
+      "sha256": "c7f169e55509e28775d88aeab5041dea879c4aa9b8d64fb81ee83efc8df6572e"
     },
     {
       "file": "jobs_2026_part_00019.parquet",
-      "bytes": 385948554,
-      "rows": 199341,
-      "sha256": "bf9d106e20cba33314d0ea645379b5a456e3f2383a35125a1852784a74cbe85a"
+      "bytes": 417498779,
+      "rows": 133716,
+      "sha256": "9aa303c026cf16055762b52cea95008e2ccd3bd309991d43618a583a792ba843"
     },
     {
       "file": "jobs_2026_part_00020.parquet",
-      "bytes": 48076982,
-      "rows": 46728,
-      "sha256": "cc9da6f46b4188b4d96609ee30c419487bb0be124b5d1da8f21871ef784eba45"
+      "bytes": 53172507,
+      "rows": 32109,
+      "sha256": "81bd8fa17b88d756906d34145893e0b3f053cd1d31aa65610ce9f535cca26efa"
     },
     {
       "file": "jobs_2026_part_00021.parquet",
-      "bytes": 40351405,
-      "rows": 50000,
-      "sha256": "2e2d99d2d768487667296f5db422d42a9181f04a846bea31e854716335707d6d"
+      "bytes": 42274590,
+      "rows": 38654,
+      "sha256": "0301a3c49c267a6dad800ba3e4bcb9b0a03cb4bd472a778af781b0b90c00f1bf"
     },
     {
       "file": "jobs_2026_part_00022.parquet",
-      "bytes": 11038990,
-      "rows": 7399,
-      "sha256": "2fe8b2fb40ee9ea75db65c426f29d874ea0efe2293ef0ae1737951a3f05693c9"
+      "bytes": 11226969,
+      "rows": 4300,
+      "sha256": "68f956795e0214f781bb7e6d26615d248c6b2625b8c1422607cee885d15e7a20"
     },
     {
       "file": "jobs_2026_part_00023.parquet",
-      "bytes": 23793095,
-      "rows": 25000,
-      "sha256": "e42f0829912bfaecc4e3283c5241a387a8ee155d746049f9038eb3f7cfe7175a"
+      "bytes": 23064448,
+      "rows": 17761,
+      "sha256": "fd8758fa14d2bd49f880d34d550ca8fd24f422ec5bc8256bfdb6a2c0efec6c48"
     },
     {
       "file": "jobs_2026_part_00024.parquet",
-      "bytes": 17211358,
-      "rows": 25000,
-      "sha256": "a0497ee9cb1993e4624eedd73a2e6395567b54b35641cb0303d972820093b89b"
+      "bytes": 18197467,
+      "rows": 18965,
+      "sha256": "646761a5e8ecf48734ab588634b96930272ce5f2e86bf64e516c6f72dc2d6878"
     },
     {
       "file": "jobs_2026_part_00025.parquet",
-      "bytes": 24056560,
-      "rows": 25000,
-      "sha256": "e53032eac38a7b61f4295b1e05748043a5264a7df7ceadd8f127c7ab418d3b96"
+      "bytes": 7872459,
+      "rows": 2758,
+      "sha256": "b35f9d39929fba17b0a29a1b36fdce09bbf5a045ed639d773491ef3b7d90a601"
     },
     {
       "file": "jobs_2026_part_00026.parquet",
-      "bytes": 31496922,
-      "rows": 25000,
-      "sha256": "2e030559d123aa9400f06a051fac6e9db4d07764215499784c87989e8457c0c4"
+      "bytes": 27923826,
+      "rows": 11730,
+      "sha256": "a335fad1b0dc350ccfa147ee4bf36bb24afb65d9e023f0aba26768bf41abf96e"
     },
     {
       "file": "jobs_2026_part_00027.parquet",
-      "bytes": 34711413,
-      "rows": 25000,
-      "sha256": "2431012cd2b9a70d48535cf3fbc808028aa61aa5030c26d8c54eb2a249ac7f19"
+      "bytes": 34305533,
+      "rows": 13037,
+      "sha256": "93428a8eca9f01b91f87c0047e42c2781cd226441ae80023abe5bb719eebc574"
     },
     {
       "file": "jobs_2026_part_00028.parquet",
-      "bytes": 22863992,
-      "rows": 25000,
-      "sha256": "9868111b5efe2dd44aa9f47fbc0e8385f73e030e7ef11437b43e52eb330cc8df"
+      "bytes": 20928646,
+      "rows": 17454,
+      "sha256": "3a91858f0d3a08d299e82921406458b95db8b7ad0b5cee6784d2a1b0721ebc22"
     },
     {
       "file": "jobs_2026_part_00029.parquet",
-      "bytes": 22221318,
-      "rows": 25000,
-      "sha256": "73fa71153bf17112a237ae548785cb3b9a819d3f60a56abc34318921bc67ec87"
+      "bytes": 22495467,
+      "rows": 15709,
+      "sha256": "a885ce7b3c943549d050501ccf654cf21f0949013205a0d5915591b026f076db"
     },
     {
       "file": "jobs_2026_part_00030.parquet",
-      "bytes": 15373280,
-      "rows": 25000,
-      "sha256": "f268c79557f2bfad16be6931f2bf9f36900401cbd64954dd4d375e345a710bbf"
+      "bytes": 16072976,
+      "rows": 15854,
+      "sha256": "047c3c13fea24f3444b331ea913a0b874ae5da34c39606109ced91aad3a8e2e7"
     },
     {
       "file": "jobs_2026_part_00031.parquet",
-      "bytes": 14410695,
-      "rows": 25000,
-      "sha256": "5757c053a1a2b4e9e11f3c91a41a09b866d714a27df6b9cb1ae6524780cfed15"
+      "bytes": 16924623,
+      "rows": 17592,
+      "sha256": "7e65df5332d79df19fe69fc44fc045dda5d1ccfe8ffc8de7c728c3d216a0ca4c"
     },
     {
       "file": "jobs_2026_part_00032.parquet",
-      "bytes": 8360506,
-      "rows": 25000,
-      "sha256": "027737df273dcd4d9cebf956b5f17bb4ff0636cf9735f7e773444ebdab19925a"
+      "bytes": 7948847,
+      "rows": 16222,
+      "sha256": "b208b33ce344c81b1e2d23fc89c21c040bd6fa3f08e46ffea6391677deac686b"
     },
     {
       "file": "jobs_2026_part_00033.parquet",
-      "bytes": 28722943,
-      "rows": 25000,
-      "sha256": "975be05e6ce215a6d13aae286eece9dfdc89af0ea57d5e386c526007748fd9c3"
+      "bytes": 21987294,
+      "rows": 10184,
+      "sha256": "b2d5b2ef19ac76d80cd85ff190ce46c69215dec9dc77328e23d29ebf8a2af869"
     },
     {
       "file": "jobs_2026_part_00034.parquet",
-      "bytes": 21300116,
-      "rows": 25000,
-      "sha256": "563480bd5b30a103c3c52b72b071fd8eadeed6fc122bff461e31261090bb9a93"
-    },
-    {
-      "file": "jobs_2026_part_00035.parquet",
-      "bytes": 5530987,
-      "rows": 25000,
-      "sha256": "10b7bc9f59c564e29a232dcc37d2f3984f9b4d575e144c3931e7bc9a2d960b61"
-    },
-    {
-      "file": "jobs_2026_part_00036.parquet",
-      "bytes": 5623532,
-      "rows": 25000,
-      "sha256": "63f6a5e2582b9737f88d9096adfa5259eb78242b14b26f1e656dfcb0bbaeb1c8"
+      "bytes": 13790005,
+      "rows": 7480,
+      "sha256": "09cb2d70f1f839441b49c946902a3be66bd969340ba564d673247488bb790adb"
     },
     {
       "file": "jobs_2026_part_00037.parquet",
-      "bytes": 6344056,
-      "rows": 25000,
-      "sha256": "07c48eac7e906aecf96e8b3b4af3f6889c7ceb784c32c766ad692cd336b5647c"
+      "bytes": 183996,
+      "rows": 2,
+      "sha256": "d69fe389246fe84c100f98e752d767cc0f2a0b2940cda29b0f54ebf76aabb2c9"
     },
     {
       "file": "jobs_2026_part_00038.parquet",
-      "bytes": 17420127,
-      "rows": 25000,
-      "sha256": "c8535be8d38dd77e79a351b3752e5cbc8b3609dd7e9682511efb8c255d728593"
-    },
-    {
-      "file": "jobs_2026_part_00039.parquet",
-      "bytes": 18298220,
-      "rows": 25000,
-      "sha256": "340cc7ca146c4c46f31146e6279d8bb37736e0152fcc99c2110eb8a8cf725407"
-    },
-    {
-      "file": "jobs_2026_part_00040.parquet",
-      "bytes": 19701136,
-      "rows": 25000,
-      "sha256": "cd32b9eae76e911944a09a459f2a308ba76c60219635dd836e860566012f5692"
-    },
-    {
-      "file": "jobs_2026_part_00041.parquet",
-      "bytes": 21952318,
-      "rows": 25000,
-      "sha256": "0eb6bda208429f8bcc8440aef8552d2056e70022bbd64a78f7f7d6fabd908e35"
-    },
-    {
-      "file": "jobs_2026_part_00042.parquet",
-      "bytes": 22726090,
-      "rows": 25000,
-      "sha256": "be829f0a1806dde9be0bc1d940adaa158478aa702c9dc8c73aa488f51db08f8f"
-    },
-    {
-      "file": "jobs_2026_part_00043.parquet",
-      "bytes": 16912016,
-      "rows": 25000,
-      "sha256": "23e85914b68446ad12b42225245ae77c0d7883a240c3ff7f946a087905815145"
-    },
-    {
-      "file": "jobs_2026_part_00044.parquet",
-      "bytes": 19443413,
-      "rows": 25000,
-      "sha256": "31d7abbb2e0a0c00598202c85fd75c02fea890d250201f10736b8da4dbb4fa82"
-    },
-    {
-      "file": "jobs_2026_part_00045.parquet",
-      "bytes": 18735719,
-      "rows": 25000,
-      "sha256": "9bc6452a6b76c2a425163ba6bccaa8ff701d0635e0b74235db26258fba47d421"
+      "bytes": 129146,
+      "rows": 5,
+      "sha256": "67876387f5147e05edc7d377c8b5ecddaf08a988c673b4b5066a83fe3ce6d93e"
     },
     {
       "file": "jobs_2026_part_00046.parquet",
-      "bytes": 20828500,
-      "rows": 25000,
-      "sha256": "99bcf7f525cf8d6eea6e3dc37ec0e9e3941919e831c2f5514a63c16d1653173c"
+      "bytes": 3456255,
+      "rows": 1239,
+      "sha256": "069680843530d8664474b89196f634c55a0b51195848a3724ee52083c5dd10eb"
     },
     {
       "file": "jobs_2026_part_00047.parquet",
-      "bytes": 11974579,
-      "rows": 25000,
-      "sha256": "ecd077d5adac38b0e020423d2815fa94b0fbd84067287a77b81fe91e4d9ab900"
+      "bytes": 1384978,
+      "rows": 472,
+      "sha256": "a927037c2268bd008dc6300808e59d4e98bc3bb4c9be3d685c4555e159cb421c"
     },
     {
       "file": "jobs_2026_part_00048.parquet",
-      "bytes": 21989791,
-      "rows": 25000,
-      "sha256": "e1cc000c4e8778381f56e30cb7f24dc5823c34f664cb11bcfe1ad8ddd6511d49"
+      "bytes": 43126762,
+      "rows": 17515,
+      "sha256": "cd925f61e916338807218e27723b29e3fb90bbfa1569fe2ac436df6d9a163f96"
     },
     {
       "file": "jobs_2026_part_00049.parquet",
-      "bytes": 32266632,
-      "rows": 25000,
-      "sha256": "ee2d0f8fe96ba965db06b7282b69615a132e39b27a7f3fe8d4bc3293ba801732"
+      "bytes": 26511047,
+      "rows": 11236,
+      "sha256": "6f677e7e0b09960ea949d50f63e10efda2cc7c8598f9c7cc4276883cd0ddb85f"
     },
     {
       "file": "jobs_2026_part_00050.parquet",
-      "bytes": 14075005,
-      "rows": 25000,
-      "sha256": "defaa6ad829b28f2a0aa1fd4a8c640b0ef1f79e098e3ff287e3ef9c84a0bde1a"
+      "bytes": 14370629,
+      "rows": 15753,
+      "sha256": "c60435039db9b3aeca5d6018acbe8a4caced8b368334d04d3b23b0829b8bf050"
     },
     {
       "file": "jobs_2026_part_00051.parquet",
-      "bytes": 19277867,
-      "rows": 25000,
-      "sha256": "0020fccc904df376b9335504429115b91936ae499bcccab7f23e774bf6f58449"
-    },
-    {
-      "file": "jobs_2026_part_00052.parquet",
-      "bytes": 5012731,
-      "rows": 25000,
-      "sha256": "a051ce5b6a4fcfd4b8e847ec5dda5295f0da6eeb1ad74eedb48439576ca16da7"
+      "bytes": 12512021,
+      "rows": 8245,
+      "sha256": "45d419f11eced8aa8bbb4fa656333bfea0ce42c384031e489b901b1c149e71ec"
     },
     {
       "file": "jobs_2026_part_00053.parquet",
-      "bytes": 19754193,
-      "rows": 25000,
-      "sha256": "e17d55c7ec766c97df6ce8bf19d5bbb5e01e5dd4bc38e9a32773b0bf413c1ccc"
-    },
-    {
-      "file": "jobs_2026_part_00054.parquet",
-      "bytes": 22846402,
-      "rows": 25000,
-      "sha256": "4e20d4caa89ba591d9990a6d7a177ff02d19f3e303d97d8e8033ffbc9783106c"
-    },
-    {
-      "file": "jobs_2026_part_00055.parquet",
-      "bytes": 18382847,
-      "rows": 25000,
-      "sha256": "5ab838fb2efe92d024e9f9ba5eaafa9b294f7e5e4f640c5524c42be496f7c33c"
-    },
-    {
-      "file": "jobs_2026_part_00056.parquet",
-      "bytes": 18795675,
-      "rows": 25000,
-      "sha256": "ee89abdd8165b7dbaa3c371720bc52bef3d3a9ae84fa8fbe0c83875d1c6eaf76"
+      "bytes": 133250,
+      "rows": 5,
+      "sha256": "4d6ee316fa30802da3354671f638cd2432b0eaba465698290ba57e398138dff6"
     },
     {
       "file": "jobs_2026_part_00057.parquet",
-      "bytes": 23474793,
-      "rows": 25000,
-      "sha256": "497024be09a6034389c465117e136fd2b740574bacab12a9d7ae960289156509"
+      "bytes": 23128369,
+      "rows": 6854,
+      "sha256": "451e02511540fa6210ad7ac3d22752ccbdf9a02a2bf2b294165b9a87942a4e75"
     },
     {
       "file": "jobs_2026_part_00058.parquet",
-      "bytes": 22720523,
-      "rows": 25000,
-      "sha256": "b204ee1443cfb44682f6b10d99b5e1e3fdc2418890e1d3359acb1b47ab12c51f"
+      "bytes": 23971043,
+      "rows": 15873,
+      "sha256": "39377020fca2a83d3eb8aa0413f43152c46fe5e0e6ecfaa440327c94cab004a8"
     },
     {
       "file": "jobs_2026_part_00059.parquet",
-      "bytes": 22672523,
-      "rows": 25000,
-      "sha256": "4617c80103a370263e3c57939d29d43ef16386c365034193ebb95c07c5d2669e"
+      "bytes": 25352522,
+      "rows": 15709,
+      "sha256": "db5f5be51d4c1721bb80c8f09ac9cc0fff93c30d37be0aa31ab27f1e00777cc6"
     },
     {
       "file": "jobs_2026_part_00060.parquet",
-      "bytes": 15724223,
-      "rows": 25000,
-      "sha256": "98bd3546ad85caba4b4010849a3602e95ba28cc19f7c21480d5792d0a06a4224"
+      "bytes": 20176834,
+      "rows": 17267,
+      "sha256": "69f17807b202c57e17bd1aaa900fb02208dcdc15c36aabca347794814ea5794a"
     },
     {
       "file": "jobs_2026_part_00061.parquet",
-      "bytes": 19584618,
-      "rows": 25000,
-      "sha256": "344dfadf9b40f847239a2fe9eb933df21bfdcf3234a585294864853d5b10a1a4"
+      "bytes": 20852604,
+      "rows": 10586,
+      "sha256": "4d35cfad3586d33824ea26c1397be237b6897fad981a066b84d7b4c0d3298a56"
     },
     {
       "file": "jobs_2026_part_00062.parquet",
-      "bytes": 19500791,
-      "rows": 25000,
-      "sha256": "c823d81573aa8ac35ec0929d828deebc663663e98395f5e7963834a4b2d80202"
+      "bytes": 19995624,
+      "rows": 13586,
+      "sha256": "3f764140c711d8edcc51d585e7806710fc13921f75e2d8d390c7b8d2318eb0ef"
     },
     {
       "file": "jobs_2026_part_00063.parquet",
-      "bytes": 17107811,
-      "rows": 25000,
-      "sha256": "8c658bbc4f7c50302ba8c9f9bccabcdfd86062ab8a47de13109ea68e0fe680bd"
+      "bytes": 15763013,
+      "rows": 13973,
+      "sha256": "10da018752e06659c2de566b31173cd9e9ec652412ffca5788ba9e38e50aa28e"
     },
     {
       "file": "jobs_2026_part_00064.parquet",
-      "bytes": 15200301,
-      "rows": 25000,
-      "sha256": "2d94c21667476b75c2a31c4b9df815678e1faf18efd1ed4212d0b713991aee4f"
+      "bytes": 12824892,
+      "rows": 13412,
+      "sha256": "9d9559cfbf3e5c0410d6c21c5a45eede9071430766364ea37ee13b53e98dba58"
     },
     {
       "file": "jobs_2026_part_00065.parquet",
-      "bytes": 16399490,
-      "rows": 25000,
-      "sha256": "3c883e163bf30c9ee461f9181602373f80cd13fe670ff083e5a4692bf4bfe907"
+      "bytes": 20413901,
+      "rows": 17149,
+      "sha256": "627aa7990312e6c8255c2fe3ca911dfe5991a13f259d070f52adaa29655481b5"
     },
     {
       "file": "jobs_2026_part_00066.parquet",
-      "bytes": 13208822,
-      "rows": 25000,
-      "sha256": "9ab833271516df38269da7c24699b138d71e636666093d4fc8912ad4d3bcdf2a"
+      "bytes": 12835270,
+      "rows": 13661,
+      "sha256": "7e156ca12442bc50efa648a527dc85786a06dfe858a58ce9f22b34d5e9bb44f9"
     },
     {
       "file": "jobs_2026_part_00067.parquet",
-      "bytes": 8542618,
-      "rows": 25000,
-      "sha256": "a449410a3ae21253e20ce0fee86d1eddd7e242e300c445621ab6bf180048b1cf"
+      "bytes": 4185892,
+      "rows": 2853,
+      "sha256": "b2c25d600638e306dd8be0be425acc4810988ef1a31142dec99ce5121ec29b3d"
     },
     {
       "file": "jobs_2026_part_00068.parquet",
-      "bytes": 13483668,
-      "rows": 25000,
-      "sha256": "2bae1328b18b515c1ec00dec4a1ac7f236c36b94b2de74b619ae812140adf23e"
+      "bytes": 3970172,
+      "rows": 1353,
+      "sha256": "5f0c0c74a6107917c5acc040e7162e65fb428057fb32cd8309f71c9a25cde62e"
     },
     {
       "file": "jobs_2026_part_00069.parquet",
-      "bytes": 16288589,
-      "rows": 25000,
-      "sha256": "5362082c4dc27a081554a5120047ef32c5e379ea020a39613f913d22d32865d1"
+      "bytes": 6068817,
+      "rows": 4403,
+      "sha256": "dc6fed79e30e346c8b4b01edb726214876fab0431bd85dab4be9333a44b3ed7d"
     },
     {
       "file": "jobs_2026_part_00070.parquet",
-      "bytes": 19634495,
-      "rows": 25000,
-      "sha256": "9bf5a8ee1546cc46fab6a590b09efbd3d063708dc8837a02dc9091502ec9abb6"
+      "bytes": 4746186,
+      "rows": 1562,
+      "sha256": "541722dd12a62695ced31eace41676d7480f4d24ebec272abf2cda816824f94d"
     },
     {
       "file": "jobs_2026_part_00071.parquet",
-      "bytes": 22099276,
-      "rows": 25000,
-      "sha256": "beb4d6a9751e76ebf8d834b48b6ed355cdc113d98a7003ae60c03d81e596f486"
+      "bytes": 3494186,
+      "rows": 1198,
+      "sha256": "e747819f1269b6f201beff4f14698fed7a43d03e33f6f970d363d5df118e0863"
     },
     {
       "file": "jobs_2026_part_00072.parquet",
-      "bytes": 22737539,
-      "rows": 25000,
-      "sha256": "f2d38c8df2d75b0b90801dabbf2263886bfd7be1393de7513fd3c2cc624fe454"
+      "bytes": 5707408,
+      "rows": 2404,
+      "sha256": "72b83487e2f986bb42e3afb981c1a1b914c09707d56d4bbddcfa26a52966cb6d"
     },
     {
       "file": "jobs_2026_part_00073.parquet",
-      "bytes": 21901480,
-      "rows": 25000,
-      "sha256": "3cd695530f37b28aa09a437af7749af88a6bc4b7faa9cd5ef18080858db29d00"
+      "bytes": 4574515,
+      "rows": 2314,
+      "sha256": "eeaa90468315ff87747439b36d0d09c82520ea206ebfbd82699447c9a80c9116"
     },
     {
       "file": "jobs_2026_part_00074.parquet",
-      "bytes": 18831797,
-      "rows": 25000,
-      "sha256": "ce7c6c77c1e973a2244fad926c375d06a552f2ee6d8108cba2b583663cb4a189"
+      "bytes": 2904186,
+      "rows": 1191,
+      "sha256": "3f15388e33e21b95131a3ef656766096193552acfeed4773e45f2dcdc8e956fc"
     },
     {
       "file": "jobs_2026_part_00075.parquet",
-      "bytes": 19989481,
-      "rows": 25000,
-      "sha256": "b974fe228c435c8e8342c612ba1f46b4bf1ff40fb8a4b2a1ff597b56356c2638"
+      "bytes": 3818856,
+      "rows": 2124,
+      "sha256": "3ba6a45728c48a39ea091f0ae8830507ca92bf222b4959d6925bae686b818273"
     },
     {
       "file": "jobs_2026_part_00076.parquet",
-      "bytes": 20459319,
-      "rows": 25000,
-      "sha256": "baaa63f17846598f1e2c1120de1a6669078a6dea2c123f264f91a7ddca3bbf71"
+      "bytes": 1712398,
+      "rows": 962,
+      "sha256": "b5e052489547f7e2a635d3190a8ee94b73d95a5a863649705678cc0418061c48"
     },
     {
       "file": "jobs_2026_part_00077.parquet",
-      "bytes": 20680491,
-      "rows": 25000,
-      "sha256": "8c4d2b9c9d52a9b7d04f805071d29876ffa59ec4a52c4a551a8f84b28f631cbe"
+      "bytes": 2707761,
+      "rows": 1358,
+      "sha256": "8702a9c229fabe6625e7907e7ea6c1b2d6a8ffb8303ca81608c0b8a3d7a1cdb3"
     },
     {
       "file": "jobs_2026_part_00078.parquet",
-      "bytes": 19251682,
-      "rows": 25000,
-      "sha256": "badf79a46ff89f83c40cd9aca2e5fd1452ab449b149acc1e4aaa375b546d743b"
+      "bytes": 2794867,
+      "rows": 2067,
+      "sha256": "0a41743ef2187ba971742c156e3e1df0b5e06da05d27bbdae56d9311821ae59c"
     },
     {
       "file": "jobs_2026_part_00079.parquet",
-      "bytes": 19952670,
-      "rows": 25000,
-      "sha256": "b203509fb1367dbdd5ef6eaa0ccde61865c781c694e53fc09935dc8457f6552e"
+      "bytes": 3649955,
+      "rows": 2885,
+      "sha256": "2dc62f8bf9df60e721fcabb08ee1d5ed194ee084fe5090e0ea71029da62130fd"
     },
     {
       "file": "jobs_2026_part_00080.parquet",
-      "bytes": 21374740,
-      "rows": 25000,
-      "sha256": "850aca8305e3e190192c1caf11f2f2c48da1f9c2e9101156b63d4c265faadf36"
+      "bytes": 3044083,
+      "rows": 1729,
+      "sha256": "b617ecaea9886b1d78a6d3d4e86b1a0fe0b9f274fb0f30a40d6cac641b7d3b96"
     },
     {
       "file": "jobs_2026_part_00081.parquet",
-      "bytes": 18400201,
-      "rows": 25000,
-      "sha256": "667500a17a8b66e75aaea0a8e528b49c0659e68194d2ae9294a29a4eed7835c4"
+      "bytes": 3545783,
+      "rows": 1276,
+      "sha256": "bf63542f2f2d92462ac4f512200760947823325c94a8c44fd0fc3fb303ce52b0"
     },
     {
       "file": "jobs_2026_part_00082.parquet",
-      "bytes": 18764105,
-      "rows": 25000,
-      "sha256": "562253c2a9a8ab14c4aa525c451a553ba1e39a93ea88b471068612f35ea2ea64"
+      "bytes": 4678441,
+      "rows": 969,
+      "sha256": "1fde83fd5c690b141066180887811e6810f9daa812976c0a536442cb25a3feca"
     },
     {
       "file": "jobs_2026_part_00083.parquet",
-      "bytes": 22633488,
-      "rows": 25000,
-      "sha256": "be52b4c5a8cc28f2c0b231129dcb839b3e4d37039f37809a84cc8cf7597d51b2"
+      "bytes": 13381578,
+      "rows": 3132,
+      "sha256": "be489cdc9b24cabc4f4e643b52555f0ad0dfb55b0d9259e644b3ab9b7177047b"
     },
     {
       "file": "jobs_2026_part_00084.parquet",
-      "bytes": 19570263,
-      "rows": 25000,
-      "sha256": "b0b106d37c5f02c9bf296b359b052f5f661b51a922186d071530fb5dde35000f"
+      "bytes": 11023326,
+      "rows": 6668,
+      "sha256": "c7c5a9ced6bf73348b24e273b3ef463f204e4055a4255230afae5f967eeaaf2d"
     },
     {
       "file": "jobs_2026_part_00085.parquet",
-      "bytes": 20909172,
-      "rows": 25000,
-      "sha256": "8e7f2c1a3ca75ba12be71dc411601bf6b2d4f3ad50fe5a062af255d329f7ee23"
+      "bytes": 7385791,
+      "rows": 5963,
+      "sha256": "68c444349010cca768c8784b66058e6b46c64b828357916a7e722cedb8f8f101"
     },
     {
       "file": "jobs_2026_part_00086.parquet",
-      "bytes": 19619688,
-      "rows": 25000,
-      "sha256": "d005114ca8b395c737e14c211e894830a0bf42028b93bfbd157fb93bf136863f"
+      "bytes": 5816082,
+      "rows": 6415,
+      "sha256": "2aa93cae6a99b209acff49eacf58e6cad52da55413a2a68c9c3773a94220ff9a"
     },
     {
       "file": "jobs_2026_part_00087.parquet",
-      "bytes": 13070287,
-      "rows": 25000,
-      "sha256": "fd42b39d3332fae8e8a95e92d58f4228f4d4558b2e8d5d07df72648d1cef91c0"
+      "bytes": 3847053,
+      "rows": 2569,
+      "sha256": "21f4e6c48a3d19b3206cb26f2424e7a144d822b99189754bb16959d6ae57d0a0"
     },
     {
       "file": "jobs_2026_part_00088.parquet",
-      "bytes": 12193709,
-      "rows": 25000,
-      "sha256": "4fc1b07b3d709b70280cd6e0a8d20d3697ee266277cbe891e8381d101ebb1ae2"
+      "bytes": 578402,
+      "rows": 94,
+      "sha256": "c0d6819afc7c201746f8a2154456a3b4b5f42a42ecb9ed685ab0301793c101ee"
     },
     {
       "file": "jobs_2026_part_00089.parquet",
-      "bytes": 21718512,
-      "rows": 25000,
-      "sha256": "9fcd3ffdcc3100d704934be1843d84f093aa4974e5554c9545be9df767c77b9d"
+      "bytes": 2169158,
+      "rows": 454,
+      "sha256": "b43b76f8e0902ec78c7a004402135d21824f637f4a3168849e67f7186e08d7ce"
     },
     {
       "file": "jobs_2026_part_00090.parquet",
-      "bytes": 23315563,
-      "rows": 25000,
-      "sha256": "4dd601b71e915cc9feb386be9319289618262a49531e2d7d4edf6d84363c7480"
+      "bytes": 1294792,
+      "rows": 38,
+      "sha256": "6516ffcdf9e1e946217e4a380574bd737b19b9f421d605147a8a0194483785fd"
     },
     {
       "file": "jobs_2026_part_00091.parquet",
-      "bytes": 20094736,
-      "rows": 25000,
-      "sha256": "fec55848242f456e85c63e7e6552abd5ff5351eedae03fd88b3bc992360ebedd"
+      "bytes": 644303,
+      "rows": 46,
+      "sha256": "e8ca266fff688ffec00c91e09be70b70d0f7370c2b7a1d53ef73310f08ce4f1d"
     },
     {
       "file": "jobs_2026_part_00092.parquet",
-      "bytes": 18750092,
-      "rows": 25000,
-      "sha256": "44db4e0259a1a3c785124713b4ead3669cd34b83d8184241979d6fe583544633"
+      "bytes": 183522,
+      "rows": 12,
+      "sha256": "5dcdcb107716209d3ad09956c510a24337d734f26dbe96380304b230b9aa3b7a"
     },
     {
       "file": "jobs_2026_part_00093.parquet",
-      "bytes": 21320484,
-      "rows": 25000,
-      "sha256": "90da6334bdc31dc66fc33cad63d43f164b81464a68fbc5a57403a00f50b19356"
+      "bytes": 29770791,
+      "rows": 7327,
+      "sha256": "2f30794693ef84f5f1c1d2c3af41e8739d88b2db4dbfe588fa7e43e2008ca26c"
     },
     {
       "file": "jobs_2026_part_00094.parquet",
-      "bytes": 18863022,
-      "rows": 25000,
-      "sha256": "dcf6873fccfadd7fa908564c7259c8f5be6f351fd0e5e006c50301deb8f3ac84"
-    },
-    {
-      "file": "jobs_2026_part_00095.parquet",
-      "bytes": 19743184,
-      "rows": 25000,
-      "sha256": "c0e8f4092de01f18d37e1946239c273e2d06f7aabd03af04a172d3af7540bc25"
+      "bytes": 16267483,
+      "rows": 2517,
+      "sha256": "09c2dd3a0258f82572eda1bb42b9371f49ff9f7491a5ef90b6d717e18c5bf11f"
     },
     {
       "file": "jobs_2026_part_00096.parquet",
-      "bytes": 10371642,
-      "rows": 13747,
-      "sha256": "8cdf3423faebe1e54e5df81b617dc94139b90cd381903a43707d23080779741e"
-    },
-    {
-      "file": "jobs_2026_part_00097.parquet",
-      "bytes": 59731,
-      "rows": 1,
-      "sha256": "4b7226688f8fea340086656a53f0ededd2495e22bdc49773579c9997c31d676a"
+      "bytes": 2501349,
+      "rows": 918,
+      "sha256": "5de9874ad3120416acffe1abcf69ba4f3303f9cd9228ab9054db56fdae97470b"
     }
   ],
   "ledger": {
-    "source_rows": 2350355,
-    "unique_id_rows": 2350355,
-    "period_rows": 2217149,
+    "source_rows": 815193,
+    "unique_id_rows": 815193,
+    "period_rows": 800461,
     "us_rows": 800461,
-    "sector_known_rows": 358455,
-    "nonstaffing_or_unknown_rows": 353328,
-    "employer_model_postings": 353327,
-    "missing_or_invalid_sector": 442006,
-    "staffing_excluded": 5127,
-    "non_us_or_unknown_country": 1416688,
-    "outside_period_or_unknown_date": 133206,
+    "sector_known_rows": 357682,
+    "nonstaffing_or_unknown_rows": 352567,
+    "employer_model_postings": 352566,
+    "missing_or_invalid_sector": 442779,
+    "staffing_excluded": 5115,
+    "outside_period_or_unknown_date": 14732,
     "missing_employer_or_title": 1,
-    "employers_before_filters": 24252,
-    "employers_without_dominant_sector": 1420,
-    "employers_below_20": 22470,
+    "employers_before_filters": 24214,
+    "employers_without_dominant_sector": 1414,
+    "employers_below_20": 22438,
     "eligible_exactly_consistent": 85,
     "eligible_employers_before_cap": 362,
     "model_employers": 362
@@ -629,27 +539,27 @@
     },
     "test": {
       "employers": 73,
-      "positive": 35,
-      "negative": 38
+      "positive": 34,
+      "negative": 39
     }
   },
   "features": {
-    "titles": 421,
+    "titles": 431,
     "name_words": 12,
-    "matrix_columns": 244,
+    "matrix_columns": 258,
     "title_thresholds": {
       "significance_threshold": 1.0,
       "frequency_threshold": 3.0
     },
     "name_thresholds": {
-      "significance_threshold": 0.8511904761904762,
+      "significance_threshold": 0.9772727272727273,
       "frequency_threshold": 2.0
     }
   },
   "models": [
     {
       "model": "Linear SVM",
-      "validation_f1": 0.5833333333333334,
+      "validation_f1": 0.56,
       "trials": [
         {
           "params": {
@@ -666,7 +576,7 @@
             "tol": 0.0001,
             "verbose": 0
           },
-          "validation_f1": 0.38095238095238093
+          "validation_f1": 0.2857142857142857
         },
         {
           "params": {
@@ -683,7 +593,7 @@
             "tol": 0.0001,
             "verbose": 0
           },
-          "validation_f1": 0.45454545454545453
+          "validation_f1": 0.2857142857142857
         },
         {
           "params": {
@@ -700,50 +610,50 @@
             "tol": 0.0001,
             "verbose": 0
           },
-          "validation_f1": 0.5833333333333334
+          "validation_f1": 0.56
         }
       ],
       "test_report": {
         "0": {
-          "precision": 0.6271186440677966,
-          "recall": 0.9736842105263158,
-          "f1-score": 0.7628865979381443,
-          "support": 38.0
+          "precision": 0.65,
+          "recall": 1.0,
+          "f1-score": 0.7878787878787878,
+          "support": 39.0
         },
         "1": {
-          "precision": 0.9285714285714286,
-          "recall": 0.37142857142857144,
-          "f1-score": 0.5306122448979592,
-          "support": 35.0
+          "precision": 1.0,
+          "recall": 0.38235294117647056,
+          "f1-score": 0.5531914893617021,
+          "support": 34.0
         },
-        "accuracy": 0.684931506849315,
+        "accuracy": 0.7123287671232876,
         "macro avg": {
-          "precision": 0.7778450363196125,
-          "recall": 0.6725563909774437,
-          "f1-score": 0.6467494214180518,
+          "precision": 0.825,
+          "recall": 0.6911764705882353,
+          "f1-score": 0.6705351386202449,
           "support": 73.0
         },
         "weighted avg": {
-          "precision": 0.7716508010215928,
-          "recall": 0.684931506849315,
-          "f1-score": 0.6515221820969596,
+          "precision": 0.8130136986301371,
+          "recall": 0.7123287671232876,
+          "f1-score": 0.6785723748708301,
           "support": 73.0
         }
       },
       "confusion_matrix": [
         [
-          37,
-          1
+          39,
+          0
         ],
         [
-          22,
+          21,
           13
         ]
       ]
     },
     {
       "model": "GBDT",
-      "validation_f1": 0.64,
+      "validation_f1": 0.6923076923076923,
       "trials": [
         {
           "params": {
@@ -793,44 +703,44 @@
             "verbose": 0,
             "warm_start": false
           },
-          "validation_f1": 0.64
+          "validation_f1": 0.6923076923076923
         }
       ],
       "test_report": {
         "0": {
-          "precision": 0.6909090909090909,
+          "precision": 0.7222222222222222,
           "recall": 1.0,
-          "f1-score": 0.8172043010752689,
-          "support": 38.0
+          "f1-score": 0.8387096774193549,
+          "support": 39.0
         },
         "1": {
           "precision": 1.0,
-          "recall": 0.5142857142857142,
-          "f1-score": 0.6792452830188679,
-          "support": 35.0
+          "recall": 0.5588235294117647,
+          "f1-score": 0.7169811320754716,
+          "support": 34.0
         },
-        "accuracy": 0.7671232876712328,
+        "accuracy": 0.7945205479452054,
         "macro avg": {
-          "precision": 0.8454545454545455,
-          "recall": 0.7571428571428571,
-          "f1-score": 0.7482247920470684,
+          "precision": 0.8611111111111112,
+          "recall": 0.7794117647058824,
+          "f1-score": 0.7778454047474133,
           "support": 73.0
         },
         "weighted avg": {
-          "precision": 0.8391033623910336,
-          "recall": 0.7671232876712328,
-          "f1-score": 0.751059566390693,
+          "precision": 0.8515981735159818,
+          "recall": 0.7945205479452054,
+          "f1-score": 0.7820141905468613,
           "support": 73.0
         }
       },
       "confusion_matrix": [
         [
-          38,
+          39,
           0
         ],
         [
-          17,
-          18
+          15,
+          19
         ]
       ]
     },
@@ -838,38 +748,38 @@
       "model": "Majority negative",
       "test_report": {
         "0": {
-          "precision": 0.5205479452054794,
+          "precision": 0.5342465753424658,
           "recall": 1.0,
-          "f1-score": 0.6846846846846847,
-          "support": 38.0
+          "f1-score": 0.6964285714285714,
+          "support": 39.0
         },
         "1": {
           "precision": 0.0,
           "recall": 0.0,
           "f1-score": 0.0,
-          "support": 35.0
+          "support": 34.0
         },
-        "accuracy": 0.5205479452054794,
+        "accuracy": 0.5342465753424658,
         "macro avg": {
-          "precision": 0.2602739726027397,
+          "precision": 0.2671232876712329,
           "recall": 0.5,
-          "f1-score": 0.34234234234234234,
+          "f1-score": 0.3482142857142857,
           "support": 73.0
         },
         "weighted avg": {
-          "precision": 0.27097016325764683,
-          "recall": 0.5205479452054794,
-          "f1-score": 0.3564112057262742,
+          "precision": 0.28541940326515297,
+          "recall": 0.5342465753424658,
+          "f1-score": 0.37206457925636005,
           "support": 73.0
         }
       },
       "confusion_matrix": [
         [
-          38,
+          39,
           0
         ],
         [
-          35,
+          34,
           0
         ]
       ]
@@ -881,36 +791,36 @@
           "precision": 0.0,
           "recall": 0.0,
           "f1-score": 0.0,
-          "support": 38.0
+          "support": 39.0
         },
         "1": {
-          "precision": 0.4794520547945205,
+          "precision": 0.4657534246575342,
           "recall": 1.0,
-          "f1-score": 0.6481481481481481,
-          "support": 35.0
+          "f1-score": 0.6355140186915887,
+          "support": 34.0
         },
-        "accuracy": 0.4794520547945205,
+        "accuracy": 0.4657534246575342,
         "macro avg": {
-          "precision": 0.23972602739726026,
+          "precision": 0.2328767123287671,
           "recall": 0.5,
-          "f1-score": 0.32407407407407407,
+          "f1-score": 0.3177570093457944,
           "support": 73.0
         },
         "weighted avg": {
-          "precision": 0.22987427284668793,
-          "recall": 0.4794520547945205,
-          "f1-score": 0.3107559614408929,
+          "precision": 0.2169262525802214,
+          "recall": 0.4657534246575342,
+          "f1-score": 0.2959928306234797,
           "support": 73.0
         }
       },
       "confusion_matrix": [
         [
           0,
-          38
+          39
         ],
         [
           0,
-          35
+          34
         ]
       ]
     }
@@ -925,8 +835,8 @@
     "salary_usd_q25": 143050.0,
     "salary_usd_q75": 143600.0,
     "salary_statuses": {
-      "no_extracted_salary": 85,
-      "unknown_period": 14,
+      "no_extracted_salary": 83,
+      "unknown_period": 16,
       "annual_unchanged": 10,
       "hourly_x2080": 2,
       "unsupported_period": 1

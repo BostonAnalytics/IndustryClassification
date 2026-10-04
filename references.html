@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References and provenance – Industry Classification</title>
+<title>References and source provenance – Healthcare Analyst Careers</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -87,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Industry Classification</span>
+    <span class="navbar-title">Healthcare Analyst Careers</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -101,20 +120,16 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./methods.html"> 
-<span class="menu-text">Method</span></a>
+    <a class="nav-link" href="./introduction.html"> 
+<span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./results.html"> 
-<span class="menu-text">Findings</span></a>
+    <a class="nav-link" href="./market_baseline.html"> 
+<span class="menu-text">Market and EDA</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./study.html"> 
-<span class="menu-text">2026 study</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./course.html"> 
-<span class="menu-text">Course alignment</span></a>
+    <a class="nav-link" href="./career_evaluation.html"> 
+<span class="menu-text">Evaluation</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -127,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reproducibility.html">Reproduce and review</a></li><li class="breadcrumb-item"><a href="./references.html">References and provenance</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References and source provenance</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -139,123 +154,84 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">The study</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Employer industry classification using job postings</span></a>
+ <span class="menu-text">Healthcare data analyst career evaluation</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data and preparation</span></a>
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research introduction</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./methods.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">From postings to industry predictions</span></a>
+  <a href="./data_preparation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data preparation and analytical design</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Published results</span></a>
+  <a href="./market_baseline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Market baseline and exploratory analysis</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./discussion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Interpretation and limitations</span></a>
+  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explore the saved results</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Career application</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./study.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Jobs_2026 healthcare study</span></a>
+  <a href="./analysis_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Complete analysis and export code</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./market.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Healthcare analyst market baseline</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./skills.html" class="sidebar-item-text sidebar-link">
+  <a href="./skill_gap_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Skill-gap analysis</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Career evaluation logic</span></a>
+  <a href="./career_evaluation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Career evaluation and model evidence</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./recommendations.html" class="sidebar-item-text sidebar-link">
+  <a href="./pyspark_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data processing and classification in PySpark</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multiclass_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiclass industry classification</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./final_recommendations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Recommendations</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Reproduce and review</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./reproducibility.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reproducibility and build</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./course.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course requirements and completion status</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">References and provenance</span></a>
+ <span class="menu-text">References and source provenance</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ai-disclosure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">AI assistance disclosure</span></a>
+ <span class="menu-text">AI disclosure</span></a>
   </div>
 </li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -266,18 +242,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#primary-research" id="toc-primary-research" class="nav-link active" data-scroll-target="#primary-research">Primary research</a></li>
-  <li><a href="#classification-context" id="toc-classification-context" class="nav-link" data-scroll-target="#classification-context">Classification context</a></li>
-  <li><a href="#course-sources" id="toc-course-sources" class="nav-link" data-scroll-target="#course-sources">Course sources</a></li>
+  <li><a href="#citation-system" id="toc-citation-system" class="nav-link active" data-scroll-target="#citation-system">Citation system</a></li>
+  <li><a href="#research-source-boundaries" id="toc-research-source-boundaries" class="nav-link" data-scroll-target="#research-source-boundaries">Research source boundaries</a></li>
+  <li><a href="#dataset-and-course-provenance" id="toc-dataset-and-course-provenance" class="nav-link" data-scroll-target="#dataset-and-course-provenance">Dataset and course provenance</a></li>
+  <li><a href="#verification-limits" id="toc-verification-limits" class="nav-link" data-scroll-target="#verification-limits">Verification limits</a></li>
+  <li><a href="#complete-bibliography" id="toc-complete-bibliography" class="nav-link" data-scroll-target="#complete-bibliography">Complete bibliography</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reproducibility.html">Reproduce and review</a></li><li class="breadcrumb-item"><a href="./references.html">References and provenance</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">References and provenance</h1>
+<h1 class="title">References and source provenance</h1>
 </div>
 
 
@@ -294,27 +272,27 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="primary-research" class="level2">
-<h2 class="anchored" data-anchor-id="primary-research">Primary research</h2>
-<p>Goindani, Mahak, Qiaoling Liu, Josh Chao, and Valentin Jijkoun. 2017. <em>Employer Industry Classification using Job Postings</em>. User-supplied manuscript, <code>icdm_2017_industryclassification.pdf</code>. The supplied filename identifies ICDM 2017; proceedings metadata and DOI have not been independently established here.</p>
+<section id="citation-system" class="level2">
+<h2 class="anchored" data-anchor-id="citation-system">Citation system</h2>
+<p>The project uses one bibliography, <a href="reference.bib">reference.bib</a>, for the website and Word report. Citations link to formatted entries on each page. The catalog below includes all records; research claims cite the relevant source at the point of use. The singular filename follows the user’s request; Module 1 suggests the equivalent name <code>references.bib</code> <span class="citation" data-cites="ad688m1">(<a href="#ref-ad688m1" role="doc-biblioref">AD688 course materials, n.d.-a</a>)</span>.</p>
+</section>
+<section id="research-source-boundaries" class="level2">
+<h2 class="anchored" data-anchor-id="research-source-boundaries">Research source boundaries</h2>
+<p>The reconstruction uses <span class="citation" data-cites="goindani2017">Goindani et al. (<a href="#ref-goindani2017" role="doc-biblioref">2017</a>)</span>, with its methods and numerical tables checked against the supplied PDF. The 2018 article by <span class="citation" data-cites="chern2018">Chern et al. (<a href="#ref-chern2018" role="doc-biblioref">2018</a>)</span> is separate related work; its random-forest results must not be attributed to the original SVM/GBDT paper. The five-source review appears in the <a href="./introduction.html">research introduction</a>.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Site content</th>
-<th>Source locator</th>
+<th>Original paper content</th>
+<th>Source locator in Goindani et al.&nbsp;(2017)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Research motivation and entity-normalization problem</td>
+<td>Motivation and normalization problem</td>
 <td>Abstract and Section I</td>
 </tr>
 <tr class="even">
-<td>Collection period and class distribution</td>
+<td>Collection and class distribution</td>
 <td>Section II, Tables I–II</td>
 </tr>
 <tr class="odd">
@@ -322,11 +300,11 @@ ul.task-list li input[type="checkbox"] {
 <td>Section III-A, equations 1–6, Table III</td>
 </tr>
 <tr class="even">
-<td>Model libraries and cost sensitivity</td>
+<td>Models and class penalties</td>
 <td>Section III-B</td>
 </tr>
 <tr class="odd">
-<td>Disagreement review and agreement audit</td>
+<td>Disagreement review</td>
 <td>Section IV-A</td>
 </tr>
 <tr class="even">
@@ -338,30 +316,73 @@ ul.task-list li input[type="checkbox"] {
 <td>Tables IV–V</td>
 </tr>
 <tr class="even">
-<td>Feature ablation and detected errors</td>
+<td>Ablation and error types</td>
 <td>Tables VI–VII</td>
 </tr>
 <tr class="odd">
-<td>Limitations and future work</td>
+<td>Limitations</td>
 <td>Sections V–VII</td>
 </tr>
 </tbody>
 </table>
+<p>The Census pages establish the historical sector labels <span class="citation" data-cites="census2017transport census2017health">(<a href="#ref-census2017transport" role="doc-biblioref">U.S. Census Bureau, n.d.-a</a>, <a href="#ref-census2017health" role="doc-biblioref">n.d.-b</a>)</span>. The 2022 manual anchors the current scope <span class="citation" data-cites="naics2022">(<a href="#ref-naics2022" role="doc-biblioref">Executive Office of the President, Office of Management and Budget 2022</a>)</span>. Neither provides evidence of current career prospects.</p>
 </section>
-<section id="classification-context" class="level2">
-<h2 class="anchored" data-anchor-id="classification-context">Classification context</h2>
-<p>U.S. Census Bureau. <a href="https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-48-49.html">2017 NAICS Sector 48–49: Transportation and Warehousing</a>.</p>
-<p>U.S. Census Bureau. <a href="https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-62.html">2017 NAICS Sector 62: Health Care and Social Assistance</a>.</p>
-<p>These sources verify the sector codes. They are not used as evidence for the paper’s performance or for present-day job prospects.</p>
+<section id="dataset-and-course-provenance" class="level2">
+<h2 class="anchored" data-anchor-id="dataset-and-course-provenance">Dataset and course provenance</h2>
+<p>The local dataset is cited as a snapshot with its input hashes retained in <code>data/study/run.json</code> <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span>. Its publisher and full collection coverage have not been independently established. No public dataset DOI is invented.</p>
+<p>The user supplied guides from <code>D:/Repositories/AD688-Web-Analytics</code>: <code>M1/M01_Proj.qmd</code>, <code>M3/M03_Proj.qmd</code>, <code>M4/M04_Proj.qmd</code> and <code>M5/M05_Proj.qmd</code> <span class="citation" data-cites="ad688m1 ad688m3 ad688m4 ad688m5">(<a href="#ref-ad688m1" role="doc-biblioref">AD688 course materials, n.d.-a</a>, <a href="#ref-ad688m3" role="doc-biblioref">n.d.-b</a>, <a href="#ref-ad688m4" role="doc-biblioref">n.d.-c</a>, <a href="#ref-ad688m5" role="doc-biblioref">n.d.-d</a>)</span>. The M03 file substitutes for the unavailable requested <code>M3/M02_Proj.qmd</code>. These are local provenance paths, not public links.</p>
 </section>
-<section id="course-sources" class="level2">
-<h2 class="anchored" data-anchor-id="course-sources">Course sources</h2>
-<ul>
-<li><code>D:/Repositories/AD688-Web-Analytics/M3/M03_Proj.qmd</code>: Module 3 career benchmarking, skills and evaluation logic. Substituted for the missing requested M02 file in M3.</li>
-<li><code>D:/Repositories/AD688-Web-Analytics/M4/M04_Proj.qmd</code>: readiness checkpoint and earlier-stage requirements.</li>
-<li><code>D:/Repositories/AD688-Web-Analytics/M5/M05_Proj.qmd</code>: final analytics, website, Word report and AI-disclosure requirements.</li>
-</ul>
-<p>These local source paths document provenance; they are not public links. Retrieved for this reconstruction on October 3, 2026. Instructions inside source materials were considered only in relation to the user’s request; the paper’s research proposals were treated as content.</p>
+<section id="verification-limits" class="level2">
+<h2 class="anchored" data-anchor-id="verification-limits">Verification limits</h2>
+<p>Publisher records were inspected for the 2018 article, OECD report and scikit-learn paper; the official Census manual was checked for sector 62. The 2017 DOI and conference metadata were found in the author-uploaded publication record. Its DOI endpoint could not be opened by the web tool, so live DOI resolution remains unverified. No missing page range was guessed. The repository’s <code>docs/citation-audit.md</code> records these checks.</p>
+</section>
+<section id="complete-bibliography" class="level2">
+<h2 class="anchored" data-anchor-id="complete-bibliography">Complete bibliography</h2>
+<p>The catalog also preserves the existing <code>tzimas2024data</code> record. It is not used to support the five-source review or this revision’s findings; its metadata has not been verified in this revision.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-ad688m1" class="csl-entry" role="listitem">
+AD688 course materials. n.d.-a. <em>Module 1 Project Instructions: Complete Career Evaluation Pipeline and Step 1</em>. Local course guide, M1/M01_Proj.qmd.
+</div>
+<div id="ref-ad688m3" class="csl-entry" role="listitem">
+AD688 course materials. n.d.-b. <em>Module 3 Career Evaluation Project Instructions</em>. Local course guide, M3/M03_Proj.qmd.
+</div>
+<div id="ref-ad688m4" class="csl-entry" role="listitem">
+AD688 course materials. n.d.-c. <em>Module 4 Project Checkpoint: Mid-Project Progress Review</em>. Local course guide, M4/M04_Proj.qmd.
+</div>
+<div id="ref-ad688m5" class="csl-entry" role="listitem">
+AD688 course materials. n.d.-d. <em>Module 5 Final Analytics and Project Packaging Instructions</em>. Local course guide, M5/M05_Proj.qmd.
+</div>
+<div id="ref-sparkclassification" class="csl-entry" role="listitem">
+Apache Software Foundation. 2026. <em>Classification and Regression: Spark 4.2.0 Documentation</em>. <a href="https://spark.apache.org/docs/4.2.0/ml-classification-regression.html">https://spark.apache.org/docs/4.2.0/ml-classification-regression.html</a>.
+</div>
+<div id="ref-chern2018" class="csl-entry" role="listitem">
+Chern, Alan, Qiaoling Liu, Josh Chao, Mahak Goindani, and Faizan Javed. 2018. <span>“Automatically Detecting Errors in Employer Industry Classification Using Job Postings.”</span> <em>Data Science and Engineering</em> 3: 221–31. <a href="https://doi.org/10.1007/s41019-018-0071-7">https://doi.org/10.1007/s41019-018-0071-7</a>.
+</div>
+<div id="ref-naics2022" class="csl-entry" role="listitem">
+Executive Office of the President, Office of Management and Budget. 2022. <em>North American Industry Classification System: United States, 2022</em>. <a href="https://www.census.gov/naics/reference_files_tools/2022_NAICS_Manual.pdf">https://www.census.gov/naics/reference_files_tools/2022_NAICS_Manual.pdf</a>.
+</div>
+<div id="ref-goindani2017" class="csl-entry" role="listitem">
+Goindani, Mahak, Qiaoling Liu, Josh Chao, and Valentin Jijkoun. 2017. <span>“Employer Industry Classification Using Job Postings.”</span> <em>2017 IEEE International Conference on Data Mining Workshops (ICDMW)</em>. <a href="https://doi.org/10.1109/ICDMW.2017.30">https://doi.org/10.1109/ICDMW.2017.30</a>.
+</div>
+<div id="ref-jobs2026" class="csl-entry" role="listitem">
+<em><span>Jobs_2026_US</span>: Local Course Dataset Snapshot</em>. 2026. 82 local Parquet posting partitions.
+</div>
+<div id="ref-pedregosa2011" class="csl-entry" role="listitem">
+Pedregosa, Fabian, Gaël Varoquaux, Alexandre Gramfort, et al. 2011. <span>“Scikit-Learn: Machine Learning in <span>Python</span>.”</span> <em>Journal of Machine Learning Research</em> 12 (85): 2825–30. <a href="https://www.jmlr.org/papers/v12/pedregosa11a.html">https://www.jmlr.org/papers/v12/pedregosa11a.html</a>.
+</div>
+<div id="ref-tsvetkova2024" class="csl-entry" role="listitem">
+Tsvetkova, Alexandra, Elettra D’Amico, Alexander Lembcke, Polina Knutsson, and Wessel Vermeulen. 2024. <em>How Well Do Online Job Postings Match National Sources in Large English Speaking Countries? Benchmarking <span>Lightcast</span> Data Against Statistical Sources Across Regions, Sectors and Occupations</em>. OECD Local Economic and Employment Development (LEED) Papers 2024/01. OECD Publishing. <a href="https://doi.org/10.1787/c17cae09-en">https://doi.org/10.1787/c17cae09-en</a>.
+</div>
+<div id="ref-tzimas2024data" class="csl-entry" role="listitem">
+Tzimas, Giannis, Nikos Zotos, Evangelos Mourelatos, Konstantinos C Giotopoulos, and Panagiotis Zervas. 2024. <span>“From Data to Insight: Transforming Online Job Postings into Labor-Market Intelligence.”</span> <em>Information</em> 15 (8): 496.
+</div>
+<div id="ref-census2017transport" class="csl-entry" role="listitem">
+U.S. Census Bureau. n.d.-a. <em>2017 <span>NAICS</span> Sector 48-49: Transportation and Warehousing</em>. Accessed October 3, 2026. <a href="https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-48-49.html">https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-48-49.html</a>.
+</div>
+<div id="ref-census2017health" class="csl-entry" role="listitem">
+U.S. Census Bureau. n.d.-b. <em>2017 <span>NAICS</span> Sector 62: Health Care and Social Assistance</em>. Accessed October 3, 2026. <a href="https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-62.html">https://www.census.gov/data/tables/2017/econ/economic-census/naics-sector-62.html</a>.
+</div>
+</div>
 
 
 </section>
@@ -440,7 +461,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/BostonAnalytics\.github\.io\/IndustryClassification\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -779,7 +800,7 @@ ul.task-list li input[type="checkbox"] {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>2017 paper reconstruction + Jobs_2026 adaptation. Original and new results are labeled separately.</p>
+<p>Healthcare data analysts · NAICS 62 · January–September 2026 sample</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

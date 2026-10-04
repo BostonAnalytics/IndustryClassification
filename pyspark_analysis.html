@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data processing and classification in PySpark – Healthcare Analyst Careers</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-7f84833fb3be5a6d5023b86a51ac5183.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Healthcare Analyst Careers</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Overview</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./introduction.html"> 
+<span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./market_baseline.html"> 
+<span class="menu-text">Market and EDA</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./career_evaluation.html"> 
+<span class="menu-text">Evaluation</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pyspark_analysis.html">Data processing and classification in PySpark</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Healthcare data analyst career evaluation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_preparation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data preparation and analytical design</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./market_baseline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Market baseline and exploratory analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explore the saved results</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Complete analysis and export code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./skill_gap_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Skill-gap analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./career_evaluation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Career evaluation and model evidence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pyspark_analysis.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data processing and classification in PySpark</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multiclass_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiclass industry classification</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./final_recommendations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recommendations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References and source provenance</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ai-disclosure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AI disclosure</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#analysis-design-and-execution" id="toc-analysis-design-and-execution" class="nav-link active" data-scroll-target="#analysis-design-and-execution"><span class="header-section-number">1</span> Analysis design and execution</a></li>
+  <li><a href="#libraries-and-feature-scope" id="toc-libraries-and-feature-scope" class="nav-link" data-scroll-target="#libraries-and-feature-scope"><span class="header-section-number">2</span> Libraries and feature scope</a></li>
+  <li><a href="#load-clean-and-filter-postings" id="toc-load-clean-and-filter-postings" class="nav-link" data-scroll-target="#load-clean-and-filter-postings"><span class="header-section-number">3</span> Load, clean and filter postings</a></li>
+  <li><a href="#aggregate-employers-and-split-before-learning-features" id="toc-aggregate-employers-and-split-before-learning-features" class="nav-link" data-scroll-target="#aggregate-employers-and-split-before-learning-features"><span class="header-section-number">4</span> Aggregate employers and split before learning features</a></li>
+  <li><a href="#construct-title-shares-and-employer-name-indicators" id="toc-construct-title-shares-and-employer-name-indicators" class="nav-link" data-scroll-target="#construct-title-shares-and-employer-name-indicators"><span class="header-section-number">5</span> Construct title shares and employer-name indicators</a></li>
+  <li><a href="#fit-vocabulary-on-training-employers" id="toc-fit-vocabulary-on-training-employers" class="nav-link" data-scroll-target="#fit-vocabulary-on-training-employers"><span class="header-section-number">6</span> Fit vocabulary on training employers</a></li>
+  <li><a href="#specify-the-classification-algorithms" id="toc-specify-the-classification-algorithms" class="nav-link" data-scroll-target="#specify-the-classification-algorithms"><span class="header-section-number">7</span> Specify the classification algorithms</a></li>
+  <li><a href="#select-settings-and-evaluate-held-out-employers" id="toc-select-settings-and-evaluate-held-out-employers" class="nav-link" data-scroll-target="#select-settings-and-evaluate-held-out-employers"><span class="header-section-number">8</span> Select settings and evaluate held-out employers</a></li>
+  <li><a href="#what-each-classifier-tests" id="toc-what-each-classifier-tests" class="nav-link" data-scroll-target="#what-each-classifier-tests"><span class="header-section-number">9</span> What each classifier tests</a></li>
+  <li><a href="#run-the-workflow" id="toc-run-the-workflow" class="nav-link" data-scroll-target="#run-the-workflow"><span class="header-section-number">10</span> Run the workflow</a></li>
+  <li><a href="#spark-execution-evidence" id="toc-spark-execution-evidence" class="nav-link" data-scroll-target="#spark-execution-evidence"><span class="header-section-number">11</span> Spark execution evidence</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data processing and classification in PySpark</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="analysis-design-and-execution" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="analysis-design-and-execution"><span class="header-section-number">1</span> Analysis design and execution</h2>
+<p>The measured SVM and GBDT results elsewhere in this report were produced with scikit-learn. This PySpark implementation is a separate comparison using the same source partitions and employer-level feature concept. Its hash-based split, quantile convention, regularization settings and estimator implementations differ, so its scores must be reported separately. Spark’s <code>regParam</code> is not substituted directly for scikit-learn’s <code>C</code>.</p>
+<p>The complete <a href="scripts/run_spark_study.py">Python script</a> and <a href="notebooks/pyspark_classification.ipynb">Jupyter notebook</a> expose the steps below. The script reads an authorized copy of the source data and writes aggregate results to a separate directory. Source postings are not redistributed. PySpark 4.2.0 is pinned in the repository requirements.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">spark-submit</span> <span class="at">--master</span> local<span class="pp">[</span><span class="ss">2</span><span class="pp">]</span> <span class="at">--conf</span> spark.ui.enabled=false scripts/run_spark_study.py <span class="at">--data-dir</span> /path/to/Jobs_2026_US <span class="at">--output-dir</span> data/spark-study</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="libraries-and-feature-scope" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="libraries-and-feature-scope"><span class="header-section-number">2</span> Libraries and feature scope</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> argparse</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyspark</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession, Window, functions <span class="im">as</span> F</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.classification <span class="im">import</span> (</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    LogisticRegression,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    DecisionTreeClassifier,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    RandomForestClassifier,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    GBTClassifier,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    LinearSVC,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    NaiveBayes,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    MultilayerPerceptronClassifier,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    OneVsRest,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    FMClassifier,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.feature <span class="im">import</span> VectorAssembler</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>SECTORS <span class="op">=</span> (</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"11 21 22 23 31 32 33 31-33 42 44 45 44-45 48 49 48-49 "</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"51 52 53 54 55 56 61 62 71 72 81 92"</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>).split()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="load-clean-and-filter-postings" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="load-clean-and-filter-postings"><span class="header-section-number">3</span> Load, clean and filter postings</h2>
+<p>The input is a set of Parquet posting partitions. The code selects only the fields needed for employer classification, parses dates in UTC, applies the January–September window, requires US geography and a recognized sector, and excludes explicitly marked staffing records. Missing staffing status is retained. Blank employer names and titles cannot contribute to employer features. Duplicate IDs cause an error rather than an arbitrary choice between conflicting records.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prepare(spark, files):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    raw <span class="op">=</span> spark.read.parquet(<span class="op">*</span>[<span class="bu">str</span>(p) <span class="cf">for</span> p <span class="kw">in</span> files])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    columns <span class="op">=</span> [</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ID"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"POSTED"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"COMPANY_NAME"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"TITLE_NAME"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"PARSED_COUNTRY_ISO_ABBR"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"NAICS_2022_2"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"NAICS2"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"COMPANY_IS_STAFFING"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    raw <span class="op">=</span> raw.select(<span class="op">*</span>columns).cache()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    ledger <span class="op">=</span> {<span class="st">"source_rows"</span>: raw.count()}</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Conflicting duplicate IDs need an explicit source ordering rule.</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    unique <span class="op">=</span> raw.<span class="bu">filter</span>(F.col(<span class="st">"ID"</span>).isNotNull()).dropDuplicates([<span class="st">"ID"</span>])</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    ledger[<span class="st">"unique_id_rows"</span>] <span class="op">=</span> unique.count()</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        raw.<span class="bu">filter</span>(F.col(<span class="st">"ID"</span>).isNotNull()).count()</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="op">!=</span> ledger[<span class="st">"unique_id_rows"</span>]</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    ):</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Duplicate IDs found; resolve source order before analysis"</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    dated <span class="op">=</span> unique.withColumn(</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">"date"</span>, F.to_date(F.try_to_timestamp(<span class="st">"POSTED"</span>))</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    dated <span class="op">=</span> dated.<span class="bu">filter</span>(</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        (F.col(<span class="st">"date"</span>) <span class="op">&gt;=</span> <span class="st">"2026-01-01"</span>) <span class="op">&amp;</span> (F.col(<span class="st">"date"</span>) <span class="op">&lt;</span> <span class="st">"2026-10-01"</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    ledger[<span class="st">"period_rows"</span>] <span class="op">=</span> dated.count()</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    us <span class="op">=</span> dated.<span class="bu">filter</span>(</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        F.upper(F.trim(<span class="st">"PARSED_COUNTRY_ISO_ABBR"</span>)) <span class="op">==</span> <span class="st">"US"</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    ledger[<span class="st">"us_rows"</span>] <span class="op">=</span> us.count()</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    sector <span class="op">=</span> F.when(</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        F.length(F.trim(<span class="st">"NAICS_2022_2"</span>)) <span class="op">&gt;</span> <span class="dv">0</span>, F.trim(<span class="st">"NAICS_2022_2"</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    ).otherwise(F.trim(<span class="st">"NAICS2"</span>))</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    known <span class="op">=</span> us.withColumn(<span class="st">"sector"</span>, sector).<span class="bu">filter</span>(</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        F.col(<span class="st">"sector"</span>).isin(SECTORS)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    ledger[<span class="st">"sector_known_rows"</span>] <span class="op">=</span> known.count()</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    jobs <span class="op">=</span> known.<span class="bu">filter</span>(</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>        <span class="op">~</span>F.coalesce(F.col(<span class="st">"COMPANY_IS_STAFFING"</span>) <span class="op">==</span> <span class="dv">1</span>, F.lit(<span class="va">False</span>))</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    ledger[<span class="st">"nonstaffing_or_unknown_rows"</span>] <span class="op">=</span> jobs.count()</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    jobs <span class="op">=</span> (</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        jobs.withColumn(</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>            <span class="st">"employer"</span>,</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>            F.regexp_replace(</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>                F.lower(F.trim(<span class="st">"COMPANY_NAME"</span>)), <span class="vs">r"</span><span class="dv">\s</span><span class="op">+</span><span class="vs">"</span>, <span class="st">" "</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">"title"</span>, F.lower(F.trim(<span class="st">"TITLE_NAME"</span>)))</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">filter</span>(</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>            F.col(<span class="st">"employer"</span>).isNotNull()</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>            <span class="op">&amp;</span> <span class="op">~</span>F.col(<span class="st">"employer"</span>).isin(<span class="st">""</span>, <span class="st">"unknown"</span>, <span class="st">"unclassified"</span>)</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">filter</span>(</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>            F.col(<span class="st">"title"</span>).isNotNull()</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>            <span class="op">&amp;</span> <span class="op">~</span>F.col(<span class="st">"title"</span>).isin(<span class="st">""</span>, <span class="st">"unclassified"</span>)</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>        .select(<span class="st">"employer"</span>, <span class="st">"title"</span>, <span class="st">"sector"</span>)</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>        .cache()</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>    ledger[<span class="st">"employer_model_postings"</span>] <span class="op">=</span> jobs.count()</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    raw.unpersist()</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jobs, ledger</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="aggregate-employers-and-split-before-learning-features" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="aggregate-employers-and-split-before-learning-features"><span class="header-section-number">4</span> Aggregate employers and split before learning features</h2>
+<p>Each employer is one observation. At least 20 usable postings and an 80% dominant-sector share are required. The binary target is 1 for NAICS 62 and 0 for other recognized sectors. Within each class, a seeded hash orders employer keys for a reproducible 70/10/20 split. This prevents one normalized employer key from appearing in both training and test data. Different names for the same organization remain an unresolved source of leakage.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> employers_and_splits(jobs):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    totals <span class="op">=</span> jobs.groupBy(<span class="st">"employer"</span>).agg(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        F.count(<span class="st">"*"</span>).alias(<span class="st">"postings"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> jobs.groupBy(<span class="st">"employer"</span>, <span class="st">"sector"</span>).count()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    dominant <span class="op">=</span> (</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        counts.withColumn(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"rank"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            F.row_number().over(</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                Window.partitionBy(<span class="st">"employer"</span>).orderBy(</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                    F.desc(<span class="st">"count"</span>), <span class="st">"sector"</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">filter</span>(<span class="st">"rank = 1"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        .join(totals, <span class="st">"employer"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">filter</span>(</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            (F.col(<span class="st">"postings"</span>) <span class="op">&gt;=</span> <span class="dv">20</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            <span class="op">&amp;</span> (F.col(<span class="st">"count"</span>) <span class="op">/</span> F.col(<span class="st">"postings"</span>) <span class="op">&gt;=</span> <span class="fl">0.8</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">"label"</span>, (F.col(<span class="st">"sector"</span>) <span class="op">==</span> <span class="st">"62"</span>).cast(<span class="st">"double"</span>))</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        .orderBy(F.desc(<span class="st">"postings"</span>), <span class="st">"employer"</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        .limit(<span class="dv">10000</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        .select(<span class="st">"employer"</span>, <span class="st">"postings"</span>, <span class="st">"label"</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rank within class by a seeded hash; no posting can cross employer splits.</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> Window.partitionBy(<span class="st">"label"</span>).orderBy(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        F.sha2(F.concat(F.lit(<span class="st">"2017:"</span>), F.col(<span class="st">"employer"</span>)), <span class="dv">256</span>),</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">"employer"</span>,</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> Window.partitionBy(<span class="st">"label"</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    split <span class="op">=</span> (</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>        dominant.withColumn(<span class="st">"rank"</span>, F.row_number().over(order))</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">"class_n"</span>, F.count(<span class="st">"*"</span>).over(size))</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>        .withColumn(</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>            <span class="st">"split"</span>,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>            F.when(</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>                F.col(<span class="st">"rank"</span>) <span class="op">&lt;=</span> F.floor(<span class="fl">0.7</span> <span class="op">*</span> F.col(<span class="st">"class_n"</span>)),</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>                <span class="st">"train"</span>,</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>            .when(</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>                F.col(<span class="st">"rank"</span>) <span class="op">&lt;=</span> F.floor(<span class="fl">0.8</span> <span class="op">*</span> F.col(<span class="st">"class_n"</span>)),</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>                <span class="st">"validation"</span>,</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>            .otherwise(<span class="st">"test"</span>),</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        .select(<span class="st">"employer"</span>, <span class="st">"postings"</span>, <span class="st">"label"</span>, <span class="st">"split"</span>)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        .cache()</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    support <span class="op">=</span> [</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>        r.asDict()</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> r <span class="kw">in</span> split.groupBy(<span class="st">"split"</span>, <span class="st">"label"</span>).count().collect()</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(support) <span class="op">!=</span> <span class="dv">6</span> <span class="kw">or</span> <span class="bu">any</span>(r[<span class="st">"count"</span>] <span class="op">&lt;</span> <span class="dv">2</span> <span class="cf">for</span> r <span class="kw">in</span> support):</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Every split needs at least two employers of each class"</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> split, support</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="construct-title-shares-and-employer-name-indicators" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="construct-title-shares-and-employer-name-indicators"><span class="header-section-number">5</span> Construct title shares and employer-name indicators</h2>
+<p>A title feature equals its posting count divided by all usable postings for that employer. Name-word features are binary indicators. Industry codes define the target and are excluded from the predictor vector. For example, 30 occurrences of a title among 100 employer postings give a title-share value of 0.30.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> feature_rows(jobs, employers):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    titles <span class="op">=</span> (</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        jobs.groupBy(<span class="st">"employer"</span>, <span class="st">"title"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        .count()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        .join(employers, <span class="st">"employer"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">"feature"</span>, F.concat(F.lit(<span class="st">"t:"</span>), F.col(<span class="st">"title"</span>)))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">"value"</span>, F.col(<span class="st">"count"</span>) <span class="op">/</span> F.col(<span class="st">"postings"</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> (</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        employers.withColumn(</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">"word"</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            F.explode(</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                F.array_distinct(</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                    F.split(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                        F.regexp_replace(<span class="st">"employer"</span>, <span class="st">"[^a-z]+"</span>, <span class="st">" "</span>),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                        <span class="st">" "</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">filter</span>(F.length(<span class="st">"word"</span>) <span class="op">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">"feature"</span>, F.concat(F.lit(<span class="st">"w:"</span>), F.col(<span class="st">"word"</span>)))</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">"value"</span>, F.lit(<span class="fl">1.0</span>))</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        .withColumn(<span class="st">"count"</span>, F.lit(<span class="dv">1</span>))</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    cols <span class="op">=</span> [<span class="st">"employer"</span>, <span class="st">"label"</span>, <span class="st">"split"</span>, <span class="st">"feature"</span>, <span class="st">"value"</span>, <span class="st">"count"</span>]</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> titles.select(<span class="op">*</span>cols).unionByName(words.select(<span class="op">*</span>cols))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="fit-vocabulary-on-training-employers" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="fit-vocabulary-on-training-employers"><span class="header-section-number">6</span> Fit vocabulary on training employers</h2>
+<p>For each candidate, significance is positive-class frequency divided by total training frequency. Candidates need more than one positive occurrence. Median significance and frequency thresholds are applied separately to title and name features; if fewer than 50 survive, the frequency threshold falls to the first quartile. Title shares below 1% are removed. Spark uses exact observed quantiles here, which can differ from NumPy interpolated quantiles. The vocabulary is frozen before validation and test vectors are built. An unseen title contributes no new column. Zero means the employer lacks a selected feature, not that its industry is unknown.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_vocabulary(<span class="bu">long</span>):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Frequency counts postings for titles, employers for name words.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    stats <span class="op">=</span> (</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">long</span>.<span class="bu">filter</span>(<span class="st">"split = 'train'"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        .groupBy(<span class="st">"feature"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        .agg(</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            F.<span class="bu">sum</span>(<span class="st">"count"</span>).alias(<span class="st">"frequency"</span>),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            F.<span class="bu">sum</span>(</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                F.when(F.col(<span class="st">"label"</span>) <span class="op">==</span> <span class="dv">1</span>, F.col(<span class="st">"count"</span>)).otherwise(<span class="dv">0</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            ).alias(<span class="st">"positive"</span>),</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">filter</span>(<span class="st">"positive &gt; 1"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        .withColumn(</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"significance"</span>, F.col(<span class="st">"positive"</span>) <span class="op">/</span> F.col(<span class="st">"frequency"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    vocab, thresholds <span class="op">=</span> [], {}</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> prefix <span class="kw">in</span> [<span class="st">"t:"</span>, <span class="st">"w:"</span>]:</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        part <span class="op">=</span> stats.<span class="bu">filter</span>(F.col(<span class="st">"feature"</span>).startswith(prefix)).cache()</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> part.count():</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"No training vocabulary for "</span> <span class="op">+</span> prefix)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        s <span class="op">=</span> part.approxQuantile(<span class="st">"significance"</span>, [<span class="fl">0.5</span>], <span class="dv">0</span>)[<span class="dv">0</span>]</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        f <span class="op">=</span> part.approxQuantile(<span class="st">"frequency"</span>, [<span class="fl">0.5</span>], <span class="dv">0</span>)[<span class="dv">0</span>]</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        selected <span class="op">=</span> part.<span class="bu">filter</span>(</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            (F.col(<span class="st">"significance"</span>) <span class="op">&gt;=</span> s) <span class="op">&amp;</span> (F.col(<span class="st">"frequency"</span>) <span class="op">&gt;=</span> f)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> selected.count() <span class="op">&lt;</span> <span class="dv">50</span>:</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>            f <span class="op">=</span> part.approxQuantile(<span class="st">"frequency"</span>, [<span class="fl">0.25</span>], <span class="dv">0</span>)[<span class="dv">0</span>]</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>            selected <span class="op">=</span> part.<span class="bu">filter</span>(</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>                (F.col(<span class="st">"significance"</span>) <span class="op">&gt;=</span> s) <span class="op">&amp;</span> (F.col(<span class="st">"frequency"</span>) <span class="op">&gt;=</span> f)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>        vocab.extend(</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>            r.feature <span class="cf">for</span> r <span class="kw">in</span> selected.select(<span class="st">"feature"</span>).collect()</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>        thresholds[prefix] <span class="op">=</span> {<span class="st">"significance"</span>: s, <span class="st">"frequency"</span>: f}</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>        part.unpersist()</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove title columns absent after the within-employer cutoff in training.</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    active <span class="op">=</span> <span class="bu">long</span>.<span class="bu">filter</span>(</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>        (F.col(<span class="st">"value"</span>) <span class="op">&gt;=</span> <span class="fl">0.01</span>) <span class="op">&amp;</span> (F.col(<span class="st">"split"</span>) <span class="op">==</span> <span class="st">"train"</span>)</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    observed <span class="op">=</span> {</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>        r.feature <span class="cf">for</span> r <span class="kw">in</span> active.select(<span class="st">"feature"</span>).distinct().collect()</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sorted</span>(<span class="bu">set</span>(vocab) <span class="op">&amp;</span> observed), thresholds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vectorize(<span class="bu">long</span>, employers, vocabulary):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> vocabulary:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Empty training feature matrix"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Bound the driver vocabulary by the fitted training features, not raw rows.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    wide <span class="op">=</span> (</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">long</span>.<span class="bu">filter</span>(F.col(<span class="st">"value"</span>) <span class="op">&gt;=</span> <span class="fl">0.01</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        .groupBy(<span class="st">"employer"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        .pivot(<span class="st">"feature"</span>, vocabulary)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">sum</span>(<span class="st">"value"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Safe column aliases avoid interpreting dots in title names as nested fields.</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    aliases <span class="op">=</span> [<span class="st">"x"</span> <span class="op">+</span> <span class="bu">str</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(vocabulary))]</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    wide <span class="op">=</span> wide.toDF(<span class="st">"employer"</span>, <span class="op">*</span>aliases)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    matrix <span class="op">=</span> employers.join(wide, <span class="st">"employer"</span>, <span class="st">"left"</span>).fillna(</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.0</span>, subset<span class="op">=</span>aliases</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> VectorAssembler(</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        inputCols<span class="op">=</span>aliases, outputCol<span class="op">=</span><span class="st">"features"</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    ).transform(matrix)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="specify-the-classification-algorithms" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="specify-the-classification-algorithms"><span class="header-section-number">7</span> Specify the classification algorithms</h2>
+<p>The following constructors cover the nine classification families in the Spark DataFrame classification guide <span class="citation" data-cites="sparkclassification">(<a href="#ref-sparkclassification" role="doc-biblioref">Apache Software Foundation 2026</a>)</span>. Every model receives the same nonnegative feature vectors. Two parameter settings per family illustrate validation-based selection; this small search does not establish a globally optimal model.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> candidates(dimension):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Two small validation candidates per family keep the example tractable.</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Logistic regression"</span>: [</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>            LogisticRegression(regParam<span class="op">=</span>r, maxIter<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> r <span class="kw">in</span> [<span class="fl">0.01</span>, <span class="fl">0.1</span>]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Decision tree"</span>: [</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>            DecisionTreeClassifier(maxDepth<span class="op">=</span>d, seed<span class="op">=</span><span class="dv">2017</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> d <span class="kw">in</span> [<span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Random forest"</span>: [</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>            RandomForestClassifier(numTrees<span class="op">=</span><span class="dv">100</span>, maxDepth<span class="op">=</span>d, seed<span class="op">=</span><span class="dv">2017</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> d <span class="kw">in</span> [<span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GBT"</span>: [</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            GBTClassifier(</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>                maxIter<span class="op">=</span><span class="dv">100</span>, maxDepth<span class="op">=</span>d, stepSize<span class="op">=</span><span class="fl">0.1</span>, seed<span class="op">=</span><span class="dv">2017</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> d <span class="kw">in</span> [<span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Linear SVM"</span>: [</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>            LinearSVC(regParam<span class="op">=</span>r, maxIter<span class="op">=</span><span class="dv">100</span>, weightCol<span class="op">=</span><span class="st">"weight"</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> r <span class="kw">in</span> [<span class="fl">0.01</span>, <span class="fl">0.1</span>]</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Naive Bayes"</span>: [</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>            NaiveBayes(smoothing<span class="op">=</span>s, modelType<span class="op">=</span><span class="st">"multinomial"</span>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> s <span class="kw">in</span> [<span class="fl">0.5</span>, <span class="fl">1.0</span>]</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Multilayer perceptron"</span>: [</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>            MultilayerPerceptronClassifier(</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>                layers<span class="op">=</span>[dimension, h, <span class="dv">2</span>], maxIter<span class="op">=</span><span class="dv">100</span>, seed<span class="op">=</span><span class="dv">2017</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> h <span class="kw">in</span> [<span class="dv">8</span>, <span class="dv">16</span>]</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>        <span class="st">"One-vs-rest logistic"</span>: [</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>            OneVsRest(</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>                classifier<span class="op">=</span>LogisticRegression(regParam<span class="op">=</span>r, maxIter<span class="op">=</span><span class="dv">100</span>),</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>                parallelism<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> r <span class="kw">in</span> [<span class="fl">0.01</span>, <span class="fl">0.1</span>]</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Factorization machine"</span>: [</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>            FMClassifier(</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>                factorSize<span class="op">=</span>k, maxIter<span class="op">=</span><span class="dv">100</span>, stepSize<span class="op">=</span><span class="fl">0.01</span>, seed<span class="op">=</span><span class="dv">2017</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> k <span class="kw">in</span> [<span class="dv">4</span>, <span class="dv">8</span>]</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="select-settings-and-evaluate-held-out-employers" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="select-settings-and-evaluate-held-out-employers"><span class="header-section-number">8</span> Select settings and evaluate held-out employers</h2>
+<p>Only training employers fit model parameters. Validation positive-class F1 selects the first best setting in the declared candidate order. The selected model is tested once without refitting. Confusion matrices use rows for observed labels and columns for predictions: [[TN, FP], [FN, TP]]. Precision is TP/(TP+FP), recall is TP/(TP+FN), and F1 is 2TP/(2TP+FP+FN). Undefined ratios are reported as zero. Accuracy is shown beside F1 because the two answer different questions. The majority baseline is learned from training labels; the all-positive baseline reveals how much recall can be obtained without discrimination.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> binary_metrics(predictions):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        (<span class="bu">int</span>(r.label), <span class="bu">int</span>(r.prediction)): r[<span class="st">"count"</span>]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> r <span class="kw">in</span> predictions.groupBy(<span class="st">"label"</span>, <span class="st">"prediction"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        .count()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        .collect()</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    tn, fp <span class="op">=</span> counts.get((<span class="dv">0</span>, <span class="dv">0</span>), <span class="dv">0</span>), counts.get((<span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">0</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    fn, tp <span class="op">=</span> counts.get((<span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">0</span>), counts.get((<span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">0</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> tn <span class="op">+</span> fp <span class="op">+</span> fn <span class="op">+</span> tp</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> total:</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Empty evaluation partition"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"precision"</span>: tp <span class="op">/</span> (tp <span class="op">+</span> fp) <span class="cf">if</span> tp <span class="op">+</span> fp <span class="cf">else</span> <span class="fl">0.0</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"recall"</span>: tp <span class="op">/</span> (tp <span class="op">+</span> fn) <span class="cf">if</span> tp <span class="op">+</span> fn <span class="cf">else</span> <span class="fl">0.0</span>,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"f1"</span>: <span class="dv">2</span> <span class="op">*</span> tp <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> tp <span class="op">+</span> fp <span class="op">+</span> fn) <span class="cf">if</span> <span class="dv">2</span> <span class="op">*</span> tp <span class="op">+</span> fp <span class="op">+</span> fn <span class="cf">else</span> <span class="fl">0.0</span>,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"accuracy"</span>: (tp <span class="op">+</span> tn) <span class="op">/</span> total,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"confusion_matrix"</span>: [[tn, fp], [fn, tp]],</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"support"</span>: total,</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate(matrix, dimension):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    train <span class="op">=</span> matrix.<span class="bu">filter</span>(<span class="st">"split = 'train'"</span>).cache()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    validation <span class="op">=</span> matrix.<span class="bu">filter</span>(<span class="st">"split = 'validation'"</span>).cache()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    test <span class="op">=</span> matrix.<span class="bu">filter</span>(<span class="st">"split = 'test'"</span>).cache()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    class_counts <span class="op">=</span> {</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">int</span>(r.label): r[<span class="st">"count"</span>]</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> r <span class="kw">in</span> train.groupBy(<span class="st">"label"</span>).count().collect()</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">sum</span>(class_counts.values())</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    train <span class="op">=</span> train.withColumn(</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"weight"</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        F.when(</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>            F.col(<span class="st">"label"</span>) <span class="op">==</span> <span class="dv">1</span>, n <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> class_counts[<span class="dv">1</span>])</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        ).otherwise(n <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> class_counts[<span class="dv">0</span>])),</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    ).cache()</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> []</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name, options <span class="kw">in</span> candidates(dimension).items():</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        trials, best, best_score <span class="op">=</span> [], <span class="va">None</span>, <span class="op">-</span><span class="fl">1.0</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> estimator <span class="kw">in</span> options:</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> estimator.fit(train)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>            score <span class="op">=</span> binary_metrics(model.transform(validation))[<span class="st">"f1"</span>]</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>            params <span class="op">=</span> {</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>                p.name: <span class="bu">str</span>(v)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> p, v <span class="kw">in</span> estimator.extractParamMap().items()</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>            trials.append(</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"parameters"</span>: params, <span class="st">"validation_f1"</span>: score}</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> score <span class="op">&gt;</span> best_score:</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>                best, best_score <span class="op">=</span> model, score</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> {</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">"model"</span>: name,</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">"validation_f1"</span>: best_score,</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>            <span class="st">"trials"</span>: trials,</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>binary_metrics(best.transform(test)),</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>        results.append(result)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(json.dumps(result), flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    majority <span class="op">=</span> <span class="bu">max</span>(class_counts, key<span class="op">=</span>class_counts.get)</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name, value <span class="kw">in</span> [</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"Training majority"</span>, majority),</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"All positive"</span>, <span class="dv">1</span>),</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    ]:</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>        results.append(</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>                <span class="st">"model"</span>: name,</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>                <span class="op">**</span>binary_metrics(</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>                    test.withColumn(<span class="st">"prediction"</span>, F.lit(<span class="bu">float</span>(value)))</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>                ),</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="what-each-classifier-tests" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="what-each-classifier-tests"><span class="header-section-number">9</span> What each classifier tests</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Classifier</th>
+<th>Role in the comparison</th>
+<th>Important constraint</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Logistic regression</td>
+<td>Linear probability model</td>
+<td>Default prediction threshold is 0.5</td>
+</tr>
+<tr class="even">
+<td>Decision tree</td>
+<td>A small set of feature splits</td>
+<td>Depth limits complexity</td>
+</tr>
+<tr class="odd">
+<td>Random forest</td>
+<td>Average over randomized trees</td>
+<td>More trees increase computation</td>
+</tr>
+<tr class="even">
+<td>Gradient-boosted trees</td>
+<td>Sequentially improve tree predictions</td>
+<td>Spark GBT classification is binary</td>
+</tr>
+<tr class="odd">
+<td>Linear SVM</td>
+<td>Maximum-margin linear separation</td>
+<td>Binary; balanced training weights; no calibrated probabilities</td>
+</tr>
+<tr class="even">
+<td>Naive Bayes</td>
+<td>Conditional-independence baseline</td>
+<td>Multinomial variant needs nonnegative features; title shares are a modeling approximation</td>
+</tr>
+<tr class="odd">
+<td>Multilayer perceptron</td>
+<td>Nonlinear neural network</td>
+<td>Input width equals feature count; output width equals two classes</td>
+</tr>
+<tr class="even">
+<td>One-vs-rest logistic</td>
+<td>Demonstrate a multiclass reduction</td>
+<td>Redundant for this binary task; two logistic classifiers are fitted</td>
+</tr>
+<tr class="odd">
+<td>Factorization machine</td>
+<td>Model pairwise feature interactions</td>
+<td>More latent factors increase capacity</td>
+</tr>
+</tbody>
+</table>
+<p>Source for available estimator families and constraints: <span class="citation" data-cites="sparkclassification">Apache Software Foundation (<a href="#ref-sparkclassification" role="doc-biblioref">2026</a>)</span>. The comparison uses the binary healthcare task; it does not claim to test every variant of every estimator or the older RDD API.</p>
+</section>
+<section id="run-the-workflow" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="run-the-workflow"><span class="header-section-number">10</span> Run the workflow</h2>
+<p>The entry point connects the stages, prints filtering counts and each model’s evaluation, and records versions, settings, split support and input hashes. A failed run does not write a new completed manifest.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    parser.add_argument(<span class="st">"--data-dir"</span>, <span class="bu">type</span><span class="op">=</span>Path, required<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    parser.add_argument(<span class="st">"--output-dir"</span>, <span class="bu">type</span><span class="op">=</span>Path, required<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    args <span class="op">=</span> parser.parse_args()</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> <span class="bu">sorted</span>(args.data_dir.glob(<span class="st">"jobs_2026_part_*.parquet"</span>))</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> files:</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        parser.error(<span class="st">"No posting partitions found"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    spark <span class="op">=</span> (</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        SparkSession.builder.appName(<span class="st">"HealthcareEmployerClassification"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.sql.session.timeZone"</span>, <span class="st">"UTC"</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.sql.shuffle.partitions"</span>, <span class="st">"4"</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        .getOrCreate()</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    spark.sparkContext.setLogLevel(<span class="st">"ERROR"</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        jobs, ledger <span class="op">=</span> prepare(spark, files)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"FILTER LEDGER "</span> <span class="op">+</span> json.dumps(ledger), flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        employers, support <span class="op">=</span> employers_and_splits(jobs)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">long</span> <span class="op">=</span> feature_rows(jobs, employers).cache()</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        vocabulary, thresholds <span class="op">=</span> fit_vocabulary(<span class="bu">long</span>)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>        matrix <span class="op">=</span> vectorize(<span class="bu">long</span>, employers, vocabulary).cache()</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        results <span class="op">=</span> evaluate(matrix, <span class="bu">len</span>(vocabulary))</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        manifest <span class="op">=</span> {</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>            <span class="st">"engine"</span>: <span class="st">"pyspark"</span>,</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">"version"</span>: pyspark.__version__,</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>            <span class="st">"seed"</span>: <span class="dv">2017</span>,</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>            <span class="st">"split_method"</span>: <span class="st">"within-class SHA256 rank 70/10/20"</span>,</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>            <span class="st">"ledger"</span>: ledger,</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>            <span class="st">"splits"</span>: support,</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>            <span class="st">"feature_count"</span>: <span class="bu">len</span>(vocabulary),</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">"thresholds"</span>: thresholds,</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">"models"</span>: results,</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>            <span class="st">"files"</span>: [],</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> path <span class="kw">in</span> files:</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> path.<span class="bu">open</span>(<span class="st">"rb"</span>) <span class="im">as</span> stream:</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>                digest <span class="op">=</span> hashlib.file_digest(</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>                    stream, <span class="st">"sha256"</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>                ).hexdigest()</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>            manifest[<span class="st">"files"</span>].append(</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"file"</span>: path.name, <span class="st">"sha256"</span>: digest}</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>        args.output_dir.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>        (args.output_dir <span class="op">/</span> <span class="st">"run.json"</span>).write_text(</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>            json.dumps(manifest, indent<span class="op">=</span><span class="dv">2</span>, allow_nan<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>            encoding<span class="op">=</span><span class="st">"utf-8"</span>,</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"SPARK STUDY COMPLETE"</span>, flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">finally</span>:</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>        spark.stop()</span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="spark-execution-evidence" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="spark-execution-evidence"><span class="header-section-number">11</span> Spark execution evidence</h2>
+<p>The completed PySpark 4.2.0 run processed 815,193 source rows and fitted 424 feature columns. The <a href="data/spark-study/run.json">Spark manifest</a> records the inputs, partition sizes, candidate settings and measured results.</p>
+<p>The processing counts below are computed by the Spark functions above.</p>
+<pre class="text"><code>{
+  "source_rows": 815193,
+  "unique_id_rows": 815193,
+  "period_rows": 800461,
+  "us_rows": 800461,
+  "sector_known_rows": 357682,
+  "nonstaffing_or_unknown_rows": 352567,
+  "employer_model_postings": 352566
+}</code></pre>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Partition</th>
+<th style="text-align: right;">Other employers</th>
+<th style="text-align: right;">NAICS 62 employers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>train</td>
+<td style="text-align: right;">133</td>
+<td style="text-align: right;">119</td>
+</tr>
+<tr class="even">
+<td>validation</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="odd">
+<td>test</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">35</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th style="text-align: right;">Precision (NAICS 62)</th>
+<th style="text-align: right;">Recall</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Logistic regression</td>
+<td style="text-align: right;">0.941</td>
+<td style="text-align: right;">0.457</td>
+<td style="text-align: right;">0.615</td>
+<td style="text-align: right;">0.730</td>
+</tr>
+<tr class="even">
+<td>Decision tree</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.171</td>
+<td style="text-align: right;">0.293</td>
+<td style="text-align: right;">0.608</td>
+</tr>
+<tr class="odd">
+<td>Random forest</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.343</td>
+<td style="text-align: right;">0.511</td>
+<td style="text-align: right;">0.689</td>
+</tr>
+<tr class="even">
+<td>GBT</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.486</td>
+<td style="text-align: right;">0.654</td>
+<td style="text-align: right;">0.757</td>
+</tr>
+<tr class="odd">
+<td>Linear SVM</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.371</td>
+<td style="text-align: right;">0.542</td>
+<td style="text-align: right;">0.703</td>
+</tr>
+<tr class="even">
+<td>Naive Bayes</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.200</td>
+<td style="text-align: right;">0.333</td>
+<td style="text-align: right;">0.622</td>
+</tr>
+<tr class="odd">
+<td>Multilayer perceptron</td>
+<td style="text-align: right;">0.903</td>
+<td style="text-align: right;">0.800</td>
+<td style="text-align: right;">0.848</td>
+<td style="text-align: right;">0.865</td>
+</tr>
+<tr class="even">
+<td>One-vs-rest logistic</td>
+<td style="text-align: right;">0.941</td>
+<td style="text-align: right;">0.457</td>
+<td style="text-align: right;">0.615</td>
+<td style="text-align: right;">0.730</td>
+</tr>
+<tr class="odd">
+<td>Factorization machine</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.200</td>
+<td style="text-align: right;">0.333</td>
+<td style="text-align: right;">0.622</td>
+</tr>
+<tr class="even">
+<td>Training majority</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.527</td>
+</tr>
+<tr class="odd">
+<td>All positive</td>
+<td style="text-align: right;">0.473</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.642</td>
+<td style="text-align: right;">0.473</td>
+</tr>
+</tbody>
+</table>
+<p>Confusion counts use TN (true negatives), FP (false positives), FN (false negatives) and TP (true positives).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th style="text-align: right;">TN</th>
+<th style="text-align: right;">FP</th>
+<th style="text-align: right;">FN</th>
+<th style="text-align: right;">TP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Logistic regression</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="even">
+<td>Decision tree</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td>Random forest</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td>GBT</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="odd">
+<td>Linear SVM</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="even">
+<td>Naive Bayes</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td>Multilayer perceptron</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td>One-vs-rest logistic</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="odd">
+<td>Factorization machine</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td>Training majority</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>All positive</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">35</td>
+</tr>
+</tbody>
+</table>
+<p>Multilayer perceptron achieved the highest validation F1 (0.765) in this small search; its held-out F1 was 0.848. This comparison is exploratory. A single small holdout cannot establish a stable ordering of algorithm families. The counts expose missed healthcare employers and false inclusions that F1 alone obscures. The original scikit-learn and Spark holdouts contain different employers; differences between their scores cannot be attributed solely to the software engine.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-sparkclassification" class="csl-entry" role="listitem">
+Apache Software Foundation. 2026. <em>Classification and Regression: Spark 4.2.0 Documentation</em>. <a href="https://spark.apache.org/docs/4.2.0/ml-classification-regression.html">https://spark.apache.org/docs/4.2.0/ml-classification-regression.html</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Healthcare data analysts · NAICS 62 · January–September 2026 sample</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
