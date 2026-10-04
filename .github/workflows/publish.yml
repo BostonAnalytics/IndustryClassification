@@ -35,7 +35,10 @@ jobs:
           python scripts/verify_sample.py
           python scripts/verify_multiclass.py --published
 
-      - name: Render and Publish
-        run: quarto publish gh-pages --no-render --no-prompt
+      - name: Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+          render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
