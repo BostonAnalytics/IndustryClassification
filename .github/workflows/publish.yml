@@ -23,7 +23,9 @@ jobs:
           python-version: '3.12'
 
       - name: Verify saved exports (no dataset or analysis dependencies)
-        run: python scripts/verify_static_assets.py
+        run: |
+          python scripts/verify_static_assets.py
+          python scripts/verify_multiclass.py
 
       - name: Render saved content and check links
         run: |
@@ -31,6 +33,7 @@ jobs:
           quarto render
           python scripts/verify_site.py
           python scripts/verify_sample.py
+          python scripts/verify_multiclass.py --published
 
       - name: Render and Publish
         run: quarto publish gh-pages --no-render --no-prompt

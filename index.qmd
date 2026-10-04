@@ -27,6 +27,8 @@ or read the [complete analysis and export code](analysis_code.qmd).
 
 Read the [PySpark analysis](pyspark_analysis.qmd) or download the [Word report](final_report.docx).
 
+The additional [multiclass industry experiment](multiclass_analysis.qmd) predicts broad NAICS sectors with sufficient employer support. It reports class coverage, macro-F1, per-sector metrics and confusion counts while retaining the healthcare career benchmark.
+
 ## Scope and limitations
 
 The study follows the career evaluation framework in Module 1 [@ad688m1]. Sector 62 combines healthcare and social assistance, so the findings do not describe a single healthcare subsector. Personal skill assessments and adequate salary coverage are unavailable; no weighted opportunity score is calculated.

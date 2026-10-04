@@ -16,11 +16,15 @@ This exploratory study examines employer-industry classification as a data-quali
 
 **Keywords:** employer industry classification; job postings; healthcare data analysts; NAICS; career evaluation; data quality.
 
+An additional multiclass experiment on the updated source snapshot retains six broad NAICS sectors and 328 employers. The validation-selected random forest achieves test macro-F1 of 0.377 against a training-majority baseline of 0.112. Per-sector results and exclusions expose the limits of extending the method to sparsely represented industries.
+
 # Introduction
 
 This report reconstructs @goindani2017 and applies their employer-industry classification approach to Jobs_2026_US [@jobs2026]. The career audience is students targeting healthcare data analyst roles in NAICS sector 62. The new analysis provides a selected-sample market benchmark and classifier evaluation, with explicit limitations on label quality and personal skill assessment.
 
 The analysis uses a local data snapshot. Employer labels have not been independently adjudicated.
+
+The multiclass extension asks how well the same feature concept distinguishes multiple supported sectors. It supplements the healthcare career analysis with a separate class-coverage assessment and employer-level evaluation.
 
 {{< include _content/research-framing.md >}}
 
@@ -60,6 +64,8 @@ Following the feature concept in @goindani2017, title shares and employer-name w
 
 {{< include _content/eda-results.md >}}
 
+{{< include _content/multiclass-results.md >}}
+
 ## Career market baseline
 
 {{< include _content/market-results.md >}}
@@ -83,6 +89,8 @@ A proposed opportunity scorecard weights demand 25%, salary 20%, accessibility 2
 This is an exploratory adaptation, not an exact replication of the proprietary 2017 system. Input coverage, missing industry fields, noisy labels, title matching, unresolved aliases and missing salary evidence affect the sample. Dataset-derived labels cannot independently validate the employer knowledge base. Personal profiles are unavailable.
 
 Independent review of model agreement and disagreement cases, alias resolution and evaluation on a later time period are needed before predictions can reliably filter career opportunities.
+
+The multiclass model covers six sectors with at least 20 eligible employers each. Transportation and warehousing has nine eligible employers and is excluded from that evaluation; manufacturing has 17. The selected model's macro-F1 of 0.377 and small validation groups limit claims about broad industry classification. Its scores measure a different target and population from the binary healthcare experiments.
 
 # Conclusion
 

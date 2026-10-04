@@ -73,3 +73,15 @@ Written by /aar-loop after each session's After Action Review. Read this file be
 - Actual: The staged-byte audit found six data/study CSV hash mismatches despite passing working-tree checks. Reapplying attributes reconciled all 65 interactive manifest entries.
 - Why: Git reused unchanged tracked blobs until renormalization forced its clean-filter rules to run. Existing byte-preservation guidance did not establish that the Git index matched local files. No rule or skill change proposed.
 - tags: git,publishing,staging,hashes
+
+## 2026-10-03 -- Before comparing multiclass and healthcare results, check data/multiclass/run.json comparison_with_saved_binary. The current Jobs_2026_US has 82 changed partition hashes after NAICS hierarchy repair despite the same 815193 rows; preserve separate snapshots and verify with scripts/verify_multiclass.py --published.
+- Expected: Add multiclass evaluation while retaining healthcare results.
+- Actual: Evaluated six sectors and 328 employers; 47 eligible employers excluded by the 20-employer class threshold. All 82 source hashes differ from the preserved binary experiment. Publication, metric reconciliation and negative controls pass.
+- Why: The external source was repaired after the binary run; equal filenames and row counts did not establish snapshot equality. No rule or skill change proposed.
+- tags: multiclass,provenance,naics
+
+## 2026-10-03 -- For this checkout, system Python supplies the study dependencies including PyArrow, while .venv supplies Plotly 7.1.0 for publish_interactive.py. Verify versions before regenerating exports, and wait for a quarto render process to exit before retrying; two active renders can collide moving HTML files.
+- Expected: Regenerate multiclass results and static website using existing tooling.
+- Actual: Recovered from absent virtual-environment PyArrow and a Plotly 7.0.0 export by choosing the existing matching runtimes. A redundant Quarto render collided with the slow first build; the first build completed and final checks verified 13 pages and identical Word bytes.
+- Why: Installed environments have different package sets, and quiet initial Quarto work was mistaken for a stall. Existing sequential-build discipline suffices; no rule or skill change proposed.
+- tags: runtime,quarto,multiclass

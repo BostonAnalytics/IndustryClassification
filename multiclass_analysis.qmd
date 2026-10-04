@@ -1,0 +1,19 @@
+---
+title: "Multiclass industry classification"
+number-sections: true
+---
+
+{{< include _content/multiclass-results.md >}}
+
+## Reproduction and downloads
+
+```bash
+python scripts/run_multiclass.py --data-dir E:/Data/Jobs_2026_US
+python scripts/verify_multiclass.py
+python scripts/publish_multiclass.py
+python scripts/publish_interactive.py
+```
+
+[Run manifest](data/multiclass/run.json) · [Class coverage](data/multiclass/class_support.csv) · [Model metrics](data/multiclass/metrics.csv) · [Per-sector metrics](data/multiclass/per_class.csv) · [Confusion counts](data/multiclass/confusion.csv)
+
+Read the [executable source](scripts/run_multiclass.py), [complete code display](analysis_code.qmd), or [searchable aggregate tables](interactive.qmd). The [healthcare evaluation](career_evaluation.qmd) and [binary PySpark experiment](pyspark_analysis.qmd) remain separate analyses.

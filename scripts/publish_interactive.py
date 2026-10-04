@@ -40,6 +40,8 @@ def export(fig, name, title):
 def main():
     FIG.mkdir(parents=True, exist_ok=True)
     OUT.mkdir(parents=True, exist_ok=True)
+    for name in ('data/multiclass/run.json', '_content/multiclass-results.md', 'images/multiclass-confusion.png'):
+        INPUTS[name] = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
     # Always refresh the shared bundle when the local Plotly version changes.
     (FIG / 'plotly.min.js').write_text(get_plotlyjs(), encoding='utf-8')
     assert (FIG / 'usa_110m.json').is_file(), 'US geometry must be present before exporting'

@@ -1,0 +1,21 @@
+sector,industry,eligible_employers,included,train,validation,test
+11,"Agriculture, forestry, fishing and hunting",1,False,0,0,0
+21,"Mining, quarrying, and oil and gas extraction",0,False,0,0,0
+22,Utilities,0,False,0,0,0
+23,Construction,41,True,28,4,9
+31-33,Manufacturing,17,False,0,0,0
+42,Wholesale trade,0,False,0,0,0
+44-45,Retail trade,33,True,23,3,7
+48-49,Transportation and warehousing,9,False,0,0,0
+51,Information,12,False,0,0,0
+52,Finance and insurance,27,True,18,3,6
+53,Real estate and rental and leasing,5,False,0,0,0
+54,"Professional, scientific and technical services",23,True,16,2,5
+55,Management of companies and enterprises,1,False,0,0,0
+56,Administrative/support and waste management/remediation services,1,False,0,0,0
+61,Educational services,33,True,23,3,7
+62,Health care and social assistance,171,True,119,17,35
+71,"Arts, entertainment and recreation",0,False,0,0,0
+72,Accommodation and food services,0,False,0,0,0
+81,Other services (except public administration),1,False,0,0,0
+92,Public administration,0,False,0,0,0

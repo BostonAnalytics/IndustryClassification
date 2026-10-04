@@ -9,6 +9,8 @@ The study examines healthcare data analysts in NAICS 62. Results below were gene
 
 {{< include _content/study-results.md >}}
 
+The additional [multiclass experiment](multiclass_analysis.qmd) evaluates several broad industries using macro-F1 and per-sector test metrics. Its class coverage and employer partitions are reported separately from the healthcare-positive results above.
+
 ## Keep industry confidence separate from opportunity quality
 
 Industry classification helps determine whether a posting belongs in the selected analytical sample. It does not measure whether the job is desirable, accessible or well matched to a student. Records with disputed employer identity should enter a review queue before contributing to sector-level advice.

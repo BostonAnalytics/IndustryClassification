@@ -194,6 +194,8 @@ def export(fig, name, title):
 def main():
     FIG.mkdir(parents=True, exist_ok=True)
     OUT.mkdir(parents=True, exist_ok=True)
+    for name in ('data/multiclass/run.json', '_content/multiclass-results.md', 'images/multiclass-confusion.png'):
+        INPUTS[name] = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
     # Always refresh the shared bundle when the local Plotly version changes.
     (FIG / 'plotly.min.js').write_text(get_plotlyjs(), encoding='utf-8')
     assert (FIG / 'usa_110m.json').is_file(), 'US geometry must be present before exporting'
@@ -266,6 +268,128 @@ document.querySelectorAll('.aggregate-filter').forEach(input => {
                             for p in assets if p.name != 'manifest.json'}}
     (OUT / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
     print('INTERACTIVE EXPORTED: charts, map, searchable tables and complete source')
+
+
+if __name__ == '__main__':
+    main()
+
+````
+
+## publish_multiclass.py
+
+[Download source](scripts/publish_multiclass.py)
+
+````python
+"""Publish the additional experiment from saved aggregates, without source access."""
+import json
+from pathlib import Path
+
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / 'data/multiclass'
+
+
+def table(headers, rows):
+    return '\n'.join(['| ' + ' | '.join(headers) + ' |',
+                      '|' + '|'.join('---' for _ in headers) + '|'] +
+                     ['| ' + ' | '.join(map(str, row)) + ' |' for row in rows]) + '\n'
+
+
+def main():
+    d = json.loads((OUT / 'run.json').read_text(encoding='utf-8'))
+    support, classes = d['class_support'], d['classes']
+    selected = next(m for m in d['models'] if m['model'] == d['selected_model'])
+    metrics, per_class, confusion = [], [], []
+    for m in d['models']:
+        report = m['test_report']
+        metrics.append({'model': m['model'], 'validation_macro_f1': m.get('validation_macro_f1'),
+                        'test_macro_f1': report['macro avg']['f1-score'],
+                        'test_weighted_f1': report['weighted avg']['f1-score'],
+                        'test_accuracy': m['accuracy'], 'test_balanced_accuracy': report['macro avg']['recall']})
+        for i, sector in enumerate(classes):
+            per_class.append({'model': m['model'], 'sector': sector, **report[sector]})
+            for j, predicted in enumerate(classes):
+                confusion.append({'model': m['model'], 'actual_sector': sector, 'predicted_sector': predicted,
+                                  'employers': m['confusion_matrix'][i][j]})
+    for name, rows in [('metrics', metrics), ('per_class', per_class), ('confusion', confusion)]:
+        pd.DataFrame(rows).to_csv(OUT / f'{name}.csv', index=False)
+    cm = np.array(selected['confusion_matrix'])
+    fig, ax = plt.subplots(figsize=(7, 6))
+    ax.imshow(cm / cm.sum(axis=1, keepdims=True), cmap='Blues', vmin=0, vmax=1)
+    ax.set(xticks=range(len(classes)), yticks=range(len(classes)), xticklabels=classes,
+           yticklabels=classes, xlabel='Predicted NAICS sector', ylabel='Dataset-derived NAICS sector',
+           title=f'{selected["model"]}: test employer counts')
+    for i in range(len(classes)):
+        for j in range(len(classes)):
+            ax.text(j, i, str(cm[i, j]), ha='center', va='center',
+                    color='white' if cm[i, j] / cm[i].sum() > .5 else 'black')
+    fig.tight_layout()
+    fig.savefig(ROOT / 'images/multiclass-confusion.png', dpi=180)
+    plt.close(fig)
+    baseline = metrics[-1]['test_macro_f1']
+    excluded = [r for r in support if not r['included']]
+    included = [r for r in support if r['included']]
+    result = selected['test_report']
+    comparison = d['comparison_with_saved_binary']
+    provenance = ('Source file hashes match the saved healthcare experiment.' if comparison['exact_snapshot_match'] else
+                  f"Source file hashes differ from the saved healthcare experiment in {comparison['changed_partition_hashes']} partitions. "
+                  'The current dataset documents a NAICS hierarchy repair, while the healthcare results retain their earlier input manifest. '
+                  'Equal row counts do not establish an identical snapshot; this extension is evaluated separately.')
+    text = f'''## Multiclass industry classification
+
+The additional experiment predicts one broad NAICS sector per employer. It extends the employer-name and job-title feature design in @goindani2017 beyond separate industry-membership questions. The healthcare career benchmark and the binary experiments retain their original scope.
+
+### Sector definitions and coverage
+
+The input contains {d['ledger']['source_rows']:,} records in {len(d['files'])} Jobs_2026_US partitions. {provenance} The January–September 2026, US, staffing, employer-name and normalized-title filters apply before employer aggregation. Codes 31, 32 and 33 map to manufacturing (31–33); 44 and 45 to retail trade (44–45); and 48 and 49 to transportation and warehousing (48–49). These mappings change {d['ledger']['sector_normalized_rows']:,} posting labels in the current input, which already uses combined sectors, before computing employer dominance. Missing and invalid sectors are excluded, not treated as a learnable industry.
+
+Employers require at least 20 retained postings and an 80% dominant-sector share. After normalization, {d['ledger']['eligible_employers']:,} employers satisfy these rules. A sector requires at least {d['minimum_class_employers']} eligible employers to enter the experiment. This support rule retains {len(classes)} sectors and {d['ledger']['model_employers']:,} employers; {d['ledger']['excluded_low_support_employers']} eligible employers belong to sectors below the threshold. There is no employer cap. Labels describe broad sectors and remain unadjudicated dataset labels.
+
+'''
+    text += table(['NAICS', 'Industry', 'Employers'], [[r['sector'], r['industry'], r['eligible_employers']] for r in included])
+    text += '\nExcluded sectors (eligible employer counts): ' + '; '.join(f'{r["sector"]} {r["industry"]} ({r["eligible_employers"]})' for r in excluded) + '.\n'
+    text += '''
+### Employer partitions and features
+
+Within each retained class, employers are ordered by SHA-256 of the seed 2017 and normalized employer name. The first floor(70%) form training, the next employers up to floor(80%) form validation, and the remainder form testing. Each employer belongs to exactly one partition. Normalized names do not resolve corporate aliases, so related entities may still cross partitions. The class-support rule is set before feature fitting; it uses label counts to define the study population.
+
+'''
+    text += table(['NAICS', 'Train', 'Validation', 'Test'], [[r['sector'], r['train'], r['validation'], r['test']] for r in included])
+    text += f'''
+The partitions contain {d['splits']['train']} training, {d['splits']['validation']} validation and {d['splits']['test']} test employers. For each class, title and employer-word significance/frequency thresholds are calculated against the other training classes; the union of those selected vocabularies supplies {d['features']['count']} features. This replaces the healthcare-only positive-class feature selection. Titles retain the 1% within-employer share cutoff. Validation and test employers contribute neither vocabulary nor thresholds. Zero-feature employers remain in evaluation: {d['features']['zero_vectors_by_split']['train']} training, {d['features']['zero_vectors_by_split']['validation']} validation and {d['features']['zero_vectors_by_split']['test']} test.
+
+### Model selection and held-out results
+
+Scikit-learn implementations [@pedregosa2011] compare linear SVM, logistic regression, random forest and multiclass GBDT on identical partitions. SVM and logistic regression search C = 0.1, 1 and 10 with balanced class weights; random forest uses 200 trees and maximum depths 5 or unrestricted with balanced class weights; GBDT uses 100 boosting stages and tree depths 2 or 3 with default learning rate 0.1. GBDT uses unweighted training. Random states are fixed at 2017. Hyperparameters and then the model family are selected by validation macro-F1, with ties resolved by the listed order. Models are not refitted on validation data. The baseline always predicts the most frequent training class.
+
+Macro-F1 gives each retained sector equal weight. Weighted-F1 and accuracy describe the observed test mix; balanced accuracy averages sector recall. Zero-denominator precision or F1 is recorded as zero. The validation-selected model is {selected['model']}, with test macro-F1 {result['macro avg']['f1-score']:.3f}, compared with {baseline:.3f} for the training-majority baseline. This is a separate endpoint from healthcare-positive F1, so scores cannot be read as a direct improvement over the binary experiment.
+
+'''
+    text += table(['Model', 'Valid. macro-F1', 'Test macro-F1', 'Weighted-F1', 'Accuracy', 'Bal. accuracy'],
+                  [[r['model'], '—' if r['validation_macro_f1'] is None else f'{r["validation_macro_f1"]:.3f}',
+                    *[f'{r[k]:.3f}' for k in ('test_macro_f1', 'test_weighted_f1', 'test_accuracy', 'test_balanced_accuracy')]] for r in metrics])
+    text += f'\nPer-sector test results for the validation-selected {selected["model"]}:\n\n'
+    text += table(['NAICS', 'Precision', 'Recall', 'F1', 'Test employers'],
+                  [[s, *[f'{result[s][k]:.3f}' for k in ('precision', 'recall', 'f1-score')], int(result[s]['support'])] for s in classes])
+    missed = [s for s in classes if result[s]['recall'] == 0]
+    if missed:
+        text += '\nThe selected model recovered no test employers in sector(s) ' + ', '.join(missed) + '. This limits its use for filtering those industries.\n'
+    text += '''
+![Confusion matrix for the validation-selected model. Cells show employer counts; color is normalized within each actual-sector row. Sector names appear in the coverage table.](images/multiclass-confusion.png){width=85%}
+
+### Interpretation and limits
+
+This experiment measures agreement across the supported broad industries. The predictions cover only retained sectors: an employer from an excluded sector would still be forced into one of these classes. No open-set detection or deployment inference is claimed. Rare sectors remain in the coverage report instead of being merged into an incoherent “other” class. The two-employer minimum validation support makes tuning sensitive to individual cases, and this single split does not establish stable sector-level performance. Independent label review, repeated employer-grouped evaluation and a later-period test remain necessary. Missing industry labels limit population coverage, and the results do not establish national hiring patterns.
+
+The multiclass results do not replace the 112-posting healthcare career analysis or support personal skill-gap scores. Aggregate class support, metrics, per-sector results and all model confusion matrices accompany the source and run manifest.
+'''
+    (ROOT / '_content/multiclass-results.md').write_text(text, encoding='utf-8')
+    print('MULTICLASS PUBLISHED: shared report section, four CSVs and confusion figure')
 
 
 if __name__ == '__main__':
@@ -907,6 +1031,269 @@ The [EDA manifest](data/eda/run.json), [field missingness](data/eda/missingness.
 if __name__ == '__main__':
     main()
 
+
+````
+
+## run_multiclass.py
+
+[Download source](scripts/run_multiclass.py)
+
+````python
+"""Additional multiclass experiment; source records and employer identities stay private."""
+import argparse
+from collections import Counter, defaultdict
+import hashlib
+import json
+from pathlib import Path
+import platform
+import re
+
+import numpy as np
+import pandas as pd
+import pyarrow
+import pyarrow.parquet as pq
+import sklearn
+from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
+from sklearn.feature_extraction import DictVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, confusion_matrix, f1_score
+from sklearn.svm import LinearSVC
+
+from run_study import clean, tokens, select_vocab
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / 'data/multiclass'
+SECTORS = {
+    '11': 'Agriculture, forestry, fishing and hunting',
+    '21': 'Mining, quarrying, and oil and gas extraction',
+    '22': 'Utilities', '23': 'Construction', '31-33': 'Manufacturing',
+    '42': 'Wholesale trade', '44-45': 'Retail trade',
+    '48-49': 'Transportation and warehousing', '51': 'Information',
+    '52': 'Finance and insurance', '53': 'Real estate and rental and leasing',
+    '54': 'Professional, scientific and technical services',
+    '55': 'Management of companies and enterprises',
+    '56': 'Administrative/support and waste management/remediation services',
+    '61': 'Educational services', '62': 'Health care and social assistance',
+    '71': 'Arts, entertainment and recreation',
+    '72': 'Accommodation and food services',
+    '81': 'Other services (except public administration)',
+    '92': 'Public administration',
+}
+COMBINED = {**dict.fromkeys(['31', '32', '33'], '31-33'),
+            **dict.fromkeys(['44', '45'], '44-45'),
+            **dict.fromkeys(['48', '49'], '48-49')}
+COLS = ['ID', 'POSTED', 'COMPANY_NAME', 'TITLE_NAME', 'PARSED_COUNTRY_ISO_ABBR',
+        'NAICS_2022_2', 'NAICS2', 'COMPANY_IS_STAFFING']
+
+
+def normalize_sector(value):
+    value = clean(value)
+    value = COMBINED.get(value, value)
+    return value if value in SECTORS else None
+
+
+def read_employers(data_dir):
+    files = sorted(data_dir.glob('jobs_2026_part_*.parquet'))
+    if not files:
+        raise ValueError('No source partitions found')
+    ledger, seen, manifests = Counter(), set(), []
+    employers = defaultdict(lambda: {'count': 0, 'titles': Counter(), 'sectors': Counter()})
+    for path in files:
+        parquet = pq.ParquetFile(path)
+        with path.open('rb') as handle:
+            digest = hashlib.file_digest(handle, 'sha256').hexdigest()
+        manifests.append({'file': path.name, 'bytes': path.stat().st_size,
+                          'rows': parquet.metadata.num_rows, 'sha256': digest})
+        for batch in parquet.iter_batches(columns=COLS, batch_size=20000):
+            dates = pd.to_datetime(batch.column('POSTED').to_pylist(), errors='coerce', utc=True, format='mixed')
+            for row, date in zip(batch.to_pylist(), dates):
+                ledger['source_rows'] += 1
+                if row['ID'] is None:
+                    ledger['missing_id'] += 1
+                    continue
+                if row['ID'] in seen:
+                    raise ValueError('Duplicate posting ID; resolve source ordering before analysis')
+                seen.add(row['ID'])
+                ledger['unique_id_rows'] += 1
+                if pd.isna(date) or not (pd.Timestamp('2026-01-01', tz='UTC') <= date < pd.Timestamp('2026-10-01', tz='UTC')):
+                    ledger['outside_period_or_unknown_date'] += 1
+                    continue
+                ledger['period_rows'] += 1
+                if clean(row['PARSED_COUNTRY_ISO_ABBR']).upper() != 'US':
+                    ledger['non_us_or_unknown_country'] += 1
+                    continue
+                ledger['us_rows'] += 1
+                raw_sector = clean(row['NAICS_2022_2']) or clean(row['NAICS2'])
+                sector = normalize_sector(raw_sector)
+                if sector is None:
+                    ledger['missing_or_invalid_sector'] += 1
+                    continue
+                ledger['sector_known_rows'] += 1
+                ledger['sector_normalized_rows'] += sector != raw_sector
+                if row['COMPANY_IS_STAFFING'] == 1:
+                    ledger['staffing_excluded'] += 1
+                    continue
+                ledger['nonstaffing_or_unknown_rows'] += 1
+                name = re.sub(r'\s+', ' ', clean(row['COMPANY_NAME']).casefold())
+                title = clean(row['TITLE_NAME']).casefold()
+                if name in ('', 'unknown', 'unclassified') or title in ('', 'unknown', 'unclassified'):
+                    ledger['missing_employer_or_title'] += 1
+                    continue
+                e = employers[name]
+                e['count'] += 1
+                e['titles'][title] += 1
+                e['sectors'][sector] += 1
+                ledger['employer_model_postings'] += 1
+        print(f'Read {path.name}: {ledger["source_rows"]:,} rows', flush=True)
+    return employers, ledger, manifests
+
+
+def make_splits(employers, minimum_class=20):
+    """Require 20 employers per class before splitting, giving at least 14/2/4."""
+    if minimum_class < 20:
+        raise ValueError('At least 20 employers per class are required')
+    groups = defaultdict(list)
+    ledger = Counter(employers_before_filters=len(employers))
+    for name, e in employers.items():
+        sector, count = e['sectors'].most_common(1)[0]
+        if e['count'] < 20:
+            ledger['employers_below_20'] += 1
+        elif count / e['count'] < .8:
+            ledger['employers_without_dominant_sector'] += 1
+        else:
+            groups[sector].append(name)
+    classes = sorted(s for s, names in groups.items() if len(names) >= minimum_class)
+    if len(classes) < 3:
+        raise ValueError('Fewer than three sectors meet the declared class-support threshold')
+    names, labels, split_indices, support = [], [], defaultdict(list), []
+    for sector in sorted(SECTORS):
+        members = sorted(groups[sector], key=lambda n: (hashlib.sha256(('2017:' + n).encode()).hexdigest(), n))
+        row = {'sector': sector, 'industry': SECTORS[sector], 'eligible_employers': len(members),
+               'included': sector in classes, 'train': 0, 'validation': 0, 'test': 0}
+        if sector in classes:
+            for rank, name in enumerate(members):
+                split = 'train' if rank < int(.7 * len(members)) else ('validation' if rank < int(.8 * len(members)) else 'test')
+                split_indices[split].append(len(names))
+                names.append(name)
+                labels.append(sector)
+                row[split] += 1
+        support.append(row)
+    ledger['eligible_employers'] = sum(len(v) for v in groups.values())
+    ledger['excluded_low_support_employers'] = ledger['eligible_employers'] - len(names)
+    ledger['model_employers'] = len(names)
+    return names, np.array(labels), {k: np.array(v) for k, v in split_indices.items()}, support, ledger
+
+
+def build_features(employers, names, y, train):
+    """Union of training-only one-versus-rest vocabularies extends the paper's filter."""
+    all_t, all_w = Counter(), Counter()
+    pos_t, pos_w = defaultdict(Counter), defaultdict(Counter)
+    for i in train:
+        e = employers[names[i]]
+        all_t.update(e['titles'])
+        all_w.update(tokens(names[i]))
+        pos_t[y[i]].update(e['titles'])
+        pos_w[y[i]].update(tokens(names[i]))
+    titles, words, thresholds = set(), set(), {}
+    for label in sorted(set(y[train])):
+        thresholds[label] = {}
+        for kind, total, positive, target in [('titles', all_t, pos_t[label], titles), ('words', all_w, pos_w[label], words)]:
+            if any(c > 1 for c in positive.values()):
+                vocab, rule = select_vocab(total, positive)
+                target.update(vocab)
+                thresholds[label][kind] = rule | {'selected': len(vocab)}
+            else:
+                thresholds[label][kind] = {'selected': 0, 'reason': 'No token occurs more than once in this training class'}
+    rows = []
+    for name in names:
+        e = employers[name]
+        row = {'t:' + t: n / e['count'] for t, n in e['titles'].items() if t in titles and n / e['count'] >= .01}
+        row.update({'w:' + w: 1. for w in tokens(name) & words})
+        rows.append(row)
+    vectorizer = DictVectorizer()
+    vectorizer.fit([rows[i] for i in train])
+    if not vectorizer.feature_names_:
+        raise ValueError('No training features survived selection')
+    return vectorizer.transform(rows), vectorizer, thresholds
+
+
+def evaluate(y, pred, classes):
+    return {'test_report': classification_report(y, pred, labels=classes, output_dict=True, zero_division=0),
+            'confusion_matrix': confusion_matrix(y, pred, labels=classes).tolist(),
+            'accuracy': float(np.mean(y == pred))}
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--data-dir', type=Path, required=True)
+    parser.add_argument('--minimum-class-employers', type=int, default=20)
+    args = parser.parse_args()
+    employers, ledger, files = read_employers(args.data_dir)
+    names, y, splits, support, filters = make_splits(employers, args.minimum_class_employers)
+    ledger.update(filters)
+    classes = sorted(set(y))
+    # Integer targets avoid mixed numeric/range-string coercion in estimators.
+    class_array = np.array(classes)
+    encoded_y = np.searchsorted(class_array, y)
+    print(f'Class support: {[(r["sector"], r["eligible_employers"], r["included"]) for r in support]}', flush=True)
+    train, valid, test = [splits[s] for s in ('train', 'validation', 'test')]
+    assert len(set(names)) == len(names)
+    assert set(train).isdisjoint(valid) and set(train).isdisjoint(test) and set(valid).isdisjoint(test)
+    X, vectorizer, thresholds = build_features(employers, names, y, train)
+    families = [
+        ('Linear SVM', [LinearSVC(C=c, class_weight='balanced', random_state=2017, max_iter=20000) for c in [.1, 1, 10]]),
+        ('Logistic regression', [LogisticRegression(C=c, class_weight='balanced', random_state=2017, max_iter=3000) for c in [.1, 1, 10]]),
+        ('Random forest', [RandomForestClassifier(n_estimators=200, max_depth=d, class_weight='balanced', random_state=2017, n_jobs=1) for d in [5, None]]),
+        ('GBDT', [GradientBoostingClassifier(n_estimators=100, max_depth=d, random_state=2017) for d in [2, 3]]),
+    ]
+    models = []
+    for name, candidates in families:
+        trials, best_score, best = [], -1, None
+        for model in candidates:
+            model.fit(X[train], encoded_y[train])
+            score = f1_score(y[valid], class_array[model.predict(X[valid])], labels=classes, average='macro', zero_division=0)
+            trials.append({'params': model.get_params(), 'validation_macro_f1': float(score)})
+            if score > best_score:
+                best_score, best = score, model
+        result = {'model': name, 'validation_macro_f1': float(best_score), 'trials': trials,
+                  'selected_params': best.get_params(), **evaluate(y[test], class_array[best.predict(X[test])], classes)}
+        models.append(result)
+        print(f'{name}: validation macro-F1={best_score:.3f}; test macro-F1={result["test_report"]["macro avg"]["f1-score"]:.3f}', flush=True)
+    majority = sorted(Counter(y[train]), key=lambda c: (-Counter(y[train])[c], c))[0]
+    models.append({'model': 'Training majority', 'majority_sector': majority,
+                   **evaluate(y[test], np.repeat(majority, len(test)), classes)})
+    # Select the family by validation only; test metrics do not enter selection.
+    selected = max(models[:-1], key=lambda m: m['validation_macro_f1'])['model']
+    binary_path = ROOT / 'data/study/run.json'
+    binary = json.loads(binary_path.read_text(encoding='utf-8'))
+    old_files = {f['file']: f for f in binary['files']}
+    snapshot_comparison = {
+        'binary_manifest_sha256': hashlib.sha256(binary_path.read_bytes()).hexdigest(),
+        'same_file_names_and_rows': [(f['file'], f['rows']) for f in files] == [(f['file'], f['rows']) for f in binary['files']],
+        'changed_partition_hashes': sum(f['sha256'] != old_files.get(f['file'], {}).get('sha256') for f in files),
+        'exact_snapshot_match': files == binary['files'],
+    }
+    result = {'source_directory': str(args.data_dir.resolve()), 'files': files,
+              'versions': {'python': platform.python_version(), 'numpy': np.__version__, 'pandas': pd.__version__,
+                           'pyarrow': pyarrow.__version__, 'sklearn': sklearn.__version__},
+              'script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+              'feature_helper_sha256': hashlib.sha256((ROOT / 'scripts/run_study.py').read_bytes()).hexdigest(),
+              'minimum_class_employers': args.minimum_class_employers, 'ledger': dict(ledger),
+              'comparison_with_saved_binary': snapshot_comparison,
+              'classes': classes, 'class_support': support, 'employer_overlap': 0,
+              'splits': {s: len(ix) for s, ix in splits.items()},
+              'split_rule': 'Within-class SHA256(2017:normalized employer), floor 70%/80% boundaries; no cap',
+              'features': {'count': X.shape[1], 'thresholds': thresholds,
+                           'zero_vectors_by_split': {s: int(np.sum(X[ix].getnnz(axis=1) == 0)) for s, ix in splits.items()}},
+              'models': models, 'selected_model': selected}
+    OUT.mkdir(parents=True, exist_ok=True)
+    (OUT / 'run.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    pd.DataFrame(support).to_csv(OUT / 'class_support.csv', index=False)
+    print(f'MULTICLASS COMPLETE: {len(classes)} classes; {len(names)} employers; selected {selected}')
+
+
+if __name__ == '__main__':
+    main()
 
 ````
 
@@ -1747,6 +2134,172 @@ for name in ['market_baseline.qmd','final_report.qmd']:
 expected_pages = {'index','introduction','data_preparation','market_baseline','skill_gap_analysis','career_evaluation','pyspark_analysis','interactive','analysis_code','final_recommendations','references','ai-disclosure','final_report'}
 assert {p.stem for p in ROOT.glob('*.qmd')} == expected_pages
 print('EDA VERIFIED: source hashes, counts, denominators, four PNGs and thirteen QMD sources including PySpark analysis and interactive exports')
+
+````
+
+## verify_multiclass.py
+
+[Download source](scripts/verify_multiclass.py)
+
+````python
+"""Verify saved multiclass evidence using only the standard library."""
+import csv
+import argparse
+import hashlib
+import json
+import math
+from pathlib import Path
+from xml.etree import ElementTree as ET
+from zipfile import ZipFile
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def verify(d):
+    binary = json.loads((ROOT / 'data/study/run.json').read_text(encoding='utf-8'))
+    comparison = d['comparison_with_saved_binary']
+    assert comparison['binary_manifest_sha256'] == hashlib.sha256((ROOT / 'data/study/run.json').read_bytes()).hexdigest()
+    assert comparison['exact_snapshot_match'] == (d['files'] == binary['files'])
+    assert comparison['same_file_names_and_rows'] == ([(f['file'], f['rows']) for f in d['files']] == [(f['file'], f['rows']) for f in binary['files']])
+    old_files = {f['file']: f for f in binary['files']}
+    assert comparison['changed_partition_hashes'] == sum(f['sha256'] != old_files.get(f['file'], {}).get('sha256') for f in d['files'])
+    assert d['script_sha256'] == hashlib.sha256((ROOT / 'scripts/run_multiclass.py').read_bytes()).hexdigest()
+    assert d['feature_helper_sha256'] == hashlib.sha256((ROOT / 'scripts/run_study.py').read_bytes()).hexdigest()
+    ledger = d['ledger']
+    assert sum(f['rows'] for f in d['files']) == ledger['source_rows']
+    assert ledger['source_rows'] == ledger['unique_id_rows'] + ledger.get('missing_id', 0)
+    for total, kept, excluded in [('unique_id_rows', 'period_rows', 'outside_period_or_unknown_date'),
+                                  ('period_rows', 'us_rows', 'non_us_or_unknown_country'),
+                                  ('us_rows', 'sector_known_rows', 'missing_or_invalid_sector'),
+                                  ('sector_known_rows', 'nonstaffing_or_unknown_rows', 'staffing_excluded'),
+                                  ('nonstaffing_or_unknown_rows', 'employer_model_postings', 'missing_employer_or_title')]:
+        assert ledger[total] == ledger[kept] + ledger.get(excluded, 0)
+    assert ledger['employers_before_filters'] == ledger.get('employers_below_20', 0) + ledger.get('employers_without_dominant_sector', 0) + ledger['eligible_employers']
+    assert ledger['eligible_employers'] == ledger['model_employers'] + ledger['excluded_low_support_employers']
+    assert d['employer_overlap'] == 0
+    assert len(d['classes']) >= 3
+    included = {r['sector']: r for r in d['class_support'] if r['included']}
+    assert sorted(included) == d['classes']
+    assert sum(r['eligible_employers'] for r in d['class_support']) == ledger['eligible_employers']
+    for row in d['class_support']:
+        assert row['included'] == (row['eligible_employers'] >= d['minimum_class_employers'])
+        if row['included']:
+            assert row['train'] == int(.7 * row['eligible_employers'])
+            assert row['validation'] == int(.8 * row['eligible_employers']) - row['train']
+            assert row['test'] == row['eligible_employers'] - row['train'] - row['validation']
+            assert min(row[s] for s in ('train', 'validation', 'test')) >= 2
+        else:
+            assert row['train'] + row['validation'] + row['test'] == 0
+    for split, count in d['splits'].items():
+        assert count == sum(r[split] for r in included.values())
+    assert sum(d['splits'].values()) == ledger['model_employers']
+    for model in d['models']:
+        cm, report = model['confusion_matrix'], model['test_report']
+        k = len(d['classes'])
+        assert len(cm) == k and all(len(row) == k for row in cm)
+        assert all(isinstance(n, int) and n >= 0 for row in cm for n in row)
+        n = sum(map(sum, cm))
+        assert n == d['splits']['test']
+        values = []
+        for i, label in enumerate(d['classes']):
+            tp, actual, predicted = cm[i][i], sum(cm[i]), sum(row[i] for row in cm)
+            assert actual == included[label]['test']
+            expected = {'precision': tp / predicted if predicted else 0,
+                        'recall': tp / actual, 'f1-score': 2 * tp / (actual + predicted), 'support': actual}
+            for key, value in expected.items():
+                assert math.isclose(report[label][key], value, abs_tol=1e-12), (model['model'], label, key)
+            values.append(expected)
+        for key in ('precision', 'recall', 'f1-score'):
+            assert math.isclose(report['macro avg'][key], sum(v[key] for v in values) / k, abs_tol=1e-12)
+            assert math.isclose(report['weighted avg'][key], sum(v[key] * v['support'] for v in values) / n, abs_tol=1e-12)
+        assert math.isclose(model['accuracy'], sum(cm[i][i] for i in range(k)) / n)
+        if 'trials' in model:
+            trial = max(model['trials'], key=lambda t: t['validation_macro_f1'])
+            assert model['selected_params'] == trial['params']
+            assert model['validation_macro_f1'] == trial['validation_macro_f1']
+    assert d['selected_model'] == max(d['models'][:-1], key=lambda m: m['validation_macro_f1'])['model']
+    baseline = d['models'][-1]
+    assert baseline['model'] == 'Training majority'
+    majority = sorted(included, key=lambda c: (-included[c]['train'], c))[0]
+    assert baseline['majority_sector'] == majority
+    j = d['classes'].index(majority)
+    assert all(all(n == 0 for i, n in enumerate(row) if i != j) for row in baseline['confusion_matrix'])
+    with (ROOT / 'data/multiclass/class_support.csv').open(newline='', encoding='utf-8') as handle:
+        rows = list(csv.DictReader(handle))
+    assert len(rows) == len(d['class_support'])
+    for row, expected in zip(rows, d['class_support']):
+        assert row == {k: str(v) for k, v in expected.items()}
+
+
+def verify_publication(d):
+    def rows(name):
+        with (ROOT / f'data/multiclass/{name}.csv').open(newline='', encoding='utf-8') as handle:
+            return list(csv.DictReader(handle))
+    metrics = rows('metrics')
+    assert len(metrics) == len(d['models'])
+    for r, model in zip(metrics, d['models']):
+        assert r['model'] == model['model']
+        for column, expected in [('test_macro_f1', model['test_report']['macro avg']['f1-score']),
+                                 ('test_weighted_f1', model['test_report']['weighted avg']['f1-score']),
+                                 ('test_accuracy', model['accuracy']),
+                                 ('test_balanced_accuracy', model['test_report']['macro avg']['recall'])]:
+            assert math.isclose(float(r[column]), expected)
+    per_class = rows('per_class')
+    confusion = rows('confusion')
+    assert len(per_class) == len(d['models']) * len(d['classes'])
+    assert len(confusion) == len(d['models']) * len(d['classes']) ** 2
+    for model in d['models']:
+        for sector in d['classes']:
+            r = next(r for r in per_class if r['model'] == model['model'] and r['sector'] == sector)
+            for key in ('precision', 'recall', 'f1-score', 'support'):
+                assert math.isclose(float(r[key]), model['test_report'][sector][key])
+        actual = {(r['actual_sector'], r['predicted_sector']): int(r['employers']) for r in confusion if r['model'] == model['model']}
+        assert [[actual[a, b] for b in d['classes']] for a in d['classes']] == model['confusion_matrix']
+    html = (ROOT / '_site/multiclass_analysis.html').read_text(encoding='utf-8')
+    with ZipFile(ROOT / 'final_report.docx') as archive:
+        xml = ET.fromstring(archive.read('word/document.xml'))
+        text = ' '.join(n.text or '' for n in xml.iter('{http://schemas.openxmlformats.org/wordprocessingml/2006/main}t'))
+        assert any(archive.read(p) == (ROOT / 'images/multiclass-confusion.png').read_bytes()
+                   for p in archive.namelist() if p.startswith('word/media/'))
+    selected = next(m for m in d['models'] if m['model'] == d['selected_model'])
+    for artifact in (html, text):
+        for phrase in ('Multiclass industry classification', d['selected_model'],
+                       f"{selected['test_report']['macro avg']['f1-score']:.3f}",
+                       'Transportation and warehousing (9)', 'Finance and insurance'):
+            assert phrase in artifact, phrase
+        if not d['comparison_with_saved_binary']['exact_snapshot_match']:
+            assert 'Source file hashes differ' in artifact
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--published', action='store_true')
+    args = parser.parse_args()
+    d = json.loads((ROOT / 'data/multiclass/run.json').read_text(encoding='utf-8'))
+    verify(d)
+    corrupt = json.loads(json.dumps(d))
+    corrupt['models'][0]['confusion_matrix'][0][0] += 1
+    try:
+        verify(corrupt)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError('Verifier accepted a corrupted confusion matrix')
+    corrupt = json.loads(json.dumps(d))
+    corrupt['comparison_with_saved_binary']['exact_snapshot_match'] = not d['comparison_with_saved_binary']['exact_snapshot_match']
+    try:
+        verify(corrupt)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError('Verifier accepted a false snapshot match')
+    if args.published:
+        verify_publication(d)
+    print(f'MULTICLASS VERIFIED: {len(d["classes"])} classes; source hashes, exclusions, splits, metrics and corrupt-data control pass')
+
+
+if __name__ == '__main__':
+    main()
 
 ````
 

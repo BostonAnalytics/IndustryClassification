@@ -69,6 +69,36 @@ and captured outputs are saved in `data/sample/run.json`.
 
 ## Reproduce the study
 
+The additional multiclass experiment retains the healthcare and binary analyses.
+It normalizes combined NAICS sectors before employer aggregation, requires 20
+eligible employers per class, and publishes exclusions alongside held-out metrics.
+Run it with the Python environment containing `requirements-study.txt`:
+
+```bash
+python scripts/run_multiclass.py --data-dir E:/Data/Jobs_2026_US
+python -m unittest discover -s tests -p test_multiclass.py
+python scripts/verify_multiclass.py
+python scripts/publish_multiclass.py
+python scripts/publish_interactive.py
+quarto render final_report.qmd --to docx
+quarto render
+python scripts/verify_static_assets.py
+python scripts/verify_site.py
+python scripts/verify_multiclass.py --published
+```
+
+Results are saved in `data/multiclass`, shared by `multiclass_analysis.qmd` and
+the Word report through `_content/multiclass-results.md`. The manifest records
+input and code hashes, versions, split support and every model trial. Source
+records and employer identities are not exported. Publication uses saved results
+and requires no analysis run or access to the source drive.
+
+The multiclass manifest also compares the current input hashes against the saved
+binary-study manifest. The source now documents NAICS hierarchy repair, so the
+new experiment and preserved healthcare results represent different snapshots
+despite equal source row counts. Do not present their scores as a controlled
+comparison or replace the earlier manifests without recomputing those analyses.
+
 ```bash
 python -m pip install -r requirements-study.txt
 python scripts/run_study.py --data-dir E:/Data/Jobs_2026_US
