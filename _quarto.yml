@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Job Postings Research"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: 01_data_exploration.qmd
+        text: Data Exploration
+      - href: 02_modeling.qmd
+        text: Modeling
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true

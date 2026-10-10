@@ -1,0 +1,18 @@
+---
+title: "Data Exploration"
+jupyter: python3
+---
+
+## Introduction
+
+In this notebook, we explore the dataset of ~800k job postings from 2026. 
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Placeholder for data loading
+# df = pd.read_csv("data/job_postings_2026.csv")
+print("Data exploration environment ready.")
+```

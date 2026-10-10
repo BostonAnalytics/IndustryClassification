@@ -1,0 +1,12 @@
+---
+title: "Cloud & Big Data Analytics: Job Postings Research"
+---
+
+Welcome to our research website for the Cloud and Big Data Analytics class.
+
+This project analyzes approximately 800,000 job postings from the year 2026. We apply a standard Data Science and Machine Learning lifecycle to understand industry trends, classify job roles, and extract key insights from the dataset.
+
+## Project Structure
+
+1. **[Data Exploration](01_data_exploration.qmd)**: Initial data loading, cleaning, and exploratory data analysis (EDA).
+2. **[Modeling](02_modeling.qmd)**: Machine learning models for industry classification.

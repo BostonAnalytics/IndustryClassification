@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Cloud & Big Data Analytics: Job Postings Research",
+    "section": "",
+    "text": "Welcome to our research website for the Cloud and Big Data Analytics class.\nThis project analyzes approximately 800,000 job postings from the year 2026. We apply a standard Data Science and Machine Learning lifecycle to understand industry trends, classify job roles, and extract key insights from the dataset."
+  },
+  {
+    "objectID": "index.html#project-structure",
+    "href": "index.html#project-structure",
+    "title": "Cloud & Big Data Analytics: Job Postings Research",
+    "section": "Project Structure",
+    "text": "Project Structure\n\nData Exploration: Initial data loading, cleaning, and exploratory data analysis (EDA).\nModeling: Machine learning models for industry classification."
+  }
+]
