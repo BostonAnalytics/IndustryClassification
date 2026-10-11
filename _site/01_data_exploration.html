@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>In this notebook, we explore the dataset of ~800k job postings from 2026.</p>
-<div id="d7fcaf1a" class="cell" data-execution_count="1">
+<div id="6c501020" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -291,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="missing-data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="missing-data-analysis">Missing Data Analysis</h2>
 <p>We will calculate the percentage of missing values across all columns in our dataset to identify which columns are more than 80% empty. We then visualize these in an NA plot and save the result.</p>
-<div id="c524e42b" class="cell" data-execution_count="2">
+<div id="26720bc7" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyspark.sql.functions <span class="im">as</span> F</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -363,7 +363,7 @@ Plot saved successfully to: outputs\mostly_empty_columns_plot.png</code></pre>
 <section id="naics-groups-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="naics-groups-analysis">NAICS Groups Analysis</h2>
 <p>We will determine the number of distinct NAICS 4 and NAICS 5 groups (ignoring nulls) and plot the number of jobs in the top groups.</p>
-<div id="d5a5f122" class="cell" data-execution_count="3">
+<div id="c1b2a7f9" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate counts for NAICS 4</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>naics4_df <span class="op">=</span> df_spark.<span class="bu">filter</span>(F.col(<span class="st">"NAICS4"</span>).isNotNull()) <span class="op">\</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    .groupBy(<span class="st">"NAICS4"</span>, <span class="st">"NAICS4_NAME"</span>) <span class="op">\</span></span>
@@ -437,7 +437,7 @@ Plot saved successfully to: outputs\naics5_jobs_plot.png</code></pre>
 <section id="naics-5-distribution-within-naics-4-groups" class="level2">
 <h2 class="anchored" data-anchor-id="naics-5-distribution-within-naics-4-groups">NAICS 5 Distribution within NAICS 4 Groups</h2>
 <p>To better understand the hierarchical structure, we will plot the 5-digit NAICS codes under each of the top 10 4-digit NAICS codes as a grouped bar chart.</p>
-<div id="871c025a" class="cell" data-execution_count="4">
+<div id="840c0697" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the top 10 NAICS 4 codes by job count</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>top_10_naics4_codes <span class="op">=</span> naics4_df.head(<span class="dv">10</span>)[<span class="st">'NAICS4'</span>].tolist()</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -454,7 +454,7 @@ Plot saved successfully to: outputs\naics5_jobs_plot.png</code></pre>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>naics4_5_grouped_df[<span class="st">'NAICS5_Label'</span>] <span class="op">=</span> naics4_5_grouped_df[<span class="st">'NAICS5'</span>].astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">" - "</span> <span class="op">+</span> naics4_5_grouped_df[<span class="st">'NAICS5_NAME'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>[:<span class="dv">30</span>]</span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the grouped bar chart</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">7</span>))</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>sns.barplot(</span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>naics4_5_grouped_df, </span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"NAICS4"</span>, </span>
@@ -491,7 +491,7 @@ Grouped bar chart saved successfully to: outputs\naics_4_5_grouped_jobs_plot.png
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01_data_exploration_files/figure-html/cell-5-output-2.png" width="743" height="650" class="figure-img"></p>
+<p><img src="01_data_exploration_files/figure-html/cell-5-output-2.png" width="743" height="553" class="figure-img"></p>
 </figure>
 </div>
 </div>
