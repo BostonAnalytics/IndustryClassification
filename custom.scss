@@ -1,0 +1,59 @@
+/*-- scss:defaults --*/
+$primary: #1B365D;    /* Deep Professional Blue */
+$secondary: #2A9D8F;  /* Professional Teal/Green */
+$warning: #E9C46A;    /* Soft Professional Yellow/Gold */
+
+/* Navbar colors */
+$navbar-bg: $primary;
+$navbar-fg: #ffffff;
+$navbar-hl: $warning;
+
+/* Body text and link colors */
+$body-color: #333333;
+$link-color: $secondary;
+
+/*-- scss:rules --*/
+
+/* Make the website title stand out in yellow */
+.navbar-brand, .navbar-title {
+  color: $warning !important;
+  font-weight: 600;
+}
+
+/* Navbar link colors on hover */
+.navbar-nav .nav-link:hover {
+  color: $warning !important;
+}
+
+/* Headings use the primary deep blue */
+h1, h2, h3, h4, h5, h6 {
+  color: $primary;
+  font-weight: 600;
+}
+
+/* Links hover state */
+a:hover {
+  color: $primary;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.btn-primary:hover {
+  background-color: #122540; /* Darker blue */
+  border-color: #122540;
+}
+
+/* Accent lines (e.g. under headers or sections) */
+hr {
+  border-top: 2px solid $warning;
+}
+
+/* Style for Quarto code blocks and outputs */
+.cell-output {
+  // border-left: 3px solid $secondary;
+  padding-left: 10px;
+}

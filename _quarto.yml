@@ -15,6 +15,13 @@ website:
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme:
+      - cosmo
+      - custom.scss
     toc: true
+
+jupyter: python3
+code-overflow: wrap
+execute:
+  code-fold: false
+  keep-ipynb: true
