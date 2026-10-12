@@ -2,6 +2,7 @@
 from html.parser import HTMLParser
 from pathlib import Path
 import re
+import json
 from xml.etree import ElementTree as ET
 from zipfile import ZipFile
 
@@ -43,7 +44,9 @@ def main():
         doc = ET.fromstring(archive.read('word/document.xml'))
         ns = {'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
         text = ' '.join(n.text or '' for n in doc.findall('.//w:t',ns))
-        for term in ['References','Goindani','Chern','Tsvetkova','Pedregosa','0.717','0.553']:
+        study = json.loads((ROOT/'data/study/run.json').read_text())
+        scores = [f"{m['test_report']['1']['f1-score']:.3f}" for m in study['models'][:2]]
+        for term in ['References','Goindani','Chern','Tsvetkova','Pedregosa', *scores]:
             assert term in text, f'Report missing {term}'
         assert not re.search(r'@(goindani2017|chern2018|tsvetkova2024|naics2022|pedregosa2011)',text)
         refs = text[text.rfind('References'):]

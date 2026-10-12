@@ -388,7 +388,14 @@ def main():
     if not files:
         parser.error("No posting partitions found")
     spark = (
-        SparkSession.builder.appName("HealthcareEmployerClassification")
+        SparkSession.builder.master("local[2]").appName("HealthcareEmployerClassification")
+        .config("spark.ui.enabled", "false")
+        .config("spark.driver.host", "127.0.0.1")
+        .config("spark.driver.bindAddress", "127.0.0.1")
+        .config("spark.driver.port", "40491")
+        .config("spark.blockManager.port", "40492")
+        .config("spark.port.maxRetries", "0")
+        .config("spark.driver.memory", "4g")
         .config("spark.sql.session.timeZone", "UTC")
         .config("spark.sql.shuffle.partitions", "4")
         .getOrCreate()

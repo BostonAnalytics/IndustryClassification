@@ -99,6 +99,12 @@ run_path = ROOT / 'data/spark-study/run.json'
 text += '\n## Spark execution evidence\n\n'
 if run_path.exists():
     run = json.loads(run_path.read_text(encoding='utf-8'))
+    text += '![Spark classifier comparison on its held-out employer partition. Precision, recall and F1 refer to the healthcare-positive class; model family selection uses validation F1.](images/spark-comparison.png)\n\n'
+    diagnostic_path = ROOT / 'data/spark-study/runtime.json'
+    if diagnostic_path.exists():
+        diagnostics = json.loads(diagnostic_path.read_text())
+        if diagnostics['optimizer_warning_lines']:
+            text += 'The completed run logged optimizer line-search failures and history resets during neural-network fitting. Returned predictions are reported, but successful process completion does not establish convergence. The comparison needs convergence checks and repeated splits before model-family conclusions. The [runtime receipt](data/spark-study/runtime.json) records these diagnostics.\n\n'
     text += f"The completed PySpark {run['version']} run processed {run['ledger']['source_rows']:,} source rows and fitted {run['feature_count']} feature columns. The [Spark manifest](data/spark-study/run.json) records the inputs, partition sizes, candidate settings and measured results.\n\n"
     text += 'The processing counts below are computed by the Spark functions above.\n\n```text\n'
     text += json.dumps(run['ledger'], indent=2) + '\n```\n\n'

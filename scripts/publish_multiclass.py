@@ -104,7 +104,7 @@ Macro-F1 gives each retained sector equal weight. Weighted-F1 and accuracy descr
 
 This experiment measures agreement across the supported broad industries. The predictions cover only retained sectors: an employer from an excluded sector would still be forced into one of these classes. No open-set detection or deployment inference is claimed. Rare sectors remain in the coverage report instead of being merged into an incoherent “other” class. The two-employer minimum validation support makes tuning sensitive to individual cases, and this single split does not establish stable sector-level performance. Independent label review, repeated employer-grouped evaluation and a later-period test remain necessary. Missing industry labels limit population coverage, and the results do not establish national hiring patterns.
 
-The multiclass results do not replace the 112-posting healthcare career analysis or support personal skill-gap scores. Aggregate class support, metrics, per-sector results and all model confusion matrices accompany the source and run manifest.
+The multiclass results do not replace the healthcare career analysis or support personal skill-gap scores. Aggregate class support, metrics, per-sector results and all model confusion matrices accompany the source and run manifest.
 '''
     (ROOT / '_content/multiclass-results.md').write_text(text, encoding='utf-8')
     print('MULTICLASS PUBLISHED: shared report section, four CSVs and confusion figure')

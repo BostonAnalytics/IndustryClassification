@@ -121,7 +121,8 @@ def verify_publication(d):
     for artifact in (html, text):
         for phrase in ('Multiclass industry classification', d['selected_model'],
                        f"{selected['test_report']['macro avg']['f1-score']:.3f}",
-                       'Transportation and warehousing (9)', 'Finance and insurance'):
+                       *[f"{r['industry']} ({r['eligible_employers']})" for r in d['class_support'] if not r['included']],
+                       'Finance and insurance'):
             assert phrase in artifact, phrase
         if not d['comparison_with_saved_binary']['exact_snapshot_match']:
             assert 'Source file hashes differ' in artifact

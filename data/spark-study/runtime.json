@@ -1,0 +1,30 @@
+{
+  "completed_at_utc": "2026-10-12T03:00:04.152923+00:00",
+  "status": "completed",
+  "java": "Microsoft OpenJDK 25.0.4.7",
+  "spark": "4.2.0",
+  "ui_enabled": false,
+  "driver_host": "127.0.0.1",
+  "driver_port": 40491,
+  "block_manager_port": 40492,
+  "optimizer_warning_lines": 15,
+  "optimizer_diagnostics": [
+    "26/10/11 22:58:26 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.5",
+    "26/10/11 22:58:26 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.25",
+    "26/10/11 22:58:27 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.125",
+    "26/10/11 22:58:27 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.0625",
+    "26/10/11 22:58:27 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.046875",
+    "26/10/11 22:58:28 ERROR LBFGS: Failure! Resetting history: breeze.optimize.FirstOrderException: Line search zoom failed",
+    "26/10/11 22:58:39 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.5",
+    "26/10/11 22:58:39 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.25",
+    "26/10/11 22:58:40 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.5",
+    "26/10/11 22:58:40 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.25",
+    "26/10/11 22:58:40 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.125",
+    "26/10/11 22:58:40 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.0625",
+    "26/10/11 22:58:40 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.03125",
+    "26/10/11 22:58:40 ERROR StrongWolfeLineSearch: Encountered bad values in function evaluation. Decreasing step size to 0.03515625",
+    "26/10/11 22:58:41 ERROR LBFGS: Failure! Resetting history: breeze.optimize.FirstOrderException: Line search zoom failed"
+  ],
+  "script_sha256": "7e7c3c14068474f3577f126dace4485ae63b620725a5c4b778572d805ca2f17b",
+  "launch_note": "Short local jdk.net.unixdomain.tmpdir required for Windows Java loopback sockets."
+}

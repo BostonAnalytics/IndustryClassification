@@ -20,3 +20,9 @@ table { font-size: .92rem; }
 .aggregate-table th, .aggregate-table td { padding: .5rem .75rem; border-bottom: 1px solid #dde4e8; }
 .aggregate-table th { position: sticky; top: 0; background: #eef5f7; }
 .aggregate-filter { display: block; width: min(100%, 32rem); margin: .5rem 0 1rem; padding: .5rem; }
+.explorer-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.explorer-controls label { display: flex; flex-direction: column; gap: .35rem; font-weight: 600; }
+.explorer-controls select, .explorer-controls input { width: 100%; padding: .65rem; border: 1px solid #a7b8c1; border-radius: .25rem; background: #fff; }
+.explorer-table { overflow-x: auto; }
+.explorer-table th { white-space: nowrap; }
+@media (max-width: 650px) { .explorer-controls { grid-template-columns: 1fr; } }

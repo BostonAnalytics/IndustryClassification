@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,10 +96,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7f84833fb3be5a6d5023b86a51ac5183.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6383180e1ca5481f76f50eff3beeaa46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -133,7 +133,7 @@ div.csl-indent {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light"><aside style="padding:1rem;background:#fff3cd;color:#332700">Historical analysis from the previous publication. Its samples and results are separate from the current full datasets. <a href="index.html">See current dataset counts and coverage</a>.</aside>
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -265,6 +265,18 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="./ai-disclosure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">AI disclosure</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_coverage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Full dataset coverage and employer evidence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naics_explorer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Industry explorer</span></a>
   </div>
 </li>
     </ul>
@@ -784,64 +796,78 @@ div.csl-indent {
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> files:</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        parser.error(<span class="st">"No posting partitions found"</span>)</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    spark <span class="op">=</span> (</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        SparkSession.builder.appName(<span class="st">"HealthcareEmployerClassification"</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.sql.session.timeZone"</span>, <span class="st">"UTC"</span>)</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.sql.shuffle.partitions"</span>, <span class="st">"4"</span>)</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        .getOrCreate()</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    spark.sparkContext.setLogLevel(<span class="st">"ERROR"</span>)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        jobs, ledger <span class="op">=</span> prepare(spark, files)</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"FILTER LEDGER "</span> <span class="op">+</span> json.dumps(ledger), flush<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        employers, support <span class="op">=</span> employers_and_splits(jobs)</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">long</span> <span class="op">=</span> feature_rows(jobs, employers).cache()</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        vocabulary, thresholds <span class="op">=</span> fit_vocabulary(<span class="bu">long</span>)</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>        matrix <span class="op">=</span> vectorize(<span class="bu">long</span>, employers, vocabulary).cache()</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        results <span class="op">=</span> evaluate(matrix, <span class="bu">len</span>(vocabulary))</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        manifest <span class="op">=</span> {</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>            <span class="st">"engine"</span>: <span class="st">"pyspark"</span>,</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">"version"</span>: pyspark.__version__,</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>            <span class="st">"seed"</span>: <span class="dv">2017</span>,</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>            <span class="st">"split_method"</span>: <span class="st">"within-class SHA256 rank 70/10/20"</span>,</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>            <span class="st">"ledger"</span>: ledger,</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>            <span class="st">"splits"</span>: support,</span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>            <span class="st">"feature_count"</span>: <span class="bu">len</span>(vocabulary),</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">"thresholds"</span>: thresholds,</span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">"models"</span>: results,</span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>            <span class="st">"files"</span>: [],</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> path <span class="kw">in</span> files:</span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> path.<span class="bu">open</span>(<span class="st">"rb"</span>) <span class="im">as</span> stream:</span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>                digest <span class="op">=</span> hashlib.file_digest(</span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>                    stream, <span class="st">"sha256"</span></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>                ).hexdigest()</span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>            manifest[<span class="st">"files"</span>].append(</span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"file"</span>: path.name, <span class="st">"sha256"</span>: digest}</span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>        args.output_dir.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>        (args.output_dir <span class="op">/</span> <span class="st">"run.json"</span>).write_text(</span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>            json.dumps(manifest, indent<span class="op">=</span><span class="dv">2</span>, allow_nan<span class="op">=</span><span class="va">False</span>),</span>
-<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>            encoding<span class="op">=</span><span class="st">"utf-8"</span>,</span>
-<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"SPARK STUDY COMPLETE"</span>, flush<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">finally</span>:</span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>        spark.stop()</span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        SparkSession.builder.master(<span class="st">"local[2]"</span>).appName(<span class="st">"HealthcareEmployerClassification"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.ui.enabled"</span>, <span class="st">"false"</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.driver.host"</span>, <span class="st">"127.0.0.1"</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.driver.bindAddress"</span>, <span class="st">"127.0.0.1"</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.driver.port"</span>, <span class="st">"40491"</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.blockManager.port"</span>, <span class="st">"40492"</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.port.maxRetries"</span>, <span class="st">"0"</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.driver.memory"</span>, <span class="st">"4g"</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.sql.session.timeZone"</span>, <span class="st">"UTC"</span>)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        .config(<span class="st">"spark.sql.shuffle.partitions"</span>, <span class="st">"4"</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        .getOrCreate()</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    spark.sparkContext.setLogLevel(<span class="st">"ERROR"</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        jobs, ledger <span class="op">=</span> prepare(spark, files)</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"FILTER LEDGER "</span> <span class="op">+</span> json.dumps(ledger), flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        employers, support <span class="op">=</span> employers_and_splits(jobs)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">long</span> <span class="op">=</span> feature_rows(jobs, employers).cache()</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>        vocabulary, thresholds <span class="op">=</span> fit_vocabulary(<span class="bu">long</span>)</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>        matrix <span class="op">=</span> vectorize(<span class="bu">long</span>, employers, vocabulary).cache()</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>        results <span class="op">=</span> evaluate(matrix, <span class="bu">len</span>(vocabulary))</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>        manifest <span class="op">=</span> {</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">"engine"</span>: <span class="st">"pyspark"</span>,</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">"version"</span>: pyspark.__version__,</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>            <span class="st">"seed"</span>: <span class="dv">2017</span>,</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>            <span class="st">"split_method"</span>: <span class="st">"within-class SHA256 rank 70/10/20"</span>,</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>            <span class="st">"ledger"</span>: ledger,</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>            <span class="st">"splits"</span>: support,</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">"feature_count"</span>: <span class="bu">len</span>(vocabulary),</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>            <span class="st">"thresholds"</span>: thresholds,</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>            <span class="st">"models"</span>: results,</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>            <span class="st">"files"</span>: [],</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> path <span class="kw">in</span> files:</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> path.<span class="bu">open</span>(<span class="st">"rb"</span>) <span class="im">as</span> stream:</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>                digest <span class="op">=</span> hashlib.file_digest(</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>                    stream, <span class="st">"sha256"</span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>                ).hexdigest()</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>            manifest[<span class="st">"files"</span>].append(</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"file"</span>: path.name, <span class="st">"sha256"</span>: digest}</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>        args.output_dir.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>        (args.output_dir <span class="op">/</span> <span class="st">"run.json"</span>).write_text(</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>            json.dumps(manifest, indent<span class="op">=</span><span class="dv">2</span>, allow_nan<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>            encoding<span class="op">=</span><span class="st">"utf-8"</span>,</span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"SPARK STUDY COMPLETE"</span>, flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">finally</span>:</span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>        spark.stop()</span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="spark-execution-evidence" class="level2" data-number="11">
 <h2 data-number="11" class="anchored" data-anchor-id="spark-execution-evidence"><span class="header-section-number">11</span> Spark execution evidence</h2>
-<p>The completed PySpark 4.2.0 run processed 815,193 source rows and fitted 424 feature columns. The <a href="data/spark-study/run.json">Spark manifest</a> records the inputs, partition sizes, candidate settings and measured results.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/spark-comparison.png" class="img-fluid figure-img"></p>
+<figcaption>Spark classifier comparison on its held-out employer partition. Precision, recall and F1 refer to the healthcare-positive class; model family selection uses validation F1.</figcaption>
+</figure>
+</div>
+<p>The completed run logged optimizer line-search failures and history resets during neural-network fitting. Returned predictions are reported, but successful process completion does not establish convergence. The comparison needs convergence checks and repeated splits before model-family conclusions. The <a href="data/spark-study/runtime.json">runtime receipt</a> records these diagnostics.</p>
+<p>The completed PySpark 4.2.0 run processed 815,193 source rows and fitted 422 feature columns. The <a href="data/spark-study/run.json">Spark manifest</a> records the inputs, partition sizes, candidate settings and measured results.</p>
 <p>The processing counts below are computed by the Spark functions above.</p>
 <pre class="text"><code>{
   "source_rows": 815193,
   "unique_id_rows": 815193,
   "period_rows": 800461,
   "us_rows": 800461,
-  "sector_known_rows": 357682,
-  "nonstaffing_or_unknown_rows": 352567,
-  "employer_model_postings": 352566
+  "sector_known_rows": 365148,
+  "nonstaffing_or_unknown_rows": 360033,
+  "employer_model_postings": 360032
 }</code></pre>
 <table class="caption-top table">
 <thead>
@@ -854,17 +880,17 @@ div.csl-indent {
 <tbody>
 <tr class="odd">
 <td>train</td>
-<td style="text-align: right;">133</td>
-<td style="text-align: right;">119</td>
+<td style="text-align: right;">144</td>
+<td style="text-align: right;">120</td>
 </tr>
 <tr class="even">
 <td>validation</td>
-<td style="text-align: right;">19</td>
+<td style="text-align: right;">21</td>
 <td style="text-align: right;">17</td>
 </tr>
 <tr class="odd">
 <td>test</td>
-<td style="text-align: right;">39</td>
+<td style="text-align: right;">42</td>
 <td style="text-align: right;">35</td>
 </tr>
 </tbody>
@@ -882,80 +908,80 @@ div.csl-indent {
 <tbody>
 <tr class="odd">
 <td>Logistic regression</td>
-<td style="text-align: right;">0.941</td>
-<td style="text-align: right;">0.457</td>
-<td style="text-align: right;">0.615</td>
-<td style="text-align: right;">0.730</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.486</td>
+<td style="text-align: right;">0.654</td>
+<td style="text-align: right;">0.766</td>
 </tr>
 <tr class="even">
 <td>Decision tree</td>
 <td style="text-align: right;">1.000</td>
 <td style="text-align: right;">0.171</td>
 <td style="text-align: right;">0.293</td>
-<td style="text-align: right;">0.608</td>
+<td style="text-align: right;">0.623</td>
 </tr>
 <tr class="odd">
 <td>Random forest</td>
 <td style="text-align: right;">1.000</td>
-<td style="text-align: right;">0.343</td>
-<td style="text-align: right;">0.511</td>
-<td style="text-align: right;">0.689</td>
+<td style="text-align: right;">0.143</td>
+<td style="text-align: right;">0.250</td>
+<td style="text-align: right;">0.610</td>
 </tr>
 <tr class="even">
 <td>GBT</td>
 <td style="text-align: right;">1.000</td>
 <td style="text-align: right;">0.486</td>
 <td style="text-align: right;">0.654</td>
-<td style="text-align: right;">0.757</td>
+<td style="text-align: right;">0.766</td>
 </tr>
 <tr class="odd">
 <td>Linear SVM</td>
-<td style="text-align: right;">1.000</td>
-<td style="text-align: right;">0.371</td>
-<td style="text-align: right;">0.542</td>
-<td style="text-align: right;">0.703</td>
+<td style="text-align: right;">0.941</td>
+<td style="text-align: right;">0.457</td>
+<td style="text-align: right;">0.615</td>
+<td style="text-align: right;">0.740</td>
 </tr>
 <tr class="even">
 <td>Naive Bayes</td>
 <td style="text-align: right;">1.000</td>
 <td style="text-align: right;">0.200</td>
 <td style="text-align: right;">0.333</td>
-<td style="text-align: right;">0.622</td>
+<td style="text-align: right;">0.636</td>
 </tr>
 <tr class="odd">
 <td>Multilayer perceptron</td>
-<td style="text-align: right;">0.903</td>
-<td style="text-align: right;">0.800</td>
-<td style="text-align: right;">0.848</td>
-<td style="text-align: right;">0.865</td>
+<td style="text-align: right;">0.900</td>
+<td style="text-align: right;">0.771</td>
+<td style="text-align: right;">0.831</td>
+<td style="text-align: right;">0.857</td>
 </tr>
 <tr class="even">
 <td>One-vs-rest logistic</td>
-<td style="text-align: right;">0.941</td>
-<td style="text-align: right;">0.457</td>
-<td style="text-align: right;">0.615</td>
-<td style="text-align: right;">0.730</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.486</td>
+<td style="text-align: right;">0.654</td>
+<td style="text-align: right;">0.766</td>
 </tr>
 <tr class="odd">
 <td>Factorization machine</td>
 <td style="text-align: right;">1.000</td>
 <td style="text-align: right;">0.200</td>
 <td style="text-align: right;">0.333</td>
-<td style="text-align: right;">0.622</td>
+<td style="text-align: right;">0.636</td>
 </tr>
 <tr class="even">
 <td>Training majority</td>
 <td style="text-align: right;">0.000</td>
 <td style="text-align: right;">0.000</td>
 <td style="text-align: right;">0.000</td>
-<td style="text-align: right;">0.527</td>
+<td style="text-align: right;">0.545</td>
 </tr>
 <tr class="odd">
 <td>All positive</td>
-<td style="text-align: right;">0.473</td>
+<td style="text-align: right;">0.455</td>
 <td style="text-align: right;">1.000</td>
-<td style="text-align: right;">0.642</td>
-<td style="text-align: right;">0.473</td>
+<td style="text-align: right;">0.625</td>
+<td style="text-align: right;">0.455</td>
 </tr>
 </tbody>
 </table>
@@ -973,70 +999,70 @@ div.csl-indent {
 <tbody>
 <tr class="odd">
 <td>Logistic regression</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">16</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">17</td>
 </tr>
 <tr class="even">
 <td>Decision tree</td>
-<td style="text-align: right;">39</td>
+<td style="text-align: right;">42</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">29</td>
 <td style="text-align: right;">6</td>
 </tr>
 <tr class="odd">
 <td>Random forest</td>
-<td style="text-align: right;">39</td>
+<td style="text-align: right;">42</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">12</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">5</td>
 </tr>
 <tr class="even">
 <td>GBT</td>
-<td style="text-align: right;">39</td>
+<td style="text-align: right;">42</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">17</td>
 </tr>
 <tr class="odd">
 <td>Linear SVM</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">13</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">16</td>
 </tr>
 <tr class="even">
 <td>Naive Bayes</td>
-<td style="text-align: right;">39</td>
+<td style="text-align: right;">42</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">28</td>
 <td style="text-align: right;">7</td>
 </tr>
 <tr class="odd">
 <td>Multilayer perceptron</td>
-<td style="text-align: right;">36</td>
+<td style="text-align: right;">39</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">28</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">27</td>
 </tr>
 <tr class="even">
 <td>One-vs-rest logistic</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">16</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">17</td>
 </tr>
 <tr class="odd">
 <td>Factorization machine</td>
-<td style="text-align: right;">39</td>
+<td style="text-align: right;">42</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">28</td>
 <td style="text-align: right;">7</td>
 </tr>
 <tr class="even">
 <td>Training majority</td>
-<td style="text-align: right;">39</td>
+<td style="text-align: right;">42</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">35</td>
 <td style="text-align: right;">0</td>
@@ -1044,13 +1070,13 @@ div.csl-indent {
 <tr class="odd">
 <td>All positive</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">39</td>
+<td style="text-align: right;">42</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">35</td>
 </tr>
 </tbody>
 </table>
-<p>Multilayer perceptron achieved the highest validation F1 (0.765) in this small search; its held-out F1 was 0.848. This comparison is exploratory. A single small holdout cannot establish a stable ordering of algorithm families. The counts expose missed healthcare employers and false inclusions that F1 alone obscures. The original scikit-learn and Spark holdouts contain different employers; differences between their scores cannot be attributed solely to the software engine.</p>
+<p>GBT achieved the highest validation F1 (0.741) in this small search; its held-out F1 was 0.654. This comparison is exploratory. A single small holdout cannot establish a stable ordering of algorithm families. The counts expose missed healthcare employers and false inclusions that F1 alone obscures. The original scikit-learn and Spark holdouts contain different employers; differences between their scores cannot be attributed solely to the software engine.</p>
 
 
 

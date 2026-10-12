@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,10 +96,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7f84833fb3be5a6d5023b86a51ac5183.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6383180e1ca5481f76f50eff3beeaa46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -133,7 +133,7 @@ div.csl-indent {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light"><aside style="padding:1rem;background:#fff3cd;color:#332700">Historical analysis from the previous publication. Its samples and results are separate from the current full datasets. <a href="index.html">See current dataset counts and coverage</a>.</aside>
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -267,6 +267,18 @@ div.csl-indent {
  <span class="menu-text">AI disclosure</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_coverage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Full dataset coverage and employer evidence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naics_explorer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Industry explorer</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -315,8 +327,8 @@ div.csl-indent {
 <p>The additional experiment predicts one broad NAICS sector per employer. It extends the employer-name and job-title feature design in <span class="citation" data-cites="goindani2017">Goindani et al. (<a href="#ref-goindani2017" role="doc-biblioref">2017</a>)</span> beyond separate industry-membership questions. The healthcare career benchmark and the binary experiments retain their original scope.</p>
 <section id="sector-definitions-and-coverage" class="level3" data-number="1.1">
 <h3 data-number="1.1" class="anchored" data-anchor-id="sector-definitions-and-coverage"><span class="header-section-number">1.1</span> Sector definitions and coverage</h3>
-<p>The input contains 815,193 records in 82 Jobs_2026_US partitions. Source file hashes differ from the saved healthcare experiment in 82 partitions. The current dataset documents a NAICS hierarchy repair, while the healthcare results retain their earlier input manifest. Equal row counts do not establish an identical snapshot; this extension is evaluated separately. The January–September 2026, US, staffing, employer-name and normalized-title filters apply before employer aggregation. Codes 31, 32 and 33 map to manufacturing (31–33); 44 and 45 to retail trade (44–45); and 48 and 49 to transportation and warehousing (48–49). These mappings change 0 posting labels in the current input, which already uses combined sectors, before computing employer dominance. Missing and invalid sectors are excluded, not treated as a learnable industry.</p>
-<p>Employers require at least 20 retained postings and an 80% dominant-sector share. After normalization, 375 employers satisfy these rules. A sector requires at least 20 eligible employers to enter the experiment. This support rule retains 6 sectors and 328 employers; 47 eligible employers belong to sectors below the threshold. There is no employer cap. Labels describe broad sectors and remain unadjudicated dataset labels.</p>
+<p>The input contains 815,193 records in 20 Jobs_2026_US partitions. Source file hashes match the saved healthcare experiment. The January–September 2026, US, staffing, employer-name and normalized-title filters apply before employer aggregation. Codes 31, 32 and 33 map to manufacturing (31–33); 44 and 45 to retail trade (44–45); and 48 and 49 to transportation and warehousing (48–49). These mappings change 0 posting labels in the current input, which already uses combined sectors, before computing employer dominance. Missing and invalid sectors are excluded, not treated as a learnable industry.</p>
+<p>Employers require at least 20 retained postings and an 80% dominant-sector share. After normalization, 379 employers satisfy these rules. A sector requires at least 20 eligible employers to enter the experiment. This support rule retains 6 sectors and 332 employers; 47 eligible employers belong to sectors below the threshold. There is no employer cap. Labels describe broad sectors and remain unadjudicated dataset labels.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -334,17 +346,17 @@ div.csl-indent {
 <tr class="even">
 <td>44-45</td>
 <td>Retail trade</td>
-<td>33</td>
+<td>34</td>
 </tr>
 <tr class="odd">
 <td>52</td>
 <td>Finance and insurance</td>
-<td>27</td>
+<td>28</td>
 </tr>
 <tr class="even">
 <td>54</td>
 <td>Professional, scientific and technical services</td>
-<td>23</td>
+<td>24</td>
 </tr>
 <tr class="odd">
 <td>61</td>
@@ -354,7 +366,7 @@ div.csl-indent {
 <tr class="even">
 <td>62</td>
 <td>Health care and social assistance</td>
-<td>171</td>
+<td>172</td>
 </tr>
 </tbody>
 </table>
@@ -382,19 +394,19 @@ div.csl-indent {
 <tr class="even">
 <td>44-45</td>
 <td>23</td>
-<td>3</td>
+<td>4</td>
 <td>7</td>
 </tr>
 <tr class="odd">
 <td>52</td>
-<td>18</td>
+<td>19</td>
 <td>3</td>
 <td>6</td>
 </tr>
 <tr class="even">
 <td>54</td>
 <td>16</td>
-<td>2</td>
+<td>3</td>
 <td>5</td>
 </tr>
 <tr class="odd">
@@ -405,18 +417,18 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td>62</td>
-<td>119</td>
+<td>120</td>
 <td>17</td>
 <td>35</td>
 </tr>
 </tbody>
 </table>
-<p>The partitions contain 227 training, 32 validation and 69 test employers. For each class, title and employer-word significance/frequency thresholds are calculated against the other training classes; the union of those selected vocabularies supplies 743 features. This replaces the healthcare-only positive-class feature selection. Titles retain the 1% within-employer share cutoff. Validation and test employers contribute neither vocabulary nor thresholds. Zero-feature employers remain in evaluation: 35 training, 12 validation and 28 test.</p>
+<p>The partitions contain 229 training, 34 validation and 69 test employers. For each class, title and employer-word significance/frequency thresholds are calculated against the other training classes; the union of those selected vocabularies supplies 752 features. This replaces the healthcare-only positive-class feature selection. Titles retain the 1% within-employer share cutoff. Validation and test employers contribute neither vocabulary nor thresholds. Zero-feature employers remain in evaluation: 34 training, 15 validation and 27 test.</p>
 </section>
 <section id="model-selection-and-held-out-results" class="level3" data-number="1.3">
 <h3 data-number="1.3" class="anchored" data-anchor-id="model-selection-and-held-out-results"><span class="header-section-number">1.3</span> Model selection and held-out results</h3>
 <p>Scikit-learn implementations <span class="citation" data-cites="pedregosa2011">(<a href="#ref-pedregosa2011" role="doc-biblioref">Pedregosa et al. 2011</a>)</span> compare linear SVM, logistic regression, random forest and multiclass GBDT on identical partitions. SVM and logistic regression search C = 0.1, 1 and 10 with balanced class weights; random forest uses 200 trees and maximum depths 5 or unrestricted with balanced class weights; GBDT uses 100 boosting stages and tree depths 2 or 3 with default learning rate 0.1. GBDT uses unweighted training. Random states are fixed at 2017. Hyperparameters and then the model family are selected by validation macro-F1, with ties resolved by the listed order. Models are not refitted on validation data. The baseline always predicts the most frequent training class.</p>
-<p>Macro-F1 gives each retained sector equal weight. Weighted-F1 and accuracy describe the observed test mix; balanced accuracy averages sector recall. Zero-denominator precision or F1 is recorded as zero. The validation-selected model is Random forest, with test macro-F1 0.377, compared with 0.112 for the training-majority baseline. This is a separate endpoint from healthcare-positive F1, so scores cannot be read as a direct improvement over the binary experiment.</p>
+<p>Macro-F1 gives each retained sector equal weight. Weighted-F1 and accuracy describe the observed test mix; balanced accuracy averages sector recall. Zero-denominator precision or F1 is recorded as zero. The validation-selected model is Random forest, with test macro-F1 0.342, compared with 0.112 for the training-majority baseline. This is a separate endpoint from healthcare-positive F1, so scores cannot be read as a direct improvement over the binary experiment.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 16%">
@@ -439,7 +451,7 @@ div.csl-indent {
 <tbody>
 <tr class="odd">
 <td>Linear SVM</td>
-<td>0.183</td>
+<td>0.178</td>
 <td>0.424</td>
 <td>0.568</td>
 <td>0.638</td>
@@ -447,23 +459,23 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td>Logistic regression</td>
-<td>0.143</td>
-<td>0.251</td>
-<td>0.331</td>
-<td>0.319</td>
-<td>0.295</td>
+<td>0.142</td>
+<td>0.257</td>
+<td>0.349</td>
+<td>0.333</td>
+<td>0.300</td>
 </tr>
 <tr class="odd">
 <td>Random forest</td>
-<td>0.317</td>
-<td>0.377</td>
-<td>0.520</td>
-<td>0.464</td>
-<td>0.394</td>
+<td>0.263</td>
+<td>0.342</td>
+<td>0.506</td>
+<td>0.594</td>
+<td>0.303</td>
 </tr>
 <tr class="even">
 <td>GBDT</td>
-<td>0.183</td>
+<td>0.178</td>
 <td>0.319</td>
 <td>0.485</td>
 <td>0.580</td>
@@ -500,9 +512,9 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td>44-45</td>
-<td>0.163</td>
 <td>1.000</td>
-<td>0.280</td>
+<td>0.143</td>
+<td>0.250</td>
 <td>7</td>
 </tr>
 <tr class="odd">
@@ -522,15 +534,15 @@ div.csl-indent {
 <tr class="odd">
 <td>61</td>
 <td>1.000</td>
-<td>0.286</td>
-<td>0.444</td>
+<td>0.143</td>
+<td>0.250</td>
 <td>7</td>
 </tr>
 <tr class="even">
 <td>62</td>
+<td>0.565</td>
 <td>1.000</td>
-<td>0.543</td>
-<td>0.704</td>
+<td>0.722</td>
 <td>35</td>
 </tr>
 </tbody>
@@ -546,7 +558,7 @@ div.csl-indent {
 <section id="interpretation-and-limits" class="level3" data-number="1.4">
 <h3 data-number="1.4" class="anchored" data-anchor-id="interpretation-and-limits"><span class="header-section-number">1.4</span> Interpretation and limits</h3>
 <p>This experiment measures agreement across the supported broad industries. The predictions cover only retained sectors: an employer from an excluded sector would still be forced into one of these classes. No open-set detection or deployment inference is claimed. Rare sectors remain in the coverage report instead of being merged into an incoherent “other” class. The two-employer minimum validation support makes tuning sensitive to individual cases, and this single split does not establish stable sector-level performance. Independent label review, repeated employer-grouped evaluation and a later-period test remain necessary. Missing industry labels limit population coverage, and the results do not establish national hiring patterns.</p>
-<p>The multiclass results do not replace the 112-posting healthcare career analysis or support personal skill-gap scores. Aggregate class support, metrics, per-sector results and all model confusion matrices accompany the source and run manifest.</p>
+<p>The multiclass results do not replace the healthcare career analysis or support personal skill-gap scores. Aggregate class support, metrics, per-sector results and all model confusion matrices accompany the source and run manifest.</p>
 </section>
 </section>
 <section id="reproduction-and-downloads" class="level2" data-number="2">

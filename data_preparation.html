@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,10 +96,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7f84833fb3be5a6d5023b86a51ac5183.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6383180e1ca5481f76f50eff3beeaa46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -133,7 +133,7 @@ div.csl-indent {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light"><aside style="padding:1rem;background:#fff3cd;color:#332700">Historical analysis from the previous publication. Its samples and results are separate from the current full datasets. <a href="index.html">See current dataset counts and coverage</a>.</aside>
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -267,6 +267,18 @@ div.csl-indent {
  <span class="menu-text">AI disclosure</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_coverage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Full dataset coverage and employer evidence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naics_explorer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Industry explorer</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -277,21 +289,21 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#executed-sample-code-and-partial-output" id="toc-executed-sample-code-and-partial-output" class="nav-link active" data-scroll-target="#executed-sample-code-and-partial-output"><span class="header-section-number">1</span> Executed sample: code and partial output</a>
+  <li><a href="#source-and-observation-window" id="toc-source-and-observation-window" class="nav-link active" data-scroll-target="#source-and-observation-window"><span class="header-section-number">1</span> Source and observation window</a></li>
+  <li><a href="#posting-filters-and-career-cohort" id="toc-posting-filters-and-career-cohort" class="nav-link" data-scroll-target="#posting-filters-and-career-cohort"><span class="header-section-number">2</span> Posting filters and career cohort</a></li>
+  <li><a href="#preparation-of-career-fields" id="toc-preparation-of-career-fields" class="nav-link" data-scroll-target="#preparation-of-career-fields"><span class="header-section-number">3</span> Preparation of career fields</a></li>
+  <li><a href="#employer-sample-and-leakage-controls" id="toc-employer-sample-and-leakage-controls" class="nav-link" data-scroll-target="#employer-sample-and-leakage-controls"><span class="header-section-number">4</span> Employer sample and leakage controls</a></li>
+  <li><a href="#reproduce-the-evidence" id="toc-reproduce-the-evidence" class="nav-link" data-scroll-target="#reproduce-the-evidence"><span class="header-section-number">5</span> Reproduce the evidence</a></li>
+  <li><a href="#local-jobs_2026_us-exploratory-analysis" id="toc-local-jobs_2026_us-exploratory-analysis" class="nav-link" data-scroll-target="#local-jobs_2026_us-exploratory-analysis"><span class="header-section-number">6</span> Local Jobs_2026_US exploratory analysis</a>
   <ul class="collapse">
-  <li><a href="#load-a-reproducible-posting-sample" id="toc-load-a-reproducible-posting-sample" class="nav-link" data-scroll-target="#load-a-reproducible-posting-sample"><span class="header-section-number">1.1</span> Load a reproducible posting sample</a></li>
-  <li><a href="#apply-the-study-filters" id="toc-apply-the-study-filters" class="nav-link" data-scroll-target="#apply-the-study-filters"><span class="header-section-number">1.2</span> Apply the study filters</a></li>
+  <li><a href="#field-coverage" id="toc-field-coverage" class="nav-link" data-scroll-target="#field-coverage"><span class="header-section-number">6.1</span> Field coverage</a></li>
+  <li><a href="#industry-geography-and-work-arrangement" id="toc-industry-geography-and-work-arrangement" class="nav-link" data-scroll-target="#industry-geography-and-work-arrangement"><span class="header-section-number">6.2</span> Industry, geography and work arrangement</a></li>
+  <li><a href="#salary-coverage-and-study-boundary" id="toc-salary-coverage-and-study-boundary" class="nav-link" data-scroll-target="#salary-coverage-and-study-boundary"><span class="header-section-number">6.3</span> Salary coverage and study boundary</a></li>
   </ul></li>
-  <li><a href="#source-and-observation-window" id="toc-source-and-observation-window" class="nav-link" data-scroll-target="#source-and-observation-window"><span class="header-section-number">2</span> Source and observation window</a></li>
-  <li><a href="#posting-filters-and-career-cohort" id="toc-posting-filters-and-career-cohort" class="nav-link" data-scroll-target="#posting-filters-and-career-cohort"><span class="header-section-number">3</span> Posting filters and career cohort</a></li>
-  <li><a href="#preparation-of-career-fields" id="toc-preparation-of-career-fields" class="nav-link" data-scroll-target="#preparation-of-career-fields"><span class="header-section-number">4</span> Preparation of career fields</a></li>
-  <li><a href="#employer-sample-and-leakage-controls" id="toc-employer-sample-and-leakage-controls" class="nav-link" data-scroll-target="#employer-sample-and-leakage-controls"><span class="header-section-number">5</span> Employer sample and leakage controls</a></li>
-  <li><a href="#reproduce-the-evidence" id="toc-reproduce-the-evidence" class="nav-link" data-scroll-target="#reproduce-the-evidence"><span class="header-section-number">6</span> Reproduce the evidence</a></li>
-  <li><a href="#local-jobs_2026_us-exploratory-analysis" id="toc-local-jobs_2026_us-exploratory-analysis" class="nav-link" data-scroll-target="#local-jobs_2026_us-exploratory-analysis"><span class="header-section-number">7</span> Local Jobs_2026_US exploratory analysis</a>
+  <li><a href="#executed-sample-code-and-partial-output" id="toc-executed-sample-code-and-partial-output" class="nav-link" data-scroll-target="#executed-sample-code-and-partial-output"><span class="header-section-number">7</span> Executed sample: code and partial output</a>
   <ul class="collapse">
-  <li><a href="#field-coverage" id="toc-field-coverage" class="nav-link" data-scroll-target="#field-coverage"><span class="header-section-number">7.1</span> Field coverage</a></li>
-  <li><a href="#industry-geography-and-work-arrangement" id="toc-industry-geography-and-work-arrangement" class="nav-link" data-scroll-target="#industry-geography-and-work-arrangement"><span class="header-section-number">7.2</span> Industry, geography and work arrangement</a></li>
-  <li><a href="#salary-coverage-and-study-boundary" id="toc-salary-coverage-and-study-boundary" class="nav-link" data-scroll-target="#salary-coverage-and-study-boundary"><span class="header-section-number">7.3</span> Salary coverage and study boundary</a></li>
+  <li><a href="#load-a-reproducible-posting-sample" id="toc-load-a-reproducible-posting-sample" class="nav-link" data-scroll-target="#load-a-reproducible-posting-sample"><span class="header-section-number">7.1</span> Load a reproducible posting sample</a></li>
+  <li><a href="#apply-the-study-filters" id="toc-apply-the-study-filters" class="nav-link" data-scroll-target="#apply-the-study-filters"><span class="header-section-number">7.2</span> Apply the study filters</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -318,97 +330,14 @@ div.csl-indent {
 </header>
 
 
-<section id="executed-sample-code-and-partial-output" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="executed-sample-code-and-partial-output"><span class="header-section-number">1</span> Executed sample: code and partial output</h2>
-<p>This walkthrough uses <code>sample=true</code> on the local Jobs_2026_US partitions. With sampling enabled, SHA-256 of seed 2017 and posting ID selects approximately 10% of IDs across all partitions; missing IDs are excluded and duplicates keep their first occurrence. This scans every partition but retains only selected rows. These descriptive sample results are separate from the full-study tables below. Code is shown expanded; outputs are captured from that exact code by <code>scripts/publish_sample.py</code>. Only aggregates and a schema preview are published. Run chunks in page order: preparation, market, skills, evaluation.</p>
-<p>Run from the repository root: <code>python scripts/publish_sample.py --data-dir E:/Data/Jobs_2026_US --sample=true</code>, then <code>quarto render</code>. For interactive execution, add <code>scripts</code> to <code>sys.path</code>, set <code>data_dir = Path("E:/Data/Jobs_2026_US")</code> and <code>sample = True</code> before the first chunk.</p>
-<section id="load-a-reproducible-posting-sample" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="load-a-reproducible-posting-sample"><span class="header-section-number">1.1</span> Load a reproducible posting sample</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyarrow.parquet <span class="im">as</span> pq</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> run_study <span class="im">import</span> COLS, KNOWN_SECTORS, ROLE, clean</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>sample_fraction <span class="op">=</span> <span class="fl">0.10</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>seed <span class="op">=</span> <span class="dv">2017</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> <span class="bu">sorted</span>(data_dir.glob(<span class="st">'jobs_2026_part_*.parquet'</span>))</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> files:</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">'No Jobs_2026_US posting partitions found'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>parts, inputs <span class="op">=</span> [], []</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>source_rows <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> selected(identifier):</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(identifier):</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>seed<span class="sc">}</span><span class="ss">:</span><span class="sc">{</span>identifier<span class="sc">}</span><span class="ss">'</span>.encode(<span class="st">'utf-8'</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    bucket <span class="op">=</span> <span class="bu">int</span>.from_bytes(hashlib.sha256(key).digest()[:<span class="dv">8</span>], <span class="st">'big'</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">not</span> sample <span class="kw">or</span> bucket <span class="op">&lt;</span> <span class="bu">int</span>(sample_fraction <span class="op">*</span> <span class="dv">2</span><span class="op">**</span><span class="dv">64</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> path <span class="kw">in</span> files:</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    parquet <span class="op">=</span> pq.ParquetFile(path)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    inputs.append({<span class="st">'file'</span>: path.name, <span class="st">'rows'</span>: parquet.metadata.num_rows})</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> batch <span class="kw">in</span> parquet.iter_batches(columns<span class="op">=</span>COLS, batch_size<span class="op">=</span><span class="dv">20000</span>):</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        frame <span class="op">=</span> batch.to_pandas()</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        source_rows <span class="op">+=</span> <span class="bu">len</span>(frame)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        parts.append(frame.loc[frame.ID.<span class="bu">map</span>(selected)])</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> pd.concat(parts, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>sampled_rows <span class="op">=</span> <span class="bu">len</span>(jobs)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> jobs.drop_duplicates(<span class="st">'ID'</span>, keep<span class="op">=</span><span class="st">'first'</span>).copy()</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'sample=</span><span class="sc">{</span><span class="bu">str</span>(sample)<span class="sc">.</span>lower()<span class="sc">}</span><span class="ss">, fraction=</span><span class="sc">{</span>sample_fraction <span class="cf">if</span> sample <span class="cf">else</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">, seed=</span><span class="sc">{</span>seed<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Partitions scanned: </span><span class="sc">{</span><span class="bu">len</span>(files)<span class="sc">:,}</span><span class="ss">; source rows: </span><span class="sc">{</span>source_rows<span class="sc">:,}</span><span class="ss">'</span>)</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Selected rows: </span><span class="sc">{</span>sampled_rows<span class="sc">:,}</span><span class="ss">; unique posting IDs: </span><span class="sc">{</span><span class="bu">len</span>(jobs)<span class="sc">:,}</span><span class="ss">'</span>)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Schema preview (first 6 columns):'</span>)</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(jobs.dtypes.head(<span class="dv">6</span>).to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Partial output (computed from this run):</p>
-<pre class="text"><code>sample=true, fraction=0.1, seed=2017
-Partitions scanned: 82; source rows: 815,193
-Selected rows: 81,163; unique posting IDs: 81,163
-Schema preview (first 6 columns):
-ID                       int64
-POSTED                  object
-COMPANY_NAME            object
-COMPANY_IS_STAFFING    float64
-TITLE_NAME              object
-TITLE_RAW               object</code></pre>
-</section>
-<section id="apply-the-study-filters" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="apply-the-study-filters"><span class="header-section-number">1.2</span> Apply the study filters</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ledger <span class="op">=</span> {<span class="st">'sample_unique_ids'</span>: <span class="bu">len</span>(jobs)}</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> pd.to_datetime(jobs.POSTED, errors<span class="op">=</span><span class="st">'coerce'</span>, utc<span class="op">=</span><span class="va">True</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'mixed'</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> jobs.loc[(dates <span class="op">&gt;=</span> <span class="st">'2026-01-01'</span>) <span class="op">&amp;</span> (dates <span class="op">&lt;</span> <span class="st">'2026-10-01'</span>)].copy()</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ledger[<span class="st">'January–September 2026'</span>] <span class="op">=</span> <span class="bu">len</span>(jobs)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> jobs.loc[jobs.PARSED_COUNTRY_ISO_ABBR.<span class="bu">map</span>(clean).<span class="bu">str</span>.upper().eq(<span class="st">'US'</span>)].copy()</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ledger[<span class="st">'US'</span>] <span class="op">=</span> <span class="bu">len</span>(jobs)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>jobs[<span class="st">'sector'</span>] <span class="op">=</span> jobs.NAICS_2022_2.<span class="bu">map</span>(clean)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>jobs[<span class="st">'sector'</span>] <span class="op">=</span> jobs.sector.where(jobs.sector.ne(<span class="st">''</span>), jobs.NAICS2.<span class="bu">map</span>(clean))</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> jobs.loc[jobs.sector.isin(KNOWN_SECTORS)].copy()</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ledger[<span class="st">'recognized sector'</span>] <span class="op">=</span> <span class="bu">len</span>(jobs)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> jobs.loc[<span class="op">~</span>jobs.COMPANY_IS_STAFFING.eq(<span class="dv">1</span>)].copy()</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>ledger[<span class="st">'nonstaffing or unknown'</span>] <span class="op">=</span> <span class="bu">len</span>(jobs)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>titles <span class="op">=</span> jobs.TITLE_RAW.<span class="bu">map</span>(clean)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>titles <span class="op">=</span> titles.where(titles.ne(<span class="st">''</span>), jobs.TITLE_CLEAN.<span class="bu">map</span>(clean))</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>career <span class="op">=</span> jobs.loc[jobs.sector.eq(<span class="st">'62'</span>) <span class="op">&amp;</span> titles.<span class="bu">map</span>(<span class="kw">lambda</span> title: <span class="bu">bool</span>(ROLE.search(title)))].copy()</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>ledger[<span class="st">'healthcare analyst cohort'</span>] <span class="op">=</span> <span class="bu">len</span>(career)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.Series(ledger, name<span class="op">=</span><span class="st">'Postings'</span>).to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Partial output (computed from this run):</p>
-<pre class="text"><code>sample_unique_ids            81163
-January–September 2026       79719
-US                           79719
-recognized sector            35625
-nonstaffing or unknown       35099
-healthcare analyst cohort        7</code></pre>
-</section>
-</section>
-<section id="source-and-observation-window" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="source-and-observation-window"><span class="header-section-number">2</span> Source and observation window</h2>
-<p>The source is the local Jobs_2026_US snapshot: 82 posting partitions containing 815,193 records <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span>. The observation window is January 1 through September 30, 2026. File hashes, row counts, versions and parameters are retained in <a href="data/study/run.json">run.json</a>. The source EDA verifies posting years independently of the folder name.</p>
+<section id="source-and-observation-window" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="source-and-observation-window"><span class="header-section-number">1</span> Source and observation window</h2>
+<p>The source is the local Jobs_2026_US snapshot: 20 posting partitions containing 815,193 records <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span>. The observation window is January 1 through September 30, 2026. File hashes, row counts, versions and parameters are retained in <a href="data/study/run.json">run.json</a>. The source EDA verifies posting years independently of the folder name.</p>
 <p>According to the US snapshot’s README, inclusion requires a 2026 posting date, parsed US country and exclusively US extracted locations, with no location conflict, ambiguity, review flag or truncated evidence. This is a parser-based selection, not independent verification of the worksite. All original columns and IDs are retained. Duplicate flags and representative pointers retain their global scope and may refer outside this subset.</p>
-<p>All 815,193 source rows have parsed country US and posting year 2026. The January–September window retains 800,461 rows; the remaining 14,732 fall outside that window. The final samples contain 112 career postings and 362 employers for classification.</p>
+<p>All 815,193 source rows have parsed country US and posting year 2026. The January–September window retains 800,461 rows; the remaining 14,732 fall outside that window. The final samples contain 112 career postings and 379 employers for classification.</p>
 </section>
-<section id="posting-filters-and-career-cohort" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="posting-filters-and-career-cohort"><span class="header-section-number">3</span> Posting filters and career cohort</h2>
+<section id="posting-filters-and-career-cohort" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="posting-filters-and-career-cohort"><span class="header-section-number">2</span> Posting filters and career cohort</h2>
 <p>The <a href="#local-jobs_2026_us-exploratory-analysis">source EDA below</a> profiles all local posting partitions before these exclusions; the market page examines the selected healthcare analyst cohort.</p>
 <ol type="1">
 <li>Keep the first occurrence of each nonmissing posting ID in filename order. Different IDs for the same vacancy may remain.</li>
@@ -417,39 +346,39 @@ healthcare analyst cohort        7</code></pre>
 <li>Exclude records explicitly flagged as staffing; missing staffing status is retained.</li>
 <li>For the career cohort, require NAICS 62 and an analyst phrase in the raw title, with clean title as fallback. The saved regular expression covers data analyst, data analytics analyst, business intelligence analyst, BI analyst, clinical analyst and healthcare analyst variants.</li>
 </ol>
-<p>This yields 112 career postings. No model prediction determines inclusion. The industry anchor is a two-digit sector, broader than the four- or six-digit code preferred by Module 1 <span class="citation" data-cites="ad688m1">(<a href="#ref-ad688m1" role="doc-biblioref">AD688 course materials, n.d.</a>)</span>. A finer-code analysis would require revised filters and a new run.</p>
+<p>This yields 112 career postings. No model prediction determines inclusion. The industry anchor is a two-digit sector, broader than the four- or six-digit code preferred by Module 1 <span class="citation" data-cites="ad688m1">(<a href="#ref-ad688m1" role="doc-biblioref">AD688 course materials, n.d.</a>)</span>. The supplementary NAICS 4, 5 and 6 explorer reports full-source label coverage. Evaluating predictions at those finer levels would require separate cohort rules and a new modeling experiment.</p>
 </section>
-<section id="preparation-of-career-fields" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="preparation-of-career-fields"><span class="header-section-number">4</span> Preparation of career fields</h2>
+<section id="preparation-of-career-fields" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="preparation-of-career-fields"><span class="header-section-number">3</span> Preparation of career fields</h2>
 <p>Decode skill lists and count each skill at most once per posting. Retain postings without skills in the denominator. Merge recognized state abbreviations and names; retain unrecognized or country-only strings as unknown. Standardize remote, hybrid and onsite values, keeping unknown separate. Salary availability requires a finite positive normalized amount with explicit USD currency. Nonnegative experience values are retained, but zero is not verified as entry-level eligibility.</p>
 <p>The <a href="./market_baseline.html">market baseline</a> shows field coverage and role-label anomalies. The role-label chart uses <code>TITLE_NAME</code>; career inclusion uses raw or clean titles, so these fields can disagree.</p>
 </section>
-<section id="employer-sample-and-leakage-controls" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="employer-sample-and-leakage-controls"><span class="header-section-number">5</span> Employer sample and leakage controls</h2>
-<p>The classifier uses a separate employer-level sample. Require a usable normalized employer name and title, at least 20 eligible postings per employer, and one sector covering at least 80% of its postings. Keep up to the 10,000 highest-volume employers; 362 qualify in this snapshot. Other sectors form the comparison class for NAICS 62. This does not expand the career recommendations to other industries.</p>
-<p>Split normalized employer-name groups into train, validation and test partitions before fitting vocabulary thresholds. Seed 2017 and stratification produce 253, 36 and 73 employers respectively, with no overlapping name keys. Case and whitespace normalization cannot eliminate all aliases or subsidiaries. Dataset-derived industry labels remain an imperfect evaluation target.</p>
+<section id="employer-sample-and-leakage-controls" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="employer-sample-and-leakage-controls"><span class="header-section-number">4</span> Employer sample and leakage controls</h2>
+<p>The classifier uses a separate employer-level sample. Require a usable normalized employer name and title, at least 20 eligible postings per employer, and one sector covering at least 80% of its postings. Keep up to the 10,000 highest-volume employers; 379 qualify in this snapshot. Other sectors form the comparison class for NAICS 62. This does not expand the career recommendations to other industries.</p>
+<p>Split normalized employer-name groups into train, validation and test partitions before fitting vocabulary thresholds. Seed 2017 and stratification produce 265, 38 and 76 employers respectively, with no overlapping name keys. Case and whitespace normalization cannot eliminate all aliases or subsidiaries. Dataset-derived industry labels remain an imperfect evaluation target.</p>
 <p>Title shares and employer-name words adapt the feature design of <span class="citation" data-cites="goindani2017">Goindani et al. (<a href="#ref-goindani2017" role="doc-biblioref">2017</a>)</span>. Linear SVM and gradient-boosted trees are implemented with scikit-learn <span class="citation" data-cites="pedregosa2011">(<a href="#ref-pedregosa2011" role="doc-biblioref">Pedregosa et al. 2011</a>)</span>. Hyperparameters are selected using validation F1. The <a href="./career_evaluation.html">career evaluation</a> records the full filtering ledger, feature thresholds, baselines, metrics and confusion matrices.</p>
 </section>
-<section id="reproduce-the-evidence" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="reproduce-the-evidence"><span class="header-section-number">6</span> Reproduce the evidence</h2>
+<section id="reproduce-the-evidence" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="reproduce-the-evidence"><span class="header-section-number">5</span> Reproduce the evidence</h2>
 <p>For dataset-wide EDA, run <code>python scripts/run_eda.py --data-dir E:/Data/Jobs_2026_US</code> followed by <code>python scripts/verify_source_eda.py --data-dir E:/Data/Jobs_2026_US</code>. Outputs under <code>data/eda</code> include field coverage, date and category distributions, input schemas and hashes. The source manifest is compared with the saved healthcare study.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements-study.txt</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/run_study.py <span class="at">--data-dir</span> E:/Data/Jobs_2026_US</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/run_eda.py <span class="at">--data-dir</span> E:/Data/Jobs_2026_US</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/publish_sample.py <span class="at">--data-dir</span> E:/Data/Jobs_2026_US <span class="at">--sample</span><span class="op">=</span>true</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/publish_study.py</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/publish_eda.py</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/verify_study.py</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/verify_eda.py</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render final_report.qmd <span class="at">--to</span> docx</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/verify_site.py</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/verify_citations.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements-study.txt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/run_study.py <span class="at">--data-dir</span> E:/Data/Jobs_2026_US</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/run_eda.py <span class="at">--data-dir</span> E:/Data/Jobs_2026_US</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/publish_sample.py <span class="at">--data-dir</span> E:/Data/Jobs_2026_US <span class="at">--sample</span><span class="op">=</span>true</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/publish_study.py</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/publish_eda.py</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/verify_study.py</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/verify_eda.py</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render final_report.qmd <span class="at">--to</span> docx</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/verify_site.py</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/verify_citations.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Replace the data path with an authorized local copy. Rendering uses saved aggregates; the raw-data scan is needed only to reproduce or change the analytical cohort. Source descriptions and identifiable posting records are not redistributed. The <a href="./pyspark_analysis.html">PySpark workflow</a> shows the employer-level processing and all nine classification families with downloadable code.</p>
 </section>
-<section id="local-jobs_2026_us-exploratory-analysis" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="local-jobs_2026_us-exploratory-analysis"><span class="header-section-number">7</span> Local Jobs_2026_US exploratory analysis</h2>
-<p>The analysis and EDA use the Jobs_2026_US snapshot <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span>. This scan contains <strong>815,193 rows across 82 posting partitions</strong>. Only <code>jobs_2026_part_*.parquet</code> files are inputs; supporting exports and backups are excluded. The repository contains aggregates and file hashes.</p>
+<section id="local-jobs_2026_us-exploratory-analysis" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="local-jobs_2026_us-exploratory-analysis"><span class="header-section-number">6</span> Local Jobs_2026_US exploratory analysis</h2>
+<p>The analysis and EDA use the Jobs_2026_US snapshot <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span>. This scan contains <strong>815,193 rows across 20 posting partitions</strong>. Only <code>jobs_2026_part_*.parquet</code> files are inputs; supporting exports and backups are excluded. The repository contains aggregates and file hashes.</p>
 <p>EDA describes raw rows before the healthcare study’s filters. Duplicate IDs are counted but retained in these distributions. Posting-ID uniqueness does not rule out repeated advertisements with different IDs. Populated industry and skills fields are not independently verified labels.</p>
 <table class="caption-top table">
 <thead>
@@ -495,8 +424,8 @@ healthcare analyst cohort        7</code></pre>
 <figcaption>Posting-year distribution across all source rows.</figcaption>
 </figure>
 </div>
-<section id="field-coverage" class="level3" data-number="7.1">
-<h3 data-number="7.1" class="anchored" data-anchor-id="field-coverage"><span class="header-section-number">7.1</span> Field coverage</h3>
+<section id="field-coverage" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="field-coverage"><span class="header-section-number">6.1</span> Field coverage</h3>
 <p>Missingness covers the 17 fields consumed by the study. Missing means null or whitespace-only; strings such as <code>[]</code>, <code>Unknown</code> or <code>Unclassified</code> still count as populated. Full input schemas are recorded in the EDA manifest.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -515,12 +444,12 @@ healthcare analyst cohort        7</code></pre>
 <tbody>
 <tr class="odd">
 <td>NORMALIZED_SALARY</td>
-<td>734,925</td>
+<td>734,918</td>
 <td>90.2%</td>
 </tr>
 <tr class="even">
 <td>TEXT_PAY_CURRENCY</td>
-<td>635,962</td>
+<td>635,955</td>
 <td>78.0%</td>
 </tr>
 <tr class="odd">
@@ -530,13 +459,13 @@ healthcare analyst cohort        7</code></pre>
 </tr>
 <tr class="even">
 <td>NAICS2</td>
-<td>453,997</td>
-<td>55.7%</td>
+<td>447,252</td>
+<td>54.9%</td>
 </tr>
 <tr class="odd">
 <td>NAICS_2022_2</td>
-<td>453,997</td>
-<td>55.7%</td>
+<td>447,252</td>
+<td>54.9%</td>
 </tr>
 <tr class="even">
 <td>COMPANY_IS_STAFFING</td>
@@ -601,11 +530,11 @@ healthcare analyst cohort        7</code></pre>
 </tbody>
 </table>
 </section>
-<section id="industry-geography-and-work-arrangement" class="level3" data-number="7.2">
-<h3 data-number="7.2" class="anchored" data-anchor-id="industry-geography-and-work-arrangement"><span class="header-section-number">7.2</span> Industry, geography and work arrangement</h3>
-<p>The following tables show the ten most frequent categories, including missing where it ranks in the top ten. Every share uses all 815,193 source rows. Full distributions are saved as CSVs. Sector uses <code>NAICS_2022_2</code>, falling back to <code>NAICS2</code> only when blank; 849 nonempty values are outside the study’s accepted sector vocabulary. States normalize US abbreviations and full names; other state values share an explicit unrecognized category. Remote labels are lowercased and <code>On-site</code> is merged with <code>Onsite</code>.</p>
-<section id="sector-codes" class="level4" data-number="7.2.1">
-<h4 data-number="7.2.1" class="anchored" data-anchor-id="sector-codes"><span class="header-section-number">7.2.1</span> Sector codes</h4>
+<section id="industry-geography-and-work-arrangement" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="industry-geography-and-work-arrangement"><span class="header-section-number">6.2</span> Industry, geography and work arrangement</h3>
+<p>The following tables show the ten most frequent categories, including missing where it ranks in the top ten. Every share uses all 815,193 source rows. Full distributions are saved as CSVs. Sector uses <code>NAICS_2022_2</code>, falling back to <code>NAICS2</code> only when blank; 0 nonempty values are outside the study’s accepted sector vocabulary. States normalize US abbreviations and full names; other state values share an explicit unrecognized category. Remote labels are lowercased and <code>On-site</code> is merged with <code>Onsite</code>.</p>
+<section id="sector-codes" class="level4" data-number="6.2.1">
+<h4 data-number="6.2.1" class="anchored" data-anchor-id="sector-codes"><span class="header-section-number">6.2.1</span> Sector codes</h4>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -617,59 +546,59 @@ healthcare analyst cohort        7</code></pre>
 <tbody>
 <tr class="odd">
 <td>(missing)</td>
-<td>453,997</td>
-<td>55.7%</td>
+<td>447,252</td>
+<td>54.9%</td>
 </tr>
 <tr class="even">
 <td>62</td>
-<td>66,881</td>
-<td>8.2%</td>
+<td>68,367</td>
+<td>8.4%</td>
 </tr>
 <tr class="odd">
 <td>44-45</td>
-<td>48,720</td>
-<td>6.0%</td>
+<td>54,966</td>
+<td>6.7%</td>
 </tr>
 <tr class="even">
-<td>54</td>
-<td>38,460</td>
-<td>4.7%</td>
+<td>31-33</td>
+<td>42,399</td>
+<td>5.2%</td>
 </tr>
 <tr class="odd">
+<td>54</td>
+<td>39,230</td>
+<td>4.8%</td>
+</tr>
+<tr class="even">
 <td>23</td>
 <td>37,449</td>
 <td>4.6%</td>
 </tr>
-<tr class="even">
-<td>31-33</td>
-<td>37,415</td>
-<td>4.6%</td>
-</tr>
 <tr class="odd">
 <td>52</td>
-<td>26,336</td>
-<td>3.2%</td>
+<td>27,958</td>
+<td>3.4%</td>
 </tr>
 <tr class="even">
+<td>48-49</td>
+<td>24,722</td>
+<td>3.0%</td>
+</tr>
+<tr class="odd">
 <td>61</td>
 <td>23,856</td>
 <td>2.9%</td>
 </tr>
-<tr class="odd">
-<td>48-49</td>
-<td>23,480</td>
-<td>2.9%</td>
-</tr>
 <tr class="even">
 <td>51</td>
-<td>20,724</td>
-<td>2.5%</td>
+<td>21,287</td>
+<td>2.6%</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="parsed-country" class="level4" data-number="7.2.2">
-<h4 data-number="7.2.2" class="anchored" data-anchor-id="parsed-country"><span class="header-section-number">7.2.2</span> Parsed country</h4>
+<section id="parsed-country" class="level4" data-number="6.2.2">
+<h4 data-number="6.2.2" class="anchored" data-anchor-id="parsed-country"><span class="header-section-number">6.2.2</span> Parsed country</h4>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -687,8 +616,8 @@ healthcare analyst cohort        7</code></pre>
 </tbody>
 </table>
 </section>
-<section id="us-states" class="level4" data-number="7.2.3">
-<h4 data-number="7.2.3" class="anchored" data-anchor-id="us-states"><span class="header-section-number">7.2.3</span> US states</h4>
+<section id="us-states" class="level4" data-number="6.2.3">
+<h4 data-number="6.2.3" class="anchored" data-anchor-id="us-states"><span class="header-section-number">6.2.3</span> US states</h4>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -751,8 +680,8 @@ healthcare analyst cohort        7</code></pre>
 </tbody>
 </table>
 </section>
-<section id="work-arrangement" class="level4" data-number="7.2.4">
-<h4 data-number="7.2.4" class="anchored" data-anchor-id="work-arrangement"><span class="header-section-number">7.2.4</span> Work arrangement</h4>
+<section id="work-arrangement" class="level4" data-number="6.2.4">
+<h4 data-number="6.2.4" class="anchored" data-anchor-id="work-arrangement"><span class="header-section-number">6.2.4</span> Work arrangement</h4>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -791,9 +720,9 @@ healthcare analyst cohort        7</code></pre>
 </table>
 </section>
 </section>
-<section id="salary-coverage-and-study-boundary" class="level3" data-number="7.3">
-<h3 data-number="7.3" class="anchored" data-anchor-id="salary-coverage-and-study-boundary"><span class="header-section-number">7.3</span> Salary coverage and study boundary</h3>
-<p>There are <strong>2,756 rows (0.3%)</strong> with a finite positive normalized salary, explicitly USD currency, consistent with the healthcare study salary filter. These are annual-equivalent advertised amounts; they may include compensation beyond base pay. They are not observed earnings or a representative wage survey. Raw amounts with mixed or unknown pay periods are not pooled.</p>
+<section id="salary-coverage-and-study-boundary" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="salary-coverage-and-study-boundary"><span class="header-section-number">6.3</span> Salary coverage and study boundary</h3>
+<p>There are <strong>2,761 rows (0.3%)</strong> with a finite positive normalized salary, explicitly USD currency, consistent with the healthcare study salary filter. These are annual-equivalent advertised amounts; they may include compensation beyond base pay. They are not observed earnings or a representative wage survey. Raw amounts with mixed or unknown pay periods are not pooled.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -812,7 +741,7 @@ healthcare analyst cohort        7</code></pre>
 </tr>
 <tr class="odd">
 <td>Median</td>
-<td>134,528.00</td>
+<td>134,000.00</td>
 </tr>
 <tr class="even">
 <td>75th percentile</td>
@@ -826,6 +755,89 @@ healthcare analyst cohort        7</code></pre>
 </table>
 <p>All input filenames, row counts and SHA-256 hashes match the saved healthcare study. The healthcare analysis further restricts dates, country, sector, staffing status and usable employer/title fields. Its employer model and analyst career sample have different units and denominators; the filtering ledger is in <a href="./career_evaluation.html">the 2026 study</a>.</p>
 <p>The <a href="data/eda/run.json">EDA manifest</a>, <a href="data/eda/missingness.csv">field missingness</a>, <a href="data/eda/posted_month.csv">posting months</a>, <a href="data/eda/sector.csv">sector distribution</a>, <a href="data/eda/country.csv">country distribution</a>, <a href="data/eda/state.csv">state distribution</a> and <a href="data/eda/remote.csv">work arrangements</a> provide the aggregate evidence.</p>
+</section>
+</section>
+<section id="executed-sample-code-and-partial-output" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="executed-sample-code-and-partial-output"><span class="header-section-number">7</span> Executed sample: code and partial output</h2>
+<p>This walkthrough uses <code>sample=true</code> on the local Jobs_2026_US partitions. With sampling enabled, SHA-256 of seed 2017 and posting ID selects approximately 10% of IDs across all partitions; missing IDs are excluded and duplicates keep their first occurrence. This scans every partition but retains only selected rows. These descriptive sample results are separate from the full-study tables below. Code is shown expanded; outputs are captured from that exact code by <code>scripts/publish_sample.py</code>. Only aggregates and a schema preview are published. Run chunks in page order: preparation, market, skills, evaluation.</p>
+<p>Run from the repository root: <code>python scripts/publish_sample.py --data-dir E:/Data/Jobs_2026_US --sample=true</code>, then <code>quarto render</code>. For interactive execution, add <code>scripts</code> to <code>sys.path</code>, set <code>data_dir = Path("E:/Data/Jobs_2026_US")</code> and <code>sample = True</code> before the first chunk.</p>
+<section id="load-a-reproducible-posting-sample" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="load-a-reproducible-posting-sample"><span class="header-section-number">7.1</span> Load a reproducible posting sample</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyarrow.parquet <span class="im">as</span> pq</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> run_study <span class="im">import</span> COLS, KNOWN_SECTORS, ROLE, clean</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>sample_fraction <span class="op">=</span> <span class="fl">0.10</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>seed <span class="op">=</span> <span class="dv">2017</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> <span class="bu">sorted</span>(data_dir.glob(<span class="st">'jobs_2026_part_*.parquet'</span>))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> files:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">'No Jobs_2026_US posting partitions found'</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>parts, inputs <span class="op">=</span> [], []</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>source_rows <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> selected(identifier):</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(identifier):</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>seed<span class="sc">}</span><span class="ss">:</span><span class="sc">{</span>identifier<span class="sc">}</span><span class="ss">'</span>.encode(<span class="st">'utf-8'</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    bucket <span class="op">=</span> <span class="bu">int</span>.from_bytes(hashlib.sha256(key).digest()[:<span class="dv">8</span>], <span class="st">'big'</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">not</span> sample <span class="kw">or</span> bucket <span class="op">&lt;</span> <span class="bu">int</span>(sample_fraction <span class="op">*</span> <span class="dv">2</span><span class="op">**</span><span class="dv">64</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> path <span class="kw">in</span> files:</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    parquet <span class="op">=</span> pq.ParquetFile(path)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    inputs.append({<span class="st">'file'</span>: path.name, <span class="st">'rows'</span>: parquet.metadata.num_rows})</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> batch <span class="kw">in</span> parquet.iter_batches(columns<span class="op">=</span>COLS, batch_size<span class="op">=</span><span class="dv">20000</span>):</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        frame <span class="op">=</span> batch.to_pandas()</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        source_rows <span class="op">+=</span> <span class="bu">len</span>(frame)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        parts.append(frame.loc[frame.ID.<span class="bu">map</span>(selected)])</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> pd.concat(parts, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>sampled_rows <span class="op">=</span> <span class="bu">len</span>(jobs)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> jobs.drop_duplicates(<span class="st">'ID'</span>, keep<span class="op">=</span><span class="st">'first'</span>).copy()</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'sample=</span><span class="sc">{</span><span class="bu">str</span>(sample)<span class="sc">.</span>lower()<span class="sc">}</span><span class="ss">, fraction=</span><span class="sc">{</span>sample_fraction <span class="cf">if</span> sample <span class="cf">else</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">, seed=</span><span class="sc">{</span>seed<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Partitions scanned: </span><span class="sc">{</span><span class="bu">len</span>(files)<span class="sc">:,}</span><span class="ss">; source rows: </span><span class="sc">{</span>source_rows<span class="sc">:,}</span><span class="ss">'</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Selected rows: </span><span class="sc">{</span>sampled_rows<span class="sc">:,}</span><span class="ss">; unique posting IDs: </span><span class="sc">{</span><span class="bu">len</span>(jobs)<span class="sc">:,}</span><span class="ss">'</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Schema preview (first 6 columns):'</span>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(jobs.dtypes.head(<span class="dv">6</span>).to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Partial output (computed from this run):</p>
+<pre class="text"><code>sample=true, fraction=0.1, seed=2017
+Partitions scanned: 20; source rows: 815,193
+Selected rows: 81,163; unique posting IDs: 81,163
+Schema preview (first 6 columns):
+ID                       int64
+POSTED                  object
+COMPANY_NAME            object
+COMPANY_IS_STAFFING    float64
+TITLE_NAME              object
+TITLE_RAW               object</code></pre>
+</section>
+<section id="apply-the-study-filters" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="apply-the-study-filters"><span class="header-section-number">7.2</span> Apply the study filters</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ledger <span class="op">=</span> {<span class="st">'sample_unique_ids'</span>: <span class="bu">len</span>(jobs)}</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> pd.to_datetime(jobs.POSTED, errors<span class="op">=</span><span class="st">'coerce'</span>, utc<span class="op">=</span><span class="va">True</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'mixed'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> jobs.loc[(dates <span class="op">&gt;=</span> <span class="st">'2026-01-01'</span>) <span class="op">&amp;</span> (dates <span class="op">&lt;</span> <span class="st">'2026-10-01'</span>)].copy()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>ledger[<span class="st">'January–September 2026'</span>] <span class="op">=</span> <span class="bu">len</span>(jobs)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> jobs.loc[jobs.PARSED_COUNTRY_ISO_ABBR.<span class="bu">map</span>(clean).<span class="bu">str</span>.upper().eq(<span class="st">'US'</span>)].copy()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>ledger[<span class="st">'US'</span>] <span class="op">=</span> <span class="bu">len</span>(jobs)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>jobs[<span class="st">'sector'</span>] <span class="op">=</span> jobs.NAICS_2022_2.<span class="bu">map</span>(clean)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>jobs[<span class="st">'sector'</span>] <span class="op">=</span> jobs.sector.where(jobs.sector.ne(<span class="st">''</span>), jobs.NAICS2.<span class="bu">map</span>(clean))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> jobs.loc[jobs.sector.isin(KNOWN_SECTORS)].copy()</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ledger[<span class="st">'recognized sector'</span>] <span class="op">=</span> <span class="bu">len</span>(jobs)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> jobs.loc[<span class="op">~</span>jobs.COMPANY_IS_STAFFING.eq(<span class="dv">1</span>)].copy()</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>ledger[<span class="st">'nonstaffing or unknown'</span>] <span class="op">=</span> <span class="bu">len</span>(jobs)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>titles <span class="op">=</span> jobs.TITLE_RAW.<span class="bu">map</span>(clean)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>titles <span class="op">=</span> titles.where(titles.ne(<span class="st">''</span>), jobs.TITLE_CLEAN.<span class="bu">map</span>(clean))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>career <span class="op">=</span> jobs.loc[jobs.sector.eq(<span class="st">'62'</span>) <span class="op">&amp;</span> titles.<span class="bu">map</span>(<span class="kw">lambda</span> title: <span class="bu">bool</span>(ROLE.search(title)))].copy()</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ledger[<span class="st">'healthcare analyst cohort'</span>] <span class="op">=</span> <span class="bu">len</span>(career)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.Series(ledger, name<span class="op">=</span><span class="st">'Postings'</span>).to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Partial output (computed from this run):</p>
+<pre class="text"><code>sample_unique_ids            81163
+January–September 2026       79719
+US                           79719
+recognized sector            36401
+nonstaffing or unknown       35875
+healthcare analyst cohort        7</code></pre>
 
 
 
@@ -840,7 +852,7 @@ AD688 course materials. n.d. <em>Module 1 Project Instructions: Complete Career 
 Goindani, Mahak, Qiaoling Liu, Josh Chao, and Valentin Jijkoun. 2017. <span>“Employer Industry Classification Using Job Postings.”</span> <em>2017 IEEE International Conference on Data Mining Workshops (ICDMW)</em>. <a href="https://doi.org/10.1109/ICDMW.2017.30">https://doi.org/10.1109/ICDMW.2017.30</a>.
 </div>
 <div id="ref-jobs2026" class="csl-entry" role="listitem">
-<em><span>Jobs_2026_US</span>: Local Course Dataset Snapshot</em>. 2026. 82 local Parquet posting partitions.
+<em><span>Jobs_2026_US</span>: Local Course Dataset Snapshot</em>. 2026. 20 local Parquet posting partitions, release us-repack20-20261011-v1.
 </div>
 <div id="ref-pedregosa2011" class="csl-entry" role="listitem">
 Pedregosa, Fabian, Gaël Varoquaux, Alexandre Gramfort, et al. 2011. <span>“Scikit-Learn: Machine Learning in <span>Python</span>.”</span> <em>Journal of Machine Learning Research</em> 12 (85): 2825–30. <a href="https://www.jmlr.org/papers/v12/pedregosa11a.html">https://www.jmlr.org/papers/v12/pedregosa11a.html</a>.

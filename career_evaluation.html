@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,10 +96,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7f84833fb3be5a6d5023b86a51ac5183.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6383180e1ca5481f76f50eff3beeaa46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -133,7 +133,7 @@ div.csl-indent {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light"><aside style="padding:1rem;background:#fff3cd;color:#332700">Historical analysis from the previous publication. Its samples and results are separate from the current full datasets. <a href="index.html">See current dataset counts and coverage</a>.</aside>
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -267,6 +267,18 @@ div.csl-indent {
  <span class="menu-text">AI disclosure</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_coverage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Full dataset coverage and employer evidence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naics_explorer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Industry explorer</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -277,10 +289,7 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#executed-sample-code-and-partial-output" id="toc-executed-sample-code-and-partial-output" class="nav-link active" data-scroll-target="#executed-sample-code-and-partial-output"><span class="header-section-number">1</span> Executed sample: code and partial output</a>
-  <ul class="collapse">
-  <li><a href="#check-sample-support-before-model-fitting" id="toc-check-sample-support-before-model-fitting" class="nav-link" data-scroll-target="#check-sample-support-before-model-fitting"><span class="header-section-number">1.1</span> Check sample support before model fitting</a></li>
-  </ul></li>
+  <li><a href="#finer-industry-labels-and-the-scope-of-evaluation" id="toc-finer-industry-labels-and-the-scope-of-evaluation" class="nav-link active" data-scroll-target="#finer-industry-labels-and-the-scope-of-evaluation"><span class="header-section-number">1</span> Finer industry labels and the scope of evaluation</a></li>
   <li><a href="#employer-sample-and-split" id="toc-employer-sample-and-split" class="nav-link" data-scroll-target="#employer-sample-and-split"><span class="header-section-number">2</span> Employer sample and split</a></li>
   <li><a href="#model-results-on-the-held-out-employers" id="toc-model-results-on-the-held-out-employers" class="nav-link" data-scroll-target="#model-results-on-the-held-out-employers"><span class="header-section-number">3</span> Model results on the held-out employers</a></li>
   <li><a href="#training-and-feature-details" id="toc-training-and-feature-details" class="nav-link" data-scroll-target="#training-and-feature-details"><span class="header-section-number">4</span> Training and feature details</a></li>
@@ -289,6 +298,10 @@ div.csl-indent {
   <li><a href="#proposed-transparent-scorecard" id="toc-proposed-transparent-scorecard" class="nav-link" data-scroll-target="#proposed-transparent-scorecard"><span class="header-section-number">7</span> Proposed transparent scorecard</a></li>
   <li><a href="#missingness-and-sensitivity" id="toc-missingness-and-sensitivity" class="nav-link" data-scroll-target="#missingness-and-sensitivity"><span class="header-section-number">8</span> Missingness and sensitivity</a></li>
   <li><a href="#independent-validation-still-needed" id="toc-independent-validation-still-needed" class="nav-link" data-scroll-target="#independent-validation-still-needed"><span class="header-section-number">9</span> Independent validation still needed</a></li>
+  <li><a href="#executed-sample-code-and-partial-output" id="toc-executed-sample-code-and-partial-output" class="nav-link" data-scroll-target="#executed-sample-code-and-partial-output"><span class="header-section-number">10</span> Executed sample: code and partial output</a>
+  <ul class="collapse">
+  <li><a href="#check-sample-support-before-model-fitting" id="toc-check-sample-support-before-model-fitting" class="nav-link" data-scroll-target="#check-sample-support-before-model-fitting"><span class="header-section-number">10.1</span> Check sample support before model fitting</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -314,36 +327,29 @@ div.csl-indent {
 </header>
 
 
-<section id="executed-sample-code-and-partial-output" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="executed-sample-code-and-partial-output"><span class="header-section-number">1</span> Executed sample: code and partial output</h2>
-<p>This walkthrough uses <code>sample=true</code> on the local Jobs_2026_US partitions. With sampling enabled, SHA-256 of seed 2017 and posting ID selects approximately 10% of IDs across all partitions; missing IDs are excluded and duplicates keep their first occurrence. This scans every partition but retains only selected rows. These descriptive sample results are separate from the full-study tables below. Code is shown expanded; outputs are captured from that exact code by <code>scripts/publish_sample.py</code>. Only aggregates and a schema preview are published. Run chunks in page order: preparation, market, skills, evaluation.</p>
-<section id="check-sample-support-before-model-fitting" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="check-sample-support-before-model-fitting"><span class="header-section-number">1.1</span> Check sample support before model fitting</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the existing employer eligibility rules to the sampled postings.</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>employers <span class="op">=</span> {}</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> jobs.to_dict(<span class="st">'records'</span>):</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> re.sub(<span class="vs">r'</span><span class="dv">\s</span><span class="op">+</span><span class="vs">'</span>, <span class="st">' '</span>, clean(row[<span class="st">'COMPANY_NAME'</span>]).casefold())</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> clean(row[<span class="st">'TITLE_NAME'</span>]).casefold()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> name <span class="kw">or</span> name <span class="kw">in</span> (<span class="st">'unknown'</span>, <span class="st">'unclassified'</span>) <span class="kw">or</span> <span class="kw">not</span> title <span class="kw">or</span> title <span class="op">==</span> <span class="st">'unclassified'</span>:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    employers.setdefault(name, Counter()).update([row[<span class="st">'sector'</span>]])</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>eligible <span class="op">=</span> [counts <span class="cf">for</span> counts <span class="kw">in</span> employers.values()</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> counts.total() <span class="op">&gt;=</span> <span class="dv">20</span> <span class="kw">and</span> counts.most_common(<span class="dv">1</span>)[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">/</span> counts.total() <span class="op">&gt;=</span> <span class="fl">.8</span>]</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>support <span class="op">=</span> Counter(<span class="bu">int</span>(counts.most_common(<span class="dv">1</span>)[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">==</span> <span class="st">'62'</span>) <span class="cf">for</span> counts <span class="kw">in</span> eligible)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Eligible employers in this sample: </span><span class="sc">{</span><span class="bu">len</span>(eligible)<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Healthcare: </span><span class="sc">{</span>support[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">; other sectors: </span><span class="sc">{</span>support[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Minimum split support met: </span><span class="sc">{</span><span class="bu">len</span>(eligible) <span class="op">&gt;=</span> <span class="dv">50</span> <span class="kw">and</span> <span class="bu">min</span>(support[<span class="dv">0</span>], support[<span class="dv">1</span>]) <span class="op">&gt;=</span> <span class="dv">10</span><span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'No classifier is fitted in this sample walkthrough.'</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The model metrics below belong to the separate full-study run.'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Partial output (computed from this run):</p>
-<pre class="text"><code>Eligible employers in this sample: 54
-Healthcare: 29; other sectors: 25
-Minimum split support met: True
-No classifier is fitted in this sample walkthrough.
-The model metrics below belong to the separate full-study run.</code></pre>
-<p>The study examines healthcare data analysts in NAICS 62. Results below were generated from the local Jobs_2026_US snapshot on October 3, 2026 <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span>. The feature design adapts <span class="citation" data-cites="goindani2017">Goindani et al. (<a href="#ref-goindani2017" role="doc-biblioref">2017</a>)</span>, using scikit-learn estimators <span class="citation" data-cites="pedregosa2011">(<a href="#ref-pedregosa2011" role="doc-biblioref">Pedregosa et al. 2011</a>)</span>. The <a href="./pyspark_analysis.html">PySpark analysis</a> provides the processing code, feature construction and classifier implementations.</p>
-<p>The pipeline read <strong>815,193 rows in 82 posting partitions</strong> from the local snapshot <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span> and selected January–September 2026 observations. All input files have recorded SHA-256 hashes. No posting ID appeared twice in this input snapshot.</p>
+<p>The study examines healthcare data analysts in NAICS 62. Results below were generated from the published 20-file Jobs_2026_US release on October 11, 2026 <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span>. The feature design adapts <span class="citation" data-cites="goindani2017">Goindani et al. (<a href="#ref-goindani2017" role="doc-biblioref">2017</a>)</span>, using scikit-learn estimators <span class="citation" data-cites="pedregosa2011">(<a href="#ref-pedregosa2011" role="doc-biblioref">Pedregosa et al. 2011</a>)</span>. The <a href="./pyspark_analysis.html">PySpark analysis</a> provides the processing code, feature construction and classifier implementations.</p>
+<p>The refreshed analysis uses <strong>815,193 posting records in 20 files</strong> from release <code>us-repack20-20261011-v1</code>. The complete source contains <strong>32,962 distinct normalized employer names</strong>. These names are not independently resolved legal entities, and posting records are not necessarily unique vacancies.</p>
+<p>The original January–September 2026 observation window and cohort rules are retained. They yield <strong>379 employers</strong> for binary classification, <strong>332 employers in 6 sectors</strong> for multiclass classification, and <strong>112 healthcare analyst postings</strong> for the career benchmark. The small modeling and career samples reflect these filters, not a source dataset of only a few hundred jobs.</p>
+<p>On held-out employers, linear SVM achieves healthcare-positive F1 <strong>0.588</strong> and GBDT <strong>0.615</strong>. The multiclass model selected by validation macro-F1 is Random forest, with test macro-F1 <strong>0.342</strong>. All three experiments, including the separately split Spark comparison, use matching input-file hashes. These scores measure agreement with supplied industry labels, not independent verification of employer industry.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/evaluation-comparison.png" class="img-fluid figure-img"></p>
+<figcaption>Held-out model performance on the refreshed release. Panels use different targets and test populations; compare models within each panel. The multiclass family is selected on validation data.</figcaption>
+</figure>
+</div>
+<p>GBDT identifies 16 of 35 healthcare employers and misses 19. Its high precision therefore does not justify automatic exclusion of employers predicted to be outside healthcare. The all-positive baseline reaches F1 0.631, illustrating why precision, recall and confusion counts are needed alongside F1. In the multiclass experiment, the selected model recovers no finance-and-insurance employers in the test set. Uneven sector support and a single small validation split constrain broader claims.</p>
+<p>The Spark comparison selects GBT by validation F1 and obtains test F1 0.654. Its deterministic hash-based split differs from the scikit-learn binary split. Score differences consequently mix partition and implementation effects and cannot establish an engine advantage.</p>
+<section id="finer-industry-labels-and-the-scope-of-evaluation" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="finer-industry-labels-and-the-scope-of-evaluation"><span class="header-section-number">1</span> Finer industry labels and the scope of evaluation</h2>
+<p>The NAICS 4, 5 and 6 explorer describes labels already present in the full source. It does not evaluate a trained fine-code classifier. Coverage decreases with code depth, so missing codes must remain visible in the denominator.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/naics-coverage.png" class="img-fluid figure-img"></p>
+<figcaption>NAICS code availability in the complete US release. Coverage is the share of posting records with a numeric source code of the required length; it is not a measure of classification accuracy.</figcaption>
+</figure>
+</div>
+<p>The career benchmark remains at sector 62 for continuity with the original design. A four-, five- or six-digit prediction experiment would need its own employer-support assessment, independently reviewed labels and leakage-controlled evaluation. SEC CIK and filing markers can supply dated employer evidence, but candidate name matches are not verified links or ground-truth NAICS labels.</p>
+<p>The pipeline read <strong>815,193 rows in 20 posting partitions</strong> from the local snapshot <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span> and selected January–September 2026 observations. All input files have recorded SHA-256 hashes. No posting ID appeared twice in this input snapshot.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -366,24 +372,23 @@ The model metrics below belong to the separate full-study run.</code></pre>
 </tr>
 <tr class="even">
 <td>Valid sector code available</td>
-<td>357,682</td>
+<td>365,148</td>
 </tr>
 <tr class="odd">
 <td>Not explicitly marked as staffing</td>
-<td>352,567</td>
+<td>360,033</td>
 </tr>
 <tr class="even">
 <td>Employer name and normalized title available</td>
-<td>352,566</td>
+<td>360,032</td>
 </tr>
 </tbody>
 </table>
 <p>Unknown country and unknown sector are exclusions, not negative industry labels. Staffing status that is missing is retained. The date, sector and staffing filters reduce the US-only source, so the retained sample is not representative of all Jobs_2026_US records or all US hiring.</p>
 </section>
-</section>
 <section id="employer-sample-and-split" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="employer-sample-and-split"><span class="header-section-number">2</span> Employer sample and split</h2>
-<p>There are 24,214 employer-name groups before employer-level filters. Of these, 22,438 have fewer than 20 eligible postings. A further 1,414 lack a sector covering at least 80% of their postings. The model therefore uses <strong>362 employers</strong>, below the paper’s 10,000-employer target; 85 have exactly consistent sector labels.</p>
+<p>There are 24,215 employer-name groups before employer-level filters. Of these, 22,437 have fewer than 20 eligible postings. A further 1,399 lack a sector covering at least 80% of their postings. The model therefore uses <strong>379 employers</strong>, below the paper’s 10,000-employer target; 87 have exactly consistent sector labels.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -396,21 +401,21 @@ The model metrics below belong to the separate full-study run.</code></pre>
 <tbody>
 <tr class="odd">
 <td>train</td>
-<td>253</td>
+<td>265</td>
 <td>120</td>
-<td>133</td>
+<td>145</td>
 </tr>
 <tr class="even">
 <td>validation</td>
-<td>36</td>
+<td>38</td>
 <td>17</td>
-<td>19</td>
+<td>21</td>
 </tr>
 <tr class="odd">
 <td>test</td>
-<td>73</td>
-<td>34</td>
-<td>39</td>
+<td>76</td>
+<td>35</td>
+<td>41</td>
 </tr>
 </tbody>
 </table>
@@ -431,31 +436,31 @@ The model metrics below belong to the separate full-study run.</code></pre>
 <tbody>
 <tr class="odd">
 <td>Linear SVM</td>
-<td>1.000</td>
-<td>0.382</td>
-<td>0.553</td>
-<td>0.712</td>
+<td>0.938</td>
+<td>0.429</td>
+<td>0.588</td>
+<td>0.724</td>
 </tr>
 <tr class="even">
 <td>GBDT</td>
-<td>1.000</td>
-<td>0.559</td>
-<td>0.717</td>
-<td>0.795</td>
+<td>0.941</td>
+<td>0.457</td>
+<td>0.615</td>
+<td>0.737</td>
 </tr>
 <tr class="odd">
 <td>Majority negative</td>
 <td>0.000</td>
 <td>0.000</td>
 <td>0.000</td>
-<td>0.534</td>
+<td>0.539</td>
 </tr>
 <tr class="even">
 <td>All positive</td>
-<td>0.466</td>
+<td>0.461</td>
 <td>1.000</td>
-<td>0.636</td>
-<td>0.466</td>
+<td>0.631</td>
+<td>0.461</td>
 </tr>
 </tbody>
 </table>
@@ -465,12 +470,12 @@ The model metrics below belong to the separate full-study run.</code></pre>
 <figcaption>Confusion matrices on held-out employers. Rows are dataset-derived labels and columns are model predictions.</figcaption>
 </figure>
 </div>
-<p>These metrics measure agreement with dataset-derived sector labels, not independently verified employer truth. GBDT misses 15 of the 34 healthcare employers, with 0 false positives among 39 other employers. This small sample cannot establish perfect precision in deployment. The all-positive baseline has F1 0.636, compared with GBDT’s 0.717; ranking models on F1 alone would conceal their very different precision and recall.</p>
+<p>These metrics measure agreement with dataset-derived sector labels, not independently verified employer truth. GBDT misses 19 of the 35 healthcare employers, with 1 false positives among 41 other employers. This small sample cannot establish perfect precision in deployment. The all-positive baseline has F1 0.631, compared with GBDT’s 0.615; ranking models on F1 alone would conceal their very different precision and recall.</p>
 <p>For a career product, predicted healthcare labels could narrow an employer-review queue, but the missed healthcare employers would make automatic exclusion costly. Retain existing labels and review disagreements before changing the career sample. No manually adjudicated undefined-employer labels are available, so the paper’s utility scores cannot be reproduced here.</p>
 </section>
 <section id="training-and-feature-details" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="training-and-feature-details"><span class="header-section-number">4</span> Training and feature details</h2>
-<p>Vocabulary thresholds are learned from the training employers only. The selected vocabulary contains 431 title candidates and 12 name words. After the 1% within-employer filter, the fitted matrix has 258 observed columns; candidates absent from all training feature vectors are dropped.</p>
+<p>Vocabulary thresholds are learned from the training employers only. The selected vocabulary contains 941 title candidates and 8 name words. After the 1% within-employer filter, the fitted matrix has 418 observed columns; candidates absent from all training feature vectors are dropped.</p>
 <p>The linear SVM tests C = 0.1, 1 and 10 with balanced class penalties. GBDT tests depths 2 and 3 with 100 estimators and learning rate 0.1. Each model is chosen by validation F1, then evaluated on the test partition without refitting. Exact configurations, validation scores, versions and full classification reports are in <a href="data/study/run.json">run.json</a>.</p>
 </section>
 <section id="differences-from-the-paper" class="level2" data-number="5">
@@ -533,9 +538,39 @@ The model metrics below belong to the separate full-study run.</code></pre>
 <h2 data-number="9" class="anchored" data-anchor-id="independent-validation-still-needed"><span class="header-section-number">9</span> Independent validation still needed</h2>
 <p>Use an employer-disjoint holdout and independently reviewed labels. Report precision, recall, F1, class support and a confusion matrix separately for each industry. Review a sample of both agreement and disagreement records. A fair comparison should include the legacy label system and simple baselines. Document how many review flags are useful and the analyst time required.</p>
 <p>The scikit-learn study fits and evaluates a linear SVM and GBDT, including confusion matrices and simple baselines. It uses dataset-derived labels without independent adjudication. Market benchmarks have been calculated, but the weighted career scorecard remains uncomputed because personal ratings and sufficient salary evidence are unavailable.</p>
+</section>
+<section id="executed-sample-code-and-partial-output" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="executed-sample-code-and-partial-output"><span class="header-section-number">10</span> Executed sample: code and partial output</h2>
+<p>This walkthrough uses <code>sample=true</code> on the local Jobs_2026_US partitions. With sampling enabled, SHA-256 of seed 2017 and posting ID selects approximately 10% of IDs across all partitions; missing IDs are excluded and duplicates keep their first occurrence. This scans every partition but retains only selected rows. These descriptive sample results are separate from the full-study tables below. Code is shown expanded; outputs are captured from that exact code by <code>scripts/publish_sample.py</code>. Only aggregates and a schema preview are published. Run chunks in page order: preparation, market, skills, evaluation.</p>
+<section id="check-sample-support-before-model-fitting" class="level3" data-number="10.1">
+<h3 data-number="10.1" class="anchored" data-anchor-id="check-sample-support-before-model-fitting"><span class="header-section-number">10.1</span> Check sample support before model fitting</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the existing employer eligibility rules to the sampled postings.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>employers <span class="op">=</span> {}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> jobs.to_dict(<span class="st">'records'</span>):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> re.sub(<span class="vs">r'</span><span class="dv">\s</span><span class="op">+</span><span class="vs">'</span>, <span class="st">' '</span>, clean(row[<span class="st">'COMPANY_NAME'</span>]).casefold())</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> clean(row[<span class="st">'TITLE_NAME'</span>]).casefold()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> name <span class="kw">or</span> name <span class="kw">in</span> (<span class="st">'unknown'</span>, <span class="st">'unclassified'</span>) <span class="kw">or</span> <span class="kw">not</span> title <span class="kw">or</span> title <span class="op">==</span> <span class="st">'unclassified'</span>:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    employers.setdefault(name, Counter()).update([row[<span class="st">'sector'</span>]])</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>eligible <span class="op">=</span> [counts <span class="cf">for</span> counts <span class="kw">in</span> employers.values()</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> counts.total() <span class="op">&gt;=</span> <span class="dv">20</span> <span class="kw">and</span> counts.most_common(<span class="dv">1</span>)[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">/</span> counts.total() <span class="op">&gt;=</span> <span class="fl">.8</span>]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>support <span class="op">=</span> Counter(<span class="bu">int</span>(counts.most_common(<span class="dv">1</span>)[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">==</span> <span class="st">'62'</span>) <span class="cf">for</span> counts <span class="kw">in</span> eligible)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Eligible employers in this sample: </span><span class="sc">{</span><span class="bu">len</span>(eligible)<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Healthcare: </span><span class="sc">{</span>support[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">; other sectors: </span><span class="sc">{</span>support[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Minimum split support met: </span><span class="sc">{</span><span class="bu">len</span>(eligible) <span class="op">&gt;=</span> <span class="dv">50</span> <span class="kw">and</span> <span class="bu">min</span>(support[<span class="dv">0</span>], support[<span class="dv">1</span>]) <span class="op">&gt;=</span> <span class="dv">10</span><span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'No classifier is fitted in this sample walkthrough.'</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The model metrics below belong to the separate full-study run.'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Partial output (computed from this run):</p>
+<pre class="text"><code>Eligible employers in this sample: 62
+Healthcare: 31; other sectors: 31
+Minimum split support met: True
+No classifier is fitted in this sample walkthrough.
+The model metrics below belong to the separate full-study run.</code></pre>
 
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
@@ -543,7 +578,7 @@ The model metrics below belong to the separate full-study run.</code></pre>
 Goindani, Mahak, Qiaoling Liu, Josh Chao, and Valentin Jijkoun. 2017. <span>“Employer Industry Classification Using Job Postings.”</span> <em>2017 IEEE International Conference on Data Mining Workshops (ICDMW)</em>. <a href="https://doi.org/10.1109/ICDMW.2017.30">https://doi.org/10.1109/ICDMW.2017.30</a>.
 </div>
 <div id="ref-jobs2026" class="csl-entry" role="listitem">
-<em><span>Jobs_2026_US</span>: Local Course Dataset Snapshot</em>. 2026. 82 local Parquet posting partitions.
+<em><span>Jobs_2026_US</span>: Local Course Dataset Snapshot</em>. 2026. 20 local Parquet posting partitions, release us-repack20-20261011-v1.
 </div>
 <div id="ref-pedregosa2011" class="csl-entry" role="listitem">
 Pedregosa, Fabian, Gaël Varoquaux, Alexandre Gramfort, et al. 2011. <span>“Scikit-Learn: Machine Learning in <span>Python</span>.”</span> <em>Journal of Machine Learning Research</em> 12 (85): 2825–30. <a href="https://www.jmlr.org/papers/v12/pedregosa11a.html">https://www.jmlr.org/papers/v12/pedregosa11a.html</a>.

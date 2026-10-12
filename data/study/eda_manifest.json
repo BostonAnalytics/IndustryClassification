@@ -1,9 +1,9 @@
 {
   "inputs": {
-    "run.json": "66568fcb7d03502ae616aaf36deb413718af8d88d78481d4cc63504c6e0a7e2c",
-    "market_skills.csv": "8e7d7ccd04bf24e580aece883bb330bca003da662450aa53f3d81249c93c6519"
+    "run.json": "e919bcef71e725594ccafa3dbd312ede336eac034c915956b849e028d43fce15",
+    "market_skills.csv": "f1a64be507c3de3c4d92964cd328f06cf53e6dd2b7428f3674bd2d485b0c93fa"
   },
-  "matplotlib": "3.11.1",
+  "matplotlib": "3.11.0",
   "career_denominator": 112,
   "figures": [
     "eda-selection.png",

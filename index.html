@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Job Postings Research</title>
+<title>Healthcare data analyst career evaluation – Healthcare Analyst Careers</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -45,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e6adfd07584e5f885366b9a80c6940e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6383180e1ca5481f76f50eff3beeaa46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,11 +92,13 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -85,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Job Postings Research</span>
+    <span class="navbar-title">Healthcare Analyst Careers</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -96,19 +117,19 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+<span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./01_data_exploration.html"> 
-<span class="menu-text">Data Exploration</span></a>
+    <a class="nav-link" href="./introduction.html"> 
+<span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./02_modeling.html"> 
-<span class="menu-text">Modeling</span></a>
+    <a class="nav-link" href="./market_baseline.html"> 
+<span class="menu-text">Market and EDA</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./naics_explorer.html"> 
-<span class="menu-text">Industry Explorer</span></a>
+    <a class="nav-link" href="./career_evaluation.html"> 
+<span class="menu-text">Evaluation</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -116,24 +137,127 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Healthcare data analyst career evaluation</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Healthcare data analyst career evaluation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_preparation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data preparation and analytical design</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./market_baseline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Market baseline and exploratory analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explore the saved results</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Complete analysis and export code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./skill_gap_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Skill-gap analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./career_evaluation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Career evaluation and model evidence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pyspark_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data processing and classification in PySpark</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multiclass_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiclass industry classification</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./final_recommendations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recommendations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References and source provenance</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ai-disclosure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AI disclosure</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_coverage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Full dataset coverage and employer evidence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naics_explorer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Industry explorer</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#industry-groups-are-not-job-counts" id="toc-industry-groups-are-not-job-counts" class="nav-link active" data-scroll-target="#industry-groups-are-not-job-counts">Industry groups are not job counts</a>
-  <ul class="collapse">
-  <li><a href="#us-classification-coverage" id="toc-us-classification-coverage" class="nav-link" data-scroll-target="#us-classification-coverage">US classification coverage</a></li>
-  </ul></li>
-  <li><a href="#sec-evidence-source-coverage-and-candidate-matches" id="toc-sec-evidence-source-coverage-and-candidate-matches" class="nav-link" data-scroll-target="#sec-evidence-source-coverage-and-candidate-matches">SEC evidence: source coverage and candidate matches</a></li>
-  <li><a href="#posting-dates-in-the-us-snapshot" id="toc-posting-dates-in-the-us-snapshot" class="nav-link" data-scroll-target="#posting-dates-in-the-us-snapshot">Posting dates in the US snapshot</a></li>
-  <li><a href="#useful-field-coverage-in-us-records" id="toc-useful-field-coverage-in-us-records" class="nav-link" data-scroll-target="#useful-field-coverage-in-us-records">Useful field coverage in US records</a></li>
-  <li><a href="#understand-the-evidence" id="toc-understand-the-evidence" class="nav-link" data-scroll-target="#understand-the-evidence">Understand the evidence</a></li>
+  <li><a href="#research-and-product-question" id="toc-research-and-product-question" class="nav-link active" data-scroll-target="#research-and-product-question">Research and product question</a></li>
+  <li><a href="#evidence-at-a-glance" id="toc-evidence-at-a-glance" class="nav-link" data-scroll-target="#evidence-at-a-glance">Evidence at a glance</a></li>
+  <li><a href="#read-the-study" id="toc-read-the-study" class="nav-link" data-scroll-target="#read-the-study">Read the study</a></li>
+  <li><a href="#scope-and-limitations" id="toc-scope-and-limitations" class="nav-link" data-scroll-target="#scope-and-limitations">Scope and limitations</a></li>
   </ul>
 </nav>
     </div>
@@ -142,7 +266,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Job Postings Research</h1>
+<h1 class="title">Healthcare data analyst career evaluation</h1>
+<p class="subtitle lead">Industry-label quality, market evidence and learning priorities</p>
 </div>
 
 
@@ -159,259 +284,50 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Explore the complete global and US job-posting snapshots. Compare the size of the datasets with industry-classification coverage and the separate SEC evidence preview.</p>
-<p>Aggregate refresh: <strong>2026-10-12 UTC</strong>. Full published snapshots; all 20 files per dataset.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Dataset</th>
-<th style="text-align: right;">Posting records</th>
-<th style="text-align: right;">Distinct employer names</th>
-<th style="text-align: right;">Source columns</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Global</td>
-<td style="text-align: right;"><strong>2,350,355</strong></td>
-<td style="text-align: right;"><strong>288,870</strong></td>
-<td style="text-align: right;">273</td>
-</tr>
-<tr class="even">
-<td>US 2026</td>
-<td style="text-align: right;"><strong>815,193</strong></td>
-<td style="text-align: right;"><strong>32,962</strong></td>
-<td style="text-align: right;">288</td>
-</tr>
-</tbody>
-</table>
-<p>The US dataset overlaps the global dataset: <strong>do not add their totals</strong>. Employer counts are normalized names, not verified legal entities. Posting records retain duplicate advertisements and do not measure currently live vacancies.</p>
-<section id="industry-groups-are-not-job-counts" class="level2">
-<h2 class="anchored" data-anchor-id="industry-groups-are-not-job-counts">Industry groups are not job counts</h2>
-<p>A result around 200 can describe the number of industry categories. Each category can contain thousands of posting records. The explorer shows both measures separately.</p>
-<section id="us-classification-coverage" class="level3">
-<h3 class="anchored" data-anchor-id="us-classification-coverage">US classification coverage</h3>
-<p><strong>815,193 posting records</strong> · <strong>32,962 distinct employer names</strong> · <strong>20 verified files</strong></p>
-<p>Snapshot: <code>us-repack20-20261011-v1</code>. All records are included; no title, industry, staffing, or model-training filter is applied.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 21%">
-<col style="width: 21%">
-<col style="width: 21%">
-<col style="width: 21%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>NAICS level</th>
-<th style="text-align: right;">Industry groups</th>
-<th style="text-align: right;">Classified posting records</th>
-<th style="text-align: right;">Coverage</th>
-<th style="text-align: right;">Missing codes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>4</td>
-<td style="text-align: right;">238</td>
-<td style="text-align: right;">263,862</td>
-<td style="text-align: right;">32.4%</td>
-<td style="text-align: right;">551,331</td>
-</tr>
-<tr class="even">
-<td>5</td>
-<td style="text-align: right;">260</td>
-<td style="text-align: right;">144,209</td>
-<td style="text-align: right;">17.7%</td>
-<td style="text-align: right;">670,984</td>
-</tr>
-<tr class="odd">
-<td>6</td>
-<td style="text-align: right;">255</td>
-<td style="text-align: right;">93,911</td>
-<td style="text-align: right;">11.5%</td>
-<td style="text-align: right;">721,282</td>
-</tr>
-</tbody>
-</table>
+<section id="research-and-product-question" class="level2">
+<h2 class="anchored" data-anchor-id="research-and-product-question">Research and product question</h2>
+<p>Which skills and work arrangements recur in US healthcare analyst postings, and how reliably can posting-derived features identify healthcare employers for reviewing that sample?</p>
+<p>This project supports students targeting <strong>healthcare data analyst roles in NAICS 62, Health Care and Social Assistance</strong>. It adapts employer-industry classification research <span class="citation" data-cites="goindani2017">(<a href="#ref-goindani2017" role="doc-biblioref">Goindani et al. 2017</a>)</span> to a local Jobs_2026_US snapshot <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span>. The observed sample supports an emphasis on SQL and visualization skills; sparse compensation evidence limits salary advice.</p>
 </section>
+<section id="evidence-at-a-glance" class="level2">
+<h2 class="anchored" data-anchor-id="evidence-at-a-glance">Evidence at a glance</h2>
+<p>The January–September 2026 analysis selects <strong>112 career postings</strong> and <strong>379 employers</strong> for binary classification from <strong>815,193 posting records in 20 files</strong>. The full source contains <strong>32,962 normalized employer names</strong>. The multiclass extension retains <strong>332 employers across 6 sectors</strong>.</p>
+<p>Employer-name-disjoint test F1 is <strong>0.588 for linear SVM</strong> and <strong>0.615 for GBDT</strong>. The validation-selected multiclass random forest scores <strong>0.342 macro-F1</strong>. These are measures of agreement with dataset-derived labels. SQL appears in 63 career postings; only three have a positive normalized salary with explicit USD.</p>
+<p>The original research structure and observation window are retained. The <a href="./career_evaluation.html">refreshed evaluation</a> explains the samples, errors and implications. <a href="./data_coverage.html">Full dataset coverage</a> and the <a href="./naics_explorer.html">NAICS 4/5/6 explorer</a> supplement the paper with source-wide counts.</p>
 </section>
-<section id="sec-evidence-source-coverage-and-candidate-matches" class="level2">
-<h2 class="anchored" data-anchor-id="sec-evidence-source-coverage-and-candidate-matches">SEC evidence: source coverage and candidate matches</h2>
-<p>The full header audit inspected <strong>32,110 filings</strong>, extracting <strong>30,200 usable filing observations</strong> for <strong>8,746 CIKs</strong>. These describe historical filing entities, not the number of employers in the jobs dataset.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 26%">
-<col style="width: 26%">
-<col style="width: 26%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Dataset</th>
-<th style="text-align: right;">Job records with a candidate issuer</th>
-<th style="text-align: right;">Share of records</th>
-<th style="text-align: right;">Ambiguous job records</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Global</td>
-<td style="text-align: right;">3,202</td>
-<td style="text-align: right;">0.14%</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="even">
-<td>US 2026</td>
-<td style="text-align: right;">2,898</td>
-<td style="text-align: right;">0.36%</td>
-<td style="text-align: right;">11</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Candidate matches are not verified employer links.</strong> They use exact normalized filed names and filings dated no later than the posting. No confirmed employer CIK or job classification is inferred from a name match. These preview results have not been written into the published job snapshots.</p>
-<p>The SEC reference import is complete locally. Azure migration and production job enrichment remain pending; this site reports published data and the separate matching preview.</p>
+<section id="read-the-study" class="level2">
+<h2 class="anchored" data-anchor-id="read-the-study">Read the study</h2>
+<p>Explore the <a href="./interactive.html">interactive charts, US map and downloadable tables</a>, or read the <a href="./analysis_code.html">complete analysis and export code</a>.</p>
+<ol type="1">
+<li><a href="./introduction.html">Introduction and literature review</a>: rationale, research questions and industry scope.</li>
+<li><a href="./data_preparation.html">Data preparation</a>: filters, fields, leakage controls and reproduction commands.</li>
+<li><a href="./market_baseline.html">Market baseline and EDA</a>: sample selection, field coverage, role labels, skills, location and work arrangement.</li>
+<li><a href="./skill_gap_analysis.html">Skill-gap analysis</a>: observed market skills and the assessment method.</li>
+<li><a href="./career_evaluation.html">Career evaluation</a>: model evidence, interpretation and proposed scorecard.</li>
+<li><a href="./final_recommendations.html">Final recommendations</a>: sample-supported learning priorities and limitations.</li>
+</ol>
+<p>Read the <a href="./pyspark_analysis.html">PySpark analysis</a> or download the <a href="final_report.docx">Word report</a>.</p>
+<p>The additional <a href="./multiclass_analysis.html">multiclass industry experiment</a> predicts broad NAICS sectors with sufficient employer support. It reports class coverage, macro-F1, per-sector metrics and confusion counts while retaining the healthcare career benchmark.</p>
 </section>
-<section id="posting-dates-in-the-us-snapshot" class="level2">
-<h2 class="anchored" data-anchor-id="posting-dates-in-the-us-snapshot">Posting dates in the US snapshot</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Posting month</th>
-<th style="text-align: right;">Records</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2026-01</td>
-<td style="text-align: right;">2,187</td>
-</tr>
-<tr class="even">
-<td>2026-02</td>
-<td style="text-align: right;">2,941</td>
-</tr>
-<tr class="odd">
-<td>2026-03</td>
-<td style="text-align: right;">5,256</td>
-</tr>
-<tr class="even">
-<td>2026-04</td>
-<td style="text-align: right;">9,600</td>
-</tr>
-<tr class="odd">
-<td>2026-05</td>
-<td style="text-align: right;">29,794</td>
-</tr>
-<tr class="even">
-<td>2026-06</td>
-<td style="text-align: right;">230,366</td>
-</tr>
-<tr class="odd">
-<td>2026-07</td>
-<td style="text-align: right;">66,492</td>
-</tr>
-<tr class="even">
-<td>2026-08</td>
-<td style="text-align: right;">129,591</td>
-</tr>
-<tr class="odd">
-<td>2026-09</td>
-<td style="text-align: right;">324,234</td>
-</tr>
-<tr class="even">
-<td>2026-10</td>
-<td style="text-align: right;">14,725</td>
-</tr>
-<tr class="odd">
-<td>2026-11</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td>2026-12</td>
-<td style="text-align: right;">3</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Date-quality flag:</strong> 7 records have posting months later than this refresh month. They remain in the source totals and should be reviewed.</p>
-<p>Posting dates describe source records, not confirmed hiring activity or job liveness.</p>
-<p><a href="data/overview/coverage.json">Download coverage evidence</a> · <a href="data/global/snapshot.json">Global snapshot evidence</a> · <a href="./naics_explorer.html">US industry explorer</a></p>
-</section>
-<section id="useful-field-coverage-in-us-records" class="level2">
-<h2 class="anchored" data-anchor-id="useful-field-coverage-in-us-records">Useful field coverage in US records</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Field</th>
-<th style="text-align: right;">Populated records</th>
-<th style="text-align: right;">Share of US records</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>City name</td>
-<td style="text-align: right;">771,204</td>
-<td style="text-align: right;">94.60%</td>
-</tr>
-<tr class="even">
-<td>Metro area</td>
-<td style="text-align: right;">41,895</td>
-<td style="text-align: right;">5.14%</td>
-</tr>
-<tr class="odd">
-<td>Detailed occupation code</td>
-<td style="text-align: right;">341,517</td>
-<td style="text-align: right;">41.89%</td>
-</tr>
-<tr class="even">
-<td>Salary lower bound</td>
-<td style="text-align: right;">130,951</td>
-<td style="text-align: right;">16.06%</td>
-</tr>
-<tr class="odd">
-<td>Salary upper bound</td>
-<td style="text-align: right;">127,465</td>
-<td style="text-align: right;">15.64%</td>
-</tr>
-<tr class="even">
-<td>Archived posting HTML</td>
-<td style="text-align: right;">67,561</td>
-<td style="text-align: right;">8.29%</td>
-</tr>
-<tr class="odd">
-<td>Employer website</td>
-<td style="text-align: right;">139</td>
-<td style="text-align: right;">0.02%</td>
-</tr>
-<tr class="even">
-<td>Employer description</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0.00%</td>
-</tr>
-<tr class="odd">
-<td>Employer careers page</td>
-<td style="text-align: right;">195</td>
-<td style="text-align: right;">0.02%</td>
-</tr>
-<tr class="even">
-<td>Recorded liveness-check time</td>
-<td style="text-align: right;">41,137</td>
-<td style="text-align: right;">5.05%</td>
-</tr>
-</tbody>
-</table>
-<p>Populated means a value is present in the source coverage export; it does not prove accuracy. A recorded liveness check is not evidence that the job is open today. Missing employer and location detail remains visible rather than being inferred.</p>
-<p><a href="./naics_explorer.html" class="btn btn-primary">Explore NAICS 4, 5 and 6 industries</a></p>
-</section>
-<section id="understand-the-evidence" class="level2">
-<h2 class="anchored" data-anchor-id="understand-the-evidence">Understand the evidence</h2>
-<p><strong>Posting records</strong> count source rows, including repeated advertisements. <strong>Employer counts</strong> count distinct normalized company names and are not a count of jobs. Employers can appear in several industries. <strong>Training samples</strong> belong to a separate modeling experiment; this explorer does not train or evaluate a classifier.</p>
-<p>The <a href="./01_data_exploration.html">Data Exploration</a> page explains coverage and verification. The <a href="./02_modeling.html">Modeling</a> page defines how a future classifier should be evaluated separately from existing source labels.</p>
-<p>The website publishes aggregates only. Raw source data remains in the dataset folders.</p>
+<section id="scope-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="scope-and-limitations">Scope and limitations</h2>
+<p>The study follows the career evaluation framework in Module 1 <span class="citation" data-cites="ad688m1">(<a href="#ref-ad688m1" role="doc-biblioref">AD688 course materials, n.d.</a>)</span>. Sector 62 combines healthcare and social assistance, so the findings do not describe a single healthcare subsector. Personal skill assessments and adequate salary coverage are unavailable; no weighted opportunity score is calculated.</p>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-ad688m1" class="csl-entry" role="listitem">
+AD688 course materials. n.d. <em>Module 1 Project Instructions: Complete Career Evaluation Pipeline and Step 1</em>. Local course guide, M1/M01_Proj.qmd.
+</div>
+<div id="ref-goindani2017" class="csl-entry" role="listitem">
+Goindani, Mahak, Qiaoling Liu, Josh Chao, and Valentin Jijkoun. 2017. <span>“Employer Industry Classification Using Job Postings.”</span> <em>2017 IEEE International Conference on Data Mining Workshops (ICDMW)</em>. <a href="https://doi.org/10.1109/ICDMW.2017.30">https://doi.org/10.1109/ICDMW.2017.30</a>.
+</div>
+<div id="ref-jobs2026" class="csl-entry" role="listitem">
+<em><span>Jobs_2026_US</span>: Local Course Dataset Snapshot</em>. 2026. 20 local Parquet posting partitions, release us-repack20-20261011-v1.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -499,6 +415,11 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -813,8 +734,22 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Healthcare data analysts · NAICS 62 · January–September 2026 sample</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

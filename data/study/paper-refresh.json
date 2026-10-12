@@ -1,0 +1,14 @@
+{
+  "release_id": "us-repack20-20261011-v1",
+  "source_manifest_sha256": "6468ee59a42a3490ff9ffffd11cf9769324e154e7cdf9b3a39ddf43364ccfd93",
+  "inputs": {
+    "data/study/run.json": "e919bcef71e725594ccafa3dbd312ede336eac034c915956b849e028d43fce15",
+    "data/multiclass/run.json": "7b5d5160a0c3a02f8cbf06ed897818eda08ec05c7d2cd16c7cf03873d58410fe",
+    "data/spark-study/run.json": "7968d3f3aa759a7d436ff7bbabcdf19972757916ae19c781e37afe17eab40409",
+    "data/eda/run.json": "c2ea967f1066a9df616c54cfb446e7c81ce135d26c31fef40568597874831e1b"
+  },
+  "binary_employers": 379,
+  "career_postings": 112,
+  "multiclass_employers": 332,
+  "matched_input_hashes": true
+}

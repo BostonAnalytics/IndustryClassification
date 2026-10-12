@@ -19,6 +19,12 @@ class Links(HTMLParser):
 
 def verify():
     errors = []
+    allowed_directories = {'images', 'data', 'scripts', 'notebooks', 'site_libs'}
+    unexpected = {p.name for p in SITE.iterdir() if p.is_dir()} - allowed_directories
+    assert not unexpected, f'Unexpected publication directories: {sorted(unexpected)}'
+    forbidden = {'.venv', '.git', '.env', '__pycache__'}
+    assert not any(forbidden.intersection(p.relative_to(SITE).parts) or p.suffix == '.parquet'
+                   for p in SITE.rglob('*')), 'Local environment or raw data in output'
     sources = [p for p in ROOT.glob('*.qmd') if p.name != 'final_report.qmd']
     for source in sources:
         if not (SITE / source.with_suffix('.html').name).is_file():

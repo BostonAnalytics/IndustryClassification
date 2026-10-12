@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,10 +96,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7f84833fb3be5a6d5023b86a51ac5183.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6383180e1ca5481f76f50eff3beeaa46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -162,7 +162,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light"><aside style="padding:1rem;background:#fff3cd;color:#332700">Historical analysis from the previous publication. Its samples and results are separate from the current full datasets. <a href="index.html">See current dataset counts and coverage</a>.</aside>
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -296,6 +296,18 @@ window.Quarto = {
  <span class="menu-text">AI disclosure</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_coverage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Full dataset coverage and employer evidence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naics_explorer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Industry explorer</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -306,14 +318,14 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#executed-sample-code-and-partial-output" id="toc-executed-sample-code-and-partial-output" class="nav-link active" data-scroll-target="#executed-sample-code-and-partial-output">Executed sample: code and partial output</a>
-  <ul class="collapse">
-  <li><a href="#decode-skills-and-calculate-posting-shares" id="toc-decode-skills-and-calculate-posting-shares" class="nav-link" data-scroll-target="#decode-skills-and-calculate-posting-shares">Decode skills and calculate posting shares</a></li>
-  </ul></li>
-  <li><a href="#observed-market-skills" id="toc-observed-market-skills" class="nav-link" data-scroll-target="#observed-market-skills">Observed market skills</a></li>
+  <li><a href="#observed-market-skills" id="toc-observed-market-skills" class="nav-link active" data-scroll-target="#observed-market-skills">Observed market skills</a></li>
   <li><a href="#personal-assessment-evidence" id="toc-personal-assessment-evidence" class="nav-link" data-scroll-target="#personal-assessment-evidence">Personal assessment evidence</a></li>
   <li><a href="#proposed-calculation" id="toc-proposed-calculation" class="nav-link" data-scroll-target="#proposed-calculation">Proposed calculation</a></li>
   <li><a href="#collection-format" id="toc-collection-format" class="nav-link" data-scroll-target="#collection-format">Collection format</a></li>
+  <li><a href="#executed-sample-code-and-partial-output" id="toc-executed-sample-code-and-partial-output" class="nav-link" data-scroll-target="#executed-sample-code-and-partial-output">Executed sample: code and partial output</a>
+  <ul class="collapse">
+  <li><a href="#decode-skills-and-calculate-posting-shares" id="toc-decode-skills-and-calculate-posting-shares" class="nav-link" data-scroll-target="#decode-skills-and-calculate-posting-shares">Decode skills and calculate posting shares</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -339,42 +351,6 @@ window.Quarto = {
 </header>
 
 
-<section id="executed-sample-code-and-partial-output" class="level2">
-<h2 class="anchored" data-anchor-id="executed-sample-code-and-partial-output">Executed sample: code and partial output</h2>
-<p>This walkthrough uses <code>sample=true</code> on the local Jobs_2026_US partitions. With sampling enabled, SHA-256 of seed 2017 and posting ID selects approximately 10% of IDs across all partitions; missing IDs are excluded and duplicates keep their first occurrence. This scans every partition but retains only selected rows. These descriptive sample results are separate from the full-study tables below. Code is shown expanded; outputs are captured from that exact code by <code>scripts/publish_sample.py</code>. Only aggregates and a schema preview are published. Run chunks in page order: preparation, market, skills, evaluation.</p>
-<section id="decode-skills-and-calculate-posting-shares" class="level3">
-<h3 class="anchored" data-anchor-id="decode-skills-and-calculate-posting-shares">Decode skills and calculate posting shares</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>skills <span class="op">=</span> Counter()</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>malformed <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> career.SKILLS_NAME:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        items <span class="op">=</span> json.loads(clean(value) <span class="kw">or</span> <span class="st">'[]'</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(items, <span class="bu">list</span>):</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">'Expected a skill list'</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        skills.update({<span class="bu">str</span>(item).strip() <span class="cf">for</span> item <span class="kw">in</span> items <span class="cf">if</span> <span class="bu">str</span>(item).strip()})</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> (<span class="pp">ValueError</span>, <span class="pp">TypeError</span>):</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        malformed <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>skills_table <span class="op">=</span> pd.DataFrame([</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'skill'</span>: skill, <span class="st">'postings'</span>: count, <span class="st">'share'</span>: <span class="bu">round</span>(count <span class="op">/</span> <span class="bu">len</span>(career), <span class="dv">4</span>)}</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> skill, count <span class="kw">in</span> <span class="bu">sorted</span>(skills.items(), key<span class="op">=</span><span class="kw">lambda</span> item: (<span class="op">-</span>item[<span class="dv">1</span>], item[<span class="dv">0</span>]))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>], columns<span class="op">=</span>[<span class="st">'skill'</span>, <span class="st">'postings'</span>, <span class="st">'share'</span>])</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Denominator: </span><span class="sc">{</span><span class="bu">len</span>(career)<span class="sc">}</span><span class="ss"> cohort postings; malformed skill lists: </span><span class="sc">{</span>malformed<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(skills_table.head(<span class="dv">10</span>).to_string(index<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Partial output (computed from this run):</p>
-<pre class="text"><code>Denominator: 7 cohort postings; malformed skill lists: 0
-                              skill  postings  share
-                   Microsoft Office         3 0.4286
-                      Data Analysis         2 0.2857
-                    Data Collection         2 0.2857
-                Quality Improvement         2 0.2857
-         SQL (Programming Language)         2 0.2857
-        Verbal Communication Skills         2 0.2857
-Artificial Intelligence Development         1 0.1429
-                 Business Analytics         1 0.1429
-         C++ (Programming Language)         1 0.1429
-                  Care Coordination         1 0.1429</code></pre>
-</section>
-</section>
 <section id="observed-market-skills" class="level2">
 <h2 class="anchored" data-anchor-id="observed-market-skills">Observed market skills</h2>
 <p>Across 112 selected healthcare analyst postings, 105 have a nonempty skills list. Skills are decoded from the supplied JSON arrays and counted once per posting. The denominator includes all 112 postings; a missing list does not prove that the job needs no skills.</p>
@@ -501,9 +477,45 @@ Artificial Intelligence Development         1 0.1429
 </tbody>
 </table>
 <p>Once participant assessments are available, a skills-by-member heatmap can distinguish observed gaps from missing ratings.</p>
+</section>
+<section id="executed-sample-code-and-partial-output" class="level2">
+<h2 class="anchored" data-anchor-id="executed-sample-code-and-partial-output">Executed sample: code and partial output</h2>
+<p>This walkthrough uses <code>sample=true</code> on the local Jobs_2026_US partitions. With sampling enabled, SHA-256 of seed 2017 and posting ID selects approximately 10% of IDs across all partitions; missing IDs are excluded and duplicates keep their first occurrence. This scans every partition but retains only selected rows. These descriptive sample results are separate from the full-study tables below. Code is shown expanded; outputs are captured from that exact code by <code>scripts/publish_sample.py</code>. Only aggregates and a schema preview are published. Run chunks in page order: preparation, market, skills, evaluation.</p>
+<section id="decode-skills-and-calculate-posting-shares" class="level3">
+<h3 class="anchored" data-anchor-id="decode-skills-and-calculate-posting-shares">Decode skills and calculate posting shares</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>skills <span class="op">=</span> Counter()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>malformed <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> career.SKILLS_NAME:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        items <span class="op">=</span> json.loads(clean(value) <span class="kw">or</span> <span class="st">'[]'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(items, <span class="bu">list</span>):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">'Expected a skill list'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        skills.update({<span class="bu">str</span>(item).strip() <span class="cf">for</span> item <span class="kw">in</span> items <span class="cf">if</span> <span class="bu">str</span>(item).strip()})</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> (<span class="pp">ValueError</span>, <span class="pp">TypeError</span>):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        malformed <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>skills_table <span class="op">=</span> pd.DataFrame([</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'skill'</span>: skill, <span class="st">'postings'</span>: count, <span class="st">'share'</span>: <span class="bu">round</span>(count <span class="op">/</span> <span class="bu">len</span>(career), <span class="dv">4</span>)}</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> skill, count <span class="kw">in</span> <span class="bu">sorted</span>(skills.items(), key<span class="op">=</span><span class="kw">lambda</span> item: (<span class="op">-</span>item[<span class="dv">1</span>], item[<span class="dv">0</span>]))</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>], columns<span class="op">=</span>[<span class="st">'skill'</span>, <span class="st">'postings'</span>, <span class="st">'share'</span>])</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Denominator: </span><span class="sc">{</span><span class="bu">len</span>(career)<span class="sc">}</span><span class="ss"> cohort postings; malformed skill lists: </span><span class="sc">{</span>malformed<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(skills_table.head(<span class="dv">10</span>).to_string(index<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Partial output (computed from this run):</p>
+<pre class="text"><code>Denominator: 7 cohort postings; malformed skill lists: 0
+                              skill  postings  share
+                   Microsoft Office         3 0.4286
+                      Data Analysis         2 0.2857
+                    Data Collection         2 0.2857
+                Quality Improvement         2 0.2857
+         SQL (Programming Language)         2 0.2857
+        Verbal Communication Skills         2 0.2857
+Artificial Intelligence Development         1 0.1429
+                 Business Analytics         1 0.1429
+         C++ (Programming Language)         1 0.1429
+                  Care Coordination         1 0.1429</code></pre>
 
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
@@ -511,7 +523,7 @@ Artificial Intelligence Development         1 0.1429
 AD688 course materials. n.d. <em>Module 3 Career Evaluation Project Instructions</em>. Local course guide, M3/M03_Proj.qmd.
 </div>
 <div id="ref-jobs2026" class="csl-entry" role="listitem">
-<em><span>Jobs_2026_US</span>: Local Course Dataset Snapshot</em>. 2026. 82 local Parquet posting partitions.
+<em><span>Jobs_2026_US</span>: Local Course Dataset Snapshot</em>. 2026. 20 local Parquet posting partitions, release us-repack20-20261011-v1.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,10 +96,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d5b4e69c7e37b49c6591bcc5116dd748.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7f84833fb3be5a6d5023b86a51ac5183.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6383180e1ca5481f76f50eff3beeaa46.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -133,7 +133,7 @@ div.csl-indent {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light"><aside style="padding:1rem;background:#fff3cd;color:#332700">Historical analysis from the previous publication. Its samples and results are separate from the current full datasets. <a href="index.html">See current dataset counts and coverage</a>.</aside>
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -267,6 +267,18 @@ div.csl-indent {
  <span class="menu-text">AI disclosure</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_coverage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Full dataset coverage and employer evidence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naics_explorer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Industry explorer</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -277,22 +289,22 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#executed-sample-code-and-partial-output" id="toc-executed-sample-code-and-partial-output" class="nav-link active" data-scroll-target="#executed-sample-code-and-partial-output"><span class="header-section-number">1</span> Executed sample: code and partial output</a>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link active" data-scroll-target="#exploratory-data-analysis"><span class="header-section-number">1</span> Exploratory data analysis</a>
   <ul class="collapse">
-  <li><a href="#inspect-coverage-and-work-arrangements" id="toc-inspect-coverage-and-work-arrangements" class="nav-link" data-scroll-target="#inspect-coverage-and-work-arrangements"><span class="header-section-number">1.1</span> Inspect coverage and work arrangements</a></li>
+  <li><a href="#selection-and-units-of-analysis" id="toc-selection-and-units-of-analysis" class="nav-link" data-scroll-target="#selection-and-units-of-analysis"><span class="header-section-number">1.1</span> Selection and units of analysis</a></li>
+  <li><a href="#field-coverage-and-missing-evidence" id="toc-field-coverage-and-missing-evidence" class="nav-link" data-scroll-target="#field-coverage-and-missing-evidence"><span class="header-section-number">1.2</span> Field coverage and missing evidence</a></li>
+  <li><a href="#role-label-consistency" id="toc-role-label-consistency" class="nav-link" data-scroll-target="#role-label-consistency"><span class="header-section-number">1.3</span> Role-label consistency</a></li>
+  <li><a href="#skill-frequencies-and-denominators" id="toc-skill-frequencies-and-denominators" class="nav-link" data-scroll-target="#skill-frequencies-and-denominators"><span class="header-section-number">1.4</span> Skill frequencies and denominators</a></li>
+  <li><a href="#interpretation-and-reproducibility" id="toc-interpretation-and-reproducibility" class="nav-link" data-scroll-target="#interpretation-and-reproducibility"><span class="header-section-number">1.5</span> Interpretation and reproducibility</a></li>
   </ul></li>
-  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis"><span class="header-section-number">2</span> Exploratory data analysis</a>
+  <li><a href="#work-arrangements-and-geographic-context" id="toc-work-arrangements-and-geographic-context" class="nav-link" data-scroll-target="#work-arrangements-and-geographic-context"><span class="header-section-number">2</span> Work arrangements and geographic context</a></li>
+  <li><a href="#work-arrangement" id="toc-work-arrangement" class="nav-link" data-scroll-target="#work-arrangement"><span class="header-section-number">3</span> Work arrangement</a></li>
+  <li><a href="#geography" id="toc-geography" class="nav-link" data-scroll-target="#geography"><span class="header-section-number">4</span> Geography</a></li>
+  <li><a href="#salary-and-experience-limits" id="toc-salary-and-experience-limits" class="nav-link" data-scroll-target="#salary-and-experience-limits"><span class="header-section-number">5</span> Salary and experience limits</a></li>
+  <li><a href="#executed-sample-code-and-partial-output" id="toc-executed-sample-code-and-partial-output" class="nav-link" data-scroll-target="#executed-sample-code-and-partial-output"><span class="header-section-number">6</span> Executed sample: code and partial output</a>
   <ul class="collapse">
-  <li><a href="#selection-and-units-of-analysis" id="toc-selection-and-units-of-analysis" class="nav-link" data-scroll-target="#selection-and-units-of-analysis"><span class="header-section-number">2.1</span> Selection and units of analysis</a></li>
-  <li><a href="#field-coverage-and-missing-evidence" id="toc-field-coverage-and-missing-evidence" class="nav-link" data-scroll-target="#field-coverage-and-missing-evidence"><span class="header-section-number">2.2</span> Field coverage and missing evidence</a></li>
-  <li><a href="#role-label-consistency" id="toc-role-label-consistency" class="nav-link" data-scroll-target="#role-label-consistency"><span class="header-section-number">2.3</span> Role-label consistency</a></li>
-  <li><a href="#skill-frequencies-and-denominators" id="toc-skill-frequencies-and-denominators" class="nav-link" data-scroll-target="#skill-frequencies-and-denominators"><span class="header-section-number">2.4</span> Skill frequencies and denominators</a></li>
-  <li><a href="#interpretation-and-reproducibility" id="toc-interpretation-and-reproducibility" class="nav-link" data-scroll-target="#interpretation-and-reproducibility"><span class="header-section-number">2.5</span> Interpretation and reproducibility</a></li>
+  <li><a href="#inspect-coverage-and-work-arrangements" id="toc-inspect-coverage-and-work-arrangements" class="nav-link" data-scroll-target="#inspect-coverage-and-work-arrangements"><span class="header-section-number">6.1</span> Inspect coverage and work arrangements</a></li>
   </ul></li>
-  <li><a href="#work-arrangements-and-geographic-context" id="toc-work-arrangements-and-geographic-context" class="nav-link" data-scroll-target="#work-arrangements-and-geographic-context"><span class="header-section-number">3</span> Work arrangements and geographic context</a></li>
-  <li><a href="#work-arrangement" id="toc-work-arrangement" class="nav-link" data-scroll-target="#work-arrangement"><span class="header-section-number">4</span> Work arrangement</a></li>
-  <li><a href="#geography" id="toc-geography" class="nav-link" data-scroll-target="#geography"><span class="header-section-number">5</span> Geography</a></li>
-  <li><a href="#salary-and-experience-limits" id="toc-salary-and-experience-limits" class="nav-link" data-scroll-target="#salary-and-experience-limits"><span class="header-section-number">6</span> Salary and experience limits</a></li>
   </ul>
 </nav>
     </div>
@@ -319,54 +331,11 @@ div.csl-indent {
 
 
 <p>Explore the <a href="./interactive.html">interactive charts, US map and searchable data tables</a>.</p>
-<section id="executed-sample-code-and-partial-output" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="executed-sample-code-and-partial-output"><span class="header-section-number">1</span> Executed sample: code and partial output</h2>
-<p>This walkthrough uses <code>sample=true</code> on the local Jobs_2026_US partitions. With sampling enabled, SHA-256 of seed 2017 and posting ID selects approximately 10% of IDs across all partitions; missing IDs are excluded and duplicates keep their first occurrence. This scans every partition but retains only selected rows. These descriptive sample results are separate from the full-study tables below. Code is shown expanded; outputs are captured from that exact code by <code>scripts/publish_sample.py</code>. Only aggregates and a schema preview are published. Run chunks in page order: preparation, market, skills, evaluation.</p>
-<section id="inspect-coverage-and-work-arrangements" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="inspect-coverage-and-work-arrangements"><span class="header-section-number">1.1</span> Inspect coverage and work arrangements</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> run_study <span class="im">import</span> STATE_MAP</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> career.STATE_NAME.<span class="bu">map</span>(<span class="kw">lambda</span> value: STATE_MAP.get(clean(value).upper(), <span class="st">'Unknown'</span>))</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>remote <span class="op">=</span> career.REMOTE_TYPE_NAME.<span class="bu">map</span>(<span class="kw">lambda</span> value: {</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'remote'</span>: <span class="st">'Remote'</span>, <span class="st">'hybrid'</span>: <span class="st">'Hybrid'</span>, <span class="st">'onsite'</span>: <span class="st">'Onsite'</span>, <span class="st">'on-site'</span>: <span class="st">'Onsite'</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}.get(clean(value).lower(), <span class="st">'Unknown'</span>))</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>salary <span class="op">=</span> pd.to_numeric(career.NORMALIZED_SALARY, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>salary <span class="op">=</span> salary.where(career.TEXT_PAY_CURRENCY.eq(<span class="st">'USD'</span>) <span class="op">&amp;</span> salary.gt(<span class="dv">0</span>) <span class="op">&amp;</span> np.isfinite(salary))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>experience <span class="op">=</span> pd.to_numeric(career.MIN_YEARS_EXPERIENCE, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>coverage <span class="op">=</span> pd.Series({<span class="st">'cohort postings'</span>: <span class="bu">len</span>(career), <span class="st">'recognized state'</span>: states.ne(<span class="st">'Unknown'</span>).<span class="bu">sum</span>(),</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'known work arrangement'</span>: remote.ne(<span class="st">'Unknown'</span>).<span class="bu">sum</span>(), <span class="st">'positive USD salary'</span>: salary.notna().<span class="bu">sum</span>(),</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'nonnegative experience'</span>: experience.ge(<span class="dv">0</span>).<span class="bu">sum</span>()}, name<span class="op">=</span><span class="st">'Postings'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(coverage.to_string())</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Work arrangement counts:'</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(remote.value_counts().to_string())</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'State counts (first 5):'</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(states.value_counts().head(<span class="dv">5</span>).to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Partial output (computed from this run):</p>
-<pre class="text"><code>cohort postings           7
-recognized state          5
-known work arrangement    2
-positive USD salary       0
-nonnegative experience    6
-Work arrangement counts:
-REMOTE_TYPE_NAME
-Unknown    5
-Remote     1
-Hybrid     1
-State counts (first 5):
-STATE_NAME
-Unknown           2
-North Carolina    1
-Florida           1
-Ohio              1
-Texas             1</code></pre>
-</section>
-</section>
-<section id="exploratory-data-analysis" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="exploratory-data-analysis"><span class="header-section-number">2</span> Exploratory data analysis</h2>
+<section id="exploratory-data-analysis" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="exploratory-data-analysis"><span class="header-section-number">1</span> Exploratory data analysis</h2>
 <p>This descriptive analysis uses the saved Jobs_2026_US aggregates <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span>. It examines selection, available career evidence, normalized role labels and skills before interpreting the predictive results. All career percentages use the 112 selected postings unless another denominator is stated. Figures describe recorded advertisements, not live vacancies or population employment.</p>
-<section id="selection-and-units-of-analysis" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="selection-and-units-of-analysis"><span class="header-section-number">2.1</span> Selection and units of analysis</h3>
+<section id="selection-and-units-of-analysis" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="selection-and-units-of-analysis"><span class="header-section-number">1.1</span> Selection and units of analysis</h3>
 <div id="fig-eda-selection" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five horizontal bars show the number of records retained through date, country, industry and staffing filters.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-eda-selection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -377,10 +346,10 @@ Figure&nbsp;1: Sequential posting filters before industry-and-title career selec
 </figcaption>
 </figure>
 </div>
-<p>The common filters retain 352,567 of 815,193 records (43.2%). The explicit-US filter removes 0 dated records; unknown country and non-US country are combined in the saved exclusion count. These exclusions describe selection, not proof that every excluded record is erroneous. The pipeline then branches: industry-and-title matching yields 112 career postings, while employer aggregation and eligibility rules yield 362 employers for classification. Those are different units and should not appear as consecutive steps in a single funnel.</p>
+<p>The common filters retain 360,033 of 815,193 records (44.2%). The explicit-US filter removes 0 dated records; unknown country and non-US country are combined in the saved exclusion count. These exclusions describe selection, not proof that every excluded record is erroneous. The pipeline then branches: industry-and-title matching yields 112 career postings, while employer aggregation and eligibility rules yield 379 employers for classification. Those are different units and should not appear as consecutive steps in a single funnel.</p>
 </section>
-<section id="field-coverage-and-missing-evidence" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="field-coverage-and-missing-evidence"><span class="header-section-number">2.2</span> Field coverage and missing evidence</h3>
+<section id="field-coverage-and-missing-evidence" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="field-coverage-and-missing-evidence"><span class="header-section-number">1.2</span> Field coverage and missing evidence</h3>
 <div id="fig-eda-coverage" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Skills have the highest field coverage and explicit USD salary has the lowest; counts and percentages are printed beside each bar.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-eda-coverage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -435,8 +404,8 @@ Figure&nbsp;2: Availability of five career fields, with a common denominator of 
 </table>
 <p>Availability is field-specific: unavailable can mean missing, unrecognized or excluded by a validity rule. The fields can be missing in the same posting; these counts cannot be added to estimate incomplete records. Salary coverage supports withholding a distribution plot or salary ranking. Recorded experience values require review against requirement text, even when nonnegative.</p>
 </section>
-<section id="role-label-consistency" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="role-label-consistency"><span class="header-section-number">2.3</span> Role-label consistency</h3>
+<section id="role-label-consistency" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="role-label-consistency"><span class="header-section-number">1.3</span> Role-label consistency</h3>
 <div id="fig-eda-roles" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Normalized labels include Data Scientists, Senior Data Analyst, Management Analysts and the unexpected label Actors.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-eda-roles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -449,8 +418,8 @@ Figure&nbsp;3: Eight most frequent supplied TITLE_NAME labels in the career subs
 </div>
 <p>The saved table contains 67 distinct labels. The eight shown account for 41 of 112 postings; the other 59 labels account for 71. The career filter matches raw titles, with clean titles as fallback, whereas this chart uses supplied normalized titles. Labels such as Actors therefore signal records to inspect for disagreement; they do not establish that acting is a healthcare analytics pathway. Counts alone cannot determine whether the raw title, normalization or industry assignment is wrong. No records were relabeled or removed based on this plot.</p>
 </section>
-<section id="skill-frequencies-and-denominators" class="level3" data-number="2.4">
-<h3 data-number="2.4" class="anchored" data-anchor-id="skill-frequencies-and-denominators"><span class="header-section-number">2.4</span> Skill frequencies and denominators</h3>
+<section id="skill-frequencies-and-denominators" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="skill-frequencies-and-denominators"><span class="header-section-number">1.4</span> Skill frequencies and denominators</h3>
 <div id="fig-eda-skills" class="quarto-float quarto-figure quarto-figure-center anchored" alt="SQL is the most frequently listed skill, followed by Tableau; each bar shows a posting count and percentage.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-eda-skills-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -463,14 +432,14 @@ Figure&nbsp;4: Ten most frequently listed skills as percentages of all selected 
 </div>
 <p>SQL appears in 63 postings: 56.2% of all 112, or 60.0% of the 105 with nonempty skill lists. Keeping the 7 postings without skill lists in the primary denominator makes the coverage boundary visible. A missing list does not imply that a role requires no skills. These are marginal frequencies; no skill co-occurrence, correlations or causal training effects can be recovered from these aggregate tables.</p>
 </section>
-<section id="interpretation-and-reproducibility" class="level3" data-number="2.5">
-<h3 data-number="2.5" class="anchored" data-anchor-id="interpretation-and-reproducibility"><span class="header-section-number">2.5</span> Interpretation and reproducibility</h3>
+<section id="interpretation-and-reproducibility" class="level3" data-number="1.5">
+<h3 data-number="1.5" class="anchored" data-anchor-id="interpretation-and-reproducibility"><span class="header-section-number">1.5</span> Interpretation and reproducibility</h3>
 <p>The sample provides stronger descriptive support for skill priorities than for compensation advice. Work-arrangement and state summaries below retain their unknown categories. Temporal trends, salary-by-location comparisons and multivariable EDA require additional row-level summaries; the saved aggregates cannot establish those relationships.</p>
 <p>Run <code>python scripts/publish_eda.py</code> to regenerate these figures and tables from <code>run.json</code> and <code>market_skills.csv</code>, without refitting models. Download <a href="data/study/eda_selection.csv">selection counts</a>, <a href="data/study/eda_coverage.csv">coverage</a>, <a href="data/study/eda_roles.csv">role labels</a> and <a href="data/study/eda_skills.csv">skill shares</a>. Input hashes are recorded in <a href="data/study/eda_manifest.json">the EDA manifest</a>.</p>
 </section>
 </section>
-<section id="work-arrangements-and-geographic-context" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="work-arrangements-and-geographic-context"><span class="header-section-number">3</span> Work arrangements and geographic context</h2>
+<section id="work-arrangements-and-geographic-context" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="work-arrangements-and-geographic-context"><span class="header-section-number">2</span> Work arrangements and geographic context</h2>
 <p>The selected career sample contains <strong>112 postings</strong> dated 2026-01-15 through 2026-09-28. The scope is US healthcare data analysts in NAICS 62. Title matching includes data analyst, data analytics analyst, business intelligence analyst, BI analyst, clinical analyst and healthcare analyst phrases. Matching uses raw title, with clean title as fallback. This includes some clinical systems roles and can miss analyst titles phrased differently.</p>
 <p>The benchmark uses the posting’s supplied industry label. It does not filter on a model prediction. These are observed dataset counts, not estimates of all open jobs or currently live vacancies. Expiration and active-URL status were not used to define the cohort.</p>
 <table class="caption-top table">
@@ -516,8 +485,8 @@ Figure&nbsp;4: Ten most frequently listed skills as percentages of all selected 
 </table>
 <p>Source: local snapshot <span class="citation" data-cites="jobs2026">(<a href="#ref-jobs2026" role="doc-biblioref"><em><span>Jobs_2026_US</span></em> 2026</a>)</span>, analyzed by this project’s scripts; these observed counts are not findings of the 2017 paper.</p>
 </section>
-<section id="work-arrangement" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="work-arrangement"><span class="header-section-number">4</span> Work arrangement</h2>
+<section id="work-arrangement" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="work-arrangement"><span class="header-section-number">3</span> Work arrangement</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -557,8 +526,8 @@ Figure&nbsp;4: Ten most frequently listed skills as percentages of all selected 
 </div>
 <p>Unknown work arrangement is not onsite. The remote share is a lower bound on explicitly documented remote postings in this dataset, not a population estimate.</p>
 </section>
-<section id="geography" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="geography"><span class="header-section-number">5</span> Geography</h2>
+<section id="geography" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="geography"><span class="header-section-number">4</span> Geography</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/states.png" class="img-fluid figure-img"></p>
@@ -567,19 +536,62 @@ Figure&nbsp;4: Ten most frequently listed skills as percentages of all selected 
 </div>
 <p>Abbreviations and full state names were merged. Country-level strings such as USA and United States were placed in the unknown-or-non-state category. Counts use the supplied single state field; they do not resolve all multi-location postings. Missing geography limits comparisons.</p>
 </section>
-<section id="salary-and-experience-limits" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="salary-and-experience-limits"><span class="header-section-number">6</span> Salary and experience limits</h2>
+<section id="salary-and-experience-limits" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="salary-and-experience-limits"><span class="header-section-number">5</span> Salary and experience limits</h2>
 <p>Only 3 observations have both explicit USD currency and a positive normalized salary amount. The website withholds a headline median because this is below an analyst-selected minimum of 10 comparable observations. Missing currency is not assumed to be USD. Normalization factors and extracted salary evidence were not independently reviewed, so even the retained values require validation before salary advice.</p>
 <p>The median supplied minimum-experience value is 0, but zero values cannot establish that employers accept beginners. Review original requirement text before making accessibility recommendations. Raw job descriptions are intentionally not republished by this website.</p>
 <p>Download the <a href="data/study/career_benchmark_table.csv">benchmark table</a>, <a href="data/study/states.csv">state counts</a>, and <a href="data/study/remote.csv">work-arrangement counts</a>. Reproduce them with the script and input hashes listed on the study page.</p>
+</section>
+<section id="executed-sample-code-and-partial-output" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="executed-sample-code-and-partial-output"><span class="header-section-number">6</span> Executed sample: code and partial output</h2>
+<p>This walkthrough uses <code>sample=true</code> on the local Jobs_2026_US partitions. With sampling enabled, SHA-256 of seed 2017 and posting ID selects approximately 10% of IDs across all partitions; missing IDs are excluded and duplicates keep their first occurrence. This scans every partition but retains only selected rows. These descriptive sample results are separate from the full-study tables below. Code is shown expanded; outputs are captured from that exact code by <code>scripts/publish_sample.py</code>. Only aggregates and a schema preview are published. Run chunks in page order: preparation, market, skills, evaluation.</p>
+<section id="inspect-coverage-and-work-arrangements" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="inspect-coverage-and-work-arrangements"><span class="header-section-number">6.1</span> Inspect coverage and work arrangements</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> run_study <span class="im">import</span> STATE_MAP</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> career.STATE_NAME.<span class="bu">map</span>(<span class="kw">lambda</span> value: STATE_MAP.get(clean(value).upper(), <span class="st">'Unknown'</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>remote <span class="op">=</span> career.REMOTE_TYPE_NAME.<span class="bu">map</span>(<span class="kw">lambda</span> value: {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'remote'</span>: <span class="st">'Remote'</span>, <span class="st">'hybrid'</span>: <span class="st">'Hybrid'</span>, <span class="st">'onsite'</span>: <span class="st">'Onsite'</span>, <span class="st">'on-site'</span>: <span class="st">'Onsite'</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}.get(clean(value).lower(), <span class="st">'Unknown'</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>salary <span class="op">=</span> pd.to_numeric(career.NORMALIZED_SALARY, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>salary <span class="op">=</span> salary.where(career.TEXT_PAY_CURRENCY.eq(<span class="st">'USD'</span>) <span class="op">&amp;</span> salary.gt(<span class="dv">0</span>) <span class="op">&amp;</span> np.isfinite(salary))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>experience <span class="op">=</span> pd.to_numeric(career.MIN_YEARS_EXPERIENCE, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>coverage <span class="op">=</span> pd.Series({<span class="st">'cohort postings'</span>: <span class="bu">len</span>(career), <span class="st">'recognized state'</span>: states.ne(<span class="st">'Unknown'</span>).<span class="bu">sum</span>(),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'known work arrangement'</span>: remote.ne(<span class="st">'Unknown'</span>).<span class="bu">sum</span>(), <span class="st">'positive USD salary'</span>: salary.notna().<span class="bu">sum</span>(),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'nonnegative experience'</span>: experience.ge(<span class="dv">0</span>).<span class="bu">sum</span>()}, name<span class="op">=</span><span class="st">'Postings'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(coverage.to_string())</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Work arrangement counts:'</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(remote.value_counts().to_string())</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'State counts (first 5):'</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(states.value_counts().head(<span class="dv">5</span>).to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Partial output (computed from this run):</p>
+<pre class="text"><code>cohort postings           7
+recognized state          5
+known work arrangement    2
+positive USD salary       0
+nonnegative experience    6
+Work arrangement counts:
+REMOTE_TYPE_NAME
+Unknown    5
+Remote     1
+Hybrid     1
+State counts (first 5):
+STATE_NAME
+Unknown           2
+North Carolina    1
+Florida           1
+Ohio              1
+Texas             1</code></pre>
 
 
 
 </section>
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-jobs2026" class="csl-entry" role="listitem">
-<em><span>Jobs_2026_US</span>: Local Course Dataset Snapshot</em>. 2026. 82 local Parquet posting partitions.
+<em><span>Jobs_2026_US</span>: Local Course Dataset Snapshot</em>. 2026. 20 local Parquet posting partitions, release us-repack20-20261011-v1.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
