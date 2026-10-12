@@ -1,0 +1,11 @@
+industry,system,precision,recall,f_score,source
+Transportation,Random guessing,0.05,0.50,0.09,Paper Table IV
+Transportation,All positives,0.05,1.00,0.10,Paper Table IV
+Transportation,Legacy system,0.94,0.92,0.93,Paper Table IV
+Transportation,SVM,0.97,0.70,0.81,Paper Table IV
+Transportation,GBDT,1.00,0.65,0.79,Paper Table IV
+Health Care,Random guessing,0.14,0.50,0.22,Paper Table IV
+Health Care,All positives,0.14,1.00,0.25,Paper Table IV
+Health Care,Legacy system,0.96,0.82,0.89,Paper Table IV
+Health Care,SVM,0.97,0.71,0.82,Paper Table IV
+Health Care,GBDT,0.98,0.76,0.86,Paper Table IV

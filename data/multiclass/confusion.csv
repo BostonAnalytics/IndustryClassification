@@ -1,0 +1,181 @@
+model,actual_sector,predicted_sector,employers
+Linear SVM,23,23,4
+Linear SVM,23,44-45,0
+Linear SVM,23,52,0
+Linear SVM,23,54,0
+Linear SVM,23,61,0
+Linear SVM,23,62,5
+Linear SVM,44-45,23,0
+Linear SVM,44-45,44-45,1
+Linear SVM,44-45,52,0
+Linear SVM,44-45,54,0
+Linear SVM,44-45,61,0
+Linear SVM,44-45,62,6
+Linear SVM,52,23,0
+Linear SVM,52,44-45,0
+Linear SVM,52,52,0
+Linear SVM,52,54,0
+Linear SVM,52,61,0
+Linear SVM,52,62,6
+Linear SVM,54,23,0
+Linear SVM,54,44-45,0
+Linear SVM,54,52,0
+Linear SVM,54,54,1
+Linear SVM,54,61,0
+Linear SVM,54,62,4
+Linear SVM,61,23,0
+Linear SVM,61,44-45,0
+Linear SVM,61,52,1
+Linear SVM,61,54,0
+Linear SVM,61,61,3
+Linear SVM,61,62,3
+Linear SVM,62,23,0
+Linear SVM,62,44-45,0
+Linear SVM,62,52,0
+Linear SVM,62,54,0
+Linear SVM,62,61,0
+Linear SVM,62,62,35
+Logistic regression,23,23,9
+Logistic regression,23,44-45,0
+Logistic regression,23,52,0
+Logistic regression,23,54,0
+Logistic regression,23,61,0
+Logistic regression,23,62,0
+Logistic regression,44-45,23,7
+Logistic regression,44-45,44-45,0
+Logistic regression,44-45,52,0
+Logistic regression,44-45,54,0
+Logistic regression,44-45,61,0
+Logistic regression,44-45,62,0
+Logistic regression,52,23,6
+Logistic regression,52,44-45,0
+Logistic regression,52,52,0
+Logistic regression,52,54,0
+Logistic regression,52,61,0
+Logistic regression,52,62,0
+Logistic regression,54,23,4
+Logistic regression,54,44-45,0
+Logistic regression,54,52,0
+Logistic regression,54,54,1
+Logistic regression,54,61,0
+Logistic regression,54,62,0
+Logistic regression,61,23,4
+Logistic regression,61,44-45,0
+Logistic regression,61,52,1
+Logistic regression,61,54,0
+Logistic regression,61,61,2
+Logistic regression,61,62,0
+Logistic regression,62,23,25
+Logistic regression,62,44-45,0
+Logistic regression,62,52,0
+Logistic regression,62,54,0
+Logistic regression,62,61,0
+Logistic regression,62,62,10
+Random forest,23,23,3
+Random forest,23,44-45,6
+Random forest,23,52,0
+Random forest,23,54,0
+Random forest,23,61,0
+Random forest,23,62,0
+Random forest,44-45,23,0
+Random forest,44-45,44-45,7
+Random forest,44-45,52,0
+Random forest,44-45,54,0
+Random forest,44-45,61,0
+Random forest,44-45,62,0
+Random forest,52,23,0
+Random forest,52,44-45,6
+Random forest,52,52,0
+Random forest,52,54,0
+Random forest,52,61,0
+Random forest,52,62,0
+Random forest,54,23,0
+Random forest,54,44-45,4
+Random forest,54,52,0
+Random forest,54,54,1
+Random forest,54,61,0
+Random forest,54,62,0
+Random forest,61,23,0
+Random forest,61,44-45,4
+Random forest,61,52,1
+Random forest,61,54,0
+Random forest,61,61,2
+Random forest,61,62,0
+Random forest,62,23,0
+Random forest,62,44-45,16
+Random forest,62,52,0
+Random forest,62,54,0
+Random forest,62,61,0
+Random forest,62,62,19
+GBDT,23,23,2
+GBDT,23,44-45,0
+GBDT,23,52,0
+GBDT,23,54,0
+GBDT,23,61,0
+GBDT,23,62,7
+GBDT,44-45,23,0
+GBDT,44-45,44-45,1
+GBDT,44-45,52,0
+GBDT,44-45,54,0
+GBDT,44-45,61,0
+GBDT,44-45,62,6
+GBDT,52,23,0
+GBDT,52,44-45,0
+GBDT,52,52,0
+GBDT,52,54,0
+GBDT,52,61,0
+GBDT,52,62,6
+GBDT,54,23,0
+GBDT,54,44-45,0
+GBDT,54,52,0
+GBDT,54,54,1
+GBDT,54,61,0
+GBDT,54,62,4
+GBDT,61,23,0
+GBDT,61,44-45,0
+GBDT,61,52,1
+GBDT,61,54,0
+GBDT,61,61,1
+GBDT,61,62,5
+GBDT,62,23,0
+GBDT,62,44-45,0
+GBDT,62,52,0
+GBDT,62,54,0
+GBDT,62,61,0
+GBDT,62,62,35
+Training majority,23,23,0
+Training majority,23,44-45,0
+Training majority,23,52,0
+Training majority,23,54,0
+Training majority,23,61,0
+Training majority,23,62,9
+Training majority,44-45,23,0
+Training majority,44-45,44-45,0
+Training majority,44-45,52,0
+Training majority,44-45,54,0
+Training majority,44-45,61,0
+Training majority,44-45,62,7
+Training majority,52,23,0
+Training majority,52,44-45,0
+Training majority,52,52,0
+Training majority,52,54,0
+Training majority,52,61,0
+Training majority,52,62,6
+Training majority,54,23,0
+Training majority,54,44-45,0
+Training majority,54,52,0
+Training majority,54,54,0
+Training majority,54,61,0
+Training majority,54,62,5
+Training majority,61,23,0
+Training majority,61,44-45,0
+Training majority,61,52,0
+Training majority,61,54,0
+Training majority,61,61,0
+Training majority,61,62,7
+Training majority,62,23,0
+Training majority,62,44-45,0
+Training majority,62,52,0
+Training majority,62,54,0
+Training majority,62,61,0
+Training majority,62,62,35
