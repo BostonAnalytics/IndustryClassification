@@ -78,10 +78,20 @@ def main():
         if not table:
             continue
         fields = list(table[0])
+        folder = path.parent.name
+        scopes = {
+            'eda': 'Full US source release: counts are job postings unless the field says otherwise.',
+            'naics': 'Full US source release: postings and distinct employer names are separate units.',
+            'global': 'Full global source release; overlaps with the US release.',
+            'overview': 'Complete published datasets; overlapping datasets must not be summed.',
+            'study': 'Filtered healthcare analyst research cohort or employer-model selection; not total dataset jobs.',
+            'multiclass': 'Filtered employer classification experiment; support counts are employers, not jobs.',
+        }
+        scope = scopes.get(folder, 'Reference or comparison table; use its stated study population and units.')
         header = ''.join(f'<th scope="col">{html.escape(key)}</th>' for key in fields)
         body = ''.join('<tr>' + ''.join(f'<td>{html.escape(row[key])}</td>' for key in fields) + '</tr>' for row in table)
         # A standalone HTML table is also a portable export, usable outside Quarto.
-        markup = f'<table><thead><tr>{header}</tr></thead><tbody>{body}</tbody></table>'
+        markup = f'<table><caption>{html.escape(scope)}</caption><thead><tr>{header}</tr></thead><tbody>{body}</tbody></table>'
         filename = name.removeprefix('data/').replace('/', '-').removesuffix('.csv') + '.html'
         (OUT / filename).write_text('<!doctype html><meta charset="utf-8"><title>' + html.escape(name) + '</title>' + markup, encoding='utf-8')
         parts.append(f'\n### {name}\n\n[CSV]({name}) · [HTML table](data/interactive/{filename})\n\n'

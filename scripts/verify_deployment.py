@@ -23,7 +23,10 @@ def main():
               'images/naics-coverage.png', 'images/multiclass-confusion.png', 'images/confusion.png',
               'images/spark-comparison.png', 'data/naics/column_coverage.csv', 'data/spark-study/runtime.json',
               'scripts/run_study.py', 'scripts/run_multiclass.py', 'scripts/run_spark_study.py',
-              'scripts/naics-explorer.js', 'final_report.docx']
+              'scripts/naics-explorer.js', 'final_report.docx',
+              'data/overview/dataset_counts.csv', 'data/overview/csv-tables.json',
+              'data/eda/sector.csv', 'data/eda/remote.csv', 'data/eda/posted_month.csv',
+              'data/naics/industries.csv']
     for attempt in range(12):
         try:
             checked = {}

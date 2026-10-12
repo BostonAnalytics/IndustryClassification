@@ -256,6 +256,10 @@ div.csl-indent {
   <ul>
   <li><a href="#research-and-product-question" id="toc-research-and-product-question" class="nav-link active" data-scroll-target="#research-and-product-question">Research and product question</a></li>
   <li><a href="#evidence-at-a-glance" id="toc-evidence-at-a-glance" class="nav-link" data-scroll-target="#evidence-at-a-glance">Evidence at a glance</a></li>
+  <li><a href="#full-published-datasets" id="toc-full-published-datasets" class="nav-link" data-scroll-target="#full-published-datasets">Full published datasets</a>
+  <ul class="collapse">
+  <li><a href="#filtered-research-evidence" id="toc-filtered-research-evidence" class="nav-link" data-scroll-target="#filtered-research-evidence">Filtered research evidence</a></li>
+  </ul></li>
   <li><a href="#read-the-study" id="toc-read-the-study" class="nav-link" data-scroll-target="#read-the-study">Read the study</a></li>
   <li><a href="#scope-and-limitations" id="toc-scope-and-limitations" class="nav-link" data-scroll-target="#scope-and-limitations">Scope and limitations</a></li>
   </ul>
@@ -291,9 +295,72 @@ div.csl-indent {
 </section>
 <section id="evidence-at-a-glance" class="level2">
 <h2 class="anchored" data-anchor-id="evidence-at-a-glance">Evidence at a glance</h2>
+</section>
+<section id="full-published-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="full-published-datasets">Full published datasets</h2>
+<table class="table csv-result" data-csv="data/overview/dataset_counts.csv">
+<caption>
+Complete releases; job postings and employer-name groups are separate units.
+</caption>
+<thead>
+<tr>
+<th scope="col">
+Dataset
+</th>
+<th scope="col">
+Job postings
+</th>
+<th scope="col">
+Distinct employer names
+</th>
+<th scope="col">
+Release
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Jobs_2026_US
+</td>
+<td>
+815,193
+</td>
+<td>
+32,962
+</td>
+<td>
+us-repack20-20261011-v1
+</td>
+</tr>
+<tr>
+<td>
+Jobs_2026
+</td>
+<td>
+2,350,355
+</td>
+<td>
+288,870
+</td>
+<td>
+global-repack20-20261011-v1
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<a href="data/overview/dataset_counts.csv">Download the complete processed CSV</a>
+</p>
+<p>The global and US datasets overlap; do not add their counts. Employer names are normalized name groups, not verified legal entities. Posting counts are recorded advertisements, not confirmed live vacancies.</p>
+<p>The market tables below describe all <strong>815,193 US postings</strong>. The paper’s healthcare analyst cohort and held-out employer samples are filtered research subsets.</p>
+<p>See the <a href="./market_baseline.html">full-release market and industry tables</a>. Every table there links to its processed CSV.</p>
+<section id="filtered-research-evidence" class="level3">
+<h3 class="anchored" data-anchor-id="filtered-research-evidence">Filtered research evidence</h3>
 <p>The January–September 2026 analysis selects <strong>112 career postings</strong> and <strong>379 employers</strong> for binary classification from <strong>815,193 posting records in 20 files</strong>. The full source contains <strong>32,962 normalized employer names</strong>. The multiclass extension retains <strong>332 employers across 6 sectors</strong>.</p>
 <p>Employer-name-disjoint test F1 is <strong>0.588 for linear SVM</strong> and <strong>0.615 for GBDT</strong>. The validation-selected multiclass random forest scores <strong>0.342 macro-F1</strong>. These are measures of agreement with dataset-derived labels. SQL appears in 63 career postings; only three have a positive normalized salary with explicit USD.</p>
 <p>The original research structure and observation window are retained. The <a href="./career_evaluation.html">refreshed evaluation</a> explains the samples, errors and implications. <a href="./data_coverage.html">Full dataset coverage</a> and the <a href="./naics_explorer.html">NAICS 4/5/6 explorer</a> supplement the paper with source-wide counts.</p>
+</section>
 </section>
 <section id="read-the-study" class="level2">
 <h2 class="anchored" data-anchor-id="read-the-study">Read the study</h2>

@@ -1,0 +1,16 @@
+{
+  "inputs": {
+    "data/overview/coverage.json": "f8d5b92735da1d41e148e34c03fbe71d63498982e84ad4ff0428884059cd6284",
+    "data/naics/snapshot.json": "2502a784d942bc7bf220cb88c06638485ee772e71e774623da38b5c21e4324d6",
+    "data/global/snapshot.json": "90ce550f2b48af6ccf6862860947136925e0b77912a7494e80f02ae55e0f6e2c",
+    "data/eda/sector.csv": "7fb7dc3369e42bfb0162df7afe55c1e5ed4b6e193e8a4a7c7349cb42afc01ec2",
+    "data/eda/remote.csv": "64eb965ac4d76bee434b747f5e6a2dbd46cd440bdb0abc42110868ebdf986b34",
+    "data/eda/posted_month.csv": "c3e0b163041b102011c1e438fc03ad110b12be12bb3d32e3366e72fe7f725176",
+    "data/naics/industries.csv": "d0717ceec99b175123c863ea1988eedea9860eb1800c5fff6f180efe62b2acb9",
+    "data/overview/dataset_counts.csv": "8f4bbf30b5335e19743f14cce1982f63ddd5076bd5a6e01eccfcb799a4aebec8"
+  },
+  "outputs": {
+    "_content/csv-dataset-counts.md": "b9099ceff31d69afecd1288ba0073e5121518af044c96e35c2ce31f3cf99801f",
+    "_content/csv-market-tables.md": "d126afb021419d27100efddf087e2efc163b512fc70265e397ebfbbc97c53d8d"
+  }
+}
