@@ -1,0 +1,186 @@
+{
+  "generated_at_utc": "2026-10-12T02:32:01.109102+00:00",
+  "datasets": {
+    "Jobs_2026": {
+      "counts": {
+        "posting_records": 2350355,
+        "postings_without_employer_name": 108,
+        "distinct_posting_ids": 2350355,
+        "repeated_id_rows": 0,
+        "distinct_employer_names": 288870
+      },
+      "coverage": {
+        "4": {
+          "classified": 345824,
+          "missing": 2004531,
+          "invalid_format": 0
+        },
+        "5": {
+          "classified": 209215,
+          "missing": 2141140,
+          "invalid_format": 0
+        },
+        "6": {
+          "classified": 144640,
+          "missing": 2205715,
+          "invalid_format": 0
+        }
+      },
+      "release_id": "global-repack20-20261011-v1",
+      "source_manifest_sha256": "d61f9a57131d5a8a5ae47d6e4dd573e12d31ef1eadd87a26fb81f5a46d20c4b2"
+    },
+    "Jobs_2026_US": {
+      "counts": {
+        "posting_records": 815193,
+        "postings_without_employer_name": 4,
+        "distinct_posting_ids": 815193,
+        "repeated_id_rows": 0,
+        "distinct_employer_names": 32962
+      },
+      "coverage": {
+        "4": {
+          "classified": 263862,
+          "missing": 551331,
+          "invalid_format": 0
+        },
+        "5": {
+          "classified": 144209,
+          "missing": 670984,
+          "invalid_format": 0
+        },
+        "6": {
+          "classified": 93911,
+          "missing": 721282,
+          "invalid_format": 0
+        }
+      },
+      "release_id": "us-repack20-20261011-v1",
+      "source_manifest_sha256": "6468ee59a42a3490ff9ffffd11cf9769324e154e7cdf9b3a39ddf43364ccfd93"
+    }
+  },
+  "sec": {
+    "audit": {
+      "version": "sec-filing-evidence-v1",
+      "files": 32110,
+      "years": {
+        "2020": 2893,
+        "2021": 7181,
+        "2022": 7792,
+        "2023": 7366,
+        "2024": 6878
+      },
+      "headers_audited": 32110,
+      "header_years": {
+        "2020": 2893,
+        "2021": 7181,
+        "2022": 7792,
+        "2023": 7366,
+        "2024": 6878
+      },
+      "counts": {
+        "issuer_header_extracted": 30200,
+        "name": 30200,
+        "cik": 30200,
+        "sic": 29646,
+        "filed_date": 32108,
+        "ambiguous_filers": 1908,
+        "missing_complete_header": 2
+      },
+      "unique_unambiguous_ciks": 8746,
+      "primary_sample": {},
+      "sample_method": "first sorted filenames per year; not representative",
+      "job_rows_changed": 0,
+      "links_verified_live": 0
+    },
+    "preview": {
+      "bundle_sha256": "60fdae1bc6a8b88d1dd0d25c9214434d4bf4bed99faebc5e07b332c2e16fb1e3",
+      "job_rows_changed": 0,
+      "stores": {
+        "Jobs_2026": {
+          "rows": 2350355,
+          "candidate_job_records": 3202,
+          "ambiguous_job_records": 11,
+          "candidate_employer_names": 140,
+          "candidate_issuers": 138,
+          "verified_job_links": 0,
+          "manifest_sha256": "d61f9a57131d5a8a5ae47d6e4dd573e12d31ef1eadd87a26fb81f5a46d20c4b2"
+        },
+        "Jobs_2026_US": {
+          "rows": 815193,
+          "candidate_job_records": 2898,
+          "ambiguous_job_records": 11,
+          "candidate_employer_names": 127,
+          "candidate_issuers": 126,
+          "verified_job_links": 0,
+          "manifest_sha256": "6468ee59a42a3490ff9ffffd11cf9769324e154e7cdf9b3a39ddf43364ccfd93"
+        }
+      }
+    },
+    "audit_sha256": "786df1126193b4eefc66d7d0a2a3a0a00b7c1100847f8f4b2a463e981e1825ab"
+  },
+  "useful_fields": [
+    {
+      "column": "CITY_NAME",
+      "label": "City name",
+      "populated": 771204,
+      "in_schema": true
+    },
+    {
+      "column": "MSA_NAME",
+      "label": "Metro area",
+      "populated": 41895,
+      "in_schema": true
+    },
+    {
+      "column": "SOC_5",
+      "label": "Detailed occupation code",
+      "populated": 341517,
+      "in_schema": true
+    },
+    {
+      "column": "SALARY_FROM",
+      "label": "Salary lower bound",
+      "populated": 130951,
+      "in_schema": true
+    },
+    {
+      "column": "SALARY_TO",
+      "label": "Salary upper bound",
+      "populated": 127465,
+      "in_schema": true
+    },
+    {
+      "column": "RAW_HTML",
+      "label": "Archived posting HTML",
+      "populated": 67561,
+      "in_schema": true
+    },
+    {
+      "column": "COMPANY_URL",
+      "label": "Employer website",
+      "populated": 139,
+      "in_schema": true
+    },
+    {
+      "column": "COMPANY_DESCRIPTION",
+      "label": "Employer description",
+      "populated": 2,
+      "in_schema": true
+    },
+    {
+      "column": "COMPANY_CAREERS_URL",
+      "label": "Employer careers page",
+      "populated": 195,
+      "in_schema": true
+    },
+    {
+      "column": "ALIVE_CHECKED_AT",
+      "label": "Recorded liveness-check time",
+      "populated": 41137,
+      "in_schema": true
+    }
+  ],
+  "future_posting_month_records": 7,
+  "production_sec_backfill": "pending",
+  "verified_employer_links": 0
+}
