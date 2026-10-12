@@ -1,0 +1,5 @@
+# Preserve exact bytes used by saved provenance and publication manifests.
+/scripts/*.py -text
+/data/** -text
+/images/** -text
+/_content/** -text

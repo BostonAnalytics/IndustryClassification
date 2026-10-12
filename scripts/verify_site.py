@@ -19,6 +19,7 @@ class Links(HTMLParser):
 
 def verify():
     errors = []
+    assert (SITE / '.gitattributes').read_bytes() == (ROOT / '.gitattributes').read_bytes(), 'Missing publication byte-preservation rules'
     allowed_directories = {'images', 'data', 'scripts', 'notebooks', 'site_libs'}
     unexpected = {p.name for p in SITE.iterdir() if p.is_dir()} - allowed_directories
     assert not unexpected, f'Unexpected publication directories: {sorted(unexpected)}'

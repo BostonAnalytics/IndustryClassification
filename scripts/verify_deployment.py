@@ -21,6 +21,8 @@ def main():
     paths += ['data/overview/coverage.json', 'data/naics/snapshot.json', 'data/global/snapshot.json',
               'data/study/paper-refresh.json', 'images/evaluation-comparison.png',
               'images/naics-coverage.png', 'images/multiclass-confusion.png', 'images/confusion.png',
+              'images/spark-comparison.png', 'data/naics/column_coverage.csv', 'data/spark-study/runtime.json',
+              'scripts/run_study.py', 'scripts/run_multiclass.py', 'scripts/run_spark_study.py',
               'scripts/naics-explorer.js', 'final_report.docx']
     for attempt in range(12):
         try:
